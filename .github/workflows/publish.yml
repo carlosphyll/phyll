@@ -1,6 +1,7 @@
-# Publishes the phyll package to npm when a version tag is pushed, such as v0.4.2.
-# It uses npm trusted publishing: GitHub proves who is publishing, so there is no token to keep
-# and the package carries a provenance statement. The tag must match the package version.
+# Stages the phyll package on npm when a version tag is pushed, such as v0.4.2.
+# It uses npm trusted publishing with staged publishing: GitHub proves who is publishing, so there
+# is no token to keep, and the version goes live only after a maintainer approves it with 2FA on
+# npmjs.com. The tag must match the package version.
 name: Publish
 
 on:
@@ -12,7 +13,7 @@ permissions:
   id-token: write
 
 jobs:
-  publish:
+  stage:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -20,6 +21,8 @@ jobs:
         with:
           node-version: 24
           registry-url: https://registry.npmjs.org
+      - name: An npm that can stage packages (11.15 or newer)
+        run: npm install --global npm@11
       - name: The tag matches the package version
         run: node -e "const v = 'v' + require('./packages/connector/package.json').version; if (v !== process.env.GITHUB_REF_NAME) { console.error(v + ' is not ' + process.env.GITHUB_REF_NAME); process.exit(1) }"
       - run: npm ci
@@ -27,5 +30,9 @@ jobs:
         working-directory: packages/connector
       - run: npx playwright install --with-deps chromium
       - run: npm test
-      - run: npm publish --access public
+      - name: Copy the scanner into the package
+        run: node scripts/copy-scanner.mjs
+        working-directory: packages/connector
+      - name: Stage the version for approval on npmjs.com
+        run: npm stage publish . --access public
         working-directory: packages/connector

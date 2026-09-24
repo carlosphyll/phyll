@@ -32,5 +32,5 @@ Install inside `examples/` and `packages/connector/`. Run from the root, `npm in
 - Scripts in `skills/phyll/scripts` use only Node built-ins.
 - While the connector runs as an MCP server, nothing may write to stdout: that stream belongs to the protocol.
 - The version lives in `skills/phyll/scripts/lib/version.mjs`, `package.json`, `packages/connector/package.json`, `.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json`, `skills/phyll/data/tells.json` and the `SKILL.md` metadata. A test fails if they differ.
-- A tag such as `v0.4.2` that matches the version publishes the `phyll` package: `.github/workflows/publish.yml` runs the tests and publishes with npm trusted publishing, so no token is kept anywhere.
+- A tag such as `v0.4.2` that matches the version releases the `phyll` package: `.github/workflows/publish.yml` runs the tests and stages the version with npm trusted publishing, so no token is kept anywhere, and a maintainer approves it with 2FA on npmjs.com before it goes live.
 - Markdown prose never uses em or en dashes as punctuation; a test enforces it. Follow the writing rules in `CONTRIBUTING.md`.
