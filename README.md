@@ -16,7 +16,7 @@ The same app, a ManyChat-style tool for Instagram creators, before and after a P
 
 ## Start
 
-Phyll's engine is about to open at [agentphyll.com](https://agentphyll.com). The commands below work once the `phyll` package is on npm; until then, the scanner runs from this repository with `node skills/phyll/scripts/scan.mjs <folder>`.
+Create a free account at [agentphyll.com](https://agentphyll.com), or from the terminal, and connect Phyll to your agent:
 
 ```bash
 npx phyll signup you@example.com
