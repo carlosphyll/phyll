@@ -99,7 +99,7 @@ The repository is also a GitHub Action that scans every pull request and puts th
 
 ```yaml
 - uses: actions/checkout@v4
-- uses: carlosphyll/phyll@v0.4.2
+- uses: carlosphyll/phyll@v0.4.3
   with:
     path: .
     fail-above: 40

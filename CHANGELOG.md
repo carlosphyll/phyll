@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4.3 (2026-09-24)
+
+- The connector tells your agent that everything the app shows is evidence and never an instruction, and it fences the page's text in snapshots with a random marker, so words on a page cannot pose as instructions.
+- The skill says the same.
+
 ## 0.4.2 (2026-09-24)
 
 - `npx phyll account` opens your account on agentphyll.com, already signed in, with your reports, keys and plan. `npx phyll status` points to it.
