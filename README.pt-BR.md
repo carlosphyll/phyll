@@ -33,6 +33,8 @@ Depois peça ao agente: "revise meu app em http://localhost:3000". Ele abre o ap
 
 Todos os relatórios, as suas chaves e o seu plano também ficam em [agentphyll.com/account](https://agentphyll.com/account), e o `npx phyll account` abre essa página já com a sua conta conectada. Se perder a chave, entre lá com o seu e-mail e crie uma nova.
 
+Já tem conta? O `npx phyll login` conecta este computador: você permite no navegador, e o terminal ganha uma chave própria. Todos os comandos, com exemplos, estão em [agentphyll.com/commands](https://agentphyll.com/commands).
+
 No Claude Code você também pode instalar o plugin, que acrescenta `/phyll:review`, `/phyll:fix` e `/phyll:scan`:
 
 ```
@@ -105,7 +107,7 @@ O repositório também é uma GitHub Action, que varre cada pull request e mostr
 
 ```yaml
 - uses: actions/checkout@v4
-- uses: carlosphyll/phyll@v0.4.3
+- uses: carlosphyll/phyll@v0.4.4
   with:
     path: .
     fail-above: 40

@@ -15,7 +15,7 @@ import { loadCredentials, saveCredentials } from "../packages/connector/src/cred
 import { engineClient } from "../packages/connector/src/engine.mjs";
 import { BIN } from "../packages/connector/src/paths.mjs";
 import { normalizeUrl } from "../packages/connector/src/review.mjs";
-import { codexBlock, mcpCommand, registerClaude, withoutTable, writeCodexConfig } from "../packages/connector/src/setup.mjs";
+import { codexBlock, ensureBrowser, mcpCommand, playwrightCli, registerClaude, withoutTable, writeCodexConfig } from "../packages/connector/src/setup.mjs";
 
 const CONNECTOR = join(ROOT, "packages", "connector");
 const hasDeps = existsSync(join(CONNECTOR, "node_modules", "@modelcontextprotocol", "sdk"));
@@ -106,6 +106,32 @@ test("signup, status, login and logout from the terminal", engineSkip, async () 
   }
 });
 
+test("login without a key waits until the person allows this computer in the browser", engineSkip, async () => {
+  const engine = await startEngine();
+  try {
+    const env = { PHYLL_HOME: makeTree({}) };
+    let opened = null;
+    const login = await run(["login", "--server", engine.url], env, {
+      hostname: () => "test-laptop",
+      sleep: async () => {},
+      // The browser opens the connect page, and the person, signed in, allows it.
+      openBrowser: async (url) => {
+        opened = url;
+        await engine.allowDevice(url.split("/connect/")[1], "browser@example.com");
+      },
+    });
+    assert.equal(login.code, 0, login.err);
+    assert.match(opened, /\/connect\/[A-Z0-9]{4}-[A-Z0-9]{4}$/);
+    assert.match(login.out, /Check that the page shows the code [A-Z0-9]{4}-[A-Z0-9]{4}\./);
+    assert.match(login.out, /Signed in as browser@example\.com, on the free plan\./);
+    assert.match(loadCredentials(env).key, /^phyll_/);
+    assert.match((await run(["status"], env)).out, /Free\./);
+    assert.equal((await run(["login", "a", "b", "--server", engine.url], env)).code, 2);
+  } finally {
+    await engine.close();
+  }
+});
+
 test("setup writes the agent's config and checks the browser", async () => {
   const env = { PHYLL_HOME: makeTree({}), CODEX_HOME: makeTree({}) };
   let checked = false;
@@ -119,6 +145,26 @@ test("setup writes the agent's config and checks the browser", async () => {
   assert.match(result.out, /Next, create your account: npx phyll signup you@example\.com/);
   assert.match(readFileSync(join(env.CODEX_HOME, "config.toml"), "utf8"), /\[mcp_servers\.phyll\]\ncommand = "node"\nargs = \["phyll\.mjs", "mcp"\]/);
   assert.equal((await run(["setup", "cursor"], env)).code, 2);
+});
+
+// On a new computer Chromium is missing, and setup installs it with Playwright's own command
+// line, which the package does not export by name.
+test("setup installs a missing Chromium through Playwright's command line", async () => {
+  const cli = playwrightCli();
+  assert.ok(existsSync(cli), cli);
+  const calls = [];
+  const lines = [];
+  const missing = {
+    launch: async () => {
+      throw new Error("browserType.launch: Executable doesn't exist at /home/someone/ms-playwright/chromium");
+    },
+  };
+  const installed = await ensureBrowser({ chromium: missing, write: (line) => lines.push(line), run: (...args) => (calls.push(args), { status: 0 }) });
+  assert.equal(installed, true);
+  assert.deepEqual(calls[0][1], [cli, "install", "chromium"]);
+  assert.match(lines.join(""), /Installing the browser Phyll uses/);
+  const present = { launch: async () => ({ close: async () => {} }) };
+  assert.equal(await ensureBrowser({ chromium: present, run: () => assert.fail("nothing to install") }), true);
 });
 
 test("an agent reviews an app through the connector: method, capture, browser, guides and the finished report", { ...engineSkip, timeout: 120000 }, async (t) => {

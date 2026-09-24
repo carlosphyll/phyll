@@ -1,6 +1,6 @@
 {
   "name": "phyll",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "UX review for apps built with AI, inside the agent you already use. Connects Codex or Claude Code to the Phyll engine; the AI work stays on your own plan.",
   "license": "MIT",
   "type": "module",

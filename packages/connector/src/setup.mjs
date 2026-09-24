@@ -4,7 +4,7 @@ import { spawnSync } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { createRequire } from "node:module";
 import { homedir } from "node:os";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
 import { BIN, PUBLISHED } from "./paths.mjs";
 
 // How the agent starts the connector: through npx when installed from npm, or straight from
@@ -54,16 +54,23 @@ export function registerClaude(command, run = spawnSync) {
   return { ok: true };
 }
 
+// Playwright's own command line. The package does not export "./cli", so it is found through
+// the package.json, which it does export, and the file its "bin" names.
+export function playwrightCli(require = createRequire(import.meta.url)) {
+  const manifest = require.resolve("playwright/package.json");
+  const { bin } = JSON.parse(readFileSync(manifest, "utf8"));
+  return join(dirname(manifest), typeof bin === "string" ? bin : bin.playwright);
+}
+
 // Opens Chromium once; when Playwright says it is missing, installs it.
-export async function ensureBrowser({ write = () => {}, run = spawnSync } = {}) {
-  const { chromium } = await import("playwright");
+export async function ensureBrowser({ write = () => {}, run = spawnSync, chromium = null } = {}) {
+  const browser = chromium ?? (await import("playwright")).chromium;
   try {
-    await (await chromium.launch()).close();
+    await (await browser.launch()).close();
     return true;
   } catch (error) {
     if (!/Executable doesn't exist|playwright install/i.test(error?.message ?? "")) throw error;
   }
   write("Installing the browser Phyll uses, Chromium (about 150 MB)...\n");
-  const cli = createRequire(import.meta.url).resolve("playwright/cli");
-  return run(process.execPath, [cli, "install", "chromium"], { stdio: "inherit" }).status === 0;
+  return run(process.execPath, [playwrightCli(), "install", "chromium"], { stdio: "inherit" }).status === 0;
 }

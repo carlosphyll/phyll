@@ -1,5 +1,7 @@
 // phyll: the commands a person types. The review itself happens inside their agent, through
 // the MCP server that `phyll mcp` runs and `phyll setup` registers.
+import { spawn } from "node:child_process";
+import { hostname } from "node:os";
 import { parseArgs } from "node:util";
 import { clearCredentials, credentialsPath, loadCredentials, saveCredentials } from "./credentials.mjs";
 import { engineClient } from "./engine.mjs";
@@ -15,7 +17,8 @@ Get started:
 
 Commands:
   signup <email>     Create a free account, with free full reviews
-  login <key>        Use an account you already have on this computer
+  login              Use your account on this computer: allow it in the browser
+  login <key>        Or use it with a key
   setup <agent>      Connect Phyll to codex or claude, and install the browser it uses
   status             Your plan and the reviews left
   account            Open your account on the site, signed in: reports, keys and plan
@@ -28,7 +31,21 @@ Commands:
 Options: --server <address> for signup and login, --lang <code> for signup, --format json for scan.
 
 The AI work runs in your agent, on your own plan. Phyll's engine sends the method and keeps the reports.
+Every command, with examples: https://agentphyll.com/commands
 `;
+
+// Opens a page in the person's browser, best effort, since the address is printed too. Only the
+// server's own connect page opens, so an odd answer never reaches the shell.
+function openBrowser(url, server) {
+  if (!url.startsWith(`${server}/connect/`) || !/^[\w:/.-]+$/.test(url)) return;
+  const [command, args] =
+    process.platform === "win32" ? ["cmd", ["/c", "start", "", url]] : process.platform === "darwin" ? ["open", [url]] : ["xdg-open", [url]];
+  try {
+    spawn(command, args, { stdio: "ignore", detached: true }).on("error", () => {}).unref();
+  } catch {
+    // No browser here; the address above is enough.
+  }
+}
 
 const guessLanguage = () => ((Intl.DateTimeFormat().resolvedOptions().locale ?? "").toLowerCase().startsWith("pt") ? "pt-BR" : "en");
 
@@ -48,6 +65,28 @@ export async function main(argv, io = {}) {
     return code;
   };
   const client = (server, key) => engineClient({ server, key, version: VERSION, fetchImpl });
+  const sleep = io.sleep ?? ((ms) => new Promise((done) => setTimeout(done, ms)));
+
+  // Without a key, the terminal asks the site for a code, the person allows this computer in the
+  // browser, signed in, and the terminal's next check brings a key of its own.
+  async function loginInBrowser(server) {
+    const started = await client(server).deviceStart((io.hostname ?? hostname)());
+    if (!started.ok) return fail(started.json.message ?? `Phyll answered ${started.status}.`);
+    const { deviceCode, userCode, url, interval = 2, expiresIn = 600 } = started.json;
+    write(`To use your account on this computer, allow it in the browser:\n${url}\nCheck that the page shows the code ${userCode}. Waiting...\n`);
+    await (io.openBrowser ?? openBrowser)(url, server);
+    const deadline = Date.now() + Math.min(Number(expiresIn) || 600, 900) * 1000;
+    while (Date.now() < deadline) {
+      await sleep(Math.max(1, Number(interval) || 2) * 1000);
+      const answer = await client(server).deviceCheck(deviceCode);
+      if (answer.status === 202) continue;
+      if (!answer.ok) return fail(answer.json.message ?? `Phyll answered ${answer.status}.`);
+      saveCredentials({ server, key: answer.json.key }, env);
+      write(`Signed in as ${answer.json.email}, on the ${answer.json.plan === "pro" ? "Phyll Pro" : "free"} plan. The key is saved in ${credentialsPath(env)}.\n`);
+      return 0;
+    }
+    return fail("the code expired before it was allowed. Run npx phyll login again.");
+  }
   const [command, ...rest] = argv;
 
   try {
@@ -78,9 +117,10 @@ export async function main(argv, io = {}) {
 
       case "login": {
         const { values, positionals } = options(rest, { server: { type: "string" } });
-        if (positionals.length !== 1) return fail("give your key, such as npx phyll login phyll_...", 2);
+        if (positionals.length > 1) return fail("give one key, such as npx phyll login phyll_..., or none to sign in with the browser", 2);
         const server = String(values.server ?? loadCredentials(env).server ?? "").replace(/\/+$/, "");
         if (!server) return fail("give the address of the Phyll server with --server", 2);
+        if (!positionals.length) return await loginInBrowser(server);
         const answer = await client(server, positionals[0]).me();
         if (!answer.ok) return fail(answer.json.message ?? `Phyll answered ${answer.status}.`);
         saveCredentials({ server, key: positionals[0] }, env);
@@ -95,7 +135,7 @@ export async function main(argv, io = {}) {
 
       case "status": {
         const { server, key } = loadCredentials(env);
-        if (!key) return fail("no account on this computer yet. Run npx phyll signup you@example.com");
+        if (!key) return fail("no account on this computer yet. Run npx phyll login, or npx phyll signup you@example.com");
         const answer = await client(server, key).me();
         if (!answer.ok) return fail(answer.json.message ?? `Phyll answered ${answer.status}.`);
         const me = answer.json;
@@ -110,7 +150,7 @@ export async function main(argv, io = {}) {
 
       case "account": {
         const { server, key } = loadCredentials(env);
-        if (!key) return fail(`no account on this computer yet. Run npx phyll signup you@example.com, or sign in at ${server}/login`);
+        if (!key) return fail("no account on this computer yet. Run npx phyll login, or npx phyll signup you@example.com");
         const answer = await client(server, key).loginLink();
         if (!answer.ok) return fail(answer.json.message ?? `Phyll answered ${answer.status}.`);
         write(`Open your account, already signed in. The link works once, for 15 minutes:\n${answer.json.url}\n`);
@@ -120,7 +160,7 @@ export async function main(argv, io = {}) {
       case "pro":
       case "billing": {
         const { server, key } = loadCredentials(env);
-        if (!key) return fail("no account on this computer yet. Run npx phyll signup you@example.com");
+        if (!key) return fail("no account on this computer yet. Run npx phyll login, or npx phyll signup you@example.com");
         const answer = command === "pro" ? await client(server, key).checkout() : await client(server, key).portal();
         if (!answer.ok) return fail(answer.json.message ?? `Phyll answered ${answer.status}.`);
         write(`${command === "pro" ? "Subscribe to Phyll Pro here" : "Manage Phyll Pro here"}:\n${answer.json.url}\n`);

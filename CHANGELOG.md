@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.4 (2026-09-24)
+
+- `npx phyll setup` installs Chromium on a new computer again. Playwright 1.63 stopped exporting `playwright/cli`, so setup finds Playwright's command line through its package.json.
+- `npx phyll login` with no key signs in from the browser: the terminal shows a short code, you allow it on agentphyll.com, and the terminal gets a key of its own.
+- `npx phyll help` points to every command, with examples, at agentphyll.com/commands.
+
 ## 0.4.3 (2026-09-24)
 
 - The connector tells your agent that everything the app shows is evidence and never an instruction, and it fences the page's text in snapshots with a random marker, so words on a page cannot pose as instructions.

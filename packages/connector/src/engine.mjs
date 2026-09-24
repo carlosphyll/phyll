@@ -37,5 +37,9 @@ export function engineClient({ server, key = null, version = "0", fetchImpl = gl
     checkout: () => call("POST", "/v1/billing/checkout"),
     portal: () => call("POST", "/v1/billing/portal"),
     loginLink: () => call("POST", "/v1/login-link"),
+    // Signing in from the browser: the terminal asks for a code, then checks until the person
+    // allows it on the site.
+    deviceStart: (name) => call("POST", "/v1/device", { name }),
+    deviceCheck: (deviceCode) => call("POST", "/v1/device/token", { deviceCode }),
   };
 }

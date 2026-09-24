@@ -11,6 +11,7 @@ const pt = (language) => String(language ?? "").startsWith("pt");
 export async function startEngine({ freeSessions = 5 } = {}) {
   const accounts = new Map();
   const sessions = new Map();
+  const devices = new Map();
   const newAccount = (email) => {
     const key = `phyll_${id()}${id()}`;
     accounts.set(key, { email, used: 0 });
@@ -34,6 +35,20 @@ export async function startEngine({ freeSessions = 5 } = {}) {
       const key = newAccount(body.email);
       const message = pt(body.language) ? `Conta criada, com ${freeSessions} revisões grátis.` : `Account created, with ${freeSessions} free reviews.`;
       return reply(201, { email: body.email, plan: "free", key, reviewsLeft: freeSessions, message });
+    }
+    // Signing in from the browser: a code for the terminal, allowed later through allowDevice.
+    if (req.method === "POST" && url.pathname === "/v1/device") {
+      const deviceCode = `${id()}${id()}`;
+      const userCode = `${id().slice(0, 4)}-${id().slice(0, 4)}`.toUpperCase();
+      devices.set(deviceCode, { userCode, status: "pending", email: null });
+      return reply(201, { deviceCode, userCode, url: `${base}/connect/${userCode}`, expiresIn: 600, interval: 2 });
+    }
+    if (req.method === "POST" && url.pathname === "/v1/device/token") {
+      const device = devices.get(body.deviceCode);
+      if (!device || device.status === "used") return reply(410, { message: "This connection expired. Run npx phyll login again." });
+      if (device.status === "pending") return reply(202, { status: "pending" });
+      device.status = "used";
+      return reply(200, { key: newAccount(device.email), email: device.email, plan: "free" });
     }
     if (!account) return reply(401, { message: "Missing or unknown API key." });
     if (req.method === "GET" && url.pathname === "/v1/me") {
@@ -88,6 +103,10 @@ export async function startEngine({ freeSessions = 5 } = {}) {
   return {
     url: base,
     newKey: () => newAccount("maker@example.com"),
+    // What a signed-in person does on the site's connect page.
+    allowDevice: (userCode, email) => {
+      for (const device of devices.values()) if (device.userCode === userCode && device.status === "pending") Object.assign(device, { status: "allowed", email });
+    },
     close: () =>
       new Promise((done) => {
         server.closeAllConnections();
