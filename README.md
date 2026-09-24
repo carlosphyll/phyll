@@ -10,6 +10,12 @@ Phyll keeps your design. Colors, gradients, fonts and layout stay as they are. T
 
 The review runs in Codex or Claude Code, on your own plan. Phyll adds a browser, a scanner and its review engine, and never charges for AI tokens.
 
+To try it with no account, run the scanner in your project. It gives an AI tell index from 0 to 100, lower is better, and points to each tell by file and line:
+
+```bash
+npx phyll scan
+```
+
 ![Creating an automation in Replyloop, before and after a Phyll review: the same purple design, with the form cut from nine fields to two and a live preview of the DM](examples/dm-automation/screenshots/compare-create.png)
 
 The same app, a ManyChat-style tool for Instagram creators, before and after a Phyll review. The review of the left side is in [examples/dm-automation/review/report.md](examples/dm-automation/review/report.md): 12 findings, an AI tell index of 79, and a first job that could not be finished.

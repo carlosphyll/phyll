@@ -10,6 +10,12 @@ O Phyll mantém o seu design. Cores, gradientes, fontes e layout ficam como est�
 
 A revisão roda no Codex ou no Claude Code, na sua própria assinatura. O Phyll acrescenta um navegador, um scanner e o motor de revisão, e nunca cobra tokens de IA.
 
+Para testar sem conta, rode o scanner no seu projeto. Ele dá um índice de cara de IA de 0 a 100, quanto menor melhor, e aponta cada sinal pelo arquivo e pela linha:
+
+```bash
+npx phyll scan
+```
+
 ![Criando uma automação no Replyloop, antes e depois da revisão do Phyll: o mesmo design roxo, com o formulário cortado de nove campos para dois e uma prévia da DM ao vivo](examples/dm-automation/screenshots/compare-create.png)
 
 O mesmo app, uma ferramenta no estilo do ManyChat para criadores do Instagram, antes e depois da revisão. A revisão do lado esquerdo está em [examples/dm-automation/review/report.md](examples/dm-automation/review/report.md): 12 achados, índice de cara de IA de 79 e uma primeira tarefa que não dava para terminar.
