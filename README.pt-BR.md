@@ -97,7 +97,7 @@ O repositório também é uma GitHub Action, que varre cada pull request e mostr
 
 ```yaml
 - uses: actions/checkout@v4
-- uses: carlosphyll/phyll@v0.4.0
+- uses: carlosphyll/phyll@v0.4.1
   with:
     path: .
     fail-above: 40

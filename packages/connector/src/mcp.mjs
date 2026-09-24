@@ -136,7 +136,9 @@ export async function runMcpServer(options = {}) {
   await server.connect(new StdioServerTransport());
   const stop = async () => {
     await connector.close();
-    process.exit(0);
+    // Let the process end on its own: exiting inside the stdin close callback trips a libuv
+    // assertion on Windows. The timer only fires if something still holds the event loop.
+    setTimeout(() => process.exit(0), 1000).unref();
   };
   process.stdin.on("close", stop);
   process.on("SIGTERM", stop);

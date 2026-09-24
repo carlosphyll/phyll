@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4.1 (2026-09-24)
+
+- The connector's MCP server ends cleanly when your agent closes it. On Windows it used to stop with a libuv assertion.
+- The `phyll` package carries the MIT license text.
+
 ## 0.4.0 (2026-09-24)
 
 First public release.
