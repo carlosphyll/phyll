@@ -1,0 +1,35 @@
+name: Bug report
+description: Something in Phyll did not work as described
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you ran, what you expected, and what you got.
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: Output or error
+      render: text
+  - type: dropdown
+    id: host
+    attributes:
+      label: Where you ran it
+      options:
+        - Claude Code plugin
+        - Claude Code with the skill copied in
+        - Codex
+        - Cursor
+        - Gemini CLI
+        - Terminal, scripts only
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Operating system and Node version
+      placeholder: macOS 15, Node 22.11

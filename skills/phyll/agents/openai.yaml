@@ -1,0 +1,4 @@
+interface:
+  display_name: "Phyll"
+  short_description: "UX review for apps built with AI"
+  default_prompt: "Use $phyll to review the UX of this app as a first-time user would, with screenshots as evidence, and tell me what to fix first."

@@ -1,0 +1,1068 @@
+{
+  "schemaVersion": "1.0",
+  "tool": {
+    "name": "phyll",
+    "version": "0.2.0"
+  },
+  "createdAt": "2026-09-23T20:30:00Z",
+  "language": "en",
+  "mode": "full",
+  "target": {
+    "name": "Replyloop AI (before)",
+    "url": "http://localhost:5173",
+    "sourceDir": "examples/dm-automation/before",
+    "framework": "react-router"
+  },
+  "context": {
+    "endUser": "An Instagram creator or small business owner who gets many comments and wants to answer them with a DM automatically. Knows Instagram well, has never set up an API.",
+    "product": "Sends a DM to people who comment a keyword on your Instagram posts.",
+    "coreJobs": [
+      {
+        "id": "J1",
+        "name": "Create an automation that sends a DM when someone comments a keyword",
+        "momentOfValue": "A DM goes out, or a test DM arrives on the creator's own account"
+      },
+      {
+        "id": "J2",
+        "name": "See who received a DM and from which keyword",
+        "momentOfValue": "A list of people reached by an automation"
+      }
+    ],
+    "assumptions": [
+      "The product's purpose was inferred from its name and the landing copy, since no screen states it.",
+      "The app runs without a backend, so every API call fails. The review judges what the interface tells the person when that happens.",
+      "The creator has an Instagram business account but no Meta developer account."
+    ]
+  },
+  "fiveSecondTest": {
+    "screen": "S1",
+    "whatIsThis": "Some AI tool for Instagram. The headline says supercharge and automation, not what it does.",
+    "whoIsItFor": "Creators, from the line about 10,000+ creators.",
+    "whatToDo": "Get Started or Learn More, without saying what either leads to.",
+    "passed": false,
+    "note": "Nothing in the first view mentions comments, keywords or DMs."
+  },
+  "screens": [
+    {
+      "id": "S1",
+      "route": "/",
+      "title": "Landing page",
+      "screenshots": {
+        "desktop": "screens/desktop-home.png",
+        "mobile": "screens/mobile-home.png"
+      },
+      "probe": {
+        "desktop": "probe/desktop-home.json",
+        "mobile": "probe/mobile-home.json"
+      }
+    },
+    {
+      "id": "S2",
+      "route": "/dashboard",
+      "title": "Dashboard",
+      "screenshots": {
+        "desktop": "screens/desktop-dashboard.png",
+        "mobile": "screens/mobile-dashboard.png"
+      },
+      "probe": {
+        "desktop": "probe/desktop-dashboard.json",
+        "mobile": "probe/mobile-dashboard.json"
+      }
+    },
+    {
+      "id": "S3",
+      "route": "/flows",
+      "title": "Flows, empty",
+      "screenshots": {
+        "desktop": "screens/desktop-flows.png",
+        "mobile": "screens/mobile-flows.png"
+      },
+      "probe": {
+        "desktop": "probe/desktop-flows.json",
+        "mobile": "probe/mobile-flows.json"
+      }
+    },
+    {
+      "id": "S4",
+      "route": "/flows",
+      "title": "Create Flow modal",
+      "screenshots": {
+        "desktop": "screens/desktop-flows-create.png"
+      }
+    },
+    {
+      "id": "S5",
+      "route": "/flows",
+      "title": "Flows after creating one",
+      "screenshots": {
+        "desktop": "screens/desktop-flows-created.png"
+      }
+    },
+    {
+      "id": "S6",
+      "route": "/settings",
+      "title": "Settings, Instagram tab",
+      "screenshots": {
+        "desktop": "screens/desktop-settings-saved.png",
+        "mobile": "screens/mobile-settings.png"
+      },
+      "probe": {
+        "desktop": "probe/desktop-settings.json",
+        "mobile": "probe/mobile-settings.json"
+      }
+    },
+    {
+      "id": "S7",
+      "route": "/contacts",
+      "title": "Contacts",
+      "screenshots": {
+        "desktop": "screens/desktop-contacts.png",
+        "mobile": "screens/mobile-contacts.png"
+      },
+      "probe": {
+        "desktop": "probe/desktop-contacts.json",
+        "mobile": "probe/mobile-contacts.json"
+      }
+    },
+    {
+      "id": "S8",
+      "route": "/triggers",
+      "title": "Triggers, coming soon",
+      "screenshots": {
+        "desktop": "screens/desktop-triggers.png",
+        "mobile": "screens/mobile-triggers.png"
+      },
+      "probe": {
+        "desktop": "probe/desktop-triggers.json",
+        "mobile": "probe/mobile-triggers.json"
+      }
+    }
+  ],
+  "journeys": [
+    {
+      "job": "J1",
+      "steps": [
+        {
+          "screen": "S1",
+          "action": "Read the landing page and clicked Get Started",
+          "observation": "It opened a dashboard, not a way to create an automation."
+        },
+        {
+          "screen": "S2",
+          "action": "Clicked Create Flow under Quick Actions",
+          "observation": "Nothing happened. The URL stayed on /dashboard and no dialog opened.",
+          "problem": true
+        },
+        {
+          "screen": "S3",
+          "action": "Clicked Flows in the sidebar",
+          "observation": "The table says No data and nothing explains what a flow is."
+        },
+        {
+          "screen": "S4",
+          "action": "Clicked Create Flow in the top-right corner",
+          "observation": "A modal opened with nine fields and a greyed-out Submit button that gives no reason.",
+          "problem": true
+        },
+        {
+          "screen": "S4",
+          "action": "Filled six fields, picking COMMENT_KEYWORD and page_1784140 from the lists",
+          "observation": "Submit turned on only after a delay in seconds and an account shown as a raw page id were filled in.",
+          "problem": true
+        },
+        {
+          "screen": "S4",
+          "action": "Clicked Submit and confirmed 'Are you sure you want to create this flow?'",
+          "observation": "A bouncing Success! toast appeared and the modal closed."
+        },
+        {
+          "screen": "S5",
+          "action": "Looked for the next step",
+          "observation": "The row says ACTIVE although no Instagram account is connected, and there is no way to preview or test the DM.",
+          "problem": true
+        },
+        {
+          "screen": "S6",
+          "action": "Opened Settings to connect Instagram",
+          "observation": "It asks for a Graph API access token, a webhook verify token, an app secret and a Facebook page id.",
+          "problem": true
+        }
+      ],
+      "clicks": 9,
+      "screens": 5,
+      "deadEnds": 3,
+      "reachedValue": false,
+      "note": "Stopped at Settings. A creator without a Meta developer account cannot go further, and nothing can be tested before that step.",
+      "neededClicks": 3,
+      "inputs": {
+        "asked": 9,
+        "needed": 2,
+        "cuts": [
+          {
+            "input": "Flow Name",
+            "action": "defer",
+            "note": "Name it after the keyword, such as LINK on any post. It can be renamed under More options."
+          },
+          {
+            "input": "Trigger Type",
+            "action": "default",
+            "note": "Comment keyword is the only trigger that works today."
+          },
+          {
+            "input": "Description",
+            "action": "remove",
+            "note": "The name and the message already say what the automation does."
+          },
+          {
+            "input": "Instagram Account",
+            "action": "infer",
+            "note": "Use the connected account, and ask only when there is more than one."
+          },
+          {
+            "input": "Delay (seconds)",
+            "action": "default",
+            "note": "Start with no delay."
+          },
+          {
+            "input": "Tags",
+            "action": "remove",
+            "note": "Nothing in the app uses tags."
+          },
+          {
+            "input": "Status",
+            "action": "default",
+            "note": "New automations start on, and the list can pause them."
+          },
+          {
+            "input": "Keywords",
+            "action": "keep",
+            "note": "One keyword, with a hint that a single word works best."
+          },
+          {
+            "input": "Message",
+            "action": "keep",
+            "note": "With a live preview of the DM next to it."
+          }
+        ]
+      }
+    },
+    {
+      "job": "J2",
+      "steps": [
+        {
+          "screen": "S7",
+          "action": "Opened Contacts from the sidebar",
+          "observation": "Cards show John Doe, Jane Smith and Mike Johnson with stock avatars before any automation has run.",
+          "problem": true
+        },
+        {
+          "screen": "S7",
+          "action": "Clicked the unlabeled eye icon on a card",
+          "observation": "A modal lists contact_status SUBSCRIBED, tags and last_seen. Nothing says which DM or keyword reached the person.",
+          "problem": true
+        },
+        {
+          "screen": "S7",
+          "action": "Clicked Export",
+          "observation": "Nothing happened on screen. The click only logged 'export contacts' to the console.",
+          "problem": true
+        }
+      ],
+      "clicks": 3,
+      "screens": 1,
+      "deadEnds": 1,
+      "reachedValue": false,
+      "note": "The list is sample data, so it cannot tell the creator who received a DM.",
+      "neededClicks": 1
+    }
+  ],
+  "tells": [
+    {
+      "id": "P01",
+      "status": "present",
+      "evidence": [
+        "S1"
+      ],
+      "note": "The five-second test failed.",
+      "source": "review"
+    },
+    {
+      "id": "P02",
+      "status": "present",
+      "hits": 3,
+      "source": "static"
+    },
+    {
+      "id": "P03",
+      "status": "present",
+      "evidence": [
+        "S2"
+      ],
+      "note": "12,345 contacts and +12.5% trends on an account with no automations.",
+      "source": "review"
+    },
+    {
+      "id": "P04",
+      "status": "present",
+      "evidence": [
+        "S3"
+      ],
+      "note": "Nine top-level items that mirror the data model.",
+      "source": "review"
+    },
+    {
+      "id": "P05",
+      "status": "present",
+      "hits": 6,
+      "source": "static"
+    },
+    {
+      "id": "P06",
+      "status": "present",
+      "evidence": [
+        "S2"
+      ],
+      "note": "Triggers, Broadcasts, Templates, Analytics and Integrations sit in the menu, all marked Coming soon.",
+      "source": "review"
+    },
+    {
+      "id": "F01",
+      "status": "present",
+      "hits": 16,
+      "source": "static"
+    },
+    {
+      "id": "F02",
+      "status": "present",
+      "hits": 1,
+      "source": "static"
+    },
+    {
+      "id": "F03",
+      "status": "present",
+      "hits": 3,
+      "source": "static"
+    },
+    {
+      "id": "F04",
+      "status": "present",
+      "evidence": [
+        "S5"
+      ],
+      "source": "review"
+    },
+    {
+      "id": "F05",
+      "status": "present",
+      "evidence": [
+        "S6"
+      ],
+      "source": "review"
+    },
+    {
+      "id": "F06",
+      "status": "present",
+      "hits": 4,
+      "source": "static"
+    },
+    {
+      "id": "F07",
+      "status": "present",
+      "hits": 1,
+      "source": "static"
+    },
+    {
+      "id": "F08",
+      "status": "unverified",
+      "source": "auto"
+    },
+    {
+      "id": "F09",
+      "status": "present",
+      "evidence": [
+        "S4"
+      ],
+      "note": "Trigger type, account, delay and status each have one sensible answer, and the form still asks for all four.",
+      "source": "review"
+    },
+    {
+      "id": "F10",
+      "status": "absent",
+      "source": "review"
+    },
+    {
+      "id": "F11",
+      "status": "absent",
+      "hits": 0,
+      "source": "static"
+    },
+    {
+      "id": "F12",
+      "status": "absent",
+      "hits": 0,
+      "source": "static"
+    },
+    {
+      "id": "A01",
+      "status": "present",
+      "evidence": [
+        "probe/desktop-flows.json"
+      ],
+      "note": "Create Flow sits at x 1257 to 1408, y 80. The empty table spans x 312 to 1384, y 302 to 450.",
+      "source": "review"
+    },
+    {
+      "id": "A02",
+      "status": "present",
+      "evidence": [
+        "probe/desktop-dashboard.json",
+        "probe/desktop-home.json"
+      ],
+      "note": "Three gradient buttons compete in Quick Actions, and two on the landing page.",
+      "source": "review"
+    },
+    {
+      "id": "A03",
+      "status": "present",
+      "hits": 6,
+      "source": "static"
+    },
+    {
+      "id": "A04",
+      "status": "present",
+      "evidence": [
+        "S5"
+      ],
+      "note": "Delete removes the row at once, with no undo.",
+      "source": "review"
+    },
+    {
+      "id": "A05",
+      "status": "present",
+      "hits": 1,
+      "source": "static"
+    },
+    {
+      "id": "A06",
+      "status": "present",
+      "evidence": [
+        "S4",
+        "S6"
+      ],
+      "note": "Submit sits bottom left in the modal; Save Changes sits top right in Settings.",
+      "source": "review"
+    },
+    {
+      "id": "A07",
+      "status": "present",
+      "hits": 1,
+      "source": "static"
+    },
+    {
+      "id": "A08",
+      "status": "present",
+      "evidence": [
+        "S5",
+        "S7"
+      ],
+      "note": "Row and card icon buttons measure 22 by 22 pixels.",
+      "source": "review"
+    },
+    {
+      "id": "A09",
+      "status": "absent",
+      "hits": 0,
+      "source": "static"
+    },
+    {
+      "id": "L01",
+      "status": "present",
+      "hits": 18,
+      "source": "static"
+    },
+    {
+      "id": "L02",
+      "status": "present",
+      "hits": 3,
+      "source": "static"
+    },
+    {
+      "id": "L03",
+      "status": "present",
+      "hits": 10,
+      "source": "static"
+    },
+    {
+      "id": "L04",
+      "status": "present",
+      "hits": 22,
+      "source": "static"
+    },
+    {
+      "id": "L05",
+      "status": "present",
+      "hits": 2,
+      "source": "static"
+    },
+    {
+      "id": "L06",
+      "status": "present",
+      "hits": 2,
+      "source": "static"
+    },
+    {
+      "id": "L07",
+      "status": "present",
+      "hits": 4,
+      "source": "static"
+    },
+    {
+      "id": "L08",
+      "status": "present",
+      "hits": 9,
+      "source": "static"
+    },
+    {
+      "id": "L09",
+      "status": "present",
+      "hits": 10,
+      "source": "static"
+    },
+    {
+      "id": "L10",
+      "status": "present",
+      "hits": 14,
+      "source": "static"
+    },
+    {
+      "id": "L11",
+      "status": "present",
+      "hits": 18,
+      "source": "static"
+    },
+    {
+      "id": "L12",
+      "status": "present",
+      "hits": 32,
+      "source": "static"
+    },
+    {
+      "id": "C01",
+      "status": "present",
+      "hits": 13,
+      "source": "static"
+    },
+    {
+      "id": "C02",
+      "status": "present",
+      "hits": 5,
+      "source": "static"
+    },
+    {
+      "id": "C03",
+      "status": "present",
+      "hits": 6,
+      "source": "static"
+    },
+    {
+      "id": "C04",
+      "status": "present",
+      "hits": 15,
+      "source": "static"
+    },
+    {
+      "id": "C05",
+      "status": "present",
+      "hits": 3,
+      "source": "static"
+    },
+    {
+      "id": "C06",
+      "status": "present",
+      "hits": 2,
+      "source": "static"
+    },
+    {
+      "id": "C07",
+      "status": "present",
+      "hits": 1,
+      "source": "static"
+    },
+    {
+      "id": "C08",
+      "status": "absent",
+      "note": "The interface is consistently in English.",
+      "source": "review"
+    },
+    {
+      "id": "S01",
+      "status": "present",
+      "hits": 1,
+      "source": "static"
+    },
+    {
+      "id": "S02",
+      "status": "unverified",
+      "source": "auto"
+    },
+    {
+      "id": "S03",
+      "status": "present",
+      "hits": 1,
+      "source": "static"
+    },
+    {
+      "id": "S04",
+      "status": "present",
+      "hits": 2,
+      "source": "static"
+    },
+    {
+      "id": "S05",
+      "status": "present",
+      "hits": 5,
+      "source": "static"
+    },
+    {
+      "id": "S06",
+      "status": "present",
+      "hits": 4,
+      "source": "static"
+    }
+  ],
+  "findings": [
+    {
+      "id": "UX-01",
+      "title": "Going live needs developer credentials a creator does not have",
+      "dimension": "flow",
+      "severity": "blocker",
+      "tells": [
+        "F05",
+        "C05"
+      ],
+      "evidence": [
+        {
+          "screen": "S6",
+          "screenshot": "screens/desktop-settings-saved.png",
+          "observation": "Connecting Instagram asks for a Graph API access token, a webhook verify token, an app secret and a Facebook page id."
+        },
+        {
+          "screen": "S4",
+          "observation": "The create form requires an Instagram account, offered only as the raw id page_1784140."
+        }
+      ],
+      "why": "The people this product is for have an Instagram account, not a Meta developer app. They stop at this screen, and nothing lets them see an automation work before it.",
+      "principle": "Progressive disclosure",
+      "fix": "Let people build and preview an automation first, and send a test to their own account. Ask to connect Instagram when they save, with a Sign in with Instagram button instead of token fields.",
+      "files": [
+        "examples/dm-automation/before/src/pages/Settings.jsx",
+        "examples/dm-automation/before/src/components/CreateFlowModal.jsx"
+      ],
+      "effort": "L"
+    },
+    {
+      "id": "UX-02",
+      "title": "The app opens on a sales page, then on invented numbers",
+      "dimension": "purpose",
+      "severity": "blocker",
+      "tells": [
+        "P01",
+        "P02",
+        "P03",
+        "L07",
+        "C03"
+      ],
+      "evidence": [
+        {
+          "screen": "S1",
+          "screenshot": "screens/desktop-home.png",
+          "observation": "The root route is a landing page whose headline says 'Supercharge your Instagram with AI-powered automation' and never mentions comments or DMs."
+        },
+        {
+          "screen": "S2",
+          "screenshot": "screens/desktop-dashboard.png",
+          "observation": "Get Started leads to a dashboard showing 12,345 contacts, 48,392 messages and +12.5% trends for an account with no automations."
+        },
+        {
+          "file": "examples/dm-automation/before/src/data/mock.js",
+          "line": 2,
+          "observation": "The dashboard numbers are hardcoded."
+        }
+      ],
+      "why": "A new user never sees what the product does or where to start. The fake numbers also make it hard to trust any real ones later.",
+      "principle": "Match between the system and the real world (Nielsen)",
+      "fix": "Open the app on Automations. For a new account, show one sentence on what an automation does and a button to create the first one. Show numbers only when they are real.",
+      "files": [
+        "examples/dm-automation/before/src/App.jsx",
+        "examples/dm-automation/before/src/pages/Dashboard.jsx"
+      ],
+      "effort": "M"
+    },
+    {
+      "id": "UX-03",
+      "title": "Nine fields in a modal before the first automation",
+      "dimension": "flow",
+      "severity": "major",
+      "tells": [
+        "F02",
+        "F03",
+        "A07",
+        "C05"
+      ],
+      "evidence": [
+        {
+          "screen": "S4",
+          "screenshot": "screens/desktop-flows-create.png",
+          "observation": "Create Flow opens a modal with nine fields: name, trigger type, description, keywords, account, message, delay, tags and status."
+        },
+        {
+          "screen": "S4",
+          "observation": "Submit stays greyed out until six of them are filled, including a delay in seconds, and nothing says which are missing."
+        },
+        {
+          "file": "examples/dm-automation/before/src/components/CreateFlowModal.jsx",
+          "line": 92,
+          "observation": "The button is disabled={!isValid} with no message."
+        }
+      ],
+      "why": "A working automation needs a keyword and a message. The other fields slow people down, the trigger and status options are code words, and there is no preview of the DM they are writing.",
+      "principle": "Progressive disclosure",
+      "fix": "Move creation to its own page. Ask for the keyword and the message in one sentence, show a live preview of the DM, give the rest defaults under More options, and validate on save with specific messages.",
+      "code": "<label htmlFor=\"keyword\">When someone comments</label> <input id=\"keyword\" /> on any post, send them this DM: <textarea id=\"message\" />",
+      "files": [
+        "examples/dm-automation/before/src/components/CreateFlowModal.jsx"
+      ],
+      "effort": "M"
+    },
+    {
+      "id": "UX-04",
+      "title": "The empty list says No data, with the Create button far away",
+      "dimension": "actions",
+      "severity": "major",
+      "tells": [
+        "A01",
+        "S01"
+      ],
+      "evidence": [
+        {
+          "screen": "S3",
+          "screenshot": "screens/desktop-flows.png",
+          "probe": "probe/desktop-flows.json",
+          "observation": "The empty table reads 'No data' in the middle of the page. Create Flow sits in the top-right corner, about 550 pixels from that text."
+        },
+        {
+          "file": "examples/dm-automation/before/src/pages/Flows.jsx",
+          "line": 60,
+          "observation": "The empty state is the words No data in light gray."
+        }
+      ],
+      "why": "The empty list is the moment a new user needs to be told what a flow is and how to make one. The screen gives neither, and the only action is outside the content.",
+      "principle": "Fitts's law",
+      "fix": "Replace No data with a short explanation and put the create button inside the empty state. Keep a New automation button next to the list title once there are items.",
+      "files": [
+        "examples/dm-automation/before/src/pages/Flows.jsx"
+      ],
+      "effort": "S"
+    },
+    {
+      "id": "UX-05",
+      "title": "Success! appears even when nothing worked",
+      "dimension": "states",
+      "severity": "major",
+      "tells": [
+        "F04",
+        "S04",
+        "S03"
+      ],
+      "evidence": [
+        {
+          "screen": "S6",
+          "screenshot": "screens/desktop-settings-saved.png",
+          "observation": "Save Changes showed a Success! toast while the request to /api/instagram/connect returned 404."
+        },
+        {
+          "screen": "S5",
+          "screenshot": "screens/desktop-flows-created.png",
+          "observation": "After creating a flow the toast says Success! and the row says ACTIVE, with no Instagram account connected and nothing pointing to the next step."
+        },
+        {
+          "file": "examples/dm-automation/before/src/pages/Settings.jsx",
+          "line": 19,
+          "observation": "Errors are caught and only logged to the console."
+        }
+      ],
+      "why": "People believe their automation is working when it cannot send anything. They find out only when followers complain that no DM arrived.",
+      "principle": "Visibility of system status (Nielsen)",
+      "fix": "Check the response and show a specific error when a request fails. After creating an automation, open its page and say whether it is live, what is missing, and offer a test.",
+      "code": "const response = await fetch(url, options);\nif (!response.ok) throw new Error(`Instagram answered ${response.status}`);",
+      "files": [
+        "examples/dm-automation/before/src/pages/Settings.jsx",
+        "examples/dm-automation/before/src/pages/Flows.jsx"
+      ],
+      "effort": "M"
+    },
+    {
+      "id": "UX-06",
+      "title": "Half the navigation leads to Coming soon",
+      "dimension": "purpose",
+      "severity": "major",
+      "tells": [
+        "P04",
+        "P05",
+        "F01"
+      ],
+      "evidence": [
+        {
+          "screen": "S3",
+          "observation": "The sidebar has nine items. Triggers, Broadcasts, Templates, Analytics and Integrations are marked Coming soon."
+        },
+        {
+          "screen": "S8",
+          "screenshot": "screens/desktop-triggers.png",
+          "observation": "Each of those opens a page that says it is coming soon, with a Notify Me button that does nothing."
+        },
+        {
+          "screen": "S2",
+          "observation": "Quick Actions: Send Broadcast shows an alert saying Coming soon and View Analytics does nothing."
+        }
+      ],
+      "why": "Every dead item costs a click and makes the product feel unfinished. The five tables at the top level also hide the one job people came to do.",
+      "principle": "Hick's law",
+      "fix": "Keep four items that match jobs: Automations, Activity, Contacts and Settings. Remove what is not built, and fold triggers and templates into the automation page.",
+      "files": [
+        "examples/dm-automation/before/src/components/AppLayout.jsx",
+        "examples/dm-automation/before/src/App.jsx"
+      ],
+      "effort": "S"
+    },
+    {
+      "id": "UX-07",
+      "title": "Row actions are invisible, unlabeled, and delete has no undo",
+      "dimension": "actions",
+      "severity": "major",
+      "tells": [
+        "A05",
+        "A03",
+        "A04",
+        "A08",
+        "F01"
+      ],
+      "evidence": [
+        {
+          "screen": "S5",
+          "screenshot": "screens/desktop-flows-row-hover.png",
+          "observation": "Edit, copy and delete appear only on hover, as 22 by 22 pixel icons without labels or accessible names."
+        },
+        {
+          "screen": "S5",
+          "observation": "Delete removed the flow at once and left 'No data', with no undo."
+        },
+        {
+          "file": "examples/dm-automation/before/src/pages/Flows.jsx",
+          "line": 74,
+          "observation": "Edit only logs to the console and copy has an empty handler."
+        }
+      ],
+      "why": "On a phone the actions never appear. On a computer people have to guess what each icon does, and one slip deletes an automation for good.",
+      "principle": "User control and freedom (Nielsen)",
+      "fix": "Show an Edit link on every row and put Pause and Delete in a labeled More menu. After delete, show 'Deleted. Undo' for a few seconds.",
+      "files": [
+        "examples/dm-automation/before/src/pages/Flows.jsx"
+      ],
+      "effort": "S"
+    },
+    {
+      "id": "UX-08",
+      "title": "The app does not fit on a phone",
+      "dimension": "states",
+      "severity": "major",
+      "tells": [
+        "S05"
+      ],
+      "evidence": [
+        {
+          "screen": "S3",
+          "screenshot": "screens/mobile-flows.png",
+          "probe": "probe/mobile-flows.json",
+          "observation": "At 390 pixels the page needs 1,213 pixels of width, so the browser zooms out until the text is too small to read."
+        },
+        {
+          "file": "examples/dm-automation/before/src/components/AppLayout.jsx",
+          "line": 73,
+          "observation": "The main area has ml-64 and min-w-[900px], and the sidebar is always fixed."
+        }
+      ],
+      "why": "Creators check comments on their phone. On a phone, this app is unusable.",
+      "principle": "WCAG 1.4.10 reflow",
+      "fix": "Collapse the sidebar into a top bar below the md breakpoint, remove fixed widths, and stack grids into one column on small screens.",
+      "files": [
+        "examples/dm-automation/before/src/components/AppLayout.jsx",
+        "examples/dm-automation/before/src/pages/Dashboard.jsx"
+      ],
+      "effort": "M"
+    },
+    {
+      "id": "UX-09",
+      "title": "Gray text below the contrast minimum on every screen",
+      "dimension": "look",
+      "severity": "minor",
+      "tells": [
+        "L12"
+      ],
+      "evidence": [
+        {
+          "screen": "S1",
+          "probe": "probe/desktop-home.json",
+          "observation": "14 of 33 text elements on the landing page are below 4.5 to 1, such as #99a1af on white at 2.6 to 1."
+        },
+        {
+          "screen": "S2",
+          "probe": "probe/desktop-dashboard.json",
+          "observation": "21 of 54 text elements on the dashboard fail the same check."
+        }
+      ],
+      "why": "Descriptions, dates and labels are hard to read, especially on a phone outdoors.",
+      "principle": "WCAG 1.4.3 contrast",
+      "fix": "Use gray-600 or darker for secondary text on white.",
+      "effort": "S"
+    },
+    {
+      "id": "UX-10",
+      "title": "Keyboard focus is invisible",
+      "dimension": "states",
+      "severity": "minor",
+      "tells": [
+        "S06"
+      ],
+      "evidence": [
+        {
+          "screen": "S4",
+          "screenshot": "screens/desktop-flows-focus.png",
+          "observation": "With keyboard focus on the Flow Name field, the computed outline style is none and there is no box shadow."
+        },
+        {
+          "file": "examples/dm-automation/before/src/index.css",
+          "line": 8,
+          "observation": "button:focus sets outline to none, and inputs use outline-none."
+        }
+      ],
+      "why": "People who use the keyboard cannot see where they are in the form.",
+      "principle": "WCAG 2.4.7 focus visible",
+      "fix": "Remove outline: none and add a focus-visible ring in the brand color.",
+      "code": "className=\"... focus-visible:ring-2 focus-visible:ring-offset-2\"",
+      "files": [
+        "examples/dm-automation/before/src/index.css",
+        "examples/dm-automation/before/src/components/CreateFlowModal.jsx"
+      ],
+      "effort": "S"
+    },
+    {
+      "id": "UX-11",
+      "title": "Copy that could belong to any product, and made-up proof",
+      "dimension": "copy",
+      "severity": "minor",
+      "tells": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C06"
+      ],
+      "evidence": [
+        {
+          "screen": "S1",
+          "observation": "'Streamline your workflow and engage your audience seamlessly. The all-in-one platform...', 'Trusted by 10,000+ creators', and testimonials from 'Sarah Johnson, CEO at TechCorp'."
+        },
+        {
+          "screen": "S2",
+          "observation": "'Welcome back, John!' and a Recent Activity list of John Doe and Jane Smith with stock avatars."
+        }
+      ],
+      "why": "The words do not say what the product does, and invented proof damages trust once someone notices it.",
+      "principle": "Don't make me think (Krug)",
+      "fix": "Say the job plainly: 'Send a DM to everyone who comments a keyword on your posts.' Remove the testimonials, the user counts and the placeholder people until there are real ones.",
+      "files": [
+        "examples/dm-automation/before/src/pages/Landing.jsx",
+        "examples/dm-automation/before/src/pages/Dashboard.jsx",
+        "examples/dm-automation/before/src/data/mock.js"
+      ],
+      "effort": "S"
+    },
+    {
+      "id": "UX-12",
+      "title": "The look is a stock generated template",
+      "dimension": "look",
+      "severity": "polish",
+      "tells": [
+        "L01",
+        "L02",
+        "L03",
+        "L04",
+        "L06",
+        "L08",
+        "L09",
+        "L10",
+        "L11"
+      ],
+      "evidence": [
+        {
+          "screen": "S1",
+          "probe": "probe/desktop-home.json",
+          "observation": "7 gradient elements, 2 gradient headlines, 3 blurred layers and 8 large rounded shadowed boxes on the landing page."
+        },
+        {
+          "screen": "S2",
+          "screenshot": "screens/desktop-dashboard.png",
+          "observation": "Every card scales on hover, every icon sits in a pale purple square, and emoji decorate the headings."
+        }
+      ],
+      "why": "Nothing on screen reflects this product or its audience, and the decoration competes with the few things that matter.",
+      "principle": "Aesthetic and minimalist design (Nielsen)",
+      "fix": "Pick one brand color for the main action, use solid surfaces and plain borders, left-align text, drop emoji and sparkle icons, and keep motion for feedback.",
+      "effort": "M"
+    }
+  ],
+  "topThree": [
+    "UX-01",
+    "UX-02",
+    "UX-03"
+  ],
+  "quickWins": [
+    "UX-04",
+    "UX-06",
+    "UX-07",
+    "UX-09",
+    "UX-10"
+  ],
+  "evidence": {
+    "scan": "scan.json",
+    "capture": "capture.json"
+  },
+  "summary": {
+    "aiTellIndex": 79,
+    "staticIndex": 75,
+    "styleIndex": 96,
+    "findings": {
+      "total": 12,
+      "blocker": 2,
+      "major": 6,
+      "minor": 3,
+      "polish": 1,
+      "fixed": 0
+    },
+    "tells": {
+      "present": 36,
+      "absent": 5,
+      "unverified": 2
+    },
+    "styleTells": {
+      "present": 10,
+      "absent": 0,
+      "unverified": 0
+    },
+    "inputs": {
+      "asked": 9,
+      "needed": 2
+    }
+  }
+}

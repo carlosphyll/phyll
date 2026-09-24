@@ -1,0 +1,257 @@
+{
+  "probe": "0.1.0",
+  "url": "http://localhost:5175/",
+  "title": "Navalha Barbearia | Agendamento Online",
+  "lang": "pt-BR",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "page": {
+    "height": 1468,
+    "horizontalOverflow": false
+  },
+  "firstView": {
+    "text": "Navalha ✂️ | Serviços | Sobre | Contato | Agende agora | ✨ Experiência premium | Transforme seu visual com a melhor experiência premium da cidade | Cortes modernos, atendimento de excelência e um ambiente pensado para você. Tudo em um só lugar. | Agende agora | Saiba mais | ⭐ 4.9/5 · Mais de 5.000 clientes satisfeitos | Nossos serviços 💈 | Tudo o que você precisa para elevar seu estilo ao próximo nível.",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Transforme seu visual com a melhor experiência premium da cidade",
+        "inFirstView": true
+      },
+      {
+        "level": 2,
+        "text": "Nossos serviços 💈",
+        "inFirstView": true
+      },
+      {
+        "level": 3,
+        "text": "Corte Masculino",
+        "inFirstView": false
+      },
+      {
+        "level": 3,
+        "text": "Barba Premium",
+        "inFirstView": false
+      },
+      {
+        "level": 3,
+        "text": "Corte + Barba",
+        "inFirstView": false
+      }
+    ]
+  },
+  "actions": {
+    "total": 8,
+    "primaryInFirstView": 1,
+    "iconOnlyUnnamed": 0,
+    "smallTargets": 5,
+    "deadLinks": 6,
+    "hiddenUntilHover": 0,
+    "items": [
+      {
+        "tag": "a",
+        "text": "Serviços",
+        "deadLink": true,
+        "small": true,
+        "inFirstView": true,
+        "box": {
+          "x": 907,
+          "y": 24,
+          "w": 50,
+          "h": 20
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Sobre",
+        "deadLink": true,
+        "small": true,
+        "inFirstView": true,
+        "box": {
+          "x": 990,
+          "y": 24,
+          "w": 36,
+          "h": 20
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Contato",
+        "deadLink": true,
+        "small": true,
+        "inFirstView": true,
+        "box": {
+          "x": 1058,
+          "y": 24,
+          "w": 50,
+          "h": 20
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Agende agora",
+        "inFirstView": true,
+        "box": {
+          "x": 1139,
+          "y": 16,
+          "w": 133,
+          "h": 36
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Agende agora",
+        "primary": true,
+        "inFirstView": true,
+        "box": {
+          "x": 556,
+          "y": 555,
+          "w": 170,
+          "h": 58
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Saiba mais",
+        "deadLink": true,
+        "inFirstView": true,
+        "box": {
+          "x": 741,
+          "y": 555,
+          "w": 143,
+          "h": 58
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Política de privacidade",
+        "deadLink": true,
+        "small": true,
+        "inFirstView": false,
+        "box": {
+          "x": 594,
+          "y": 1372,
+          "w": 138,
+          "h": 20
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Termos de uso",
+        "deadLink": true,
+        "small": true,
+        "inFirstView": false,
+        "box": {
+          "x": 756,
+          "y": 1372,
+          "w": 90,
+          "h": 20
+        }
+      }
+    ]
+  },
+  "contrast": {
+    "checked": 25,
+    "failures": 9,
+    "skipped": 0,
+    "samples": [
+      {
+        "text": "Cortes modernos, atendimento de excelência e um ambiente pen",
+        "ratio": 4.12,
+        "required": 4.5,
+        "color": "#71717b",
+        "background": "#09090b",
+        "fontSize": 20
+      },
+      {
+        "text": "⭐ 4.9/5 · Mais de 5.000 clientes satisfeitos",
+        "ratio": 4.12,
+        "required": 4.5,
+        "color": "#71717b",
+        "background": "#09090b",
+        "fontSize": 14
+      },
+      {
+        "text": "Tudo o que você precisa para elevar seu estilo ao próximo ní",
+        "ratio": 4.12,
+        "required": 4.5,
+        "color": "#71717b",
+        "background": "#09090b",
+        "fontSize": 16
+      },
+      {
+        "text": "Cortes modernos com acabamento impecável e atenção a cada de",
+        "ratio": 3.76,
+        "required": 4.5,
+        "color": "#71717b",
+        "background": "#161617",
+        "fontSize": 16
+      },
+      {
+        "text": "Toalha quente, navalha e produtos exclusivos para uma experi",
+        "ratio": 3.76,
+        "required": 4.5,
+        "color": "#71717b",
+        "background": "#161617",
+        "fontSize": 16
+      },
+      {
+        "text": "O combo completo para quem não abre mão do melhor.",
+        "ratio": 3.76,
+        "required": 4.5,
+        "color": "#71717b",
+        "background": "#161617",
+        "fontSize": 16
+      },
+      {
+        "text": "Política de privacidade",
+        "ratio": 4.12,
+        "required": 4.5,
+        "color": "#71717b",
+        "background": "#09090b",
+        "fontSize": 14
+      },
+      {
+        "text": "Termos de uso",
+        "ratio": 4.12,
+        "required": 4.5,
+        "color": "#71717b",
+        "background": "#09090b",
+        "fontSize": 14
+      },
+      {
+        "text": "© 2026 Navalha Barbearia. Todos os direitos reservados.",
+        "ratio": 4.12,
+        "required": 4.5,
+        "color": "#71717b",
+        "background": "#09090b",
+        "fontSize": 14
+      }
+    ]
+  },
+  "forms": [],
+  "looseFields": 0,
+  "decor": {
+    "gradients": 4,
+    "gradientText": 2,
+    "blur": 7,
+    "roundedShadow": 1,
+    "emoji": 5
+  },
+  "typography": {
+    "families": [
+      "Inter"
+    ],
+    "sizes": [
+      60,
+      36,
+      24,
+      20,
+      16,
+      14
+    ]
+  },
+  "dialogsOpen": 0,
+  "errors": []
+}

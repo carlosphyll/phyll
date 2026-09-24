@@ -1,0 +1,125 @@
+{
+  "probe": "0.1.0",
+  "url": "http://localhost:5179/entrar",
+  "title": "Brasa Burger | Peça online",
+  "lang": "pt-BR",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "page": {
+    "height": 900,
+    "horizontalOverflow": false
+  },
+  "firstView": {
+    "text": "🍔 | Entre para fazer seu pedido | Faça login para continuar | Entrar | Não tem conta? | Cadastre-se",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Entre para fazer seu pedido",
+        "inFirstView": true
+      }
+    ]
+  },
+  "actions": {
+    "total": 2,
+    "primaryInFirstView": 1,
+    "iconOnlyUnnamed": 0,
+    "smallTargets": 1,
+    "deadLinks": 0,
+    "hiddenUntilHover": 0,
+    "items": [
+      {
+        "tag": "button",
+        "text": "Entrar",
+        "primary": true,
+        "inFirstView": true,
+        "box": {
+          "x": 536,
+          "y": 574,
+          "w": 368,
+          "h": 56
+        }
+      },
+      {
+        "tag": "button",
+        "text": "Cadastre-se",
+        "small": true,
+        "inFirstView": true,
+        "box": {
+          "x": 733,
+          "y": 654,
+          "w": 77,
+          "h": 20
+        }
+      }
+    ]
+  },
+  "contrast": {
+    "checked": 6,
+    "failures": 4,
+    "skipped": 0,
+    "samples": [
+      {
+        "text": "Faça login para continuar",
+        "ratio": 2.19,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#fde6e7",
+        "fontSize": 16
+      },
+      {
+        "text": "Entrar",
+        "ratio": 2.89,
+        "required": 4.5,
+        "color": "#ffffff",
+        "background": "#ff6900",
+        "fontSize": 16
+      },
+      {
+        "text": "Não tem conta?",
+        "ratio": 2.19,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#fde6e7",
+        "fontSize": 14
+      },
+      {
+        "text": "Cadastre-se",
+        "ratio": 3.01,
+        "required": 4.5,
+        "color": "#f54a00",
+        "background": "#fde6e7",
+        "fontSize": 14
+      }
+    ]
+  },
+  "forms": [
+    {
+      "fields": 2,
+      "required": 0,
+      "unlabeled": 2
+    }
+  ],
+  "looseFields": 0,
+  "decor": {
+    "gradients": 2,
+    "gradientText": 0,
+    "blur": 1,
+    "roundedShadow": 2,
+    "emoji": 1
+  },
+  "typography": {
+    "families": [
+      "Inter"
+    ],
+    "sizes": [
+      48,
+      30,
+      16,
+      14
+    ]
+  },
+  "dialogsOpen": 0,
+  "errors": []
+}

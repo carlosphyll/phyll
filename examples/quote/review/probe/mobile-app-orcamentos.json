@@ -1,0 +1,300 @@
+{
+  "probe": "0.1.0",
+  "url": "http://localhost:5177/app/orcamentos",
+  "title": "Orça Já | Orçamentos inteligentes com IA",
+  "lang": "pt-BR",
+  "viewport": {
+    "width": 711,
+    "height": 1539
+  },
+  "page": {
+    "height": 1539,
+    "horizontalOverflow": true
+  },
+  "firstView": {
+    "text": "Orça Já | Dashboard | Orçamentos | Clientes | Produtos | Relatórios | Integrações | Configurações | Upgrade para o Pro 🚀 | Desbloqueie todo o poder da IA. | Fazer upgrade | Orçamentos | Exportar | + Novo Orçamento | Código | Cliente | Valor | Status | Data | ORC-2026-00128 | João da Silva | R$ 3.480,50 | PENDING | 2026-09-20 | ORC-2026-00127 | Maria Oliveira | R$ 1.250,00 | APPROVED | 2026-09-18 | ORC-2026-00126 | Empresa XYZ Ltda | R$ 890,00 | DRAFT | 2026-09-15",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Orçamentos",
+        "inFirstView": true
+      }
+    ]
+  },
+  "actions": {
+    "total": 11,
+    "primaryInFirstView": 1,
+    "iconOnlyUnnamed": 1,
+    "smallTargets": 0,
+    "deadLinks": 0,
+    "hiddenUntilHover": 9,
+    "items": [
+      {
+        "tag": "a",
+        "text": "Dashboard",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 92,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Orçamentos",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 136,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Clientes",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 180,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Produtos",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 224,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Relatórios",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 268,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Integrações",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 312,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Configurações",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 356,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "button",
+        "text": "Fazer upgrade",
+        "inFirstView": true,
+        "box": {
+          "x": 44,
+          "y": 564,
+          "w": 167,
+          "h": 36
+        }
+      },
+      {
+        "tag": "button",
+        "text": "",
+        "iconOnly": true,
+        "inFirstView": true,
+        "box": {
+          "x": 270,
+          "y": 16,
+          "w": 36,
+          "h": 36
+        }
+      },
+      {
+        "tag": "button",
+        "text": "Exportar",
+        "inFirstView": true,
+        "box": {
+          "x": 458,
+          "y": 101,
+          "w": 112,
+          "h": 60
+        }
+      },
+      {
+        "tag": "a",
+        "text": "+ Novo Orçamento",
+        "primary": true,
+        "inFirstView": true,
+        "box": {
+          "x": 582,
+          "y": 101,
+          "w": 113,
+          "h": 60
+        }
+      }
+    ]
+  },
+  "contrast": {
+    "checked": 34,
+    "failures": 14,
+    "skipped": 0,
+    "samples": [
+      {
+        "text": "Dashboard",
+        "ratio": 2.63,
+        "required": 4.5,
+        "color": "#90a1b9",
+        "background": "#ffffff",
+        "fontSize": 14
+      },
+      {
+        "text": "Clientes",
+        "ratio": 2.63,
+        "required": 4.5,
+        "color": "#90a1b9",
+        "background": "#ffffff",
+        "fontSize": 14
+      },
+      {
+        "text": "Produtos",
+        "ratio": 2.63,
+        "required": 4.5,
+        "color": "#90a1b9",
+        "background": "#ffffff",
+        "fontSize": 14
+      },
+      {
+        "text": "Relatórios",
+        "ratio": 2.63,
+        "required": 4.5,
+        "color": "#90a1b9",
+        "background": "#ffffff",
+        "fontSize": 14
+      },
+      {
+        "text": "Integrações",
+        "ratio": 2.63,
+        "required": 4.5,
+        "color": "#90a1b9",
+        "background": "#ffffff",
+        "fontSize": 14
+      },
+      {
+        "text": "Configurações",
+        "ratio": 2.63,
+        "required": 4.5,
+        "color": "#90a1b9",
+        "background": "#ffffff",
+        "fontSize": 14
+      },
+      {
+        "text": "Código",
+        "ratio": 2.63,
+        "required": 4.5,
+        "color": "#90a1b9",
+        "background": "#ffffff",
+        "fontSize": 12
+      },
+      {
+        "text": "Cliente",
+        "ratio": 2.63,
+        "required": 4.5,
+        "color": "#90a1b9",
+        "background": "#ffffff",
+        "fontSize": 12
+      },
+      {
+        "text": "Valor",
+        "ratio": 2.63,
+        "required": 4.5,
+        "color": "#90a1b9",
+        "background": "#ffffff",
+        "fontSize": 12
+      },
+      {
+        "text": "Status",
+        "ratio": 2.63,
+        "required": 4.5,
+        "color": "#90a1b9",
+        "background": "#ffffff",
+        "fontSize": 12
+      },
+      {
+        "text": "Data",
+        "ratio": 2.63,
+        "required": 4.5,
+        "color": "#90a1b9",
+        "background": "#ffffff",
+        "fontSize": 12
+      },
+      {
+        "text": "2026-09-20",
+        "ratio": 2.63,
+        "required": 4.5,
+        "color": "#90a1b9",
+        "background": "#ffffff",
+        "fontSize": 14
+      },
+      {
+        "text": "2026-09-18",
+        "ratio": 2.63,
+        "required": 4.5,
+        "color": "#90a1b9",
+        "background": "#ffffff",
+        "fontSize": 14
+      },
+      {
+        "text": "2026-09-15",
+        "ratio": 2.63,
+        "required": 4.5,
+        "color": "#90a1b9",
+        "background": "#ffffff",
+        "fontSize": 14
+      }
+    ]
+  },
+  "forms": [],
+  "looseFields": 1,
+  "decor": {
+    "gradients": 4,
+    "gradientText": 1,
+    "blur": 0,
+    "roundedShadow": 4,
+    "emoji": 1
+  },
+  "typography": {
+    "families": [
+      "Inter",
+      "ui-monospace"
+    ],
+    "sizes": [
+      30,
+      20,
+      16,
+      14,
+      12
+    ]
+  },
+  "dialogsOpen": 0,
+  "errors": []
+}

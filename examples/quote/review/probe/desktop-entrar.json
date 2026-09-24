@@ -1,0 +1,132 @@
+{
+  "probe": "0.1.0",
+  "url": "http://localhost:5177/entrar",
+  "title": "Orça Já | Orçamentos inteligentes com IA",
+  "lang": "pt-BR",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "page": {
+    "height": 900,
+    "horizontalOverflow": false
+  },
+  "firstView": {
+    "text": "Orça Já | Bem-vindo de volta! 👋 | Entre na sua conta para continuar | Esqueceu a senha? | Entrar | Entrar com Google | Não tem conta? | Criar conta",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Bem-vindo de volta! 👋",
+        "inFirstView": true
+      }
+    ]
+  },
+  "actions": {
+    "total": 4,
+    "primaryInFirstView": 1,
+    "iconOnlyUnnamed": 0,
+    "smallTargets": 1,
+    "deadLinks": 2,
+    "hiddenUntilHover": 0,
+    "items": [
+      {
+        "tag": "a",
+        "text": "Esqueceu a senha?",
+        "deadLink": true,
+        "small": true,
+        "inFirstView": true,
+        "box": {
+          "x": 536,
+          "y": 495,
+          "w": 368,
+          "h": 20
+        }
+      },
+      {
+        "tag": "button",
+        "text": "Entrar",
+        "primary": true,
+        "inFirstView": true,
+        "box": {
+          "x": 536,
+          "y": 531,
+          "w": 368,
+          "h": 48
+        }
+      },
+      {
+        "tag": "button",
+        "text": "Entrar com Google",
+        "inFirstView": true,
+        "box": {
+          "x": 536,
+          "y": 595,
+          "w": 368,
+          "h": 50
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Criar conta",
+        "deadLink": true,
+        "inFirstView": true,
+        "box": {
+          "x": 736,
+          "y": 669,
+          "w": 69,
+          "h": 19
+        }
+      }
+    ]
+  },
+  "contrast": {
+    "checked": 8,
+    "failures": 2,
+    "skipped": 0,
+    "samples": [
+      {
+        "text": "Entre na sua conta para continuar",
+        "ratio": 2.63,
+        "required": 4.5,
+        "color": "#90a1b9",
+        "background": "#ffffff",
+        "fontSize": 16
+      },
+      {
+        "text": "Não tem conta?",
+        "ratio": 2.63,
+        "required": 4.5,
+        "color": "#90a1b9",
+        "background": "#ffffff",
+        "fontSize": 14
+      }
+    ]
+  },
+  "forms": [
+    {
+      "fields": 2,
+      "required": 0,
+      "unlabeled": 2
+    }
+  ],
+  "looseFields": 0,
+  "decor": {
+    "gradients": 2,
+    "gradientText": 1,
+    "blur": 0,
+    "roundedShadow": 2,
+    "emoji": 1
+  },
+  "typography": {
+    "families": [
+      "Inter"
+    ],
+    "sizes": [
+      24,
+      16,
+      14
+    ]
+  },
+  "dialogsOpen": 0,
+  "errors": []
+}

@@ -1,0 +1,14 @@
+{
+  "name": "phyll",
+  "displayName": "Phyll",
+  "version": "0.4.0",
+  "description": "UX review for apps built with AI, in your own Claude Code. Walks your app like a first-time user, finds the template look and code-shaped flows, and fixes them with screenshots as evidence.",
+  "author": {
+    "name": "carlosphyll",
+    "url": "https://github.com/carlosphyll"
+  },
+  "homepage": "https://github.com/carlosphyll/phyll",
+  "repository": "https://github.com/carlosphyll/phyll",
+  "license": "MIT",
+  "keywords": ["ux", "ui", "design-review", "usability", "accessibility", "ai-generated-ui", "vibe-coding", "product-design"]
+}

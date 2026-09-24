@@ -1,0 +1,94 @@
+{
+  "probe": "0.1.0",
+  "url": "http://localhost:5175/agendar",
+  "title": "Navalha Barbearia | Agendamento Online",
+  "lang": "pt-BR",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "page": {
+    "height": 844,
+    "horizontalOverflow": false
+  },
+  "firstView": {
+    "text": "Etapa 1 de 5 | Escolha a unidade | Unidade Centro | Rua das Flores, 120 | Próximo",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Escolha a unidade",
+        "inFirstView": true
+      }
+    ]
+  },
+  "actions": {
+    "total": 2,
+    "primaryInFirstView": 0,
+    "iconOnlyUnnamed": 0,
+    "smallTargets": 0,
+    "deadLinks": 0,
+    "hiddenUntilHover": 0,
+    "items": [
+      {
+        "tag": "button",
+        "text": "Unidade Centro Rua das Flores, 120",
+        "inFirstView": true,
+        "box": {
+          "x": 65,
+          "y": 233,
+          "w": 260,
+          "h": 98
+        }
+      },
+      {
+        "tag": "button",
+        "text": "Próximo",
+        "primary": true,
+        "disabled": true,
+        "inFirstView": true,
+        "box": {
+          "x": 198,
+          "y": 371,
+          "w": 127,
+          "h": 48
+        }
+      }
+    ]
+  },
+  "contrast": {
+    "checked": 4,
+    "failures": 1,
+    "skipped": 0,
+    "samples": [
+      {
+        "text": "Rua das Flores, 120",
+        "ratio": 3.31,
+        "required": 4.5,
+        "color": "#71717b",
+        "background": "#212123",
+        "fontSize": 14
+      }
+    ]
+  },
+  "forms": [],
+  "looseFields": 0,
+  "decor": {
+    "gradients": 2,
+    "gradientText": 0,
+    "blur": 1,
+    "roundedShadow": 1,
+    "emoji": 0
+  },
+  "typography": {
+    "families": [
+      "Inter"
+    ],
+    "sizes": [
+      24,
+      16,
+      14
+    ]
+  },
+  "dialogsOpen": 0,
+  "errors": []
+}

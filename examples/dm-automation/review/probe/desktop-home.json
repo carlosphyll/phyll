@@ -1,0 +1,334 @@
+{
+  "probe": "0.1.0",
+  "url": "http://localhost:5173/",
+  "title": "Replyloop AI | Instagram Automation Platform",
+  "lang": "en",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "page": {
+    "height": 2387,
+    "horizontalOverflow": false
+  },
+  "firstView": {
+    "text": "Replyloop AI | Features | Pricing | About | Get Started | ✨ New: AI-powered replies | Supercharge your Instagram with AI-powered automation | Streamline your workflow and engage your audience seamlessly. The all-in-one platform for creators who want to take their business to the next level. | Get Started | Learn More | Trusted by 10,000+ creators worldwide 🚀 | Everything you need to grow 💡 | Powerful features to help you engage your audience effortlessly.",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Supercharge your Instagram with AI-powered automation",
+        "inFirstView": true
+      },
+      {
+        "level": 2,
+        "text": "Everything you need to grow 💡",
+        "inFirstView": true
+      },
+      {
+        "level": 3,
+        "text": "Lightning Fast",
+        "inFirstView": false
+      },
+      {
+        "level": 3,
+        "text": "Smart Automation",
+        "inFirstView": false
+      },
+      {
+        "level": 3,
+        "text": "Powerful Analytics",
+        "inFirstView": false
+      },
+      {
+        "level": 2,
+        "text": "Loved by creators everywhere",
+        "inFirstView": false
+      },
+      {
+        "level": 2,
+        "text": "Ready to get started?",
+        "inFirstView": false
+      }
+    ]
+  },
+  "actions": {
+    "total": 10,
+    "primaryInFirstView": 2,
+    "iconOnlyUnnamed": 0,
+    "smallTargets": 6,
+    "deadLinks": 7,
+    "hiddenUntilHover": 0,
+    "items": [
+      {
+        "tag": "a",
+        "text": "Features",
+        "deadLink": true,
+        "small": true,
+        "inFirstView": true,
+        "box": {
+          "x": 996,
+          "y": 24,
+          "w": 52,
+          "h": 20
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Pricing",
+        "deadLink": true,
+        "small": true,
+        "inFirstView": true,
+        "box": {
+          "x": 1080,
+          "y": 24,
+          "w": 42,
+          "h": 20
+        }
+      },
+      {
+        "tag": "a",
+        "text": "About",
+        "deadLink": true,
+        "small": true,
+        "inFirstView": true,
+        "box": {
+          "x": 1154,
+          "y": 24,
+          "w": 38,
+          "h": 20
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Get Started",
+        "inFirstView": true,
+        "box": {
+          "x": 1224,
+          "y": 16,
+          "w": 112,
+          "h": 36
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Get Started",
+        "primary": true,
+        "inFirstView": true,
+        "box": {
+          "x": 552,
+          "y": 464,
+          "w": 172,
+          "h": 56
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Learn More",
+        "primary": true,
+        "deadLink": true,
+        "inFirstView": true,
+        "box": {
+          "x": 741,
+          "y": 464,
+          "w": 147,
+          "h": 56
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Get Started Free",
+        "primary": true,
+        "inFirstView": false,
+        "box": {
+          "x": 629,
+          "y": 2034,
+          "w": 182,
+          "h": 56
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Privacy",
+        "deadLink": true,
+        "small": true,
+        "inFirstView": false,
+        "box": {
+          "x": 632,
+          "y": 2291,
+          "w": 43,
+          "h": 20
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Terms",
+        "deadLink": true,
+        "small": true,
+        "inFirstView": false,
+        "box": {
+          "x": 700,
+          "y": 2291,
+          "w": 36,
+          "h": 20
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Contact",
+        "deadLink": true,
+        "small": true,
+        "inFirstView": false,
+        "box": {
+          "x": 760,
+          "y": 2291,
+          "w": 48,
+          "h": 20
+        }
+      }
+    ]
+  },
+  "contrast": {
+    "checked": 33,
+    "failures": 14,
+    "skipped": 0,
+    "samples": [
+      {
+        "text": "Streamline your workflow and engage your audience seamlessly",
+        "ratio": 2.42,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#faf5ff",
+        "fontSize": 20
+      },
+      {
+        "text": "Learn More",
+        "ratio": 2.38,
+        "required": 4.5,
+        "color": "#ffffff",
+        "background": "#ff8904",
+        "fontSize": 16
+      },
+      {
+        "text": "Trusted by 10,000+ creators worldwide 🚀",
+        "ratio": 2.42,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#faf5ff",
+        "fontSize": 14
+      },
+      {
+        "text": "Powerful features to help you engage your audience effortles",
+        "ratio": 2.42,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#faf5ff",
+        "fontSize": 18
+      },
+      {
+        "text": "Respond to every comment instantly with our cutting-edge aut",
+        "ratio": 2.6,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#ffffff",
+        "fontSize": 16
+      },
+      {
+        "text": "AI-powered flows that engage your audience seamlessly, 24/7.",
+        "ratio": 2.6,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#ffffff",
+        "fontSize": 16
+      },
+      {
+        "text": "Unlock the power of data-driven insights to grow like never ",
+        "ratio": 2.6,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#ffffff",
+        "fontSize": 16
+      },
+      {
+        "text": "CEO at TechCorp",
+        "ratio": 2.6,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#ffffff",
+        "fontSize": 14
+      },
+      {
+        "text": "Founder at StartupXYZ",
+        "ratio": 2.6,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#ffffff",
+        "fontSize": 14
+      },
+      {
+        "text": "Join thousands of creators already using Replyloop AI.",
+        "ratio": 3.91,
+        "required": 4.5,
+        "color": "#d0dffe",
+        "background": "#155dfc",
+        "fontSize": 18
+      },
+      {
+        "text": "Privacy",
+        "ratio": 2.42,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#faf5ff",
+        "fontSize": 14
+      },
+      {
+        "text": "Terms",
+        "ratio": 2.42,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#faf5ff",
+        "fontSize": 14
+      },
+      {
+        "text": "Contact",
+        "ratio": 2.42,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#faf5ff",
+        "fontSize": 14
+      },
+      {
+        "text": "© 2026 Replyloop AI. All rights reserved.",
+        "ratio": 2.42,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#faf5ff",
+        "fontSize": 14
+      }
+    ]
+  },
+  "forms": [],
+  "looseFields": 0,
+  "decor": {
+    "gradients": 7,
+    "gradientText": 2,
+    "blur": 3,
+    "roundedShadow": 8,
+    "emoji": 4
+  },
+  "typography": {
+    "families": [
+      "Inter"
+    ],
+    "sizes": [
+      60,
+      36,
+      24,
+      20,
+      18,
+      16,
+      14
+    ]
+  },
+  "dialogsOpen": 0,
+  "errors": []
+}

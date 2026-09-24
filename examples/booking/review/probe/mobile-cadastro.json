@@ -1,0 +1,109 @@
+{
+  "probe": "0.1.0",
+  "url": "http://localhost:5175/cadastro",
+  "title": "Navalha Barbearia | Agendamento Online",
+  "lang": "pt-BR",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "page": {
+    "height": 1185,
+    "horizontalOverflow": false
+  },
+  "firstView": {
+    "text": "Crie sua conta para agendar ✂️ | Preencha seus dados para ter acesso à melhor experiência. | Nome completo | E-mail | Confirmar e-mail | Senha | Confirmar senha | Telefone | CPF | Data de nascimento | Gênero | Como nos conheceu?",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Crie sua conta para agendar ✂️",
+        "inFirstView": true
+      }
+    ]
+  },
+  "actions": {
+    "total": 2,
+    "primaryInFirstView": 0,
+    "iconOnlyUnnamed": 0,
+    "smallTargets": 0,
+    "deadLinks": 1,
+    "hiddenUntilHover": 0,
+    "items": [
+      {
+        "tag": "button",
+        "text": "Cadastrar",
+        "primary": true,
+        "disabled": true,
+        "inFirstView": false,
+        "box": {
+          "x": 65,
+          "y": 980,
+          "w": 260,
+          "h": 56
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Entrar",
+        "deadLink": true,
+        "inFirstView": false,
+        "box": {
+          "x": 221,
+          "y": 1060,
+          "w": 37,
+          "h": 19
+        }
+      }
+    ]
+  },
+  "contrast": {
+    "checked": 16,
+    "failures": 2,
+    "skipped": 0,
+    "samples": [
+      {
+        "text": "Preencha seus dados para ter acesso à melhor experiência.",
+        "ratio": 3.76,
+        "required": 4.5,
+        "color": "#71717b",
+        "background": "#161617",
+        "fontSize": 16
+      },
+      {
+        "text": "Já tem conta?",
+        "ratio": 3.76,
+        "required": 4.5,
+        "color": "#71717b",
+        "background": "#161617",
+        "fontSize": 14
+      }
+    ]
+  },
+  "forms": [
+    {
+      "fields": 12,
+      "required": 0,
+      "unlabeled": 10
+    }
+  ],
+  "looseFields": 0,
+  "decor": {
+    "gradients": 1,
+    "gradientText": 0,
+    "blur": 1,
+    "roundedShadow": 2,
+    "emoji": 1
+  },
+  "typography": {
+    "families": [
+      "Inter"
+    ],
+    "sizes": [
+      30,
+      16,
+      14
+    ]
+  },
+  "dialogsOpen": 0,
+  "errors": []
+}

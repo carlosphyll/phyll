@@ -1,0 +1,1083 @@
+{
+  "tool": {
+    "name": "phyll",
+    "version": "0.2.0"
+  },
+  "root": "examples/menu/before",
+  "createdAt": "2026-09-23T23:17:22.641Z",
+  "files": {
+    "scanned": 10,
+    "ignored": 0
+  },
+  "structure": {
+    "framework": "react-router",
+    "theme": "light",
+    "routes": [
+      {
+        "path": "/",
+        "file": "src/App.jsx",
+        "line": 75
+      },
+      {
+        "path": "/cardapio",
+        "file": "src/App.jsx",
+        "line": 77
+      },
+      {
+        "path": "/checkout",
+        "file": "src/App.jsx",
+        "line": 78
+      },
+      {
+        "path": "/entrar",
+        "file": "src/App.jsx",
+        "line": 76
+      }
+    ],
+    "forms": [
+      {
+        "file": "src/pages/Checkout.jsx",
+        "line": 58,
+        "fields": 21,
+        "implicit": true
+      },
+      {
+        "file": "src/pages/Login.jsx",
+        "line": 23,
+        "fields": 7,
+        "implicit": false
+      },
+      {
+        "file": "src/pages/Menu.jsx",
+        "line": 44,
+        "fields": 6,
+        "implicit": true
+      }
+    ],
+    "modals": {
+      "count": 2,
+      "locations": [
+        {
+          "file": "src/App.jsx",
+          "line": 20,
+          "match": "fixed inset-0 overlay"
+        },
+        {
+          "file": "src/pages/Menu.jsx",
+          "line": 21,
+          "match": "fixed inset-0 overlay"
+        }
+      ]
+    },
+    "notes": []
+  },
+  "tells": [
+    {
+      "id": "P02",
+      "name": "A marketing page in front of the tool",
+      "dimension": "purpose",
+      "kind": "function",
+      "detection": "both",
+      "weight": 3,
+      "cap": 1,
+      "hits": 3,
+      "locations": [
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 10,
+          "match": "function Hero"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 12,
+          "match": "id=\"hero\""
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 59,
+          "match": "<Hero"
+        }
+      ]
+    },
+    {
+      "id": "P05",
+      "name": "Features that do not exist yet",
+      "dimension": "purpose",
+      "kind": "function",
+      "detection": "both",
+      "weight": 2,
+      "cap": 3,
+      "hits": 0,
+      "locations": []
+    },
+    {
+      "id": "F01",
+      "name": "Dead buttons and fake links",
+      "dimension": "flow",
+      "kind": "function",
+      "detection": "static",
+      "weight": 3,
+      "cap": 3,
+      "hits": 4,
+      "locations": [
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 32,
+          "match": "href=\"#\""
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 49,
+          "match": "href=\"#\""
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 50,
+          "match": "href=\"#\""
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 51,
+          "match": "href=\"#\""
+        }
+      ]
+    },
+    {
+      "id": "F02",
+      "name": "Everything asked up front",
+      "dimension": "flow",
+      "kind": "function",
+      "detection": "both",
+      "weight": 3,
+      "cap": 2,
+      "hits": 2,
+      "locations": [
+        {
+          "file": "src/pages/Checkout.jsx",
+          "line": 58,
+          "match": "form with 21 fields"
+        },
+        {
+          "file": "src/pages/Login.jsx",
+          "line": 23,
+          "match": "form with 7 fields"
+        }
+      ]
+    },
+    {
+      "id": "F03",
+      "name": "A modal for everything",
+      "dimension": "flow",
+      "kind": "function",
+      "detection": "both",
+      "weight": 2,
+      "cap": 4,
+      "hits": 2,
+      "locations": [
+        {
+          "file": "src/App.jsx",
+          "line": 20,
+          "match": "fixed inset-0 overlay"
+        },
+        {
+          "file": "src/pages/Menu.jsx",
+          "line": 21,
+          "match": "fixed inset-0 overlay"
+        }
+      ]
+    },
+    {
+      "id": "F05",
+      "name": "Sign-up or setup before the first result",
+      "dimension": "flow",
+      "kind": "function",
+      "detection": "both",
+      "weight": 3,
+      "cap": 1,
+      "hits": 1,
+      "locations": [
+        {
+          "file": "src/pages/Login.jsx",
+          "line": 26,
+          "match": "Faça login para"
+        }
+      ]
+    },
+    {
+      "id": "F06",
+      "name": "Confirmation for safe actions",
+      "dimension": "flow",
+      "kind": "function",
+      "detection": "both",
+      "weight": 1,
+      "cap": 3,
+      "hits": 1,
+      "locations": [
+        {
+          "file": "src/pages/Checkout.jsx",
+          "line": 43,
+          "match": "window.confirm("
+        }
+      ]
+    },
+    {
+      "id": "F07",
+      "name": "A wizard for a one-screen task",
+      "dimension": "flow",
+      "kind": "function",
+      "detection": "both",
+      "weight": 1,
+      "cap": 1,
+      "hits": 0,
+      "locations": []
+    },
+    {
+      "id": "F11",
+      "name": "Personal data the job does not use",
+      "dimension": "flow",
+      "kind": "function",
+      "detection": "both",
+      "weight": 3,
+      "cap": 2,
+      "hits": 3,
+      "locations": [
+        {
+          "file": "src/pages/Checkout.jsx",
+          "line": 109,
+          "match": "CPF"
+        },
+        {
+          "file": "src/pages/Login.jsx",
+          "line": 33,
+          "match": "Data de nascimento"
+        },
+        {
+          "file": "src/pages/Login.jsx",
+          "line": 32,
+          "match": "CPF"
+        }
+      ]
+    },
+    {
+      "id": "F12",
+      "name": "Asking for the same thing twice",
+      "dimension": "flow",
+      "kind": "function",
+      "detection": "static",
+      "weight": 1,
+      "cap": 2,
+      "hits": 1,
+      "locations": [
+        {
+          "file": "src/pages/Login.jsx",
+          "line": 38,
+          "match": "Confirmar senha"
+        }
+      ]
+    },
+    {
+      "id": "A03",
+      "name": "Icon-only buttons with no name",
+      "dimension": "actions",
+      "kind": "function",
+      "detection": "both",
+      "weight": 2,
+      "cap": 3,
+      "hits": 2,
+      "locations": [
+        {
+          "file": "src/App.jsx",
+          "line": 24,
+          "match": "<button onClick={onClose} className=\"rounded-full p-2 text-gray-400 hover:bg-gray-100\"> <X size={20}"
+        },
+        {
+          "file": "src/pages/Menu.jsx",
+          "line": 28,
+          "match": "<button onClick={onClose} className=\"rounded-full p-2 text-gray-400 hover:bg-gray-100\"> <X size={20}"
+        }
+      ]
+    },
+    {
+      "id": "A05",
+      "name": "Actions that only appear on hover",
+      "dimension": "actions",
+      "kind": "function",
+      "detection": "static",
+      "weight": 2,
+      "cap": 3,
+      "hits": 0,
+      "locations": []
+    },
+    {
+      "id": "A07",
+      "name": "Disabled buttons that do not say why",
+      "dimension": "actions",
+      "kind": "function",
+      "detection": "both",
+      "weight": 1,
+      "cap": 3,
+      "hits": 3,
+      "locations": [
+        {
+          "file": "src/App.jsx",
+          "line": 49,
+          "match": "disabled={!"
+        },
+        {
+          "file": "src/pages/Checkout.jsx",
+          "line": 137,
+          "match": "disabled={!"
+        },
+        {
+          "file": "src/pages/Menu.jsx",
+          "line": 94,
+          "match": "disabled={!"
+        }
+      ]
+    },
+    {
+      "id": "A09",
+      "name": "Fields named only by their placeholder",
+      "dimension": "actions",
+      "kind": "function",
+      "detection": "both",
+      "weight": 1,
+      "cap": 3,
+      "hits": 24,
+      "locations": [
+        {
+          "file": "src/pages/Checkout.jsx",
+          "line": 58,
+          "match": "<input className={input} placeholder="
+        },
+        {
+          "file": "src/pages/Checkout.jsx",
+          "line": 59,
+          "match": "<input className={input} placeholder="
+        },
+        {
+          "file": "src/pages/Checkout.jsx",
+          "line": 74,
+          "match": "<input className={input} placeholder="
+        },
+        {
+          "file": "src/pages/Checkout.jsx",
+          "line": 75,
+          "match": "<input className={input} placeholder="
+        },
+        {
+          "file": "src/pages/Checkout.jsx",
+          "line": 76,
+          "match": "<input className={input} placeholder="
+        },
+        {
+          "file": "src/pages/Checkout.jsx",
+          "line": 77,
+          "match": "<input className={input} placeholder="
+        },
+        {
+          "file": "src/pages/Checkout.jsx",
+          "line": 78,
+          "match": "<input className={input} placeholder="
+        },
+        {
+          "file": "src/pages/Checkout.jsx",
+          "line": 79,
+          "match": "<input className={input} placeholder="
+        },
+        {
+          "file": "src/pages/Checkout.jsx",
+          "line": 86,
+          "match": "<input className={input} placeholder="
+        },
+        {
+          "file": "src/pages/Checkout.jsx",
+          "line": 100,
+          "match": "<input className={`${input} col-span-2`} placeholder="
+        }
+      ]
+    },
+    {
+      "id": "L01",
+      "name": "Purple-to-blue gradient as the brand",
+      "dimension": "look",
+      "kind": "style",
+      "detection": "static",
+      "weight": 2,
+      "cap": 3,
+      "hits": 0,
+      "locations": []
+    },
+    {
+      "id": "L02",
+      "name": "Gradient text",
+      "dimension": "look",
+      "kind": "style",
+      "detection": "static",
+      "weight": 1,
+      "cap": 2,
+      "hits": 3,
+      "locations": [
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 19,
+          "match": "bg-clip-text"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 47,
+          "match": "bg-clip-text"
+        },
+        {
+          "file": "src/pages/Menu.jsx",
+          "line": 117,
+          "match": "bg-clip-text"
+        }
+      ]
+    },
+    {
+      "id": "L03",
+      "name": "Glass, blur and glow",
+      "dimension": "look",
+      "kind": "style",
+      "detection": "static",
+      "weight": 1,
+      "cap": 4,
+      "hits": 8,
+      "locations": [
+        {
+          "file": "src/App.jsx",
+          "line": 20,
+          "match": "backdrop-blur-sm"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 16,
+          "match": "backdrop-blur-md"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 45,
+          "match": "backdrop-blur-xl"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 13,
+          "match": "blur-3xl"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 14,
+          "match": "blur-3xl"
+        },
+        {
+          "file": "src/pages/Login.jsx",
+          "line": 23,
+          "match": "backdrop-blur-xl"
+        },
+        {
+          "file": "src/pages/Menu.jsx",
+          "line": 21,
+          "match": "backdrop-blur-sm"
+        },
+        {
+          "file": "src/pages/Menu.jsx",
+          "line": 115,
+          "match": "backdrop-blur-xl"
+        }
+      ]
+    },
+    {
+      "id": "L04",
+      "name": "Everything is a card",
+      "dimension": "look",
+      "kind": "style",
+      "detection": "static",
+      "weight": 2,
+      "cap": 8,
+      "hits": 15,
+      "locations": [
+        {
+          "file": "src/App.jsx",
+          "line": 54,
+          "match": "mt-6 w-full rounded-xl bg-gradient-to-r from-orange-500 to-red-600 py-4 font-bold text-white shadow-"
+        },
+        {
+          "file": "src/App.jsx",
+          "line": 81,
+          "match": "fixed bottom-6 left-1/2 z-50 -translate-x-1/2 animate-bounce rounded-2xl bg-gradient-to-r from-orang"
+        },
+        {
+          "file": "src/pages/Checkout.jsx",
+          "line": 55,
+          "match": "rounded-3xl bg-white p-8 shadow-2xl shadow-orange-500/10"
+        },
+        {
+          "file": "src/pages/Checkout.jsx",
+          "line": 63,
+          "match": "rounded-3xl bg-white p-8 shadow-2xl shadow-orange-500/10"
+        },
+        {
+          "file": "src/pages/Checkout.jsx",
+          "line": 90,
+          "match": "rounded-3xl bg-white p-8 shadow-2xl shadow-orange-500/10"
+        },
+        {
+          "file": "src/pages/Checkout.jsx",
+          "line": 118,
+          "match": "h-fit rounded-3xl bg-white p-8 shadow-2xl shadow-orange-500/10"
+        },
+        {
+          "file": "src/pages/Checkout.jsx",
+          "line": 139,
+          "match": "mt-8 w-full rounded-xl bg-gradient-to-r from-orange-500 to-red-600 py-4 font-bold text-white shadow-"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 28,
+          "match": "rounded-2xl bg-gradient-to-r from-orange-500 to-red-600 px-8 py-4 font-bold text-white shadow-2xl sh"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 32,
+          "match": "rounded-2xl bg-white px-8 py-4 font-semibold text-gray-700 shadow-lg transition-all duration-300 hov"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 64,
+          "match": "rounded-3xl bg-white p-8 text-center shadow-2xl shadow-orange-500/10 transition-all duration-300 hov"
+        }
+      ]
+    },
+    {
+      "id": "L05",
+      "name": "The three-card feature grid",
+      "dimension": "look",
+      "kind": "style",
+      "detection": "both",
+      "weight": 1,
+      "cap": 2,
+      "hits": 4,
+      "locations": [
+        {
+          "file": "src/pages/Checkout.jsx",
+          "line": 51,
+          "match": "mx-auto grid max-w-6xl gap-8 lg:grid-cols-3"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 62,
+          "match": "mx-auto grid max-w-6xl gap-8 md:grid-cols-3"
+        },
+        {
+          "file": "src/pages/Menu.jsx",
+          "line": 34,
+          "match": "mt-2 grid grid-cols-3 gap-2"
+        },
+        {
+          "file": "src/pages/Menu.jsx",
+          "line": 145,
+          "match": "mt-8 grid grid-cols-3 gap-8"
+        }
+      ]
+    },
+    {
+      "id": "L06",
+      "name": "An icon in a tinted square for every item",
+      "dimension": "look",
+      "kind": "style",
+      "detection": "static",
+      "weight": 1,
+      "cap": 4,
+      "hits": 4,
+      "locations": [
+        {
+          "file": "src/App.jsx",
+          "line": 24,
+          "match": "rounded-full p-2 text-gray-400 hover:bg-gray-100"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 65,
+          "match": "mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-100 text-orange-600"
+        },
+        {
+          "file": "src/pages/Menu.jsx",
+          "line": 28,
+          "match": "rounded-full p-2 text-gray-400 hover:bg-gray-100"
+        },
+        {
+          "file": "src/pages/Menu.jsx",
+          "line": 42,
+          "match": "cursor-pointer rounded-xl border p-3 text-center text-sm border-orange-500 bg-orange-50 font-bold bo"
+        }
+      ]
+    },
+    {
+      "id": "L07",
+      "name": "KPI cards with invented trends",
+      "dimension": "look",
+      "kind": "function",
+      "detection": "static",
+      "weight": 2,
+      "cap": 2,
+      "hits": 0,
+      "locations": []
+    },
+    {
+      "id": "L08",
+      "name": "Emoji as icons",
+      "dimension": "look",
+      "kind": "style",
+      "detection": "static",
+      "weight": 1,
+      "cap": 4,
+      "hits": 19,
+      "locations": [
+        {
+          "file": "src/App.jsx",
+          "line": 23,
+          "match": "🛒"
+        },
+        {
+          "file": "src/menu.js",
+          "line": 4,
+          "match": "🍔"
+        },
+        {
+          "file": "src/menu.js",
+          "line": 5,
+          "match": "🥓"
+        },
+        {
+          "file": "src/menu.js",
+          "line": 6,
+          "match": "🍔"
+        },
+        {
+          "file": "src/menu.js",
+          "line": 7,
+          "match": "🥗"
+        },
+        {
+          "file": "src/menu.js",
+          "line": 8,
+          "match": "🍟"
+        },
+        {
+          "file": "src/menu.js",
+          "line": 9,
+          "match": "🧅"
+        },
+        {
+          "file": "src/menu.js",
+          "line": 10,
+          "match": "🥤"
+        },
+        {
+          "file": "src/menu.js",
+          "line": 11,
+          "match": "🧃"
+        },
+        {
+          "file": "src/menu.js",
+          "line": 12,
+          "match": "🍫"
+        }
+      ]
+    },
+    {
+      "id": "L09",
+      "name": "Sparkles and AI-powered badges",
+      "dimension": "look",
+      "kind": "style",
+      "detection": "static",
+      "weight": 1,
+      "cap": 3,
+      "hits": 0,
+      "locations": []
+    },
+    {
+      "id": "L10",
+      "name": "Everything centered",
+      "dimension": "look",
+      "kind": "style",
+      "detection": "static",
+      "weight": 1,
+      "cap": 10,
+      "hits": 9,
+      "locations": [
+        {
+          "file": "src/App.jsx",
+          "line": 29,
+          "match": "mt-10 text-center text-gray-400"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 12,
+          "match": "relative overflow-hidden px-6 pb-24 pt-20 text-center"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 64,
+          "match": "rounded-3xl bg-white p-8 text-center shadow-2xl shadow-orange-500/10 transition-all duration-300 hov"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 75,
+          "match": "py-10 text-center text-sm text-gray-400"
+        },
+        {
+          "file": "src/pages/Login.jsx",
+          "line": 24,
+          "match": "text-center text-5xl"
+        },
+        {
+          "file": "src/pages/Login.jsx",
+          "line": 25,
+          "match": "mt-4 text-center text-3xl font-extrabold text-gray-900"
+        },
+        {
+          "file": "src/pages/Login.jsx",
+          "line": 26,
+          "match": "mt-2 text-center text-gray-400"
+        },
+        {
+          "file": "src/pages/Login.jsx",
+          "line": 43,
+          "match": "mt-6 text-center text-sm text-gray-400"
+        },
+        {
+          "file": "src/pages/Menu.jsx",
+          "line": 42,
+          "match": "cursor-pointer rounded-xl border p-3 text-center text-sm border-orange-500 bg-orange-50 font-bold bo"
+        }
+      ]
+    },
+    {
+      "id": "L11",
+      "name": "Motion on everything",
+      "dimension": "look",
+      "kind": "style",
+      "detection": "static",
+      "weight": 1,
+      "cap": 6,
+      "hits": 11,
+      "locations": [
+        {
+          "file": "src/App.jsx",
+          "line": 81,
+          "match": "animate-bounce"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 28,
+          "match": "transition-all"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 28,
+          "match": "hover:scale-105"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 32,
+          "match": "transition-all"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 32,
+          "match": "hover:scale-105"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 64,
+          "match": "transition-all"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 64,
+          "match": "hover:scale-105"
+        },
+        {
+          "file": "src/pages/Menu.jsx",
+          "line": 121,
+          "match": "animate-bounce"
+        },
+        {
+          "file": "src/pages/Menu.jsx",
+          "line": 136,
+          "match": "transition-all"
+        },
+        {
+          "file": "src/pages/Menu.jsx",
+          "line": 149,
+          "match": "transition-all"
+        }
+      ]
+    },
+    {
+      "id": "L12",
+      "name": "Washed-out text",
+      "dimension": "look",
+      "kind": "function",
+      "detection": "both",
+      "weight": 2,
+      "cap": 6,
+      "hits": 27,
+      "locations": [
+        {
+          "file": "src/App.jsx",
+          "line": 24,
+          "match": "text-gray-400"
+        },
+        {
+          "file": "src/App.jsx",
+          "line": 29,
+          "match": "text-gray-400"
+        },
+        {
+          "file": "src/App.jsx",
+          "line": 37,
+          "match": "text-gray-400"
+        },
+        {
+          "file": "src/App.jsx",
+          "line": 54,
+          "match": "mt-6 w-full rounded-xl bg-gradient-to-r from-orange-500 to-red-600 py-4 font-bold text-white shadow-"
+        },
+        {
+          "file": "src/App.jsx",
+          "line": 81,
+          "match": "fixed bottom-6 left-1/2 z-50 -translate-x-1/2 animate-bounce rounded-2xl bg-gradient-to-r from-orang"
+        },
+        {
+          "file": "src/pages/Checkout.jsx",
+          "line": 5,
+          "match": "text-gray-400"
+        },
+        {
+          "file": "src/pages/Checkout.jsx",
+          "line": 130,
+          "match": "text-gray-400"
+        },
+        {
+          "file": "src/pages/Checkout.jsx",
+          "line": 139,
+          "match": "mt-8 w-full rounded-xl bg-gradient-to-r from-orange-500 to-red-600 py-4 font-bold text-white shadow-"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 22,
+          "match": "text-gray-400"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 36,
+          "match": "text-gray-400"
+        }
+      ]
+    },
+    {
+      "id": "C01",
+      "name": "Generic value-proposition phrases",
+      "dimension": "copy",
+      "kind": "function",
+      "detection": "static",
+      "weight": 2,
+      "cap": 3,
+      "hits": 1,
+      "locations": [
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 7,
+          "match": "experiência única"
+        }
+      ]
+    },
+    {
+      "id": "C02",
+      "name": "Buttons that do not say what happens",
+      "dimension": "copy",
+      "kind": "function",
+      "detection": "static",
+      "weight": 2,
+      "cap": 3,
+      "hits": 1,
+      "locations": [
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 32,
+          "match": "> Saiba mais <"
+        }
+      ]
+    },
+    {
+      "id": "C03",
+      "name": "Invented social proof and numbers",
+      "dimension": "copy",
+      "kind": "function",
+      "detection": "static",
+      "weight": 2,
+      "cap": 3,
+      "hits": 2,
+      "locations": [
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 36,
+          "match": "⭐ 4.9"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 36,
+          "match": "Mais de 50 mil"
+        }
+      ]
+    },
+    {
+      "id": "C04",
+      "name": "Placeholder people and data left in",
+      "dimension": "copy",
+      "kind": "function",
+      "detection": "static",
+      "weight": 2,
+      "cap": 3,
+      "hits": 0,
+      "locations": []
+    },
+    {
+      "id": "C05",
+      "name": "Code words on screen",
+      "dimension": "copy",
+      "kind": "function",
+      "detection": "both",
+      "weight": 2,
+      "cap": 3,
+      "hits": 0,
+      "locations": []
+    },
+    {
+      "id": "C06",
+      "name": "Stock greetings and filler",
+      "dimension": "copy",
+      "kind": "function",
+      "detection": "static",
+      "weight": 1,
+      "cap": 3,
+      "hits": 1,
+      "locations": [
+        {
+          "file": "src/pages/Menu.jsx",
+          "line": 128,
+          "match": "Olá, {user.nome}! 👋"
+        }
+      ]
+    },
+    {
+      "id": "C07",
+      "name": "Error messages that do not help",
+      "dimension": "copy",
+      "kind": "function",
+      "detection": "static",
+      "weight": 2,
+      "cap": 3,
+      "hits": 0,
+      "locations": []
+    },
+    {
+      "id": "S01",
+      "name": "Empty states that only say no data",
+      "dimension": "states",
+      "kind": "function",
+      "detection": "both",
+      "weight": 2,
+      "cap": 3,
+      "hits": 0,
+      "locations": []
+    },
+    {
+      "id": "S03",
+      "name": "Errors that only reach the console",
+      "dimension": "states",
+      "kind": "function",
+      "detection": "static",
+      "weight": 2,
+      "cap": 3,
+      "hits": 0,
+      "locations": []
+    },
+    {
+      "id": "S04",
+      "name": "Success that leaves no trace",
+      "dimension": "states",
+      "kind": "function",
+      "detection": "both",
+      "weight": 1,
+      "cap": 3,
+      "hits": 1,
+      "locations": [
+        {
+          "file": "src/pages/Checkout.jsx",
+          "line": 45,
+          "match": "Toast(\"Pedido realizado com sucesso! 🎉\""
+        }
+      ]
+    },
+    {
+      "id": "S05",
+      "name": "Breaks on a phone",
+      "dimension": "states",
+      "kind": "function",
+      "detection": "both",
+      "weight": 2,
+      "cap": 2,
+      "hits": 1,
+      "locations": [
+        {
+          "file": "src/pages/Menu.jsx",
+          "line": 145,
+          "match": "mt-8 grid grid-cols-3 gap-8"
+        }
+      ]
+    },
+    {
+      "id": "S06",
+      "name": "Focus outline removed",
+      "dimension": "states",
+      "kind": "function",
+      "detection": "static",
+      "weight": 2,
+      "cap": 3,
+      "hits": 5,
+      "locations": [
+        {
+          "file": "src/pages/Checkout.jsx",
+          "line": 5,
+          "match": "w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-gray-900 outline-none placeholder:t"
+        },
+        {
+          "file": "src/pages/Login.jsx",
+          "line": 5,
+          "match": "w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-gray-900 outline-none placeholder:t"
+        },
+        {
+          "file": "src/pages/Menu.jsx",
+          "line": 51,
+          "match": "mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 outline-none"
+        },
+        {
+          "file": "src/pages/Menu.jsx",
+          "line": 77,
+          "match": "mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 outline-none"
+        },
+        {
+          "file": "src/pages/Menu.jsx",
+          "line": 88,
+          "match": "mt-2 w-24 rounded-xl border border-gray-200 px-4 py-3 outline-none"
+        }
+      ]
+    }
+  ],
+  "staticIndex": 53,
+  "styleIndex": 74
+}

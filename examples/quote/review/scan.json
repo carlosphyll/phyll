@@ -1,0 +1,1270 @@
+{
+  "tool": {
+    "name": "phyll",
+    "version": "0.2.0"
+  },
+  "root": "examples/quote/before",
+  "createdAt": "2026-09-23T23:17:22.394Z",
+  "files": {
+    "scanned": 11,
+    "ignored": 0
+  },
+  "structure": {
+    "framework": "react-router",
+    "theme": "light",
+    "routes": [
+      {
+        "path": "/",
+        "file": "src/App.jsx",
+        "line": 85
+      },
+      {
+        "path": "/app",
+        "file": "src/App.jsx",
+        "line": 87
+      },
+      {
+        "path": "/clientes",
+        "file": "src/App.jsx",
+        "line": 91,
+        "relative": true
+      },
+      {
+        "path": "/configuracoes",
+        "file": "src/App.jsx",
+        "line": 95,
+        "relative": true
+      },
+      {
+        "path": "/entrar",
+        "file": "src/App.jsx",
+        "line": 86
+      },
+      {
+        "path": "/integracoes",
+        "file": "src/App.jsx",
+        "line": 94,
+        "relative": true
+      },
+      {
+        "path": "/orcamentos",
+        "file": "src/App.jsx",
+        "line": 89,
+        "relative": true
+      },
+      {
+        "path": "/orcamentos/novo",
+        "file": "src/App.jsx",
+        "line": 90,
+        "relative": true
+      },
+      {
+        "path": "/produtos",
+        "file": "src/App.jsx",
+        "line": 92,
+        "relative": true
+      },
+      {
+        "path": "/relatorios",
+        "file": "src/App.jsx",
+        "line": 93,
+        "relative": true
+      }
+    ],
+    "forms": [
+      {
+        "file": "src/pages/Login.jsx",
+        "line": 16,
+        "fields": 2,
+        "implicit": false
+      },
+      {
+        "file": "src/pages/NewQuote.jsx",
+        "line": 67,
+        "fields": 39,
+        "implicit": true
+      }
+    ],
+    "modals": {
+      "count": 0,
+      "locations": []
+    },
+    "notes": [
+      "Some route paths are relative to a parent route, so the full URL may be longer than shown."
+    ]
+  },
+  "tells": [
+    {
+      "id": "P02",
+      "name": "A marketing page in front of the tool",
+      "dimension": "purpose",
+      "kind": "function",
+      "detection": "both",
+      "weight": 3,
+      "cap": 1,
+      "hits": 3,
+      "locations": [
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 10,
+          "match": "function Hero"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 12,
+          "match": "id=\"hero\""
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 57,
+          "match": "<Hero"
+        }
+      ]
+    },
+    {
+      "id": "P05",
+      "name": "Features that do not exist yet",
+      "dimension": "purpose",
+      "kind": "function",
+      "detection": "both",
+      "weight": 2,
+      "cap": 3,
+      "hits": 2,
+      "locations": [
+        {
+          "file": "src/pages/ComingSoon.jsx",
+          "line": 5,
+          "match": "Em breve"
+        },
+        {
+          "file": "src/pages/Quotes.jsx",
+          "line": 24,
+          "match": "Em breve"
+        }
+      ]
+    },
+    {
+      "id": "F01",
+      "name": "Dead buttons and fake links",
+      "dimension": "flow",
+      "kind": "function",
+      "detection": "static",
+      "weight": 3,
+      "cap": 3,
+      "hits": 7,
+      "locations": [
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 29,
+          "match": "href=\"#\""
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 47,
+          "match": "href=\"#\""
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 48,
+          "match": "href=\"#\""
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 49,
+          "match": "href=\"#\""
+        },
+        {
+          "file": "src/pages/Login.jsx",
+          "line": 25,
+          "match": "href=\"#\""
+        },
+        {
+          "file": "src/pages/Login.jsx",
+          "line": 34,
+          "match": "href=\"#\""
+        },
+        {
+          "file": "src/pages/Quotes.jsx",
+          "line": 24,
+          "match": "onClick={() => alert("
+        }
+      ]
+    },
+    {
+      "id": "F02",
+      "name": "Everything asked up front",
+      "dimension": "flow",
+      "kind": "function",
+      "detection": "both",
+      "weight": 3,
+      "cap": 2,
+      "hits": 1,
+      "locations": [
+        {
+          "file": "src/pages/NewQuote.jsx",
+          "line": 67,
+          "match": "form with 39 fields"
+        }
+      ]
+    },
+    {
+      "id": "F03",
+      "name": "A modal for everything",
+      "dimension": "flow",
+      "kind": "function",
+      "detection": "both",
+      "weight": 2,
+      "cap": 4,
+      "hits": 0,
+      "locations": []
+    },
+    {
+      "id": "F05",
+      "name": "Sign-up or setup before the first result",
+      "dimension": "flow",
+      "kind": "function",
+      "detection": "both",
+      "weight": 3,
+      "cap": 1,
+      "hits": 1,
+      "locations": [
+        {
+          "file": "src/pages/Login.jsx",
+          "line": 15,
+          "match": "Entre na sua conta para"
+        }
+      ]
+    },
+    {
+      "id": "F06",
+      "name": "Confirmation for safe actions",
+      "dimension": "flow",
+      "kind": "function",
+      "detection": "both",
+      "weight": 1,
+      "cap": 3,
+      "hits": 2,
+      "locations": [
+        {
+          "file": "src/pages/Quotes.jsx",
+          "line": 14,
+          "match": "window.confirm("
+        },
+        {
+          "file": "src/pages/Quotes.jsx",
+          "line": 14,
+          "match": "Tem certeza"
+        }
+      ]
+    },
+    {
+      "id": "F07",
+      "name": "A wizard for a one-screen task",
+      "dimension": "flow",
+      "kind": "function",
+      "detection": "both",
+      "weight": 1,
+      "cap": 1,
+      "hits": 1,
+      "locations": [
+        {
+          "file": "src/pages/NewQuote.jsx",
+          "line": 226,
+          "match": "setStep(step + 1)"
+        }
+      ]
+    },
+    {
+      "id": "F11",
+      "name": "Personal data the job does not use",
+      "dimension": "flow",
+      "kind": "function",
+      "detection": "both",
+      "weight": 3,
+      "cap": 2,
+      "hits": 2,
+      "locations": [
+        {
+          "file": "src/pages/NewQuote.jsx",
+          "line": 70,
+          "match": "Inscrição estadual"
+        },
+        {
+          "file": "src/pages/NewQuote.jsx",
+          "line": 99,
+          "match": "CPF"
+        }
+      ]
+    },
+    {
+      "id": "F12",
+      "name": "Asking for the same thing twice",
+      "dimension": "flow",
+      "kind": "function",
+      "detection": "static",
+      "weight": 1,
+      "cap": 2,
+      "hits": 0,
+      "locations": []
+    },
+    {
+      "id": "A03",
+      "name": "Icon-only buttons with no name",
+      "dimension": "actions",
+      "kind": "function",
+      "detection": "both",
+      "weight": 2,
+      "cap": 3,
+      "hits": 4,
+      "locations": [
+        {
+          "file": "src/App.jsx",
+          "line": 61,
+          "match": "<button className=\"rounded-full p-2 text-slate-400 hover:bg-slate-100\"> <Bell size={20} /> </button>"
+        },
+        {
+          "file": "src/pages/Quotes.jsx",
+          "line": 75,
+          "match": "<button className=\"rounded-lg p-2 text-slate-400 hover:bg-slate-100\"> <Eye size={16} /> </button>"
+        },
+        {
+          "file": "src/pages/Quotes.jsx",
+          "line": 78,
+          "match": "<button className=\"rounded-lg p-2 text-slate-400 hover:bg-slate-100\"> <Pencil size={16} /> </button>"
+        },
+        {
+          "file": "src/pages/Quotes.jsx",
+          "line": 81,
+          "match": "<button onClick={() => remove(q.id)} className=\"rounded-lg p-2 text-slate-400 hover:bg-slate-100\"> <"
+        }
+      ]
+    },
+    {
+      "id": "A05",
+      "name": "Actions that only appear on hover",
+      "dimension": "actions",
+      "kind": "function",
+      "detection": "static",
+      "weight": 2,
+      "cap": 3,
+      "hits": 1,
+      "locations": [
+        {
+          "file": "src/pages/Quotes.jsx",
+          "line": 74,
+          "match": "flex justify-end gap-1 opacity-0 transition-opacity group-hover:opacity-100"
+        }
+      ]
+    },
+    {
+      "id": "A07",
+      "name": "Disabled buttons that do not say why",
+      "dimension": "actions",
+      "kind": "function",
+      "detection": "both",
+      "weight": 1,
+      "cap": 3,
+      "hits": 1,
+      "locations": [
+        {
+          "file": "src/pages/NewQuote.jsx",
+          "line": 225,
+          "match": "disabled={!"
+        }
+      ]
+    },
+    {
+      "id": "A09",
+      "name": "Fields named only by their placeholder",
+      "dimension": "actions",
+      "kind": "function",
+      "detection": "both",
+      "weight": 1,
+      "cap": 3,
+      "hits": 23,
+      "locations": [
+        {
+          "file": "src/pages/Login.jsx",
+          "line": 23,
+          "match": "<input className={input} type=\"email\" placeholder="
+        },
+        {
+          "file": "src/pages/Login.jsx",
+          "line": 24,
+          "match": "<input className={input} type=\"password\" placeholder="
+        },
+        {
+          "file": "src/pages/NewQuote.jsx",
+          "line": 67,
+          "match": "<input className={input} placeholder="
+        },
+        {
+          "file": "src/pages/NewQuote.jsx",
+          "line": 68,
+          "match": "<input className={input} placeholder="
+        },
+        {
+          "file": "src/pages/NewQuote.jsx",
+          "line": 69,
+          "match": "<input className={input} placeholder="
+        },
+        {
+          "file": "src/pages/NewQuote.jsx",
+          "line": 70,
+          "match": "<input className={input} placeholder="
+        },
+        {
+          "file": "src/pages/NewQuote.jsx",
+          "line": 71,
+          "match": "<input className={`${input} col-span-2`} placeholder="
+        },
+        {
+          "file": "src/pages/NewQuote.jsx",
+          "line": 72,
+          "match": "<input className={input} placeholder="
+        },
+        {
+          "file": "src/pages/NewQuote.jsx",
+          "line": 79,
+          "match": "<input className={input} placeholder="
+        },
+        {
+          "file": "src/pages/NewQuote.jsx",
+          "line": 80,
+          "match": "<input className={input} placeholder="
+        }
+      ]
+    },
+    {
+      "id": "L01",
+      "name": "Purple-to-blue gradient as the brand",
+      "dimension": "look",
+      "kind": "style",
+      "detection": "static",
+      "weight": 2,
+      "cap": 3,
+      "hits": 15,
+      "locations": [
+        {
+          "file": "src/App.jsx",
+          "line": 35,
+          "match": "bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent"
+        },
+        {
+          "file": "src/App.jsx",
+          "line": 43,
+          "match": "flex items-center gap-3 rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-300 bg-gr"
+        },
+        {
+          "file": "src/App.jsx",
+          "line": 53,
+          "match": "mt-10 rounded-2xl bg-gradient-to-br from-indigo-600 to-violet-600 p-5 text-white shadow-xl shadow-in"
+        },
+        {
+          "file": "src/App.jsx",
+          "line": 99,
+          "match": "fixed bottom-6 right-6 animate-bounce rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 px-6"
+        },
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 41,
+          "match": "flex-1 rounded-t-lg bg-gradient-to-t from-indigo-600 to-violet-500"
+        },
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 52,
+          "match": "mt-6 block rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 py-3 text-center font-bold text"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 16,
+          "match": "mx-auto mt-8 max-w-4xl bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-6xl font-ext"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 25,
+          "match": "rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 px-8 py-4 font-bold text-white shadow-xl s"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 44,
+          "match": "bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 50,
+          "match": "rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 px-5 py-2 font-bold text-white"
+        }
+      ]
+    },
+    {
+      "id": "L02",
+      "name": "Gradient text",
+      "dimension": "look",
+      "kind": "style",
+      "detection": "static",
+      "weight": 1,
+      "cap": 2,
+      "hits": 4,
+      "locations": [
+        {
+          "file": "src/App.jsx",
+          "line": 35,
+          "match": "bg-clip-text"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 16,
+          "match": "bg-clip-text"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 44,
+          "match": "bg-clip-text"
+        },
+        {
+          "file": "src/pages/Login.jsx",
+          "line": 12,
+          "match": "bg-clip-text"
+        }
+      ]
+    },
+    {
+      "id": "L03",
+      "name": "Glass, blur and glow",
+      "dimension": "look",
+      "kind": "style",
+      "detection": "static",
+      "weight": 1,
+      "cap": 4,
+      "hits": 15,
+      "locations": [
+        {
+          "file": "src/App.jsx",
+          "line": 45,
+          "match": "shadow-indigo-500/30"
+        },
+        {
+          "file": "src/App.jsx",
+          "line": 53,
+          "match": "shadow-indigo-500/30"
+        },
+        {
+          "file": "src/App.jsx",
+          "line": 99,
+          "match": "shadow-indigo-500/40"
+        },
+        {
+          "file": "src/pages/ComingSoon.jsx",
+          "line": 3,
+          "match": "shadow-indigo-500/10"
+        },
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 25,
+          "match": "shadow-indigo-500/10"
+        },
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 37,
+          "match": "shadow-indigo-500/10"
+        },
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 45,
+          "match": "shadow-indigo-500/10"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 25,
+          "match": "shadow-indigo-500/30"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 65,
+          "match": "shadow-indigo-500/10"
+        },
+        {
+          "file": "src/pages/Login.jsx",
+          "line": 10,
+          "match": "shadow-indigo-500/10"
+        }
+      ]
+    },
+    {
+      "id": "L04",
+      "name": "Everything is a card",
+      "dimension": "look",
+      "kind": "style",
+      "detection": "static",
+      "weight": 2,
+      "cap": 8,
+      "hits": 15,
+      "locations": [
+        {
+          "file": "src/App.jsx",
+          "line": 43,
+          "match": "flex items-center gap-3 rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-300 bg-gr"
+        },
+        {
+          "file": "src/App.jsx",
+          "line": 53,
+          "match": "mt-10 rounded-2xl bg-gradient-to-br from-indigo-600 to-violet-600 p-5 text-white shadow-xl shadow-in"
+        },
+        {
+          "file": "src/App.jsx",
+          "line": 99,
+          "match": "fixed bottom-6 right-6 animate-bounce rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 px-6"
+        },
+        {
+          "file": "src/pages/ComingSoon.jsx",
+          "line": 3,
+          "match": "rounded-2xl bg-white p-16 text-center shadow-xl shadow-indigo-500/10"
+        },
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 25,
+          "match": "rounded-2xl bg-white p-6 shadow-xl shadow-indigo-500/10 transition-all duration-300 hover:scale-105"
+        },
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 37,
+          "match": "rounded-2xl bg-white p-6 shadow-xl shadow-indigo-500/10 lg:col-span-2"
+        },
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 45,
+          "match": "rounded-2xl bg-white p-6 shadow-xl shadow-indigo-500/10"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 25,
+          "match": "rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 px-8 py-4 font-bold text-white shadow-xl s"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 65,
+          "match": "rounded-2xl bg-white p-8 text-center shadow-xl shadow-indigo-500/10 transition-all duration-300 hove"
+        },
+        {
+          "file": "src/pages/Login.jsx",
+          "line": 10,
+          "match": "w-full max-w-md rounded-2xl bg-white p-10 text-center shadow-xl shadow-indigo-500/10"
+        }
+      ]
+    },
+    {
+      "id": "L05",
+      "name": "The three-card feature grid",
+      "dimension": "look",
+      "kind": "style",
+      "detection": "both",
+      "weight": 1,
+      "cap": 2,
+      "hits": 2,
+      "locations": [
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 36,
+          "match": "mt-8 grid gap-6 lg:grid-cols-3"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 63,
+          "match": "mt-14 grid gap-8 md:grid-cols-3"
+        }
+      ]
+    },
+    {
+      "id": "L06",
+      "name": "An icon in a tinted square for every item",
+      "dimension": "look",
+      "kind": "style",
+      "detection": "static",
+      "weight": 1,
+      "cap": 4,
+      "hits": 6,
+      "locations": [
+        {
+          "file": "src/App.jsx",
+          "line": 61,
+          "match": "rounded-full p-2 text-slate-400 hover:bg-slate-100"
+        },
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 26,
+          "match": "flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 66,
+          "match": "mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-indigo-50 text-indigo-600"
+        },
+        {
+          "file": "src/pages/Quotes.jsx",
+          "line": 75,
+          "match": "rounded-lg p-2 text-slate-400 hover:bg-slate-100"
+        },
+        {
+          "file": "src/pages/Quotes.jsx",
+          "line": 78,
+          "match": "rounded-lg p-2 text-slate-400 hover:bg-slate-100"
+        },
+        {
+          "file": "src/pages/Quotes.jsx",
+          "line": 81,
+          "match": "rounded-lg p-2 text-slate-400 hover:bg-slate-100"
+        }
+      ]
+    },
+    {
+      "id": "L07",
+      "name": "KPI cards with invented trends",
+      "dimension": "look",
+      "kind": "function",
+      "detection": "static",
+      "weight": 2,
+      "cap": 2,
+      "hits": 4,
+      "locations": [
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 5,
+          "match": "vs mês anterior"
+        },
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 6,
+          "match": "vs mês anterior"
+        },
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 7,
+          "match": "vs mês anterior"
+        },
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 8,
+          "match": "vs mês anterior"
+        }
+      ]
+    },
+    {
+      "id": "L08",
+      "name": "Emoji as icons",
+      "dimension": "look",
+      "kind": "style",
+      "detection": "static",
+      "weight": 1,
+      "cap": 4,
+      "hits": 14,
+      "locations": [
+        {
+          "file": "src/App.jsx",
+          "line": 35,
+          "match": "✨"
+        },
+        {
+          "file": "src/App.jsx",
+          "line": 54,
+          "match": "🚀"
+        },
+        {
+          "file": "src/pages/ComingSoon.jsx",
+          "line": 4,
+          "match": "🚀"
+        },
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 20,
+          "match": "👋"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 14,
+          "match": "✨"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 33,
+          "match": "⭐"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 33,
+          "match": "⭐"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 33,
+          "match": "⭐"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 33,
+          "match": "⭐"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 33,
+          "match": "⭐"
+        }
+      ]
+    },
+    {
+      "id": "L09",
+      "name": "Sparkles and AI-powered badges",
+      "dimension": "look",
+      "kind": "style",
+      "detection": "static",
+      "weight": 1,
+      "cap": 3,
+      "hits": 4,
+      "locations": [
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 2,
+          "match": "Sparkles"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 6,
+          "match": "Sparkles"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 14,
+          "match": "com Inteligência Artificial"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 20,
+          "match": "com o poder da IA"
+        }
+      ]
+    },
+    {
+      "id": "L10",
+      "name": "Everything centered",
+      "dimension": "look",
+      "kind": "style",
+      "detection": "static",
+      "weight": 1,
+      "cap": 10,
+      "hits": 9,
+      "locations": [
+        {
+          "file": "src/pages/ComingSoon.jsx",
+          "line": 3,
+          "match": "rounded-2xl bg-white p-16 text-center shadow-xl shadow-indigo-500/10"
+        },
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 52,
+          "match": "mt-6 block rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 py-3 text-center font-bold text"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 12,
+          "match": "px-6 pb-24 pt-20 text-center"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 60,
+          "match": "mx-auto max-w-6xl text-center"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 65,
+          "match": "rounded-2xl bg-white p-8 text-center shadow-xl shadow-indigo-500/10 transition-all duration-300 hove"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 77,
+          "match": "py-10 text-center text-sm text-slate-400"
+        },
+        {
+          "file": "src/pages/Login.jsx",
+          "line": 10,
+          "match": "w-full max-w-md rounded-2xl bg-white p-10 text-center shadow-xl shadow-indigo-500/10"
+        },
+        {
+          "file": "src/pages/NewQuote.jsx",
+          "line": 82,
+          "match": "col-span-2 rounded-xl border-2 border-dashed border-slate-200 p-6 text-center text-sm text-slate-400"
+        },
+        {
+          "file": "src/pages/Quotes.jsx",
+          "line": 50,
+          "match": "py-16 text-center text-slate-400"
+        }
+      ]
+    },
+    {
+      "id": "L11",
+      "name": "Motion on everything",
+      "dimension": "look",
+      "kind": "style",
+      "detection": "static",
+      "weight": 1,
+      "cap": 6,
+      "hits": 10,
+      "locations": [
+        {
+          "file": "src/App.jsx",
+          "line": 44,
+          "match": "transition-all"
+        },
+        {
+          "file": "src/App.jsx",
+          "line": 99,
+          "match": "animate-bounce"
+        },
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 25,
+          "match": "transition-all"
+        },
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 25,
+          "match": "hover:scale-105"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 25,
+          "match": "transition-all"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 25,
+          "match": "hover:scale-105"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 29,
+          "match": "transition-all"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 29,
+          "match": "hover:scale-105"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 65,
+          "match": "transition-all"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 65,
+          "match": "hover:scale-105"
+        }
+      ]
+    },
+    {
+      "id": "L12",
+      "name": "Washed-out text",
+      "dimension": "look",
+      "kind": "function",
+      "detection": "both",
+      "weight": 2,
+      "cap": 6,
+      "hits": 25,
+      "locations": [
+        {
+          "file": "src/App.jsx",
+          "line": 45,
+          "match": "text-slate-400"
+        },
+        {
+          "file": "src/App.jsx",
+          "line": 61,
+          "match": "text-slate-400"
+        },
+        {
+          "file": "src/pages/ComingSoon.jsx",
+          "line": 6,
+          "match": "text-slate-400"
+        },
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 21,
+          "match": "text-slate-400"
+        },
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 29,
+          "match": "text-slate-400"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 19,
+          "match": "text-slate-400"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 33,
+          "match": "text-slate-400"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 62,
+          "match": "text-slate-400"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 70,
+          "match": "text-slate-400"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 77,
+          "match": "text-slate-400"
+        }
+      ]
+    },
+    {
+      "id": "C01",
+      "name": "Generic value-proposition phrases",
+      "dimension": "copy",
+      "kind": "function",
+      "detection": "static",
+      "weight": 2,
+      "cap": 3,
+      "hits": 2,
+      "locations": [
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 17,
+          "match": "Revolucione"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 62,
+          "match": "próximo nível"
+        }
+      ]
+    },
+    {
+      "id": "C02",
+      "name": "Buttons that do not say what happens",
+      "dimension": "copy",
+      "kind": "function",
+      "detection": "static",
+      "weight": 2,
+      "cap": 3,
+      "hits": 0,
+      "locations": []
+    },
+    {
+      "id": "C03",
+      "name": "Invented social proof and numbers",
+      "dimension": "copy",
+      "kind": "function",
+      "detection": "static",
+      "weight": 2,
+      "cap": 3,
+      "hits": 3,
+      "locations": [
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 33,
+          "match": "confiam no"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 33,
+          "match": "⭐⭐⭐⭐⭐"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 33,
+          "match": "Mais de 10.000"
+        }
+      ]
+    },
+    {
+      "id": "C04",
+      "name": "Placeholder people and data left in",
+      "dimension": "copy",
+      "kind": "function",
+      "detection": "static",
+      "weight": 2,
+      "cap": 3,
+      "hits": 4,
+      "locations": [
+        {
+          "file": "src/App.jsx",
+          "line": 15,
+          "match": "João da Silva"
+        },
+        {
+          "file": "src/App.jsx",
+          "line": 17,
+          "match": "Empresa XYZ"
+        },
+        {
+          "file": "src/App.jsx",
+          "line": 64,
+          "match": "i.pravatar.cc"
+        },
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 12,
+          "match": "João da Silva"
+        }
+      ]
+    },
+    {
+      "id": "C05",
+      "name": "Code words on screen",
+      "dimension": "copy",
+      "kind": "function",
+      "detection": "both",
+      "weight": 2,
+      "cap": 3,
+      "hits": 0,
+      "locations": []
+    },
+    {
+      "id": "C06",
+      "name": "Stock greetings and filler",
+      "dimension": "copy",
+      "kind": "function",
+      "detection": "static",
+      "weight": 1,
+      "cap": 3,
+      "hits": 3,
+      "locations": [
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 20,
+          "match": "bem-vindo de volta"
+        },
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 20,
+          "match": "Olá, bem-vindo de volta! 👋"
+        },
+        {
+          "file": "src/pages/Login.jsx",
+          "line": 14,
+          "match": "Bem-vindo de volta"
+        }
+      ]
+    },
+    {
+      "id": "C07",
+      "name": "Error messages that do not help",
+      "dimension": "copy",
+      "kind": "function",
+      "detection": "static",
+      "weight": 2,
+      "cap": 3,
+      "hits": 0,
+      "locations": []
+    },
+    {
+      "id": "S01",
+      "name": "Empty states that only say no data",
+      "dimension": "states",
+      "kind": "function",
+      "detection": "both",
+      "weight": 2,
+      "cap": 3,
+      "hits": 1,
+      "locations": [
+        {
+          "file": "src/pages/Quotes.jsx",
+          "line": 50,
+          "match": "Nenhum dado"
+        }
+      ]
+    },
+    {
+      "id": "S03",
+      "name": "Errors that only reach the console",
+      "dimension": "states",
+      "kind": "function",
+      "detection": "static",
+      "weight": 2,
+      "cap": 3,
+      "hits": 0,
+      "locations": []
+    },
+    {
+      "id": "S04",
+      "name": "Success that leaves no trace",
+      "dimension": "states",
+      "kind": "function",
+      "detection": "both",
+      "weight": 1,
+      "cap": 3,
+      "hits": 1,
+      "locations": [
+        {
+          "file": "src/pages/NewQuote.jsx",
+          "line": 41,
+          "match": "Toast(\"Orçamento gerado com sucesso! 🎉\""
+        }
+      ]
+    },
+    {
+      "id": "S05",
+      "name": "Breaks on a phone",
+      "dimension": "states",
+      "kind": "function",
+      "detection": "both",
+      "weight": 2,
+      "cap": 2,
+      "hits": 3,
+      "locations": [
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 23,
+          "match": "mt-8 grid grid-cols-4 gap-6"
+        },
+        {
+          "file": "src/pages/NewQuote.jsx",
+          "line": 116,
+          "match": "grid grid-cols-12 gap-3 text-xs font-semibold uppercase text-slate-400"
+        },
+        {
+          "file": "src/pages/NewQuote.jsx",
+          "line": 125,
+          "match": "mt-3 grid grid-cols-12 gap-3"
+        }
+      ]
+    },
+    {
+      "id": "S06",
+      "name": "Focus outline removed",
+      "dimension": "states",
+      "kind": "function",
+      "detection": "static",
+      "weight": 2,
+      "cap": 3,
+      "hits": 3,
+      "locations": [
+        {
+          "file": "src/pages/Login.jsx",
+          "line": 3,
+          "match": "w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none placeholder"
+        },
+        {
+          "file": "src/pages/NewQuote.jsx",
+          "line": 8,
+          "match": "w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none pla"
+        },
+        {
+          "file": "src/pages/Quotes.jsx",
+          "line": 45,
+          "match": "w-full rounded-xl border border-slate-200 py-2.5 pl-9 pr-3 text-sm outline-none"
+        }
+      ]
+    }
+  ],
+  "staticIndex": 66,
+  "styleIndex": 99
+}

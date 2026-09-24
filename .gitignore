@@ -1,0 +1,17 @@
+node_modules/
+.DS_Store
+Thumbs.db
+*.log
+.phyll/
+!examples/**/.phyll/
+coverage/
+dist/
+.env
+.env.*
+
+# The side-by-side comparisons are committed; the single shots behind them are regenerated with them.
+examples/*/screenshots/*-before.png
+examples/*/screenshots/*-after.png
+
+# Made by packages/connector/scripts/copy-scanner.mjs before npm packs the connector.
+packages/connector/skill/

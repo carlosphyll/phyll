@@ -1,0 +1,30 @@
+import { Routes, Route } from "react-router-dom";
+import Landing from "./pages/Landing.jsx";
+import AppLayout from "./components/AppLayout.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
+import Flows from "./pages/Flows.jsx";
+import Contacts from "./pages/Contacts.jsx";
+import Settings from "./pages/Settings.jsx";
+import ComingSoon from "./pages/ComingSoon.jsx";
+import { FlowsProvider } from "./data/store.jsx";
+
+export default function App() {
+  return (
+    <FlowsProvider>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route element={<AppLayout />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/flows" element={<Flows />} />
+          <Route path="/triggers" element={<ComingSoon title="Triggers" />} />
+          <Route path="/contacts" element={<Contacts />} />
+          <Route path="/broadcasts" element={<ComingSoon title="Broadcasts" />} />
+          <Route path="/templates" element={<ComingSoon title="Templates" />} />
+          <Route path="/analytics" element={<ComingSoon title="Analytics" />} />
+          <Route path="/integrations" element={<ComingSoon title="Integrations" />} />
+          <Route path="/settings" element={<Settings />} />
+        </Route>
+      </Routes>
+    </FlowsProvider>
+  );
+}

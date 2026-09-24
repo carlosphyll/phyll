@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/carlosphyll/phyll/blob/main/skills/phyll/schema/tells.schema.json",
+  "title": "Phyll tell catalog",
+  "description": "Tells are recurring signs that an interface or flow was produced by default choices of a code generator. Each tell has metadata for scoring and optional static detectors.",
+  "type": "object",
+  "required": ["version", "tells"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "tells": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/tell" }
+    }
+  },
+  "$defs": {
+    "category": {
+      "description": "File categories a detector reads. markup: html, jsx, tsx, vue, svelte, astro, mdx. script: js, ts, mjs, cjs. style: css, scss, sass, less.",
+      "enum": ["markup", "script", "style"]
+    },
+    "categories": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/category" }
+    },
+    "tell": {
+      "type": "object",
+      "required": ["id", "name", "dimension", "severity", "weight", "cap", "detection", "summary"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^[PFALCS]\\d{2}$" },
+        "name": { "type": "string", "minLength": 3, "maxLength": 80 },
+        "dimension": { "enum": ["purpose", "flow", "actions", "look", "copy", "states"] },
+        "kind": {
+          "description": "function: the tell gets in the way of using the product, counts in the AI tell index and fix mode fixes it. style: the tell is about the generated look; it is reported as a style note, counts only in the style index, and fix mode leaves it alone unless the owner asks. Defaults to function.",
+          "enum": ["function", "style"]
+        },
+        "severity": {
+          "description": "Typical severity when the tell shows up on a core job. A finding can raise or lower it.",
+          "enum": ["blocker", "major", "minor", "polish"]
+        },
+        "weight": {
+          "description": "How much the tell counts in the AI tell index: 1 cosmetic, 2 noticeable, 3 gets in the way of the job.",
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3
+        },
+        "cap": {
+          "description": "Number of hits at which the tell counts in full.",
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        },
+        "detection": {
+          "description": "static: source patterns are enough. dynamic: needs the running app. both: source gives a hint the reviewer confirms in the app.",
+          "enum": ["static", "dynamic", "both"]
+        },
+        "summary": { "type": "string", "minLength": 10, "maxLength": 240 },
+        "detectors": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/detector" }
+        },
+        "examples": {
+          "description": "Snippets the detectors must match (hit) and must not match (miss). The test suite runs them.",
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["hit", "miss"],
+          "properties": {
+            "hit": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/example" } },
+            "miss": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/example" } }
+          }
+        }
+      }
+    },
+    "example": {
+      "description": "Source code, read as a .jsx file unless a file name with another extension is given.",
+      "oneOf": [
+        { "type": "string", "minLength": 1 },
+        {
+          "type": "object",
+          "required": ["code", "file"],
+          "additionalProperties": false,
+          "properties": {
+            "code": { "type": "string", "minLength": 1 },
+            "file": { "type": "string", "pattern": "\\.[a-z]+$" }
+          }
+        }
+      ]
+    },
+    "detector": {
+      "oneOf": [
+        { "$ref": "#/$defs/regexDetector" },
+        { "$ref": "#/$defs/classComboDetector" },
+        { "$ref": "#/$defs/phraseDetector" },
+        { "$ref": "#/$defs/metricDetector" }
+      ]
+    },
+    "skipIf": {
+      "description": "Project traits that switch the detector off. darkTheme: most backgrounds in the source are dark, so light text classes are expected.",
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "enum": ["darkTheme"] }
+    },
+    "regexDetector": {
+      "type": "object",
+      "required": ["kind", "pattern"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": { "const": "regex" },
+        "pattern": { "type": "string", "minLength": 1 },
+        "flags": { "type": "string", "pattern": "^[imsu]*$" },
+        "in": { "$ref": "#/$defs/categories" },
+        "skipIf": { "$ref": "#/$defs/skipIf" },
+        "note": { "type": "string" }
+      }
+    },
+    "classComboDetector": {
+      "type": "object",
+      "required": ["kind", "all"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": { "const": "classCombo" },
+        "all": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+        "none": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+        "in": { "$ref": "#/$defs/categories" },
+        "note": { "type": "string" }
+      }
+    },
+    "phraseDetector": {
+      "type": "object",
+      "required": ["kind", "phrases"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": { "const": "phrase" },
+        "phrases": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 2 } },
+        "in": { "$ref": "#/$defs/categories" },
+        "note": { "type": "string" }
+      }
+    },
+    "metricDetector": {
+      "type": "object",
+      "required": ["kind", "metric"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": { "const": "metric" },
+        "metric": { "enum": ["longForms", "modals"] },
+        "min": { "type": "integer", "minimum": 1 },
+        "note": { "type": "string" }
+      }
+    }
+  }
+}

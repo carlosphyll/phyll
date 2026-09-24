@@ -1,0 +1,32 @@
+name: Phyll scan
+description: Look for the defaults AI coding tools leave in an app's source, and report the AI tell index in the job summary.
+author: carlosphyll
+branding:
+  icon: eye
+  color: green
+
+inputs:
+  path:
+    description: Folder with the app's source.
+    default: "."
+  fail-above:
+    description: Fail the job when the AI tell index is above this number. Leave it empty to never fail.
+    default: ""
+
+outputs:
+  index:
+    description: The AI tell index, from 0 to 100.
+    value: ${{ steps.scan.outputs.index }}
+  style-index:
+    description: The style index, from 0 to 100.
+    value: ${{ steps.scan.outputs.style-index }}
+
+runs:
+  using: composite
+  steps:
+    - id: scan
+      shell: bash
+      env:
+        PHYLL_PATH: ${{ inputs.path }}
+        PHYLL_FAIL_ABOVE: ${{ inputs.fail-above }}
+      run: node "$GITHUB_ACTION_PATH/scripts/github-action.mjs"

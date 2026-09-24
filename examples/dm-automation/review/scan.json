@@ -1,0 +1,1444 @@
+{
+  "tool": {
+    "name": "phyll",
+    "version": "0.2.0"
+  },
+  "root": "examples/dm-automation/before",
+  "createdAt": "2026-09-23T23:17:21.841Z",
+  "files": {
+    "scanned": 17,
+    "ignored": 0
+  },
+  "structure": {
+    "framework": "react-router",
+    "theme": "light",
+    "routes": [
+      {
+        "path": "/",
+        "file": "src/App.jsx",
+        "line": 15
+      },
+      {
+        "path": "/analytics",
+        "file": "src/App.jsx",
+        "line": 23
+      },
+      {
+        "path": "/broadcasts",
+        "file": "src/App.jsx",
+        "line": 21
+      },
+      {
+        "path": "/contacts",
+        "file": "src/App.jsx",
+        "line": 20
+      },
+      {
+        "path": "/dashboard",
+        "file": "src/App.jsx",
+        "line": 17
+      },
+      {
+        "path": "/flows",
+        "file": "src/App.jsx",
+        "line": 18
+      },
+      {
+        "path": "/integrations",
+        "file": "src/App.jsx",
+        "line": 24
+      },
+      {
+        "path": "/settings",
+        "file": "src/App.jsx",
+        "line": 25
+      },
+      {
+        "path": "/templates",
+        "file": "src/App.jsx",
+        "line": 22
+      },
+      {
+        "path": "/triggers",
+        "file": "src/App.jsx",
+        "line": 19
+      }
+    ],
+    "forms": [
+      {
+        "file": "src/components/CreateFlowModal.jsx",
+        "line": 42,
+        "fields": 9,
+        "implicit": false
+      }
+    ],
+    "modals": {
+      "count": 3,
+      "locations": [
+        {
+          "file": "src/components/CreateFlowModal.jsx",
+          "line": 33,
+          "match": "<Modal"
+        },
+        {
+          "file": "src/components/Modal.jsx",
+          "line": 6,
+          "match": "role=\"dialog\""
+        },
+        {
+          "file": "src/pages/Contacts.jsx",
+          "line": 40,
+          "match": "<Modal"
+        }
+      ]
+    },
+    "notes": []
+  },
+  "tells": [
+    {
+      "id": "P02",
+      "name": "A marketing page in front of the tool",
+      "dimension": "purpose",
+      "kind": "function",
+      "detection": "both",
+      "weight": 3,
+      "cap": 1,
+      "hits": 3,
+      "locations": [
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 37,
+          "match": "function Hero"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 39,
+          "match": "id=\"hero\""
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 99,
+          "match": "<Hero"
+        }
+      ]
+    },
+    {
+      "id": "P05",
+      "name": "Features that do not exist yet",
+      "dimension": "purpose",
+      "kind": "function",
+      "detection": "both",
+      "weight": 2,
+      "cap": 3,
+      "hits": 6,
+      "locations": [
+        {
+          "file": "src/components/AppLayout.jsx",
+          "line": 59,
+          "match": "Coming soon"
+        },
+        {
+          "file": "src/pages/ComingSoon.jsx",
+          "line": 9,
+          "match": "coming soon"
+        },
+        {
+          "file": "src/pages/ComingSoon.jsx",
+          "line": 11,
+          "match": "Stay tuned"
+        },
+        {
+          "file": "src/pages/Contacts.jsx",
+          "line": 17,
+          "match": "Coming soon"
+        },
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 66,
+          "match": "Coming soon"
+        },
+        {
+          "file": "src/pages/Settings.jsx",
+          "line": 86,
+          "match": "Coming soon"
+        }
+      ]
+    },
+    {
+      "id": "F01",
+      "name": "Dead buttons and fake links",
+      "dimension": "flow",
+      "kind": "function",
+      "detection": "static",
+      "weight": 3,
+      "cap": 3,
+      "hits": 16,
+      "locations": [
+        {
+          "file": "src/components/AppLayout.jsx",
+          "line": 67,
+          "match": "href=\"#\""
+        },
+        {
+          "file": "src/pages/ComingSoon.jsx",
+          "line": 13,
+          "match": "onClick={() => {}"
+        },
+        {
+          "file": "src/pages/Contacts.jsx",
+          "line": 17,
+          "match": "onClick={() => alert("
+        },
+        {
+          "file": "src/pages/Contacts.jsx",
+          "line": 20,
+          "match": "onClick={() => console.log("
+        },
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 66,
+          "match": "onClick={() => alert("
+        },
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 69,
+          "match": "onClick={() => console.log("
+        },
+        {
+          "file": "src/pages/Flows.jsx",
+          "line": 75,
+          "match": "onClick={() => console.log("
+        },
+        {
+          "file": "src/pages/Flows.jsx",
+          "line": 78,
+          "match": "onClick={() => {}"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 61,
+          "match": "href=\"#\""
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 89,
+          "match": "href=\"#\""
+        }
+      ]
+    },
+    {
+      "id": "F02",
+      "name": "Everything asked up front",
+      "dimension": "flow",
+      "kind": "function",
+      "detection": "both",
+      "weight": 3,
+      "cap": 2,
+      "hits": 1,
+      "locations": [
+        {
+          "file": "src/components/CreateFlowModal.jsx",
+          "line": 42,
+          "match": "form with 9 fields"
+        }
+      ]
+    },
+    {
+      "id": "F03",
+      "name": "A modal for everything",
+      "dimension": "flow",
+      "kind": "function",
+      "detection": "both",
+      "weight": 2,
+      "cap": 4,
+      "hits": 3,
+      "locations": [
+        {
+          "file": "src/components/CreateFlowModal.jsx",
+          "line": 33,
+          "match": "<Modal"
+        },
+        {
+          "file": "src/components/Modal.jsx",
+          "line": 6,
+          "match": "role=\"dialog\""
+        },
+        {
+          "file": "src/pages/Contacts.jsx",
+          "line": 40,
+          "match": "<Modal"
+        }
+      ]
+    },
+    {
+      "id": "F05",
+      "name": "Sign-up or setup before the first result",
+      "dimension": "flow",
+      "kind": "function",
+      "detection": "both",
+      "weight": 3,
+      "cap": 1,
+      "hits": 2,
+      "locations": [
+        {
+          "file": "src/pages/Settings.jsx",
+          "line": 63,
+          "match": "Access Token"
+        },
+        {
+          "file": "src/pages/Settings.jsx",
+          "line": 72,
+          "match": "App Secret"
+        }
+      ]
+    },
+    {
+      "id": "F06",
+      "name": "Confirmation for safe actions",
+      "dimension": "flow",
+      "kind": "function",
+      "detection": "both",
+      "weight": 1,
+      "cap": 3,
+      "hits": 4,
+      "locations": [
+        {
+          "file": "src/components/CreateFlowModal.jsx",
+          "line": 25,
+          "match": "window.confirm("
+        },
+        {
+          "file": "src/components/CreateFlowModal.jsx",
+          "line": 25,
+          "match": "Are you sure"
+        },
+        {
+          "file": "src/pages/Settings.jsx",
+          "line": 15,
+          "match": "window.confirm("
+        },
+        {
+          "file": "src/pages/Settings.jsx",
+          "line": 15,
+          "match": "Are you sure"
+        }
+      ]
+    },
+    {
+      "id": "F07",
+      "name": "A wizard for a one-screen task",
+      "dimension": "flow",
+      "kind": "function",
+      "detection": "both",
+      "weight": 1,
+      "cap": 1,
+      "hits": 1,
+      "locations": [
+        {
+          "file": "src/pages/Settings.jsx",
+          "line": 55,
+          "match": "Step 1 of 3"
+        }
+      ]
+    },
+    {
+      "id": "F11",
+      "name": "Personal data the job does not use",
+      "dimension": "flow",
+      "kind": "function",
+      "detection": "both",
+      "weight": 3,
+      "cap": 2,
+      "hits": 0,
+      "locations": []
+    },
+    {
+      "id": "F12",
+      "name": "Asking for the same thing twice",
+      "dimension": "flow",
+      "kind": "function",
+      "detection": "static",
+      "weight": 1,
+      "cap": 2,
+      "hits": 0,
+      "locations": []
+    },
+    {
+      "id": "A03",
+      "name": "Icon-only buttons with no name",
+      "dimension": "actions",
+      "kind": "function",
+      "detection": "both",
+      "weight": 2,
+      "cap": 3,
+      "hits": 6,
+      "locations": [
+        {
+          "file": "src/components/AppLayout.jsx",
+          "line": 75,
+          "match": "<button className=\"rounded-full p-1 text-gray-400 hover:bg-gray-100\"> <Bell size={16} /> </button>"
+        },
+        {
+          "file": "src/components/CreateFlowModal.jsx",
+          "line": 36,
+          "match": "<button onClick={onClose} className=\"p-1 text-gray-400\"> <X size={14} /> </button>"
+        },
+        {
+          "file": "src/pages/Contacts.jsx",
+          "line": 33,
+          "match": "<button onClick={() => setSelected(c)} className=\"mx-auto mt-4 block rounded-lg p-1 text-gray-400\"> "
+        },
+        {
+          "file": "src/pages/Flows.jsx",
+          "line": 75,
+          "match": "<button onClick={() => console.log(\"edit\", flow.id)} className=\"rounded p-1 text-gray-400 hover:text"
+        },
+        {
+          "file": "src/pages/Flows.jsx",
+          "line": 78,
+          "match": "<button onClick={() => {}} className=\"rounded p-1 text-gray-400 hover:text-gray-900\"> <Copy size={14"
+        },
+        {
+          "file": "src/pages/Flows.jsx",
+          "line": 81,
+          "match": "<button onClick={() => deleteFlow(flow.id)} className=\"rounded p-1 text-gray-400 hover:text-gray-900"
+        }
+      ]
+    },
+    {
+      "id": "A05",
+      "name": "Actions that only appear on hover",
+      "dimension": "actions",
+      "kind": "function",
+      "detection": "static",
+      "weight": 2,
+      "cap": 3,
+      "hits": 1,
+      "locations": [
+        {
+          "file": "src/pages/Flows.jsx",
+          "line": 74,
+          "match": "flex justify-end gap-1 opacity-0 group-hover:opacity-100"
+        }
+      ]
+    },
+    {
+      "id": "A07",
+      "name": "Disabled buttons that do not say why",
+      "dimension": "actions",
+      "kind": "function",
+      "detection": "both",
+      "weight": 1,
+      "cap": 3,
+      "hits": 1,
+      "locations": [
+        {
+          "file": "src/components/CreateFlowModal.jsx",
+          "line": 92,
+          "match": "disabled={!"
+        }
+      ]
+    },
+    {
+      "id": "A09",
+      "name": "Fields named only by their placeholder",
+      "dimension": "actions",
+      "kind": "function",
+      "detection": "both",
+      "weight": 1,
+      "cap": 3,
+      "hits": 0,
+      "locations": []
+    },
+    {
+      "id": "L01",
+      "name": "Purple-to-blue gradient as the brand",
+      "dimension": "look",
+      "kind": "style",
+      "detection": "static",
+      "weight": 2,
+      "cap": 3,
+      "hits": 18,
+      "locations": [
+        {
+          "file": "src/components/AppLayout.jsx",
+          "line": 34,
+          "match": "flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-purple-600 to-blue-600 te"
+        },
+        {
+          "file": "src/components/AppLayout.jsx",
+          "line": 37,
+          "match": "bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-xl font-bold text-transparent"
+        },
+        {
+          "file": "src/components/AppLayout.jsx",
+          "line": 46,
+          "match": "flex items-center justify-between rounded-xl px-3 py-2.5 text-sm font-medium transition-all bg-gradi"
+        },
+        {
+          "file": "src/components/AppLayout.jsx",
+          "line": 64,
+          "match": "absolute bottom-6 left-6 right-6 rounded-2xl bg-gradient-to-br from-purple-600 to-blue-600 p-5 text-"
+        },
+        {
+          "file": "src/components/CreateFlowModal.jsx",
+          "line": 92,
+          "match": "rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 px-6 py-2.5 font-semibold text-white disable"
+        },
+        {
+          "file": "src/components/Toast.jsx",
+          "line": 8,
+          "match": "fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-xl bg-gradient-to-r from-purple-600 to-b"
+        },
+        {
+          "file": "src/pages/ComingSoon.jsx",
+          "line": 13,
+          "match": "mt-8 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 px-6 py-3 font-semibold text-white shad"
+        },
+        {
+          "file": "src/pages/Contacts.jsx",
+          "line": 20,
+          "match": "flex items-center gap-2 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 px-4 py-2.5 text-sm "
+        },
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 38,
+          "match": "flex-1 rounded-t-lg bg-gradient-to-t from-purple-600 to-blue-400"
+        },
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 63,
+          "match": "flex items-center gap-2 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 px-5 py-3 font-semib"
+        }
+      ]
+    },
+    {
+      "id": "L02",
+      "name": "Gradient text",
+      "dimension": "look",
+      "kind": "style",
+      "detection": "static",
+      "weight": 1,
+      "cap": 2,
+      "hits": 3,
+      "locations": [
+        {
+          "file": "src/components/AppLayout.jsx",
+          "line": 37,
+          "match": "bg-clip-text"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 46,
+          "match": "bg-clip-text"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 85,
+          "match": "bg-clip-text"
+        }
+      ]
+    },
+    {
+      "id": "L03",
+      "name": "Glass, blur and glow",
+      "dimension": "look",
+      "kind": "style",
+      "detection": "static",
+      "weight": 1,
+      "cap": 4,
+      "hits": 10,
+      "locations": [
+        {
+          "file": "src/components/AppLayout.jsx",
+          "line": 67,
+          "match": "backdrop-blur-md"
+        },
+        {
+          "file": "src/components/AppLayout.jsx",
+          "line": 34,
+          "match": "shadow-purple-500/50"
+        },
+        {
+          "file": "src/components/AppLayout.jsx",
+          "line": 49,
+          "match": "shadow-purple-500/30"
+        },
+        {
+          "file": "src/components/Modal.jsx",
+          "line": 4,
+          "match": "backdrop-blur-sm"
+        },
+        {
+          "file": "src/components/Toast.jsx",
+          "line": 8,
+          "match": "shadow-purple-500/50"
+        },
+        {
+          "file": "src/pages/Flows.jsx",
+          "line": 28,
+          "match": "shadow-purple-500/50"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 83,
+          "match": "backdrop-blur-xl"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 40,
+          "match": "blur-3xl"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 41,
+          "match": "blur-3xl"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 56,
+          "match": "shadow-purple-500/50"
+        }
+      ]
+    },
+    {
+      "id": "L04",
+      "name": "Everything is a card",
+      "dimension": "look",
+      "kind": "style",
+      "detection": "static",
+      "weight": 2,
+      "cap": 8,
+      "hits": 22,
+      "locations": [
+        {
+          "file": "src/components/AppLayout.jsx",
+          "line": 34,
+          "match": "flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-purple-600 to-blue-600 te"
+        },
+        {
+          "file": "src/components/AppLayout.jsx",
+          "line": 46,
+          "match": "flex items-center justify-between rounded-xl px-3 py-2.5 text-sm font-medium transition-all bg-gradi"
+        },
+        {
+          "file": "src/components/AppLayout.jsx",
+          "line": 64,
+          "match": "absolute bottom-6 left-6 right-6 rounded-2xl bg-gradient-to-br from-purple-600 to-blue-600 p-5 text-"
+        },
+        {
+          "file": "src/components/Modal.jsx",
+          "line": 7,
+          "match": "w-full max-w-2xl rounded-2xl bg-white p-8 shadow-2xl transition-all"
+        },
+        {
+          "file": "src/components/Toast.jsx",
+          "line": 8,
+          "match": "fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-xl bg-gradient-to-r from-purple-600 to-b"
+        },
+        {
+          "file": "src/pages/ComingSoon.jsx",
+          "line": 13,
+          "match": "mt-8 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 px-6 py-3 font-semibold text-white shad"
+        },
+        {
+          "file": "src/pages/Contacts.jsx",
+          "line": 20,
+          "match": "flex items-center gap-2 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 px-4 py-2.5 text-sm "
+        },
+        {
+          "file": "src/pages/Contacts.jsx",
+          "line": 28,
+          "match": "rounded-2xl bg-white p-6 text-center shadow-lg transition-all duration-300 hover:scale-105"
+        },
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 16,
+          "match": "rounded-2xl bg-white p-6 shadow-lg transition-all duration-300 hover:scale-105"
+        },
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 34,
+          "match": "col-span-2 rounded-2xl bg-white p-6 shadow-lg"
+        }
+      ]
+    },
+    {
+      "id": "L05",
+      "name": "The three-card feature grid",
+      "dimension": "look",
+      "kind": "style",
+      "detection": "both",
+      "weight": 1,
+      "cap": 2,
+      "hits": 2,
+      "locations": [
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 33,
+          "match": "mt-8 grid grid-cols-3 gap-6"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 105,
+          "match": "mt-16 grid gap-8 md:grid-cols-3"
+        }
+      ]
+    },
+    {
+      "id": "L06",
+      "name": "An icon in a tinted square for every item",
+      "dimension": "look",
+      "kind": "style",
+      "detection": "static",
+      "weight": 1,
+      "cap": 4,
+      "hits": 2,
+      "locations": [
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 18,
+          "match": "flex h-12 w-12 items-center justify-center rounded-xl bg-purple-100 text-purple-600"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 108,
+          "match": "mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-purple-100 text-purple-600"
+        }
+      ]
+    },
+    {
+      "id": "L07",
+      "name": "KPI cards with invented trends",
+      "dimension": "look",
+      "kind": "function",
+      "detection": "static",
+      "weight": 2,
+      "cap": 2,
+      "hits": 4,
+      "locations": [
+        {
+          "file": "src/data/mock.js",
+          "line": 2,
+          "match": "\"+12.5%\""
+        },
+        {
+          "file": "src/data/mock.js",
+          "line": 3,
+          "match": "\"+8.2%\""
+        },
+        {
+          "file": "src/data/mock.js",
+          "line": 4,
+          "match": "\"+2.1%\""
+        },
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 27,
+          "match": "from last month"
+        }
+      ]
+    },
+    {
+      "id": "L08",
+      "name": "Emoji as icons",
+      "dimension": "look",
+      "kind": "style",
+      "detection": "static",
+      "weight": 1,
+      "cap": 4,
+      "hits": 9,
+      "locations": [
+        {
+          "file": "src/components/AppLayout.jsx",
+          "line": 65,
+          "match": "✨"
+        },
+        {
+          "file": "src/components/CreateFlowModal.jsx",
+          "line": 35,
+          "match": "✨"
+        },
+        {
+          "file": "src/pages/ComingSoon.jsx",
+          "line": 9,
+          "match": "🚧"
+        },
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 9,
+          "match": "👋"
+        },
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 61,
+          "match": "⚡"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 44,
+          "match": "✨"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 73,
+          "match": "🚀"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 103,
+          "match": "💡"
+        },
+        {
+          "file": "src/pages/Settings.jsx",
+          "line": 86,
+          "match": "🚧"
+        }
+      ]
+    },
+    {
+      "id": "L09",
+      "name": "Sparkles and AI-powered badges",
+      "dimension": "look",
+      "kind": "style",
+      "detection": "static",
+      "weight": 1,
+      "cap": 3,
+      "hits": 10,
+      "locations": [
+        {
+          "file": "src/components/AppLayout.jsx",
+          "line": 12,
+          "match": "Sparkles"
+        },
+        {
+          "file": "src/components/AppLayout.jsx",
+          "line": 35,
+          "match": "Sparkles"
+        },
+        {
+          "file": "src/components/AppLayout.jsx",
+          "line": 66,
+          "match": "AI-powered"
+        },
+        {
+          "file": "src/pages/ComingSoon.jsx",
+          "line": 1,
+          "match": "Sparkles"
+        },
+        {
+          "file": "src/pages/ComingSoon.jsx",
+          "line": 7,
+          "match": "Sparkles"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 2,
+          "match": "Sparkles"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 44,
+          "match": "Sparkles"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 13,
+          "match": "AI-powered"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 44,
+          "match": "AI-powered"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 47,
+          "match": "AI-powered"
+        }
+      ]
+    },
+    {
+      "id": "L10",
+      "name": "Everything centered",
+      "dimension": "look",
+      "kind": "style",
+      "detection": "static",
+      "weight": 1,
+      "cap": 10,
+      "hits": 14,
+      "locations": [
+        {
+          "file": "src/components/AppLayout.jsx",
+          "line": 64,
+          "match": "absolute bottom-6 left-6 right-6 rounded-2xl bg-gradient-to-br from-purple-600 to-blue-600 p-5 text-"
+        },
+        {
+          "file": "src/pages/ComingSoon.jsx",
+          "line": 5,
+          "match": "flex min-h-[60vh] flex-col items-center justify-center text-center"
+        },
+        {
+          "file": "src/pages/ComingSoon.jsx",
+          "line": 10,
+          "match": "mt-2 max-w-md text-center text-gray-400"
+        },
+        {
+          "file": "src/pages/Contacts.jsx",
+          "line": 28,
+          "match": "rounded-2xl bg-white p-6 text-center shadow-lg transition-all duration-300 hover:scale-105"
+        },
+        {
+          "file": "src/pages/Flows.jsx",
+          "line": 59,
+          "match": "py-16 text-center text-gray-400"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 39,
+          "match": "relative overflow-hidden px-6 pb-24 pt-32 text-center"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 49,
+          "match": "mx-auto mt-6 max-w-2xl text-center text-xl text-gray-400"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 102,
+          "match": "mx-auto max-w-6xl text-center"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 104,
+          "match": "mt-4 text-center text-lg text-gray-400"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 107,
+          "match": "rounded-2xl border border-gray-100 bg-white p-8 text-center shadow-lg transition-all duration-300 ho"
+        }
+      ]
+    },
+    {
+      "id": "L11",
+      "name": "Motion on everything",
+      "dimension": "look",
+      "kind": "style",
+      "detection": "static",
+      "weight": 1,
+      "cap": 6,
+      "hits": 18,
+      "locations": [
+        {
+          "file": "src/components/AppLayout.jsx",
+          "line": 47,
+          "match": "transition-all"
+        },
+        {
+          "file": "src/components/Modal.jsx",
+          "line": 7,
+          "match": "transition-all"
+        },
+        {
+          "file": "src/components/Toast.jsx",
+          "line": 8,
+          "match": "animate-bounce"
+        },
+        {
+          "file": "src/pages/Contacts.jsx",
+          "line": 28,
+          "match": "transition-all"
+        },
+        {
+          "file": "src/pages/Contacts.jsx",
+          "line": 28,
+          "match": "hover:scale-105"
+        },
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 16,
+          "match": "transition-all"
+        },
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 16,
+          "match": "hover:scale-105"
+        },
+        {
+          "file": "src/pages/Flows.jsx",
+          "line": 28,
+          "match": "transition-all"
+        },
+        {
+          "file": "src/pages/Flows.jsx",
+          "line": 28,
+          "match": "hover:scale-105"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 56,
+          "match": "transition-all"
+        }
+      ]
+    },
+    {
+      "id": "L12",
+      "name": "Washed-out text",
+      "dimension": "look",
+      "kind": "function",
+      "detection": "both",
+      "weight": 2,
+      "cap": 6,
+      "hits": 32,
+      "locations": [
+        {
+          "file": "src/components/AppLayout.jsx",
+          "line": 75,
+          "match": "text-gray-400"
+        },
+        {
+          "file": "src/components/CreateFlowModal.jsx",
+          "line": 36,
+          "match": "text-gray-400"
+        },
+        {
+          "file": "src/components/CreateFlowModal.jsx",
+          "line": 40,
+          "match": "text-gray-400"
+        },
+        {
+          "file": "src/pages/ComingSoon.jsx",
+          "line": 10,
+          "match": "text-gray-400"
+        },
+        {
+          "file": "src/pages/Contacts.jsx",
+          "line": 14,
+          "match": "text-gray-400"
+        },
+        {
+          "file": "src/pages/Contacts.jsx",
+          "line": 31,
+          "match": "text-gray-400"
+        },
+        {
+          "file": "src/pages/Contacts.jsx",
+          "line": 33,
+          "match": "text-gray-400"
+        },
+        {
+          "file": "src/pages/Contacts.jsx",
+          "line": 45,
+          "match": "text-gray-400"
+        },
+        {
+          "file": "src/pages/Contacts.jsx",
+          "line": 47,
+          "match": "text-gray-400"
+        },
+        {
+          "file": "src/pages/Contacts.jsx",
+          "line": 49,
+          "match": "text-gray-400"
+        }
+      ]
+    },
+    {
+      "id": "C01",
+      "name": "Generic value-proposition phrases",
+      "dimension": "copy",
+      "kind": "function",
+      "detection": "static",
+      "weight": 2,
+      "cap": 3,
+      "hits": 13,
+      "locations": [
+        {
+          "file": "src/components/AppLayout.jsx",
+          "line": 66,
+          "match": "Unlock the power"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 8,
+          "match": "cutting-edge"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 13,
+          "match": "seamlessly"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 18,
+          "match": "Unlock the power"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 18,
+          "match": "like never before"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 24,
+          "match": "game-changer"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 30,
+          "match": "effortless"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 47,
+          "match": "Supercharge"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 50,
+          "match": "Streamline your"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 50,
+          "match": "seamlessly"
+        }
+      ]
+    },
+    {
+      "id": "C02",
+      "name": "Buttons that do not say what happens",
+      "dimension": "copy",
+      "kind": "function",
+      "detection": "static",
+      "weight": 2,
+      "cap": 3,
+      "hits": 5,
+      "locations": [
+        {
+          "file": "src/components/AppLayout.jsx",
+          "line": 67,
+          "match": "> Learn More <"
+        },
+        {
+          "file": "src/components/CreateFlowModal.jsx",
+          "line": 92,
+          "match": "> Submit <"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 57,
+          "match": "> Get Started <"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 63,
+          "match": "> Learn More <"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 92,
+          "match": "> Get Started <"
+        }
+      ]
+    },
+    {
+      "id": "C03",
+      "name": "Invented social proof and numbers",
+      "dimension": "copy",
+      "kind": "function",
+      "detection": "static",
+      "weight": 2,
+      "cap": 3,
+      "hits": 6,
+      "locations": [
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 26,
+          "match": "CEO at"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 32,
+          "match": "Founder at"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 73,
+          "match": "Trusted by"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 121,
+          "match": "Loved by"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 147,
+          "match": "Join thousands"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 73,
+          "match": "10,000+"
+        }
+      ]
+    },
+    {
+      "id": "C04",
+      "name": "Placeholder people and data left in",
+      "dimension": "copy",
+      "kind": "function",
+      "detection": "static",
+      "weight": 2,
+      "cap": 3,
+      "hits": 15,
+      "locations": [
+        {
+          "file": "src/data/mock.js",
+          "line": 9,
+          "match": "John Doe"
+        },
+        {
+          "file": "src/data/mock.js",
+          "line": 9,
+          "match": "i.pravatar.cc"
+        },
+        {
+          "file": "src/data/mock.js",
+          "line": 10,
+          "match": "Jane Smith"
+        },
+        {
+          "file": "src/data/mock.js",
+          "line": 10,
+          "match": "i.pravatar.cc"
+        },
+        {
+          "file": "src/data/mock.js",
+          "line": 11,
+          "match": "i.pravatar.cc"
+        },
+        {
+          "file": "src/data/mock.js",
+          "line": 12,
+          "match": "i.pravatar.cc"
+        },
+        {
+          "file": "src/data/mock.js",
+          "line": 16,
+          "match": "John Doe"
+        },
+        {
+          "file": "src/data/mock.js",
+          "line": 16,
+          "match": "i.pravatar.cc"
+        },
+        {
+          "file": "src/data/mock.js",
+          "line": 17,
+          "match": "Jane Smith"
+        },
+        {
+          "file": "src/data/mock.js",
+          "line": 17,
+          "match": "i.pravatar.cc"
+        }
+      ]
+    },
+    {
+      "id": "C05",
+      "name": "Code words on screen",
+      "dimension": "copy",
+      "kind": "function",
+      "detection": "both",
+      "weight": 2,
+      "cap": 3,
+      "hits": 3,
+      "locations": [
+        {
+          "file": "src/components/CreateFlowModal.jsx",
+          "line": 68,
+          "match": ">page_1784140<"
+        },
+        {
+          "file": "src/pages/Contacts.jsx",
+          "line": 45,
+          "match": ">contact_status<"
+        },
+        {
+          "file": "src/pages/Contacts.jsx",
+          "line": 49,
+          "match": ">last_seen<"
+        }
+      ]
+    },
+    {
+      "id": "C06",
+      "name": "Stock greetings and filler",
+      "dimension": "copy",
+      "kind": "function",
+      "detection": "static",
+      "weight": 1,
+      "cap": 3,
+      "hits": 2,
+      "locations": [
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 9,
+          "match": "Welcome back"
+        },
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 10,
+          "match": "Here's what's happening"
+        }
+      ]
+    },
+    {
+      "id": "C07",
+      "name": "Error messages that do not help",
+      "dimension": "copy",
+      "kind": "function",
+      "detection": "static",
+      "weight": 2,
+      "cap": 3,
+      "hits": 1,
+      "locations": [
+        {
+          "file": "src/pages/Settings.jsx",
+          "line": 25,
+          "match": "Invalid input"
+        }
+      ]
+    },
+    {
+      "id": "S01",
+      "name": "Empty states that only say no data",
+      "dimension": "states",
+      "kind": "function",
+      "detection": "both",
+      "weight": 2,
+      "cap": 3,
+      "hits": 1,
+      "locations": [
+        {
+          "file": "src/pages/Flows.jsx",
+          "line": 60,
+          "match": "No data"
+        }
+      ]
+    },
+    {
+      "id": "S03",
+      "name": "Errors that only reach the console",
+      "dimension": "states",
+      "kind": "function",
+      "detection": "static",
+      "weight": 2,
+      "cap": 3,
+      "hits": 1,
+      "locations": [
+        {
+          "file": "src/pages/Settings.jsx",
+          "line": 19,
+          "match": "catch (e) { console.error(e); }"
+        }
+      ]
+    },
+    {
+      "id": "S04",
+      "name": "Success that leaves no trace",
+      "dimension": "states",
+      "kind": "function",
+      "detection": "both",
+      "weight": 1,
+      "cap": 3,
+      "hits": 2,
+      "locations": [
+        {
+          "file": "src/pages/Flows.jsx",
+          "line": 14,
+          "match": "Toast(\"Success!\""
+        },
+        {
+          "file": "src/pages/Settings.jsx",
+          "line": 18,
+          "match": "Toast(\"Success!\""
+        }
+      ]
+    },
+    {
+      "id": "S05",
+      "name": "Breaks on a phone",
+      "dimension": "states",
+      "kind": "function",
+      "detection": "both",
+      "weight": 2,
+      "cap": 2,
+      "hits": 5,
+      "locations": [
+        {
+          "file": "src/components/AppLayout.jsx",
+          "line": 73,
+          "match": "min-w-[900px]"
+        },
+        {
+          "file": "src/pages/Contacts.jsx",
+          "line": 26,
+          "match": "mt-8 grid grid-cols-4 gap-6"
+        },
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 12,
+          "match": "mt-8 grid grid-cols-4 gap-6"
+        },
+        {
+          "file": "src/pages/Dashboard.jsx",
+          "line": 33,
+          "match": "mt-8 grid grid-cols-3 gap-6"
+        },
+        {
+          "file": "src/pages/Flows.jsx",
+          "line": 45,
+          "match": "min-w-[900px]"
+        }
+      ]
+    },
+    {
+      "id": "S06",
+      "name": "Focus outline removed",
+      "dimension": "states",
+      "kind": "function",
+      "detection": "static",
+      "weight": 2,
+      "cap": 3,
+      "hits": 4,
+      "locations": [
+        {
+          "file": "src/components/CreateFlowModal.jsx",
+          "line": 30,
+          "match": "w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm outline-none"
+        },
+        {
+          "file": "src/index.css",
+          "line": 8,
+          "match": "outline: none;"
+        },
+        {
+          "file": "src/pages/Flows.jsx",
+          "line": 41,
+          "match": "w-full rounded-xl border border-gray-200 py-2 pl-9 pr-3 text-sm outline-none"
+        },
+        {
+          "file": "src/pages/Settings.jsx",
+          "line": 29,
+          "match": "mt-1 w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm outline-none"
+        }
+      ]
+    }
+  ],
+  "staticIndex": 75,
+  "styleIndex": 96
+}

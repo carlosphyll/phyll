@@ -1,0 +1,1641 @@
+{
+  "version": "0.4.0",
+  "tells": [
+    {
+      "id": "P01",
+      "name": "The first screen does not say what this is or what to do",
+      "dimension": "purpose",
+      "kind": "function",
+      "severity": "blocker",
+      "weight": 3,
+      "cap": 1,
+      "detection": "dynamic",
+      "summary": "A new user cannot tell, within five seconds, what the product does for them and what to do first."
+    },
+    {
+      "id": "P02",
+      "name": "A marketing page in front of the tool",
+      "dimension": "purpose",
+      "kind": "function",
+      "severity": "major",
+      "weight": 3,
+      "cap": 1,
+      "detection": "both",
+      "summary": "People who come to use the product land on a sales page and have to find a Get Started button to reach their work.",
+      "detectors": [
+        {
+          "kind": "regex",
+          "pattern": "\\b(?:function|const)\\s+Hero(?:Section)?\\b|<Hero(?:Section)?\\b|\\bid\\s*=\\s*[\"']hero[\"']",
+          "in": [
+            "markup",
+            "script"
+          ],
+          "note": "A hero section in the app's own routes. Legitimate on a marketing site, so the reviewer confirms."
+        }
+      ],
+      "examples": {
+        "hit": [
+          "export function Hero() {\n  return <section id=\"hero\">Automate your DMs</section>;\n}"
+        ],
+        "miss": [
+          "export function HeroImage() { return <img alt=\"\" /> }"
+        ]
+      }
+    },
+    {
+      "id": "P03",
+      "name": "A dashboard of zeros or invented numbers for a new user",
+      "dimension": "purpose",
+      "kind": "function",
+      "severity": "major",
+      "weight": 3,
+      "cap": 1,
+      "detection": "dynamic",
+      "summary": "The first screen after sign-up is a grid of charts and counters that are empty or made up, instead of the first step of the job."
+    },
+    {
+      "id": "P04",
+      "name": "Navigation that mirrors the database",
+      "dimension": "purpose",
+      "kind": "function",
+      "severity": "major",
+      "weight": 2,
+      "cap": 1,
+      "detection": "dynamic",
+      "summary": "The menu lists tables (Contacts, Triggers, Tags, Sequences) as equal peers instead of the jobs people come to do."
+    },
+    {
+      "id": "P05",
+      "name": "Features that do not exist yet",
+      "dimension": "purpose",
+      "kind": "function",
+      "severity": "minor",
+      "weight": 2,
+      "cap": 3,
+      "detection": "both",
+      "summary": "Menu items, cards or buttons that lead to Coming soon, a disabled page or nothing at all.",
+      "detectors": [
+        {
+          "kind": "phrase",
+          "phrases": [
+            "coming soon",
+            "em breve",
+            "disponível em breve",
+            "under construction",
+            "em construção",
+            "not implemented yet",
+            "not yet implemented",
+            "work in progress",
+            "stay tuned",
+            "próximamente"
+          ]
+        }
+      ],
+      "examples": {
+        "hit": [
+          "<span className=\"badge\">Coming soon</span>",
+          "<p>Em breve</p>"
+        ],
+        "miss": [
+          "<p>Coming back to this soon</p>"
+        ]
+      }
+    },
+    {
+      "id": "P06",
+      "name": "More features than the job needs",
+      "dimension": "purpose",
+      "kind": "function",
+      "severity": "major",
+      "weight": 2,
+      "cap": 1,
+      "detection": "dynamic",
+      "summary": "Dashboards, reports, templates and settings built around a product whose users come for one or two jobs. Every extra screen is one more place to get lost."
+    },
+    {
+      "id": "F01",
+      "name": "Dead buttons and fake links",
+      "dimension": "flow",
+      "kind": "function",
+      "severity": "major",
+      "weight": 3,
+      "cap": 3,
+      "detection": "static",
+      "summary": "Buttons and links that look real but go nowhere: href=\"#\", empty handlers, or handlers that only log or alert.",
+      "detectors": [
+        {
+          "kind": "regex",
+          "pattern": "href\\s*=\\s*\\{?\\s*[\"'](?:#|javascript:void\\(0\\);?)[\"']",
+          "in": [
+            "markup",
+            "script"
+          ]
+        },
+        {
+          "kind": "regex",
+          "pattern": "(?:onClick|onSubmit)\\s*=\\s*\\{\\s*\\(\\s*\\w*\\s*\\)\\s*=>\\s*(?:\\{\\s*(?://[^\\n]*\\s*)?\\}|\\{?\\s*(?:console\\.log|alert)\\(|(?:null|undefined|void 0)\\s*\\})",
+          "in": [
+            "markup",
+            "script"
+          ]
+        }
+      ],
+      "examples": {
+        "hit": [
+          "<a href=\"#\">Pricing</a>",
+          "<button onClick={() => {}}>Save</button>",
+          "<button onClick={() => console.log('clicked')}>Export</button>",
+          "<button onClick={() => alert('Coming soon!')}>Import</button>"
+        ],
+        "miss": [
+          "<a href=\"#pricing\">Pricing</a>",
+          "<button onClick={() => save(flow)}>Save</button>"
+        ]
+      }
+    },
+    {
+      "id": "F02",
+      "name": "Everything asked up front",
+      "dimension": "flow",
+      "kind": "function",
+      "severity": "major",
+      "weight": 3,
+      "cap": 2,
+      "detection": "both",
+      "summary": "A single form asks for every field the data model has before the person gets anything back.",
+      "detectors": [
+        {
+          "kind": "metric",
+          "metric": "longForms",
+          "min": 7,
+          "note": "Forms with seven or more fields."
+        }
+      ]
+    },
+    {
+      "id": "F03",
+      "name": "A modal for everything",
+      "dimension": "flow",
+      "kind": "function",
+      "severity": "minor",
+      "weight": 2,
+      "cap": 4,
+      "detection": "both",
+      "summary": "Creating, editing and viewing all happen in dialogs that cover the context, lose work on a stray click and cannot be linked to.",
+      "detectors": [
+        {
+          "kind": "metric",
+          "metric": "modals"
+        }
+      ]
+    },
+    {
+      "id": "F04",
+      "name": "A dead end after success",
+      "dimension": "flow",
+      "kind": "function",
+      "severity": "major",
+      "weight": 2,
+      "cap": 1,
+      "detection": "dynamic",
+      "summary": "After finishing a task the person gets a toast and an unchanged screen, with no sign of what happened or what to do next."
+    },
+    {
+      "id": "F05",
+      "name": "Sign-up or setup before the first result",
+      "dimension": "flow",
+      "kind": "function",
+      "severity": "major",
+      "weight": 3,
+      "cap": 1,
+      "detection": "both",
+      "summary": "An account, API keys, integrations or a long onboarding come before the person sees the product do anything.",
+      "detectors": [
+        {
+          "kind": "phrase",
+          "phrases": [
+            "create an account to",
+            "create your account to",
+            "sign up to continue",
+            "log in to continue",
+            "sign in to continue",
+            "crie sua conta para",
+            "crie uma conta para",
+            "faça login para",
+            "entre para continuar",
+            "cadastre-se para",
+            "entre na sua conta para",
+            "acesse sua conta para",
+            "log in to your account to",
+            "sign in to your account to",
+            "access token",
+            "api key",
+            "app secret",
+            "token de acesso",
+            "chave de api"
+          ],
+          "note": "Sign-up walls, login walls and credential fields. Legitimate in developer tools, so the reviewer confirms."
+        }
+      ],
+      "examples": {
+        "hit": [
+          "<h2>Crie sua conta para agendar</h2>",
+          "<label>Instagram Graph API Access Token</label>",
+          "<p>Entre na sua conta para continuar</p>"
+        ],
+        "miss": [
+          "<button>Entrar</button>"
+        ]
+      }
+    },
+    {
+      "id": "F06",
+      "name": "Confirmation for safe actions",
+      "dimension": "flow",
+      "kind": "function",
+      "severity": "minor",
+      "weight": 1,
+      "cap": 3,
+      "detection": "both",
+      "summary": "Are you sure? dialogs on actions that are easy to undo, which trains people to click through the one that matters.",
+      "detectors": [
+        {
+          "kind": "regex",
+          "pattern": "\\b(?:window\\.)?confirm\\(",
+          "in": [
+            "markup",
+            "script"
+          ]
+        },
+        {
+          "kind": "phrase",
+          "phrases": [
+            "are you sure",
+            "tem certeza"
+          ]
+        }
+      ],
+      "examples": {
+        "hit": [
+          "if (window.confirm('Save changes?')) save();",
+          "<p>Are you sure you want to continue?</p>"
+        ],
+        "miss": [
+          "<button onClick={onConfirm}>Confirm order</button>"
+        ]
+      }
+    },
+    {
+      "id": "F07",
+      "name": "A wizard for a one-screen task",
+      "dimension": "flow",
+      "kind": "function",
+      "severity": "polish",
+      "weight": 1,
+      "cap": 1,
+      "detection": "both",
+      "summary": "A stepper splits a short task into several screens with one or two fields each.",
+      "detectors": [
+        {
+          "kind": "regex",
+          "pattern": "(?:step|passo|etapa)\\s*(?:\\$?\\{[^}]*\\}|\\d+)\\s*(?:of|de)\\s*(?:\\$?\\{[^}]*\\}|\\d+)",
+          "flags": "i",
+          "in": [
+            "markup",
+            "script"
+          ]
+        },
+        {
+          "kind": "regex",
+          "pattern": "\\bset(?:Current|Active)?Step\\s*\\(\\s*(?:\\(?\\s*\\w+\\s*\\)?\\s*=>\\s*)?\\w+\\s*\\+\\s*1\\s*\\)",
+          "in": [
+            "markup",
+            "script"
+          ],
+          "note": "A next-step handler. Catches wizards that show their steps as numbered circles."
+        }
+      ],
+      "examples": {
+        "hit": [
+          "<p>Step 1 of 4</p>",
+          "<p>Passo {step} de {total}</p>",
+          "const label = `Step ${index + 1} of ${steps.length}`;",
+          "<button onClick={() => setStep(step + 1)}>Continuar</button>",
+          "const next = () => setCurrentStep((s) => s + 1);"
+        ],
+        "miss": [
+          "<h2>Passo a passo de instalação</h2>",
+          "const [stepCount, setStepCount] = useState(3);"
+        ]
+      }
+    },
+    {
+      "id": "F08",
+      "name": "Losing your place",
+      "dimension": "flow",
+      "kind": "function",
+      "severity": "minor",
+      "weight": 2,
+      "cap": 1,
+      "detection": "dynamic",
+      "summary": "Opening or editing an item resets filters, scroll or the selected tab, and there is no clear way back."
+    },
+    {
+      "id": "F09",
+      "name": "Options the system could decide",
+      "dimension": "flow",
+      "kind": "function",
+      "severity": "major",
+      "weight": 2,
+      "cap": 1,
+      "detection": "dynamic",
+      "summary": "The form asks for things with an obvious answer: a status, a delay, a currency, the only account or the only branch. Each one is a decision the person should not have to make."
+    },
+    {
+      "id": "F10",
+      "name": "Two ways to do the same thing",
+      "dimension": "flow",
+      "kind": "function",
+      "severity": "minor",
+      "weight": 1,
+      "cap": 1,
+      "detection": "dynamic",
+      "summary": "Different buttons or pages start the same job with different labels or different results, so people cannot tell which one is the real path."
+    },
+    {
+      "id": "F11",
+      "name": "Personal data the job does not use",
+      "dimension": "flow",
+      "kind": "function",
+      "severity": "major",
+      "weight": 3,
+      "cap": 2,
+      "detection": "both",
+      "summary": "Forms ask for a tax id, a birth date, a gender or how the person found you when the task does not use any of it.",
+      "detectors": [
+        {
+          "kind": "phrase",
+          "phrases": [
+            "data de nascimento",
+            "date of birth",
+            "birth date",
+            "birthdate",
+            "gênero",
+            "gender",
+            "sexo",
+            "como nos conheceu",
+            "como conheceu",
+            "how did you hear",
+            "nome da mãe",
+            "estado civil",
+            "marital status",
+            "inscrição estadual"
+          ],
+          "note": "A tax id can be legitimate for invoices, so the reviewer confirms the task needs it."
+        },
+        {
+          "kind": "regex",
+          "pattern": "(?<![\\w-])CPF(?![\\w-])(?!\\s+na\\s+nota)",
+          "in": [
+            "markup",
+            "script"
+          ],
+          "note": "The Brazilian tax id as the person reads it, in a label or placeholder. An optional CPF for the receipt (CPF na nota) is a normal request, so it does not count."
+        }
+      ],
+      "examples": {
+        "hit": [
+          "<label>CPF</label>",
+          "<label>Data de nascimento</label>",
+          "<option>Como nos conheceu?</option>",
+          "<input placeholder=\"CPF *\" />"
+        ],
+        "miss": [
+          "<label>WhatsApp</label>",
+          "<label htmlFor=\"cpf\">CPF na nota (opcional)</label>",
+          "const [cpf, setCpf] = useState(\"\");"
+        ]
+      }
+    },
+    {
+      "id": "F12",
+      "name": "Asking for the same thing twice",
+      "dimension": "flow",
+      "kind": "function",
+      "severity": "minor",
+      "weight": 1,
+      "cap": 2,
+      "detection": "static",
+      "summary": "Confirm your e-mail, confirm your password: fields that make people type again what they just typed.",
+      "detectors": [
+        {
+          "kind": "phrase",
+          "phrases": [
+            "confirm password",
+            "confirm your password",
+            "confirm email",
+            "confirm e-mail",
+            "confirm your email",
+            "repeat password",
+            "re-enter",
+            "confirmar senha",
+            "confirme sua senha",
+            "confirmar e-mail",
+            "confirmar email",
+            "confirme seu e-mail",
+            "repita a senha"
+          ]
+        }
+      ],
+      "examples": {
+        "hit": [
+          "<label>Confirmar senha</label>",
+          "<label>Confirm password</label>"
+        ],
+        "miss": [
+          "<label>Senha</label>"
+        ]
+      }
+    },
+    {
+      "id": "A01",
+      "name": "The main action far from what it acts on",
+      "dimension": "actions",
+      "kind": "function",
+      "severity": "major",
+      "weight": 2,
+      "cap": 1,
+      "detection": "dynamic",
+      "summary": "The button that starts the job sits in a far corner of the header while the content it acts on is somewhere else."
+    },
+    {
+      "id": "A02",
+      "name": "Several primary buttons competing",
+      "dimension": "actions",
+      "kind": "function",
+      "severity": "minor",
+      "weight": 2,
+      "cap": 1,
+      "detection": "dynamic",
+      "summary": "More than one filled, colored or gradient button in view, so nothing tells the person which step comes next."
+    },
+    {
+      "id": "A03",
+      "name": "Icon-only buttons with no name",
+      "dimension": "actions",
+      "kind": "function",
+      "severity": "major",
+      "weight": 2,
+      "cap": 3,
+      "detection": "both",
+      "summary": "Buttons that show only an icon, with no visible label, tooltip or accessible name.",
+      "detectors": [
+        {
+          "kind": "regex",
+          "pattern": "<(?:button|Button|IconButton)\\b(?!(?:[^>{}]|\\{(?:[^{}]|\\{[^{}]*\\})*\\})*\\b(?:aria-label|aria-labelledby|title)\\s*=)(?:[^>{}]|\\{(?:[^{}]|\\{[^{}]*\\})*\\})*>\\s*<[A-Z][\\w.]*\\b(?:[^>{}]|\\{(?:[^{}]|\\{[^{}]*\\})*\\})*/>\\s*</(?:button|Button|IconButton)>",
+          "in": [
+            "markup",
+            "script"
+          ],
+          "note": "A button whose only child is an icon component and that has no aria-label or title."
+        }
+      ],
+      "examples": {
+        "hit": [
+          "<button onClick={() => remove(flow.id)} className=\"p-1\"><Trash2 size={16} /></button>"
+        ],
+        "miss": [
+          "<button aria-label=\"Delete automation\" onClick={() => remove(flow.id)}><Trash2 size={16} /></button>",
+          "<button onClick={save}><Save size={16} /> Save</button>"
+        ]
+      }
+    },
+    {
+      "id": "A04",
+      "name": "Destructive actions that look safe",
+      "dimension": "actions",
+      "kind": "function",
+      "severity": "major",
+      "weight": 2,
+      "cap": 1,
+      "detection": "dynamic",
+      "summary": "Delete sits next to Edit with the same style and no undo, so a slip destroys work."
+    },
+    {
+      "id": "A05",
+      "name": "Actions that only appear on hover",
+      "dimension": "actions",
+      "kind": "function",
+      "severity": "minor",
+      "weight": 2,
+      "cap": 3,
+      "detection": "static",
+      "summary": "Row or card actions stay invisible until the pointer hovers, so touch users never see them and others have to hunt.",
+      "detectors": [
+        {
+          "kind": "classCombo",
+          "all": [
+            "^opacity-0$",
+            "^group-hover:opacity-100$"
+          ]
+        },
+        {
+          "kind": "classCombo",
+          "all": [
+            "^invisible$",
+            "^group-hover:visible$"
+          ]
+        }
+      ],
+      "examples": {
+        "hit": [
+          "<div className=\"opacity-0 group-hover:opacity-100 flex gap-2\">"
+        ],
+        "miss": [
+          "<div className=\"flex gap-2 md:opacity-0 md:group-hover:opacity-100\">"
+        ]
+      }
+    },
+    {
+      "id": "A06",
+      "name": "The same action in a different place on each screen",
+      "dimension": "actions",
+      "kind": "function",
+      "severity": "minor",
+      "weight": 1,
+      "cap": 1,
+      "detection": "dynamic",
+      "summary": "Save is at the top on one screen and at the bottom on the next, and the main button swaps sides between dialogs."
+    },
+    {
+      "id": "A07",
+      "name": "Disabled buttons that do not say why",
+      "dimension": "actions",
+      "kind": "function",
+      "severity": "minor",
+      "weight": 1,
+      "cap": 3,
+      "detection": "both",
+      "summary": "The submit button stays grey until something is right, and nothing says what is missing.",
+      "detectors": [
+        {
+          "kind": "regex",
+          "pattern": "(?::disabled|\\bdisabled)\\s*=\\s*[\"{]\\s*!",
+          "in": [
+            "markup",
+            "script"
+          ]
+        }
+      ],
+      "examples": {
+        "hit": [
+          "<Button disabled={!isValid}>Save</Button>"
+        ],
+        "miss": [
+          "<Button disabled={saving}>Saving</Button>"
+        ]
+      }
+    },
+    {
+      "id": "A08",
+      "name": "Targets too small to tap",
+      "dimension": "actions",
+      "kind": "function",
+      "severity": "minor",
+      "weight": 1,
+      "cap": 1,
+      "detection": "dynamic",
+      "summary": "Buttons and links smaller than 24 by 24 pixels, often tiny icon buttons packed together."
+    },
+    {
+      "id": "A09",
+      "name": "Fields named only by their placeholder",
+      "dimension": "actions",
+      "kind": "function",
+      "severity": "minor",
+      "weight": 1,
+      "cap": 3,
+      "detection": "both",
+      "summary": "The only name a field has is the gray hint inside it, and it disappears as soon as the person starts typing.",
+      "detectors": [
+        {
+          "kind": "regex",
+          "pattern": "(?<!</label>\\s*)<(?:input|Input|textarea|Textarea)\\b(?![^>]*\\b(?:id|aria-label|aria-labelledby)\\s*=)[^>]*\\bplaceholder\\s*=",
+          "in": [
+            "markup"
+          ],
+          "note": "A field with a placeholder, no id or aria-label, and no label right before it. A label wrapped around the field is fine, so the reviewer confirms."
+        }
+      ],
+      "examples": {
+        "hit": [
+          "<input className=\"w-full\" type=\"email\" placeholder=\"Seu e-mail\" />",
+          "<textarea placeholder=\"Observações\" rows={4} />"
+        ],
+        "miss": [
+          "<input id=\"email\" placeholder=\"voce@exemplo.com\" />",
+          "<input aria-label=\"Buscar\" placeholder=\"Buscar\" />",
+          "<label>Telefone</label>\n<input placeholder=\"(11) 99999-9999\" />"
+        ]
+      }
+    },
+    {
+      "id": "L01",
+      "name": "Purple-to-blue gradient as the brand",
+      "dimension": "look",
+      "kind": "style",
+      "severity": "minor",
+      "weight": 2,
+      "cap": 3,
+      "detection": "static",
+      "summary": "A purple, violet or indigo gradient carries the brand instead of a color chosen for the audience.",
+      "detectors": [
+        {
+          "kind": "classCombo",
+          "all": [
+            "(^|:)from-(?:purple|violet|indigo|fuchsia)-\\d{2,3}(?:/\\d+)?$",
+            "(^|:)to-(?:blue|indigo|pink|purple|violet|cyan|sky|fuchsia)-\\d{2,3}(?:/\\d+)?$"
+          ]
+        },
+        {
+          "kind": "regex",
+          "pattern": "linear-gradient\\([^)]*(?:#(?:6366f1|8b5cf6|a855f7|7c3aed|4f46e5|9333ea|6d28d9|c026d3|d946ef|667eea|764ba2))",
+          "flags": "i",
+          "in": [
+            "style",
+            "markup"
+          ]
+        }
+      ],
+      "examples": {
+        "hit": [
+          "<div className=\"bg-gradient-to-r from-purple-600 to-blue-600 text-white\">",
+          {
+            "code": ".hero { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }",
+            "file": "styles.css"
+          }
+        ],
+        "miss": [
+          "<div className=\"bg-gradient-to-r from-emerald-500 to-teal-500\">",
+          "<div className=\"bg-violet-600\">"
+        ]
+      }
+    },
+    {
+      "id": "L02",
+      "name": "Gradient text",
+      "dimension": "look",
+      "kind": "style",
+      "severity": "polish",
+      "weight": 1,
+      "cap": 2,
+      "detection": "static",
+      "summary": "Headlines painted with a gradient clipped to the text.",
+      "detectors": [
+        {
+          "kind": "regex",
+          "pattern": "\\bbg-clip-text\\b|(?:-webkit-)?background-clip\\s*:\\s*text",
+          "flags": "i"
+        }
+      ],
+      "examples": {
+        "hit": [
+          "<h1 className=\"bg-gradient-to-r from-pink-500 to-orange-500 bg-clip-text text-transparent\">",
+          {
+            "code": "h1 { -webkit-background-clip: text; }",
+            "file": "styles.css"
+          }
+        ],
+        "miss": [
+          "<h1 className=\"text-gray-900 font-semibold\">"
+        ]
+      }
+    },
+    {
+      "id": "L03",
+      "name": "Glass, blur and glow",
+      "dimension": "look",
+      "kind": "style",
+      "severity": "polish",
+      "weight": 1,
+      "cap": 4,
+      "detection": "static",
+      "summary": "Frosted translucent panels, blurred color blobs behind the content and colored glows under buttons.",
+      "detectors": [
+        {
+          "kind": "regex",
+          "pattern": "\\bbackdrop-blur(?:-[a-z0-9]+)?\\b|backdrop-filter\\s*:\\s*blur"
+        },
+        {
+          "kind": "regex",
+          "pattern": "\\bblur-(?:2xl|3xl)\\b"
+        },
+        {
+          "kind": "regex",
+          "pattern": "\\bshadow-(?:purple|violet|indigo|blue|pink|fuchsia|cyan|sky)-\\d{3}(?:/\\d+)?\\b"
+        }
+      ],
+      "examples": {
+        "hit": [
+          "<div className=\"backdrop-blur-md bg-white/10 border border-white/20\">",
+          "<div className=\"absolute -top-20 h-72 w-72 rounded-full bg-purple-500/30 blur-3xl\" />",
+          "<button className=\"shadow-lg shadow-purple-500/50\">"
+        ],
+        "miss": [
+          "<img className=\"blur-sm\" />",
+          "<div className=\"shadow-lg\">"
+        ]
+      }
+    },
+    {
+      "id": "L04",
+      "name": "Everything is a card",
+      "dimension": "look",
+      "kind": "style",
+      "severity": "minor",
+      "weight": 2,
+      "cap": 8,
+      "detection": "static",
+      "summary": "Every block gets rounded corners, a border and a shadow, often cards inside cards, so nothing stands out.",
+      "detectors": [
+        {
+          "kind": "classCombo",
+          "all": [
+            "(^|:)rounded-(?:xl|2xl|3xl)$",
+            "(^|:)shadow(?:-(?:sm|md|lg|xl|2xl))?$"
+          ]
+        }
+      ],
+      "examples": {
+        "hit": [
+          "<div className=\"rounded-2xl border bg-white p-6 shadow-lg\">"
+        ],
+        "miss": [
+          "<div className=\"rounded-lg border p-6\">",
+          "<div className=\"rounded-2xl border\">"
+        ]
+      }
+    },
+    {
+      "id": "L05",
+      "name": "The three-card feature grid",
+      "dimension": "look",
+      "kind": "style",
+      "severity": "polish",
+      "weight": 1,
+      "cap": 2,
+      "detection": "both",
+      "summary": "Three equal cards with an icon, a two-word title and a vague sentence each.",
+      "detectors": [
+        {
+          "kind": "classCombo",
+          "all": [
+            "(^|:)grid-cols-3$"
+          ]
+        }
+      ],
+      "examples": {
+        "hit": [
+          "<div className=\"grid gap-8 md:grid-cols-3\">"
+        ],
+        "miss": [
+          "<div className=\"grid gap-8 md:grid-cols-2\">"
+        ]
+      }
+    },
+    {
+      "id": "L06",
+      "name": "An icon in a tinted square for every item",
+      "dimension": "look",
+      "kind": "style",
+      "severity": "polish",
+      "weight": 1,
+      "cap": 4,
+      "detection": "static",
+      "summary": "Each item gets a decorative icon inside a pale colored square or circle, whether or not the icon helps anyone recognize it.",
+      "detectors": [
+        {
+          "kind": "classCombo",
+          "all": [
+            "(^|:)bg-[a-z]+-(?:50|100|500/10|500/15|500/20|600/10)$",
+            "(^|:)rounded-(?:md|lg|xl|2xl|full)$",
+            "(^|:)(?:p-(?:1\\.5|2|2\\.5|3)|size-(?:8|9|10|11|12|14)|[wh]-(?:8|9|10|11|12|14))$",
+            "(^|:)text-[a-z]+-(?:400|500|600|700)$"
+          ]
+        }
+      ],
+      "examples": {
+        "hit": [
+          "<div className=\"flex h-12 w-12 items-center justify-center rounded-full bg-purple-100 text-purple-600\"><Zap /></div>"
+        ],
+        "miss": [
+          "<div className=\"flex h-12 w-12 items-center justify-center rounded-full bg-gray-900 text-white\">JD</div>"
+        ]
+      }
+    },
+    {
+      "id": "L07",
+      "name": "KPI cards with invented trends",
+      "dimension": "look",
+      "kind": "function",
+      "severity": "minor",
+      "weight": 2,
+      "cap": 2,
+      "detection": "static",
+      "summary": "A row of stat cards with round numbers and green +12.5% from last month badges that no data backs.",
+      "detectors": [
+        {
+          "kind": "phrase",
+          "phrases": [
+            "from last month",
+            "vs last month",
+            "vs. last month",
+            "from last week",
+            "since last month",
+            "since last week",
+            "em relação ao mês passado",
+            "vs. mês anterior",
+            "vs mês anterior",
+            "desde o mês passado",
+            "do mês passado"
+          ]
+        },
+        {
+          "kind": "regex",
+          "pattern": "[\"'>]\\s*[+-]\\d{1,3}(?:[.,]\\d{1,2})?%\\s*[\"'<]"
+        }
+      ],
+      "examples": {
+        "hit": [
+          "<span className=\"text-green-600\">+12.5% from last month</span>",
+          "const stats = [{ label: 'Revenue', change: '+12.5%' }];"
+        ],
+        "miss": [
+          "<span>Open rate 42%</span>"
+        ]
+      }
+    },
+    {
+      "id": "L08",
+      "name": "Emoji as icons",
+      "dimension": "look",
+      "kind": "style",
+      "severity": "polish",
+      "weight": 1,
+      "cap": 4,
+      "detection": "static",
+      "summary": "Emoji stand in for icons, bullets and headings in the interface.",
+      "detectors": [
+        {
+          "kind": "regex",
+          "pattern": "(?![\\u00a9\\u00ae\\u2122])\\p{Extended_Pictographic}",
+          "in": [
+            "markup",
+            "script"
+          ]
+        }
+      ],
+      "examples": {
+        "hit": [
+          "<h2>🚀 Launch faster</h2>"
+        ],
+        "miss": [
+          "<footer>© 2026 Replyloop</footer>"
+        ]
+      }
+    },
+    {
+      "id": "L09",
+      "name": "Sparkles and AI-powered badges",
+      "dimension": "look",
+      "kind": "style",
+      "severity": "polish",
+      "weight": 1,
+      "cap": 3,
+      "detection": "static",
+      "summary": "Sparkle icons and AI-powered labels decorate features that the person does not need to know are AI.",
+      "detectors": [
+        {
+          "kind": "regex",
+          "pattern": "\\bSparkles?\\b",
+          "in": [
+            "markup",
+            "script"
+          ]
+        },
+        {
+          "kind": "phrase",
+          "phrases": [
+            "ai-powered",
+            "ai powered",
+            "powered by ai",
+            "powered by artificial intelligence",
+            "movido a ia",
+            "movido por ia",
+            "impulsionado por ia",
+            "com inteligência artificial",
+            "com o poder da ia"
+          ]
+        }
+      ],
+      "examples": {
+        "hit": [
+          "import { Sparkles } from \"lucide-react\";",
+          "<span>AI-powered replies</span>"
+        ],
+        "miss": [
+          "<span>Automatic replies</span>"
+        ]
+      }
+    },
+    {
+      "id": "L10",
+      "name": "Everything centered",
+      "dimension": "look",
+      "kind": "style",
+      "severity": "polish",
+      "weight": 1,
+      "cap": 10,
+      "detection": "static",
+      "summary": "Headings, paragraphs and whole pages are centered, which makes long text slow to read and pages look like slides.",
+      "detectors": [
+        {
+          "kind": "classCombo",
+          "all": [
+            "(^|:)text-center$"
+          ]
+        }
+      ],
+      "examples": {
+        "hit": [
+          "<p className=\"mx-auto max-w-2xl text-center text-lg\">"
+        ],
+        "miss": [
+          "<p className=\"max-w-prose text-left\">"
+        ]
+      }
+    },
+    {
+      "id": "L11",
+      "name": "Motion on everything",
+      "dimension": "look",
+      "kind": "style",
+      "severity": "polish",
+      "weight": 1,
+      "cap": 6,
+      "detection": "static",
+      "summary": "Cards scale on hover, everything transitions every property, and badges bounce, so movement stops meaning anything.",
+      "detectors": [
+        {
+          "kind": "regex",
+          "pattern": "\\bhover:(?:scale-\\d+|-translate-y-(?:\\d+|px)|-?rotate-\\d+)\\b|\\btransition-all\\b|\\banimate-(?:bounce|ping)\\b"
+        }
+      ],
+      "examples": {
+        "hit": [
+          "<div className=\"transition-all duration-300 hover:scale-105\">",
+          "<span className=\"animate-bounce\">New</span>"
+        ],
+        "miss": [
+          "<div className=\"transition-colors hover:bg-gray-50\">",
+          "<div className=\"h-4 animate-pulse bg-gray-200\" />"
+        ]
+      }
+    },
+    {
+      "id": "L12",
+      "name": "Washed-out text",
+      "dimension": "look",
+      "kind": "function",
+      "severity": "minor",
+      "weight": 2,
+      "cap": 6,
+      "detection": "both",
+      "summary": "Light gray text on white, or white text on a bright brand color, for things people need to read, below the WCAG contrast minimum.",
+      "detectors": [
+        {
+          "kind": "regex",
+          "pattern": "\\btext-(?:gray|slate|zinc|neutral|stone)-(?:300|400)\\b",
+          "skipIf": [
+            "darkTheme"
+          ],
+          "note": "Light gray on white fails contrast. On a dark theme the same classes are fine, so the detector is skipped there and the probe measures the real ratio."
+        },
+        {
+          "kind": "classCombo",
+          "all": [
+            "^text-white$",
+            "^(?:bg|from)-(?:yellow|amber|lime|green|emerald|teal|cyan|sky|orange)-(?:300|400|500)$"
+          ],
+          "note": "White text on a bright color, or on a gradient that starts with one. These shades stay below 3 to 1 with white, so the probe confirms the ratio."
+        }
+      ],
+      "examples": {
+        "hit": [
+          "<p className=\"text-sm text-gray-400\">Last edited 2 days ago</p>",
+          "<button className=\"rounded-xl bg-gradient-to-r from-orange-500 to-red-600 px-5 py-2.5 font-bold text-white\">Adicionar</button>",
+          "<span className=\"rounded-full bg-emerald-500 px-2 text-white\">Ativo</span>"
+        ],
+        "miss": [
+          "<p className=\"text-sm text-gray-600\">Last edited 2 days ago</p>",
+          "<button className=\"bg-gradient-to-r from-orange-700 to-red-600 text-white\">Adicionar</button>",
+          "<button className=\"bg-amber-400 text-zinc-950\">Agendar</button>"
+        ]
+      }
+    },
+    {
+      "id": "C01",
+      "name": "Generic value-proposition phrases",
+      "dimension": "copy",
+      "kind": "function",
+      "severity": "minor",
+      "weight": 2,
+      "cap": 3,
+      "detection": "static",
+      "summary": "Stock marketing lines that fit any product and say nothing about this one.",
+      "detectors": [
+        {
+          "kind": "phrase",
+          "phrases": [
+            "streamline your",
+            "supercharge",
+            "unlock the power",
+            "unleash",
+            "to the next level",
+            "revolutionize",
+            "revolutionise",
+            "game-changer",
+            "game changer",
+            "cutting-edge",
+            "seamless",
+            "seamlessly",
+            "effortless",
+            "effortlessly",
+            "all-in-one",
+            "all in one place",
+            "elevate your",
+            "empower your",
+            "harness the power",
+            "boost your productivity",
+            "work smarter",
+            "built for modern teams",
+            "like never before",
+            "transform your",
+            "potencialize",
+            "revolucione",
+            "eleve seu",
+            "eleve sua",
+            "transforme seu",
+            "transforme sua",
+            "próximo nível",
+            "de forma simples e rápida",
+            "tudo em um só lugar",
+            "tudo em um único lugar",
+            "sem complicação",
+            "solução completa",
+            "experiência única",
+            "turbine",
+            "alavanque"
+          ]
+        }
+      ],
+      "examples": {
+        "hit": [
+          "<h1>Supercharge your Instagram with automation</h1>",
+          "<p>Tudo em um só lugar</p>"
+        ],
+        "miss": [
+          "<h1>Reply to every comment with a DM</h1>"
+        ]
+      }
+    },
+    {
+      "id": "C02",
+      "name": "Buttons that do not say what happens",
+      "dimension": "copy",
+      "kind": "function",
+      "severity": "minor",
+      "weight": 2,
+      "cap": 3,
+      "detection": "static",
+      "summary": "Get Started, Learn More, Submit and Click here, where the label should name the result.",
+      "detectors": [
+        {
+          "kind": "regex",
+          "pattern": ">\\s*(?:get started|learn more|read more|submit|click here|proceed|começar|comece agora|saiba mais|leia mais|clique aqui|prosseguir)\\s*<",
+          "flags": "i",
+          "in": [
+            "markup",
+            "script"
+          ]
+        },
+        {
+          "kind": "regex",
+          "pattern": "\\bvalue\\s*=\\s*[\"'](?:submit|enviar)[\"']",
+          "flags": "i",
+          "in": [
+            "markup",
+            "script"
+          ]
+        }
+      ],
+      "examples": {
+        "hit": [
+          "<Button>Get Started</Button>",
+          "<button type=\"submit\">Submit</button>",
+          "<a href=\"/sobre\">Saiba mais</a>"
+        ],
+        "miss": [
+          "<Button>Create automation</Button>"
+        ]
+      }
+    },
+    {
+      "id": "C03",
+      "name": "Invented social proof and numbers",
+      "dimension": "copy",
+      "kind": "function",
+      "severity": "major",
+      "weight": 2,
+      "cap": 3,
+      "detection": "static",
+      "summary": "Trusted by 10,000+ teams, 4.9 out of 5, and testimonials from a CEO at a company that does not exist.",
+      "detectors": [
+        {
+          "kind": "phrase",
+          "phrases": [
+            "trusted by",
+            "loved by",
+            "join thousands",
+            "join over",
+            "rated 4.9",
+            "4.9/5",
+            "4.9 out of 5",
+            "99.9% uptime",
+            "confiado por",
+            "milhares de clientes",
+            "ceo at",
+            "founder at",
+            "ceo da",
+            "fundador da",
+            "confiam no",
+            "confiam na",
+            "clientes satisfeitos"
+          ]
+        },
+        {
+          "kind": "regex",
+          "pattern": "(?<![\\w.])\\d{1,3}(?:[,.]\\d{3})+\\s*\\+|(?<![\\w.])\\d+(?:\\.\\d+)?\\s*[kKmM]\\s*\\+",
+          "in": [
+            "markup",
+            "script"
+          ]
+        },
+        {
+          "kind": "regex",
+          "pattern": "\\b(?:mais de|over|more than)\\s+\\d{1,3}(?:[.,]\\d{3})+|\\b(?:mais de|over|more than)\\s+\\d+(?:[.,]\\d+)?\\s*(?:mil|milhões|thousand|million)\\b|⭐{3,}|⭐\\s*\\d[.,]\\d",
+          "flags": "i",
+          "in": [
+            "markup",
+            "script"
+          ],
+          "note": "Counts of customers or orders and star ratings with no source."
+        }
+      ],
+      "examples": {
+        "hit": [
+          "<p>Trusted by 10,000+ creators</p>",
+          "<p>Join 50k+ marketers</p>",
+          "<p>Sarah Johnson, CEO at TechCorp</p>",
+          "<p>⭐ 4.9 · Mais de 50 mil pedidos entregues</p>",
+          "<p>⭐⭐⭐⭐⭐ Mais de 10.000 empresas confiam no Orça Já</p>"
+        ],
+        "miss": [
+          "<p>Version 1.2.3</p>",
+          "<p>Used every day by our support team</p>",
+          "<p>Entrega em até 40 minutos</p>",
+          "<p>Mais de 3 itens? Frete grátis.</p>"
+        ]
+      }
+    },
+    {
+      "id": "C04",
+      "name": "Placeholder people and data left in",
+      "dimension": "copy",
+      "kind": "function",
+      "severity": "major",
+      "weight": 2,
+      "cap": 3,
+      "detection": "static",
+      "summary": "Lorem ipsum, John Doe, Acme and random avatar services in screens real people will see.",
+      "detectors": [
+        {
+          "kind": "regex",
+          "pattern": "lorem ipsum|\\bjohn doe\\b|\\bjane (?:doe|smith)\\b|\\bacme\\b|i\\.pravatar\\.cc|randomuser\\.me|source\\.unsplash\\.com|images\\.unsplash\\.com/photo-|placehold\\.co|via\\.placeholder\\.com|placekitten\\.com|picsum\\.photos|\\bfulano(?: de tal)?\\b|example@(?:example|email)\\.com|123 main st|\\bjo[aã]o da silva\\b|\\bjos[eé] da silva\\b|\\bmaria da silva\\b|\\bempresa (?:xyz|abc|exemplo)\\b|\\b(?:ciclano|sicrano|beltrano)\\b|teste@teste\\.com",
+          "flags": "i",
+          "in": [
+            "markup",
+            "script"
+          ]
+        }
+      ],
+      "examples": {
+        "hit": [
+          "<img src=\"https://i.pravatar.cc/150?img=3\" alt=\"\" />",
+          "<p>John Doe</p>",
+          "<p>Lorem ipsum dolor sit amet</p>",
+          "<td>João da Silva</td>",
+          "const quotes = [{ client: \"Empresa XYZ Ltda\" }];"
+        ],
+        "miss": [
+          "<p>Jonathan Dorsey</p>",
+          "<p>João Silveira</p>"
+        ]
+      }
+    },
+    {
+      "id": "C05",
+      "name": "Code words on screen",
+      "dimension": "copy",
+      "kind": "function",
+      "severity": "major",
+      "weight": 2,
+      "cap": 3,
+      "detection": "both",
+      "summary": "Enum values, table names and snake_case keys shown to people as labels: COMMENT_KEYWORD, flow_status, Entity.",
+      "detectors": [
+        {
+          "kind": "regex",
+          "pattern": ">\\s*\\{?\\s*[\"']?(?:[A-Z][A-Z0-9]*(?:_[A-Z0-9]+)+|[a-z]+(?:_[a-z0-9]+)+)[\"']?\\s*\\}?\\s*<",
+          "in": [
+            "markup",
+            "script"
+          ]
+        },
+        {
+          "kind": "regex",
+          "pattern": "\\b(?:label|title|name)\\s*:\\s*[\"'][A-Z][A-Z0-9]*(?:_[A-Z0-9]+)+[\"']",
+          "in": [
+            "markup",
+            "script"
+          ]
+        }
+      ],
+      "examples": {
+        "hit": [
+          "<option>COMMENT_KEYWORD</option>",
+          "<td>{\"flow_status\"}</td>",
+          "const options = [{ label: \"STORY_REPLY\", value: 2 }];"
+        ],
+        "miss": [
+          "<option>Comment keyword</option>"
+        ]
+      }
+    },
+    {
+      "id": "C06",
+      "name": "Stock greetings and filler",
+      "dimension": "copy",
+      "kind": "function",
+      "severity": "polish",
+      "weight": 1,
+      "cap": 3,
+      "detection": "static",
+      "summary": "Welcome back, John! Here's what's happening today. Oops! Lines that take space and tell nothing.",
+      "detectors": [
+        {
+          "kind": "phrase",
+          "phrases": [
+            "welcome back",
+            "here's what's happening",
+            "here is what's happening",
+            "let's get started",
+            "let's get you started",
+            "oops",
+            "whoops",
+            "uh oh",
+            "hang tight",
+            "sit back and relax",
+            "bem-vindo de volta",
+            "bem-vinda de volta",
+            "vamos começar",
+            "aqui está o que está acontecendo",
+            "ops!"
+          ]
+        },
+        {
+          "kind": "regex",
+          "pattern": "(?<![\\w])(?:Olá|Oi|Hello|Hi|Hey)[,!\\s][^<\\n]{0,40}👋",
+          "in": [
+            "markup",
+            "script"
+          ],
+          "note": "A hello and a waving hand in front of the person's name."
+        }
+      ],
+      "examples": {
+        "hit": [
+          "<h1>Welcome back, John!</h1>",
+          "<p>Here's what's happening with your account today.</p>",
+          "<h1>Olá, {user.nome}! 👋</h1>"
+        ],
+        "miss": [
+          "<h1>Your automations</h1>",
+          "<p>Olá! Seu pedido saiu para entrega.</p>"
+        ]
+      }
+    },
+    {
+      "id": "C07",
+      "name": "Error messages that do not help",
+      "dimension": "copy",
+      "kind": "function",
+      "severity": "major",
+      "weight": 2,
+      "cap": 3,
+      "detection": "static",
+      "summary": "Something went wrong, An error occurred, Invalid input: messages that do not say what failed or what to do.",
+      "detectors": [
+        {
+          "kind": "phrase",
+          "phrases": [
+            "something went wrong",
+            "an error occurred",
+            "an error has occurred",
+            "unknown error",
+            "invalid input",
+            "please try again later",
+            "ocorreu um erro",
+            "algo deu errado",
+            "erro desconhecido",
+            "entrada inválida",
+            "tente novamente mais tarde"
+          ]
+        }
+      ],
+      "examples": {
+        "hit": [
+          "toast.error(\"Something went wrong\");",
+          "<p>Ocorreu um erro</p>"
+        ],
+        "miss": [
+          "<p>We could not reach Instagram. Check your connection and try again.</p>"
+        ]
+      }
+    },
+    {
+      "id": "C08",
+      "name": "Two languages in one interface",
+      "dimension": "copy",
+      "kind": "function",
+      "severity": "minor",
+      "weight": 2,
+      "cap": 1,
+      "detection": "dynamic",
+      "summary": "A product for Portuguese speakers with Dashboard, Settings and Submit left in English, or the reverse."
+    },
+    {
+      "id": "S01",
+      "name": "Empty states that only say no data",
+      "dimension": "states",
+      "kind": "function",
+      "severity": "major",
+      "weight": 2,
+      "cap": 3,
+      "detection": "both",
+      "summary": "An empty list or chart says No data and stops, at the exact moment a new user needs to be told what to do.",
+      "detectors": [
+        {
+          "kind": "phrase",
+          "phrases": [
+            "no data",
+            "no data available",
+            "no items",
+            "no items found",
+            "no results",
+            "no records",
+            "no records found",
+            "nothing here",
+            "nothing to show",
+            "no entries",
+            "sem dados",
+            "nenhum dado",
+            "nenhum item",
+            "nenhum registro",
+            "nenhum resultado",
+            "nada por aqui"
+          ]
+        }
+      ],
+      "examples": {
+        "hit": [
+          "<td colSpan={5}>No data</td>",
+          "<p>Nenhum registro encontrado</p>"
+        ],
+        "miss": [
+          "<p>No automations yet. Create one to reply to comments automatically.</p>"
+        ]
+      }
+    },
+    {
+      "id": "S02",
+      "name": "No loading feedback",
+      "dimension": "states",
+      "kind": "function",
+      "severity": "minor",
+      "weight": 1,
+      "cap": 1,
+      "detection": "dynamic",
+      "summary": "Buttons stay clickable and screens stay blank while work happens, or a full-page spinner hides everything for a small update."
+    },
+    {
+      "id": "S03",
+      "name": "Errors that only reach the console",
+      "dimension": "states",
+      "kind": "function",
+      "severity": "major",
+      "weight": 2,
+      "cap": 3,
+      "detection": "static",
+      "summary": "Failures are caught and logged, and the person sees nothing, so they wait or repeat the action.",
+      "detectors": [
+        {
+          "kind": "regex",
+          "pattern": "catch\\s*(?:\\(\\s*\\w*\\s*\\))?\\s*\\{\\s*console\\.(?:error|log|warn)\\([^;{}]*\\);?\\s*\\}|\\.catch\\(\\s*(?:\\(?\\s*\\w*\\s*\\)?\\s*=>\\s*)?console\\.(?:error|log|warn)\\b",
+          "in": [
+            "markup",
+            "script"
+          ]
+        }
+      ],
+      "examples": {
+        "hit": [
+          "try { await save(); } catch (e) { console.error(e); }",
+          "fetch(url).catch(console.error);",
+          "load().catch((err) => console.log(err));"
+        ],
+        "miss": [
+          "try { await save(); } catch (e) { setError(e.message); console.error(e); }"
+        ]
+      }
+    },
+    {
+      "id": "S04",
+      "name": "Success that leaves no trace",
+      "dimension": "states",
+      "kind": "function",
+      "severity": "minor",
+      "weight": 1,
+      "cap": 3,
+      "detection": "both",
+      "summary": "A generic Success! toast is the only sign that something happened, with no link to the result and no undo.",
+      "detectors": [
+        {
+          "kind": "regex",
+          "pattern": "(?:toast(?:\\.success)?|alert|message\\.success|notify)\\(\\s*[\"'`](?:success|done|saved|sucesso|salvo|feito|pronto)!?[\"'`]",
+          "flags": "i",
+          "in": [
+            "markup",
+            "script"
+          ]
+        },
+        {
+          "kind": "regex",
+          "pattern": "\\btitle\\s*:\\s*[\"'`](?:success|done|saved|sucesso|salvo)!?[\"'`]|>\\s*(?:success|sucesso)!\\s*<",
+          "flags": "i",
+          "in": [
+            "markup",
+            "script"
+          ]
+        },
+        {
+          "kind": "regex",
+          "pattern": "(?:toast|alert|notify|message\\.success)\\w*\\(\\s*[\"'`][^\"'`]{0,60}?(?:com sucesso|successfully)[^\"'`]{0,8}[\"'`]",
+          "flags": "i",
+          "in": [
+            "markup",
+            "script"
+          ],
+          "note": "A generic success message. The reviewer checks whether the screen also shows the result."
+        }
+      ],
+      "examples": {
+        "hit": [
+          "toast.success(\"Saved!\");",
+          "toast({ title: \"Success!\" });",
+          "<p>Success!</p>",
+          "showToast(\"Pedido realizado com sucesso! 🎉\");",
+          "toast(\"Flow created successfully!\");"
+        ],
+        "miss": [
+          "toast.success(\"Automation is live. It replies to LINK on any post.\");"
+        ]
+      }
+    },
+    {
+      "id": "S05",
+      "name": "Breaks on a phone",
+      "dimension": "states",
+      "kind": "function",
+      "severity": "major",
+      "weight": 2,
+      "cap": 2,
+      "detection": "both",
+      "summary": "Fixed widths and grids that never collapse push content off screen at phone sizes.",
+      "detectors": [
+        {
+          "kind": "regex",
+          "pattern": "(?<![\\w:-])(?:min-)?w-\\[(?:[5-9]\\d{2}|\\d{4,})px\\]",
+          "in": [
+            "markup",
+            "script"
+          ]
+        },
+        {
+          "kind": "regex",
+          "pattern": "(?<![\\w-])(?:min-)?width\\s*:\\s*(?:[5-9]\\d{2}|\\d{4,})px",
+          "in": [
+            "style"
+          ]
+        },
+        {
+          "kind": "classCombo",
+          "all": [
+            "^grid-cols-(?:3|4|5|6|8|12)$"
+          ],
+          "none": [
+            "^(?:sm|md|lg|xl|2xl):grid-cols-\\d+$",
+            "^gap-(?:0|px|0\\.5|1|1\\.5|2)$"
+          ],
+          "note": "Grids of three or more columns with room between items and no responsive variant. Compact grids such as calendars and option chips fit on a phone."
+        }
+      ],
+      "examples": {
+        "hit": [
+          "<table className=\"min-w-[900px] text-sm\">",
+          {
+            "code": ".table { width: 1100px; }",
+            "file": "styles.css"
+          },
+          "<div className=\"grid grid-cols-4 gap-4\">",
+          "<div className=\"grid grid-cols-3 gap-8\">"
+        ],
+        "miss": [
+          "<div className=\"mx-auto max-w-[900px]\">",
+          "<div className=\"grid grid-cols-1 gap-4 md:grid-cols-4\">",
+          {
+            "code": ".page { max-width: 1200px; }",
+            "file": "styles.css"
+          },
+          "<div className=\"grid grid-cols-7 gap-2\">",
+          "<div className=\"grid grid-cols-4 gap-2\">",
+          "<div className=\"grid grid-cols-3 gap-2\">",
+          "<div className=\"grid gap-8 sm:grid-cols-2 md:grid-cols-3\">"
+        ]
+      }
+    },
+    {
+      "id": "S06",
+      "name": "Focus outline removed",
+      "dimension": "states",
+      "kind": "function",
+      "severity": "minor",
+      "weight": 2,
+      "cap": 3,
+      "detection": "static",
+      "summary": "outline-none without a replacement focus style, so keyboard users cannot see where they are.",
+      "detectors": [
+        {
+          "kind": "classCombo",
+          "all": [
+            "(^|:)outline-none$"
+          ],
+          "none": [
+            "(^|:)focus(?:-visible|-within)?:(?:ring|outline|border|shadow)",
+            "^ring"
+          ]
+        },
+        {
+          "kind": "regex",
+          "pattern": "outline\\s*:\\s*(?:none|0)\\s*(?:!important)?\\s*[;}]",
+          "in": [
+            "style"
+          ]
+        }
+      ],
+      "examples": {
+        "hit": [
+          "<input className=\"w-full border px-3 py-2 outline-none\" />",
+          {
+            "code": "button:focus { outline: none; }",
+            "file": "styles.css"
+          }
+        ],
+        "miss": [
+          "<input className=\"w-full border outline-none focus-visible:ring-2 focus-visible:ring-emerald-600\" />",
+          "<input className=\"focus:outline-none focus:ring-2\" />"
+        ]
+      }
+    }
+  ]
+}

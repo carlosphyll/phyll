@@ -1,0 +1,301 @@
+{
+  "probe": "0.1.0",
+  "url": "http://localhost:5173/settings",
+  "title": "Replyloop AI | Instagram Automation Platform",
+  "lang": "en",
+  "viewport": {
+    "width": 1156,
+    "height": 2502
+  },
+  "page": {
+    "height": 2502,
+    "horizontalOverflow": true
+  },
+  "firstView": {
+    "text": "Replyloop AI | Dashboard | Flows | Triggers | Coming soon | Contacts | Broadcasts | Coming soon | Templates | Coming soon | Analytics | Coming soon | Integrations | Coming soon | Settings | Upgrade to Pro ✨ | Unlock the power of unlimited AI-powered flows | Learn More | Settings | Manage your account settings and preferences | Instagram | General | Billing | Team | Connect Instagram | Step 1 of 3: enter your Meta developer credentials | Save Changes | Instagram Graph API Access Token | Webhook Verify Token | App Secret | Facebook Page ID | Need help? | Read the docs",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Settings",
+        "inFirstView": true
+      },
+      {
+        "level": 2,
+        "text": "Connect Instagram",
+        "inFirstView": true
+      }
+    ]
+  },
+  "actions": {
+    "total": 17,
+    "primaryInFirstView": 2,
+    "iconOnlyUnnamed": 1,
+    "smallTargets": 0,
+    "deadLinks": 2,
+    "hiddenUntilHover": 0,
+    "items": [
+      {
+        "tag": "a",
+        "text": "Dashboard",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 100,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Flows",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 144,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Triggers Coming soon",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 188,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Contacts",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 232,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Broadcasts Coming soon",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 276,
+          "w": 207,
+          "h": 56
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Templates Coming soon",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 336,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Analytics Coming soon",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 380,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Integrations Coming soon",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 424,
+          "w": 207,
+          "h": 56
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Settings",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 484,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Learn More",
+        "deadLink": true,
+        "inFirstView": true,
+        "box": {
+          "x": 44,
+          "y": 2426,
+          "w": 167,
+          "h": 32
+        }
+      },
+      {
+        "tag": "button",
+        "text": "",
+        "iconOnly": true,
+        "inFirstView": true,
+        "box": {
+          "x": 1100,
+          "y": 32,
+          "w": 24,
+          "h": 24
+        }
+      },
+      {
+        "tag": "button",
+        "text": "Instagram",
+        "primary": true,
+        "inFirstView": true,
+        "box": {
+          "x": 288,
+          "y": 176,
+          "w": 96,
+          "h": 36
+        }
+      },
+      {
+        "tag": "button",
+        "text": "General",
+        "inFirstView": true,
+        "box": {
+          "x": 392,
+          "y": 176,
+          "w": 81,
+          "h": 36
+        }
+      },
+      {
+        "tag": "button",
+        "text": "Billing",
+        "inFirstView": true,
+        "box": {
+          "x": 481,
+          "y": 176,
+          "w": 72,
+          "h": 36
+        }
+      },
+      {
+        "tag": "button",
+        "text": "Team",
+        "inFirstView": true,
+        "box": {
+          "x": 561,
+          "y": 176,
+          "w": 66,
+          "h": 36
+        }
+      },
+      {
+        "tag": "button",
+        "text": "Save Changes",
+        "primary": true,
+        "inFirstView": true,
+        "box": {
+          "x": 785,
+          "y": 268,
+          "w": 143,
+          "h": 36
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Read the docs",
+        "deadLink": true,
+        "inFirstView": true,
+        "box": {
+          "x": 384,
+          "y": 696,
+          "w": 75,
+          "h": 16
+        }
+      }
+    ]
+  },
+  "contrast": {
+    "checked": 33,
+    "failures": 5,
+    "skipped": 0,
+    "samples": [
+      {
+        "text": "Unlock the power of unlimited AI-powered flows",
+        "ratio": 3.26,
+        "required": 4.5,
+        "color": "#e0b7fd",
+        "background": "#9810fa",
+        "fontSize": 12
+      },
+      {
+        "text": "Learn More",
+        "ratio": 3.74,
+        "required": 4.5,
+        "color": "#ffffff",
+        "background": "#447dfd",
+        "fontSize": 12
+      },
+      {
+        "text": "Manage your account settings and preferences",
+        "ratio": 2.49,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#f9fafb",
+        "fontSize": 16
+      },
+      {
+        "text": "Step 1 of 3: enter your Meta developer credentials",
+        "ratio": 2.6,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#ffffff",
+        "fontSize": 14
+      },
+      {
+        "text": "Need help?",
+        "ratio": 2.6,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#ffffff",
+        "fontSize": 12
+      }
+    ]
+  },
+  "forms": [],
+  "looseFields": 4,
+  "decor": {
+    "gradients": 6,
+    "gradientText": 1,
+    "blur": 1,
+    "roundedShadow": 3,
+    "emoji": 1
+  },
+  "typography": {
+    "families": [
+      "Inter"
+    ],
+    "sizes": [
+      30,
+      20,
+      16,
+      14,
+      12
+    ]
+  },
+  "dialogsOpen": 0,
+  "errors": []
+}

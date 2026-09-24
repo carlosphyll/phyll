@@ -1,0 +1,122 @@
+{
+  "tool": {
+    "name": "phyll",
+    "version": "0.2.0"
+  },
+  "createdAt": "2026-09-23T20:05:37.682Z",
+  "baseUrl": "http://localhost:5173",
+  "viewports": [
+    "desktop",
+    "mobile"
+  ],
+  "pages": [
+    {
+      "route": "/",
+      "viewport": "desktop",
+      "url": "http://localhost:5173/",
+      "status": 200,
+      "screenshot": "screens/desktop-home.png",
+      "probe": "probe/desktop-home.json",
+      "consoleErrors": []
+    },
+    {
+      "route": "/dashboard",
+      "viewport": "desktop",
+      "url": "http://localhost:5173/dashboard",
+      "status": 200,
+      "screenshot": "screens/desktop-dashboard.png",
+      "probe": "probe/desktop-dashboard.json",
+      "consoleErrors": []
+    },
+    {
+      "route": "/flows",
+      "viewport": "desktop",
+      "url": "http://localhost:5173/flows",
+      "status": 200,
+      "screenshot": "screens/desktop-flows.png",
+      "probe": "probe/desktop-flows.json",
+      "consoleErrors": []
+    },
+    {
+      "route": "/contacts",
+      "viewport": "desktop",
+      "url": "http://localhost:5173/contacts",
+      "status": 200,
+      "screenshot": "screens/desktop-contacts.png",
+      "probe": "probe/desktop-contacts.json",
+      "consoleErrors": []
+    },
+    {
+      "route": "/settings",
+      "viewport": "desktop",
+      "url": "http://localhost:5173/settings",
+      "status": 200,
+      "screenshot": "screens/desktop-settings.png",
+      "probe": "probe/desktop-settings.json",
+      "consoleErrors": []
+    },
+    {
+      "route": "/triggers",
+      "viewport": "desktop",
+      "url": "http://localhost:5173/triggers",
+      "status": 200,
+      "screenshot": "screens/desktop-triggers.png",
+      "probe": "probe/desktop-triggers.json",
+      "consoleErrors": []
+    },
+    {
+      "route": "/",
+      "viewport": "mobile",
+      "url": "http://localhost:5173/",
+      "status": 200,
+      "screenshot": "screens/mobile-home.png",
+      "probe": "probe/mobile-home.json",
+      "consoleErrors": []
+    },
+    {
+      "route": "/dashboard",
+      "viewport": "mobile",
+      "url": "http://localhost:5173/dashboard",
+      "status": 200,
+      "screenshot": "screens/mobile-dashboard.png",
+      "probe": "probe/mobile-dashboard.json",
+      "consoleErrors": []
+    },
+    {
+      "route": "/flows",
+      "viewport": "mobile",
+      "url": "http://localhost:5173/flows",
+      "status": 200,
+      "screenshot": "screens/mobile-flows.png",
+      "probe": "probe/mobile-flows.json",
+      "consoleErrors": []
+    },
+    {
+      "route": "/contacts",
+      "viewport": "mobile",
+      "url": "http://localhost:5173/contacts",
+      "status": 200,
+      "screenshot": "screens/mobile-contacts.png",
+      "probe": "probe/mobile-contacts.json",
+      "consoleErrors": []
+    },
+    {
+      "route": "/settings",
+      "viewport": "mobile",
+      "url": "http://localhost:5173/settings",
+      "status": 200,
+      "screenshot": "screens/mobile-settings.png",
+      "probe": "probe/mobile-settings.json",
+      "consoleErrors": []
+    },
+    {
+      "route": "/triggers",
+      "viewport": "mobile",
+      "url": "http://localhost:5173/triggers",
+      "status": 200,
+      "screenshot": "screens/mobile-triggers.png",
+      "probe": "probe/mobile-triggers.json",
+      "consoleErrors": []
+    }
+  ]
+}

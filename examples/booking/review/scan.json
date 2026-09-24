@@ -1,0 +1,978 @@
+{
+  "tool": {
+    "name": "phyll",
+    "version": "0.2.0"
+  },
+  "root": "examples/booking/before",
+  "createdAt": "2026-09-23T23:17:22.091Z",
+  "files": {
+    "scanned": 9,
+    "ignored": 0
+  },
+  "structure": {
+    "framework": "react-router",
+    "theme": "dark",
+    "routes": [
+      {
+        "path": "/",
+        "file": "src/App.jsx",
+        "line": 22
+      },
+      {
+        "path": "/agendar",
+        "file": "src/App.jsx",
+        "line": 24
+      },
+      {
+        "path": "/cadastro",
+        "file": "src/App.jsx",
+        "line": 23
+      },
+      {
+        "path": "/minha-conta",
+        "file": "src/App.jsx",
+        "line": 25
+      }
+    ],
+    "forms": [
+      {
+        "file": "src/pages/Signup.jsx",
+        "line": 40,
+        "fields": 12,
+        "implicit": false
+      }
+    ],
+    "modals": {
+      "count": 0,
+      "locations": []
+    },
+    "notes": [
+      "The interface looks dark, so light gray text is not flagged from the source. The probe measures real contrast."
+    ]
+  },
+  "tells": [
+    {
+      "id": "P02",
+      "name": "A marketing page in front of the tool",
+      "dimension": "purpose",
+      "kind": "function",
+      "detection": "both",
+      "weight": 3,
+      "cap": 1,
+      "hits": 3,
+      "locations": [
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 10,
+          "match": "function Hero"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 12,
+          "match": "id=\"hero\""
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 59,
+          "match": "<Hero"
+        }
+      ]
+    },
+    {
+      "id": "P05",
+      "name": "Features that do not exist yet",
+      "dimension": "purpose",
+      "kind": "function",
+      "detection": "both",
+      "weight": 2,
+      "cap": 3,
+      "hits": 1,
+      "locations": [
+        {
+          "file": "src/pages/Account.jsx",
+          "line": 41,
+          "match": "Em breve"
+        }
+      ]
+    },
+    {
+      "id": "F01",
+      "name": "Dead buttons and fake links",
+      "dimension": "flow",
+      "kind": "function",
+      "detection": "static",
+      "weight": 3,
+      "cap": 3,
+      "hits": 9,
+      "locations": [
+        {
+          "file": "src/pages/Account.jsx",
+          "line": 38,
+          "match": "onClick={() => {}"
+        },
+        {
+          "file": "src/pages/Account.jsx",
+          "line": 41,
+          "match": "onClick={() => alert("
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 32,
+          "match": "href=\"#\""
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 49,
+          "match": "href=\"#\""
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 50,
+          "match": "href=\"#\""
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 51,
+          "match": "href=\"#\""
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 82,
+          "match": "href=\"#\""
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 83,
+          "match": "href=\"#\""
+        },
+        {
+          "file": "src/pages/Signup.jsx",
+          "line": 107,
+          "match": "href=\"#\""
+        }
+      ]
+    },
+    {
+      "id": "F02",
+      "name": "Everything asked up front",
+      "dimension": "flow",
+      "kind": "function",
+      "detection": "both",
+      "weight": 3,
+      "cap": 2,
+      "hits": 1,
+      "locations": [
+        {
+          "file": "src/pages/Signup.jsx",
+          "line": 40,
+          "match": "form with 12 fields"
+        }
+      ]
+    },
+    {
+      "id": "F03",
+      "name": "A modal for everything",
+      "dimension": "flow",
+      "kind": "function",
+      "detection": "both",
+      "weight": 2,
+      "cap": 4,
+      "hits": 0,
+      "locations": []
+    },
+    {
+      "id": "F05",
+      "name": "Sign-up or setup before the first result",
+      "dimension": "flow",
+      "kind": "function",
+      "detection": "both",
+      "weight": 3,
+      "cap": 1,
+      "hits": 1,
+      "locations": [
+        {
+          "file": "src/pages/Signup.jsx",
+          "line": 38,
+          "match": "Crie sua conta para"
+        }
+      ]
+    },
+    {
+      "id": "F06",
+      "name": "Confirmation for safe actions",
+      "dimension": "flow",
+      "kind": "function",
+      "detection": "both",
+      "weight": 1,
+      "cap": 3,
+      "hits": 2,
+      "locations": [
+        {
+          "file": "src/pages/Booking.jsx",
+          "line": 36,
+          "match": "window.confirm("
+        },
+        {
+          "file": "src/pages/Booking.jsx",
+          "line": 36,
+          "match": "Tem certeza"
+        }
+      ]
+    },
+    {
+      "id": "F07",
+      "name": "A wizard for a one-screen task",
+      "dimension": "flow",
+      "kind": "function",
+      "detection": "both",
+      "weight": 1,
+      "cap": 1,
+      "hits": 2,
+      "locations": [
+        {
+          "file": "src/pages/Booking.jsx",
+          "line": 44,
+          "match": "Etapa {step} de 5"
+        },
+        {
+          "file": "src/pages/Booking.jsx",
+          "line": 169,
+          "match": "setStep(step + 1)"
+        }
+      ]
+    },
+    {
+      "id": "F11",
+      "name": "Personal data the job does not use",
+      "dimension": "flow",
+      "kind": "function",
+      "detection": "both",
+      "weight": 3,
+      "cap": 2,
+      "hits": 4,
+      "locations": [
+        {
+          "file": "src/pages/Signup.jsx",
+          "line": 70,
+          "match": "Data de nascimento"
+        },
+        {
+          "file": "src/pages/Signup.jsx",
+          "line": 74,
+          "match": "Gênero"
+        },
+        {
+          "file": "src/pages/Signup.jsx",
+          "line": 84,
+          "match": "Como nos conheceu"
+        },
+        {
+          "file": "src/pages/Signup.jsx",
+          "line": 66,
+          "match": "CPF"
+        }
+      ]
+    },
+    {
+      "id": "F12",
+      "name": "Asking for the same thing twice",
+      "dimension": "flow",
+      "kind": "function",
+      "detection": "static",
+      "weight": 1,
+      "cap": 2,
+      "hits": 2,
+      "locations": [
+        {
+          "file": "src/pages/Signup.jsx",
+          "line": 50,
+          "match": "Confirmar e-mail"
+        },
+        {
+          "file": "src/pages/Signup.jsx",
+          "line": 58,
+          "match": "Confirmar senha"
+        }
+      ]
+    },
+    {
+      "id": "A03",
+      "name": "Icon-only buttons with no name",
+      "dimension": "actions",
+      "kind": "function",
+      "detection": "both",
+      "weight": 2,
+      "cap": 3,
+      "hits": 0,
+      "locations": []
+    },
+    {
+      "id": "A05",
+      "name": "Actions that only appear on hover",
+      "dimension": "actions",
+      "kind": "function",
+      "detection": "static",
+      "weight": 2,
+      "cap": 3,
+      "hits": 0,
+      "locations": []
+    },
+    {
+      "id": "A07",
+      "name": "Disabled buttons that do not say why",
+      "dimension": "actions",
+      "kind": "function",
+      "detection": "both",
+      "weight": 1,
+      "cap": 3,
+      "hits": 2,
+      "locations": [
+        {
+          "file": "src/pages/Booking.jsx",
+          "line": 168,
+          "match": "disabled={!"
+        },
+        {
+          "file": "src/pages/Signup.jsx",
+          "line": 100,
+          "match": "disabled={!"
+        }
+      ]
+    },
+    {
+      "id": "A09",
+      "name": "Fields named only by their placeholder",
+      "dimension": "actions",
+      "kind": "function",
+      "detection": "both",
+      "weight": 1,
+      "cap": 3,
+      "hits": 0,
+      "locations": []
+    },
+    {
+      "id": "L01",
+      "name": "Purple-to-blue gradient as the brand",
+      "dimension": "look",
+      "kind": "style",
+      "detection": "static",
+      "weight": 2,
+      "cap": 3,
+      "hits": 0,
+      "locations": []
+    },
+    {
+      "id": "L02",
+      "name": "Gradient text",
+      "dimension": "look",
+      "kind": "style",
+      "detection": "static",
+      "weight": 1,
+      "cap": 2,
+      "hits": 2,
+      "locations": [
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 19,
+          "match": "bg-clip-text"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 47,
+          "match": "bg-clip-text"
+        }
+      ]
+    },
+    {
+      "id": "L03",
+      "name": "Glass, blur and glow",
+      "dimension": "look",
+      "kind": "style",
+      "detection": "static",
+      "weight": 1,
+      "cap": 4,
+      "hits": 9,
+      "locations": [
+        {
+          "file": "src/pages/Account.jsx",
+          "line": 21,
+          "match": "backdrop-blur-md"
+        },
+        {
+          "file": "src/pages/Account.jsx",
+          "line": 34,
+          "match": "backdrop-blur-md"
+        },
+        {
+          "file": "src/pages/Booking.jsx",
+          "line": 49,
+          "match": "backdrop-blur-xl"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 32,
+          "match": "backdrop-blur-md"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 45,
+          "match": "backdrop-blur-xl"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 67,
+          "match": "backdrop-blur-md"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 13,
+          "match": "blur-3xl"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 14,
+          "match": "blur-3xl"
+        },
+        {
+          "file": "src/pages/Signup.jsx",
+          "line": 37,
+          "match": "backdrop-blur-xl"
+        }
+      ]
+    },
+    {
+      "id": "L04",
+      "name": "Everything is a card",
+      "dimension": "look",
+      "kind": "style",
+      "detection": "static",
+      "weight": 2,
+      "cap": 8,
+      "hits": 4,
+      "locations": [
+        {
+          "file": "src/App.jsx",
+          "line": 28,
+          "match": "fixed bottom-6 right-6 rounded-xl bg-gradient-to-r from-amber-400 to-orange-500 px-6 py-3 font-bold "
+        },
+        {
+          "file": "src/pages/Booking.jsx",
+          "line": 49,
+          "match": "mt-8 rounded-3xl border border-white/10 bg-white/5 p-10 shadow-2xl shadow-amber-500/10 backdrop-blur"
+        },
+        {
+          "file": "src/pages/Signup.jsx",
+          "line": 37,
+          "match": "mx-auto max-w-2xl rounded-3xl border border-white/10 bg-white/5 p-10 shadow-2xl shadow-amber-500/10 "
+        },
+        {
+          "file": "src/pages/Signup.jsx",
+          "line": 101,
+          "match": "col-span-2 mt-4 rounded-xl bg-gradient-to-r from-amber-400 to-orange-500 py-4 font-bold text-zinc-95"
+        }
+      ]
+    },
+    {
+      "id": "L05",
+      "name": "The three-card feature grid",
+      "dimension": "look",
+      "kind": "style",
+      "detection": "both",
+      "weight": 1,
+      "cap": 2,
+      "hits": 4,
+      "locations": [
+        {
+          "file": "src/pages/Account.jsx",
+          "line": 19,
+          "match": "mt-10 grid grid-cols-3 gap-6"
+        },
+        {
+          "file": "src/pages/Booking.jsx",
+          "line": 69,
+          "match": "mt-6 grid gap-4 md:grid-cols-3"
+        },
+        {
+          "file": "src/pages/Booking.jsx",
+          "line": 84,
+          "match": "mt-6 grid gap-4 md:grid-cols-3"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 65,
+          "match": "mt-14 grid gap-8 md:grid-cols-3"
+        }
+      ]
+    },
+    {
+      "id": "L06",
+      "name": "An icon in a tinted square for every item",
+      "dimension": "look",
+      "kind": "style",
+      "detection": "static",
+      "weight": 1,
+      "cap": 4,
+      "hits": 2,
+      "locations": [
+        {
+          "file": "src/pages/Account.jsx",
+          "line": 22,
+          "match": "flex h-12 w-12 items-center justify-center rounded-xl bg-amber-500/10 text-amber-400"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 68,
+          "match": "mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-amber-500/10 text-amber-400"
+        }
+      ]
+    },
+    {
+      "id": "L07",
+      "name": "KPI cards with invented trends",
+      "dimension": "look",
+      "kind": "function",
+      "detection": "static",
+      "weight": 2,
+      "cap": 2,
+      "hits": 1,
+      "locations": [
+        {
+          "file": "src/pages/Account.jsx",
+          "line": 5,
+          "match": "vs mês anterior"
+        }
+      ]
+    },
+    {
+      "id": "L08",
+      "name": "Emoji as icons",
+      "dimension": "look",
+      "kind": "style",
+      "detection": "static",
+      "weight": 1,
+      "cap": 4,
+      "hits": 6,
+      "locations": [
+        {
+          "file": "src/pages/Account.jsx",
+          "line": 16,
+          "match": "👋"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 17,
+          "match": "✨"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 36,
+          "match": "⭐"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 47,
+          "match": "✂"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 63,
+          "match": "💈"
+        },
+        {
+          "file": "src/pages/Signup.jsx",
+          "line": 38,
+          "match": "✂"
+        }
+      ]
+    },
+    {
+      "id": "L09",
+      "name": "Sparkles and AI-powered badges",
+      "dimension": "look",
+      "kind": "style",
+      "detection": "static",
+      "weight": 1,
+      "cap": 3,
+      "hits": 2,
+      "locations": [
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 2,
+          "match": "Sparkles"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 6,
+          "match": "Sparkles"
+        }
+      ]
+    },
+    {
+      "id": "L10",
+      "name": "Everything centered",
+      "dimension": "look",
+      "kind": "style",
+      "detection": "static",
+      "weight": 1,
+      "cap": 10,
+      "hits": 8,
+      "locations": [
+        {
+          "file": "src/pages/Booking.jsx",
+          "line": 44,
+          "match": "text-center text-sm text-amber-400"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 12,
+          "match": "relative overflow-hidden px-6 pb-24 pt-36 text-center"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 62,
+          "match": "mx-auto max-w-6xl text-center"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 67,
+          "match": "rounded-2xl border border-white/10 bg-white/5 p-8 text-center backdrop-blur-md transition-all durati"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 80,
+          "match": "border-t border-white/10 py-10 text-center text-sm text-zinc-500"
+        },
+        {
+          "file": "src/pages/Signup.jsx",
+          "line": 38,
+          "match": "text-center text-3xl font-bold text-zinc-100"
+        },
+        {
+          "file": "src/pages/Signup.jsx",
+          "line": 39,
+          "match": "mt-2 text-center text-zinc-500"
+        },
+        {
+          "file": "src/pages/Signup.jsx",
+          "line": 106,
+          "match": "mt-6 text-center text-sm text-zinc-500"
+        }
+      ]
+    },
+    {
+      "id": "L11",
+      "name": "Motion on everything",
+      "dimension": "look",
+      "kind": "style",
+      "detection": "static",
+      "weight": 1,
+      "cap": 6,
+      "hits": 11,
+      "locations": [
+        {
+          "file": "src/App.jsx",
+          "line": 28,
+          "match": "animate-bounce"
+        },
+        {
+          "file": "src/pages/Account.jsx",
+          "line": 21,
+          "match": "transition-all"
+        },
+        {
+          "file": "src/pages/Account.jsx",
+          "line": 21,
+          "match": "hover:scale-105"
+        },
+        {
+          "file": "src/pages/Booking.jsx",
+          "line": 23,
+          "match": "transition-all"
+        },
+        {
+          "file": "src/pages/Booking.jsx",
+          "line": 23,
+          "match": "hover:scale-105"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 28,
+          "match": "transition-all"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 28,
+          "match": "hover:scale-105"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 32,
+          "match": "transition-all"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 32,
+          "match": "hover:scale-105"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 67,
+          "match": "transition-all"
+        }
+      ]
+    },
+    {
+      "id": "L12",
+      "name": "Washed-out text",
+      "dimension": "look",
+      "kind": "function",
+      "detection": "both",
+      "weight": 2,
+      "cap": 6,
+      "hits": 0,
+      "locations": []
+    },
+    {
+      "id": "C01",
+      "name": "Generic value-proposition phrases",
+      "dimension": "copy",
+      "kind": "function",
+      "detection": "static",
+      "weight": 2,
+      "cap": 3,
+      "hits": 4,
+      "locations": [
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 6,
+          "match": "experiência única"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 20,
+          "match": "Transforme seu"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 23,
+          "match": "Tudo em um só lugar"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 64,
+          "match": "próximo nível"
+        }
+      ]
+    },
+    {
+      "id": "C02",
+      "name": "Buttons that do not say what happens",
+      "dimension": "copy",
+      "kind": "function",
+      "detection": "static",
+      "weight": 2,
+      "cap": 3,
+      "hits": 1,
+      "locations": [
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 32,
+          "match": "> Saiba mais <"
+        }
+      ]
+    },
+    {
+      "id": "C03",
+      "name": "Invented social proof and numbers",
+      "dimension": "copy",
+      "kind": "function",
+      "detection": "static",
+      "weight": 2,
+      "cap": 3,
+      "hits": 4,
+      "locations": [
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 36,
+          "match": "4.9/5"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 36,
+          "match": "clientes satisfeitos"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 36,
+          "match": "⭐ 4.9"
+        },
+        {
+          "file": "src/pages/Landing.jsx",
+          "line": 36,
+          "match": "Mais de 5.000"
+        }
+      ]
+    },
+    {
+      "id": "C04",
+      "name": "Placeholder people and data left in",
+      "dimension": "copy",
+      "kind": "function",
+      "detection": "static",
+      "weight": 2,
+      "cap": 3,
+      "hits": 3,
+      "locations": [
+        {
+          "file": "src/pages/Booking.jsx",
+          "line": 13,
+          "match": "i.pravatar.cc"
+        },
+        {
+          "file": "src/pages/Booking.jsx",
+          "line": 14,
+          "match": "i.pravatar.cc"
+        },
+        {
+          "file": "src/pages/Booking.jsx",
+          "line": 15,
+          "match": "i.pravatar.cc"
+        }
+      ]
+    },
+    {
+      "id": "C05",
+      "name": "Code words on screen",
+      "dimension": "copy",
+      "kind": "function",
+      "detection": "both",
+      "weight": 2,
+      "cap": 3,
+      "hits": 0,
+      "locations": []
+    },
+    {
+      "id": "C06",
+      "name": "Stock greetings and filler",
+      "dimension": "copy",
+      "kind": "function",
+      "detection": "static",
+      "weight": 1,
+      "cap": 3,
+      "hits": 2,
+      "locations": [
+        {
+          "file": "src/pages/Account.jsx",
+          "line": 16,
+          "match": "Bem-vindo de volta"
+        },
+        {
+          "file": "src/pages/Account.jsx",
+          "line": 17,
+          "match": "Aqui está o que está acontecendo"
+        }
+      ]
+    },
+    {
+      "id": "C07",
+      "name": "Error messages that do not help",
+      "dimension": "copy",
+      "kind": "function",
+      "detection": "static",
+      "weight": 2,
+      "cap": 3,
+      "hits": 0,
+      "locations": []
+    },
+    {
+      "id": "S01",
+      "name": "Empty states that only say no data",
+      "dimension": "states",
+      "kind": "function",
+      "detection": "both",
+      "weight": 2,
+      "cap": 3,
+      "hits": 0,
+      "locations": []
+    },
+    {
+      "id": "S03",
+      "name": "Errors that only reach the console",
+      "dimension": "states",
+      "kind": "function",
+      "detection": "static",
+      "weight": 2,
+      "cap": 3,
+      "hits": 0,
+      "locations": []
+    },
+    {
+      "id": "S04",
+      "name": "Success that leaves no trace",
+      "dimension": "states",
+      "kind": "function",
+      "detection": "both",
+      "weight": 1,
+      "cap": 3,
+      "hits": 1,
+      "locations": [
+        {
+          "file": "src/pages/Booking.jsx",
+          "line": 37,
+          "match": "Toast(\"Sucesso!\""
+        }
+      ]
+    },
+    {
+      "id": "S05",
+      "name": "Breaks on a phone",
+      "dimension": "states",
+      "kind": "function",
+      "detection": "both",
+      "weight": 2,
+      "cap": 2,
+      "hits": 1,
+      "locations": [
+        {
+          "file": "src/pages/Account.jsx",
+          "line": 19,
+          "match": "mt-10 grid grid-cols-3 gap-6"
+        }
+      ]
+    },
+    {
+      "id": "S06",
+      "name": "Focus outline removed",
+      "dimension": "states",
+      "kind": "function",
+      "detection": "static",
+      "weight": 2,
+      "cap": 3,
+      "hits": 4,
+      "locations": [
+        {
+          "file": "src/pages/Booking.jsx",
+          "line": 137,
+          "match": "mt-1 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 outline-none"
+        },
+        {
+          "file": "src/pages/Booking.jsx",
+          "line": 141,
+          "match": "mt-1 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 outline-none"
+        },
+        {
+          "file": "src/pages/Booking.jsx",
+          "line": 145,
+          "match": "mt-1 w-full rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 outline-none"
+        },
+        {
+          "file": "src/pages/Signup.jsx",
+          "line": 5,
+          "match": "mt-1 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-zinc-100 outline-none placeh"
+        }
+      ]
+    }
+  ],
+  "staticIndex": 54,
+  "styleIndex": 66
+}

@@ -1,0 +1,967 @@
+{
+  "schemaVersion": "1.0",
+  "tool": {
+    "name": "phyll",
+    "version": "0.2.0"
+  },
+  "createdAt": "2026-09-23T22:40:00Z",
+  "language": "pt-BR",
+  "mode": "full",
+  "target": {
+    "name": "Navalha Barbearia (antes)",
+    "url": "http://localhost:5175",
+    "sourceDir": "examples/booking/before",
+    "framework": "react-router"
+  },
+  "context": {
+    "endUser": "Um cliente da barbearia que chega por um link do Instagram ou pelo Google, quase sempre no celular, e quer marcar um corte para os próximos dias.",
+    "product": "Site da Navalha Barbearia para marcar corte e barba com hora marcada.",
+    "coreJobs": [
+      {
+        "id": "J1",
+        "name": "Marcar um horário",
+        "momentOfValue": "O cliente vê serviço, dia, hora e endereço confirmados e recebe a confirmação no WhatsApp"
+      },
+      {
+        "id": "J2",
+        "name": "Remarcar ou cancelar um horário",
+        "momentOfValue": "O horário muda ou é liberado sem precisar ligar"
+      }
+    ],
+    "assumptions": [
+      "O app roda sem servidor. Unidade, profissionais e horários ocupados estão fixos no código.",
+      "A barbearia tem uma unidade só, a única opção da primeira etapa.",
+      "O pagamento é feito na barbearia, já que dinheiro está entre as formas de pagamento."
+    ]
+  },
+  "fiveSecondTest": {
+    "screen": "S1",
+    "whatIsThis": "Uma barbearia, pelo nome e pela tesoura. O título fala em transformar o visual e em experiência premium, sem dizer onde fica.",
+    "whoIsItFor": "Quem corta cabelo e faz barba, pelos serviços listados mais abaixo.",
+    "whatToDo": "Agende agora. Saiba mais não leva a lugar nenhum.",
+    "passed": true,
+    "note": "Por pouco. Dá para entender que é uma barbearia e que o site marca horário, mas não onde ela fica nem quanto custa um corte."
+  },
+  "screens": [
+    {
+      "id": "S1",
+      "route": "/",
+      "title": "Página inicial",
+      "screenshots": {
+        "desktop": "screens/desktop-home.png",
+        "mobile": "screens/mobile-home.png"
+      },
+      "probe": {
+        "desktop": "probe/desktop-home.json",
+        "mobile": "probe/mobile-home.json"
+      }
+    },
+    {
+      "id": "S2",
+      "route": "/cadastro",
+      "title": "Cadastro",
+      "screenshots": {
+        "desktop": "screens/desktop-cadastro.png",
+        "mobile": "screens/mobile-cadastro.png"
+      },
+      "probe": {
+        "desktop": "probe/desktop-cadastro.json",
+        "mobile": "probe/mobile-cadastro.json"
+      }
+    },
+    {
+      "id": "S3",
+      "route": "/agendar",
+      "title": "Agendamento em cinco etapas",
+      "screenshots": {
+        "desktop": "screens/desktop-agendar.png",
+        "mobile": "screens/mobile-agendar.png"
+      },
+      "probe": {
+        "desktop": "probe/desktop-agendar.json",
+        "mobile": "probe/mobile-agendar.json"
+      }
+    },
+    {
+      "id": "S4",
+      "route": "/minha-conta",
+      "title": "Minha conta",
+      "screenshots": {
+        "desktop": "screens/desktop-minha-conta.png",
+        "mobile": "screens/mobile-minha-conta.png"
+      },
+      "probe": {
+        "desktop": "probe/desktop-minha-conta.json",
+        "mobile": "probe/mobile-minha-conta.json"
+      }
+    }
+  ],
+  "journeys": [
+    {
+      "job": "J1",
+      "steps": [
+        {
+          "screen": "S1",
+          "action": "Cliquei em Agende agora",
+          "observation": "Abriu um cadastro de 12 campos antes de mostrar qualquer horário.",
+          "problem": true
+        },
+        {
+          "screen": "S2",
+          "action": "Preenchi nome e telefone",
+          "observation": "O botão Cadastrar continuou apagado e nada diz o que falta.",
+          "problem": true
+        },
+        {
+          "screen": "S2",
+          "action": "Preenchi os outros campos, com CPF, data de nascimento, gênero e como conheci a barbearia",
+          "observation": "O botão só liberou com uma senha de 8 caracteres, regra que não aparece na tela. Nenhum desses dados volta a ser usado no agendamento.",
+          "problem": true
+        },
+        {
+          "screen": "S3",
+          "action": "Na etapa 1 de 5, escolhi a unidade",
+          "observation": "Só existe a Unidade Centro. A etapa pede uma escolha que tem uma resposta só.",
+          "problem": true
+        },
+        {
+          "screen": "S3",
+          "action": "Nas etapas 2 a 4, escolhi serviço, profissional, dia e horário",
+          "observation": "O profissional é obrigatório, sem a opção qualquer um. O calendário mostra o mês inteiro com 24 dias bloqueados, e os horários só aparecem depois de escolher o dia.",
+          "problem": true
+        },
+        {
+          "screen": "S3",
+          "action": "Na etapa 5, tentei confirmar",
+          "observation": "Forma de pagamento e aceite da política de cancelamento são obrigatórios. A política não tem link, e o pagamento acontece na barbearia.",
+          "problem": true
+        },
+        {
+          "screen": "S3",
+          "action": "Cliquei em Confirmar agendamento e respondi sim à pergunta Tem certeza?",
+          "observation": "Um aviso Sucesso! pulou no canto e o site foi para Minha conta."
+        },
+        {
+          "screen": "S4",
+          "action": "Procurei o horário que acabei de marcar",
+          "observation": "O próximo agendamento mostrado é Corte + Barba em 15/10 com Bruno. O corte do dia 24 com Rafael não aparece em lugar nenhum.",
+          "problem": true
+        }
+      ],
+      "clicks": 18,
+      "neededClicks": 4,
+      "screens": 4,
+      "deadEnds": 0,
+      "reachedValue": false,
+      "inputs": {
+        "asked": 20,
+        "needed": 4,
+        "cuts": [
+          {
+            "input": "E-mail e Confirmar e-mail",
+            "action": "remove",
+            "note": "A confirmação vai pelo WhatsApp."
+          },
+          {
+            "input": "Senha e Confirmar senha",
+            "action": "remove",
+            "note": "Marcar um corte não precisa de conta."
+          },
+          {
+            "input": "CPF, data de nascimento e gênero",
+            "action": "remove",
+            "note": "Nenhum passo do agendamento usa esses dados."
+          },
+          {
+            "input": "Como nos conheceu",
+            "action": "defer",
+            "note": "Se a barbearia quiser saber, pergunte depois de marcar, sem obrigar."
+          },
+          {
+            "input": "Termos de uso",
+            "action": "remove",
+            "note": "Sem conta, não há termo para aceitar. Uma linha dizendo que o WhatsApp serve para a confirmação basta."
+          },
+          {
+            "input": "Quero receber novidades",
+            "action": "defer",
+            "note": "Pode aparecer na confirmação, desmarcado."
+          },
+          {
+            "input": "Unidade",
+            "action": "infer",
+            "note": "Só existe uma."
+          },
+          {
+            "input": "Profissional",
+            "action": "default",
+            "note": "Comece em qualquer um, o primeiro disponível. Quem tem preferência troca."
+          },
+          {
+            "input": "Observações",
+            "action": "defer",
+            "note": "O cliente fala com o barbeiro na cadeira. Se fizer falta, vira um campo opcional depois de marcar."
+          },
+          {
+            "input": "Cupom de desconto",
+            "action": "remove",
+            "note": "Não existe cupom ativo, e um campo vazio manda o cliente procurar um fora do site."
+          },
+          {
+            "input": "Forma de pagamento",
+            "action": "remove",
+            "note": "O pagamento é feito na barbearia."
+          },
+          {
+            "input": "Política de cancelamento",
+            "action": "remove",
+            "note": "Escreva a regra em uma linha perto do botão, sem caixa para marcar."
+          },
+          {
+            "input": "Nome completo",
+            "action": "keep",
+            "note": "O primeiro nome já basta para chamar o cliente."
+          },
+          {
+            "input": "Telefone",
+            "action": "keep",
+            "note": "Vira o campo de WhatsApp, por onde chega a confirmação."
+          }
+        ]
+      },
+      "note": "O cliente chega ao fim, mas a tela mostra outro agendamento, e ele não tem como saber se o corte foi marcado."
+    },
+    {
+      "job": "J2",
+      "steps": [
+        {
+          "screen": "S4",
+          "action": "Abri Minha conta sem ter feito cadastro",
+          "observation": "A página cumprimenta João e mostra 12 agendamentos, 340 pontos de fidelidade e R$ 120 de economia, todos com setas de alta.",
+          "problem": true
+        },
+        {
+          "screen": "S4",
+          "action": "Cliquei em Remarcar",
+          "observation": "Nada acontece.",
+          "problem": true
+        },
+        {
+          "screen": "S4",
+          "action": "Cliquei em Cancelar",
+          "observation": "Um alerta do navegador diz Em breve!.",
+          "problem": true
+        }
+      ],
+      "clicks": 2,
+      "neededClicks": 3,
+      "screens": 1,
+      "deadEnds": 2,
+      "reachedValue": false,
+      "note": "Remarcar e cancelar ainda não existem, e o site não mostra telefone nem WhatsApp da barbearia para resolver de outro jeito."
+    }
+  ],
+  "tells": [
+    {
+      "id": "P01",
+      "status": "absent",
+      "evidence": [
+        "S1"
+      ],
+      "note": "O teste de cinco segundos passou por pouco.",
+      "source": "review"
+    },
+    {
+      "id": "P02",
+      "status": "absent",
+      "evidence": [
+        "S1"
+      ],
+      "note": "É o site público da barbearia, e o primeiro botão leva ao agendamento. O problema está no cadastro que vem depois, não na página.",
+      "source": "review"
+    },
+    {
+      "id": "P03",
+      "status": "present",
+      "evidence": [
+        "S4"
+      ],
+      "note": "12 agendamentos, 340 pontos e R$ 120 de economia numa conta que acabou de ser criada.",
+      "source": "review"
+    },
+    {
+      "id": "P04",
+      "status": "absent",
+      "source": "review"
+    },
+    {
+      "id": "P05",
+      "status": "present",
+      "hits": 1,
+      "source": "static"
+    },
+    {
+      "id": "P06",
+      "status": "present",
+      "evidence": [
+        "S4"
+      ],
+      "note": "Pontos de fidelidade e economia acumulada, sem programa de fidelidade em lugar nenhum do site.",
+      "source": "review"
+    },
+    {
+      "id": "F01",
+      "status": "present",
+      "hits": 9,
+      "source": "static"
+    },
+    {
+      "id": "F02",
+      "status": "present",
+      "hits": 1,
+      "source": "static"
+    },
+    {
+      "id": "F03",
+      "status": "absent",
+      "hits": 0,
+      "source": "static"
+    },
+    {
+      "id": "F04",
+      "status": "present",
+      "evidence": [
+        "S4"
+      ],
+      "note": "Depois de marcar, não há como pôr o horário na agenda nem falar com a barbearia.",
+      "source": "review"
+    },
+    {
+      "id": "F05",
+      "status": "present",
+      "hits": 1,
+      "source": "static"
+    },
+    {
+      "id": "F06",
+      "status": "present",
+      "hits": 2,
+      "source": "static"
+    },
+    {
+      "id": "F07",
+      "status": "present",
+      "hits": 2,
+      "source": "static"
+    },
+    {
+      "id": "F08",
+      "status": "present",
+      "evidence": [
+        "S3"
+      ],
+      "note": "Recarregar a página na etapa 2 volta para a etapa 1 com tudo em branco.",
+      "source": "review"
+    },
+    {
+      "id": "F09",
+      "status": "present",
+      "evidence": [
+        "S3"
+      ],
+      "note": "Unidade com uma opção só e profissional obrigatório, sem a opção qualquer um.",
+      "source": "review"
+    },
+    {
+      "id": "F10",
+      "status": "absent",
+      "source": "review"
+    },
+    {
+      "id": "F11",
+      "status": "present",
+      "hits": 4,
+      "source": "static"
+    },
+    {
+      "id": "F12",
+      "status": "present",
+      "hits": 2,
+      "source": "static"
+    },
+    {
+      "id": "A01",
+      "status": "absent",
+      "source": "review"
+    },
+    {
+      "id": "A02",
+      "status": "absent",
+      "source": "review"
+    },
+    {
+      "id": "A03",
+      "status": "absent",
+      "hits": 0,
+      "source": "static"
+    },
+    {
+      "id": "A04",
+      "status": "absent",
+      "source": "review"
+    },
+    {
+      "id": "A05",
+      "status": "absent",
+      "hits": 0,
+      "source": "static"
+    },
+    {
+      "id": "A06",
+      "status": "absent",
+      "source": "review"
+    },
+    {
+      "id": "A07",
+      "status": "present",
+      "hits": 2,
+      "source": "static"
+    },
+    {
+      "id": "A08",
+      "status": "present",
+      "evidence": [
+        "S1"
+      ],
+      "note": "Os links do menu têm 20 px de altura no celular.",
+      "source": "review"
+    },
+    {
+      "id": "A09",
+      "status": "absent",
+      "hits": 0,
+      "source": "static"
+    },
+    {
+      "id": "L01",
+      "status": "absent",
+      "hits": 0,
+      "source": "static"
+    },
+    {
+      "id": "L02",
+      "status": "present",
+      "hits": 2,
+      "source": "static"
+    },
+    {
+      "id": "L03",
+      "status": "present",
+      "hits": 9,
+      "source": "static"
+    },
+    {
+      "id": "L04",
+      "status": "present",
+      "hits": 4,
+      "source": "static"
+    },
+    {
+      "id": "L05",
+      "status": "present",
+      "hits": 4,
+      "source": "static"
+    },
+    {
+      "id": "L06",
+      "status": "present",
+      "hits": 2,
+      "source": "static"
+    },
+    {
+      "id": "L07",
+      "status": "present",
+      "hits": 1,
+      "source": "static"
+    },
+    {
+      "id": "L08",
+      "status": "present",
+      "hits": 6,
+      "source": "static"
+    },
+    {
+      "id": "L09",
+      "status": "present",
+      "hits": 2,
+      "source": "static"
+    },
+    {
+      "id": "L10",
+      "status": "present",
+      "hits": 8,
+      "source": "static"
+    },
+    {
+      "id": "L11",
+      "status": "present",
+      "hits": 11,
+      "source": "static"
+    },
+    {
+      "id": "L12",
+      "status": "present",
+      "evidence": [
+        "S1",
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "note": "O cinza zinc-500 no fundo escuro fica entre 3,31:1 e 4,12:1.",
+      "source": "review"
+    },
+    {
+      "id": "C01",
+      "status": "present",
+      "hits": 4,
+      "source": "static"
+    },
+    {
+      "id": "C02",
+      "status": "present",
+      "hits": 1,
+      "source": "static"
+    },
+    {
+      "id": "C03",
+      "status": "present",
+      "hits": 4,
+      "source": "static"
+    },
+    {
+      "id": "C04",
+      "status": "present",
+      "hits": 3,
+      "source": "static"
+    },
+    {
+      "id": "C05",
+      "status": "absent",
+      "hits": 0,
+      "source": "static"
+    },
+    {
+      "id": "C06",
+      "status": "present",
+      "hits": 2,
+      "source": "static"
+    },
+    {
+      "id": "C07",
+      "status": "absent",
+      "hits": 0,
+      "source": "static"
+    },
+    {
+      "id": "C08",
+      "status": "absent",
+      "source": "review"
+    },
+    {
+      "id": "S01",
+      "status": "absent",
+      "hits": 0,
+      "source": "static"
+    },
+    {
+      "id": "S02",
+      "status": "unverified",
+      "note": "Não há servidor, então não há espera para medir.",
+      "source": "review"
+    },
+    {
+      "id": "S03",
+      "status": "absent",
+      "hits": 0,
+      "source": "static"
+    },
+    {
+      "id": "S04",
+      "status": "present",
+      "hits": 1,
+      "source": "static"
+    },
+    {
+      "id": "S05",
+      "status": "present",
+      "hits": 1,
+      "source": "static"
+    },
+    {
+      "id": "S06",
+      "status": "present",
+      "hits": 4,
+      "source": "static"
+    }
+  ],
+  "findings": [
+    {
+      "id": "UX-01",
+      "title": "Um cadastro de 12 campos antes de ver qualquer horário",
+      "dimension": "flow",
+      "severity": "blocker",
+      "tells": [
+        "F05",
+        "F02",
+        "F11",
+        "F12"
+      ],
+      "evidence": [
+        {
+          "screen": "S2",
+          "screenshot": "screens/desktop-cadastro.png",
+          "probe": "probe/desktop-cadastro.json",
+          "observation": "O primeiro clique em Agende agora abre um cadastro com e-mail duas vezes, senha duas vezes, CPF, data de nascimento, gênero e como conheceu a barbearia."
+        },
+        {
+          "screen": "S1",
+          "observation": "Os dois botões Agende agora da página inicial levam ao cadastro."
+        }
+      ],
+      "why": "Quem chega pelo Instagram quer saber se tem horário amanhã. Um cadastro desse tamanho antes da agenda faz a pessoa desistir e mandar mensagem, ou procurar outra barbearia. CPF e data de nascimento ainda pedem uma confiança que o site não conquistou.",
+      "principle": "Valor antes do cadastro",
+      "fix": "Abra direto o agendamento, sem conta. Peça só nome e WhatsApp, no fim da mesma página.",
+      "files": [
+        "examples/booking/before/src/pages/Signup.jsx",
+        "examples/booking/before/src/pages/Landing.jsx"
+      ],
+      "effort": "M"
+    },
+    {
+      "id": "UX-02",
+      "title": "Depois de marcar, a conta mostra outro agendamento",
+      "dimension": "states",
+      "severity": "blocker",
+      "tells": [
+        "S04",
+        "C04",
+        "P03",
+        "L07"
+      ],
+      "evidence": [
+        {
+          "screen": "S4",
+          "screenshot": "screens/desktop-minha-conta-apos-agendar.png",
+          "observation": "Depois de marcar Corte Masculino no dia 24/09 às 10:00 com Rafael, o próximo agendamento mostrado é Corte + Barba em 15/10 às 10:00 com Bruno."
+        },
+        {
+          "screen": "S4",
+          "screenshot": "screens/desktop-minha-conta.png",
+          "observation": "Sem cadastro, a página cumprimenta João e mostra 12 agendamentos, 340 pontos e R$ 120 de economia com tendências de alta."
+        }
+      ],
+      "why": "A confirmação é o momento em que o cliente precisa de certeza. Com outro serviço, outra data e outro barbeiro na tela, ele acha que marcou errado e liga para conferir.",
+      "principle": "Visibilidade do estado do sistema",
+      "fix": "Troque o aviso Sucesso! por uma tela de confirmação com o que foi marcado: serviço, dia, hora, profissional e endereço. Ponha nela Adicionar à agenda, Remarcar e Falar com a barbearia. Tire os números fixos da conta.",
+      "files": [
+        "examples/booking/before/src/pages/Account.jsx",
+        "examples/booking/before/src/pages/Booking.jsx",
+        "examples/booking/before/src/App.jsx"
+      ],
+      "effort": "M"
+    },
+    {
+      "id": "UX-03",
+      "title": "Cinco etapas para um agendamento que cabe em uma tela",
+      "dimension": "flow",
+      "severity": "major",
+      "tells": [
+        "F07",
+        "F09"
+      ],
+      "evidence": [
+        {
+          "screen": "S3",
+          "screenshot": "screens/desktop-agendar.png",
+          "probe": "probe/desktop-agendar.json",
+          "observation": "A etapa 1 de 5 pede para escolher a unidade, e só existe a Unidade Centro. O botão Próximo fica apagado até clicar nela."
+        },
+        {
+          "screen": "S3",
+          "screenshot": "screens/desktop-agendar-etapa-4.png",
+          "observation": "A etapa 4 mostra o mês inteiro com 24 dos 30 dias bloqueados. Os horários só aparecem depois de escolher o dia."
+        }
+      ],
+      "why": "No celular, cada etapa é mais um toque e mais uma tela. A escolha de unidade não decide nada, e o profissional obrigatório trava quem não tem preferência.",
+      "principle": "Uma tarefa, uma tela",
+      "fix": "Junte serviço, horário e dados em uma página. Tire a unidade, deixe o profissional opcional em qualquer um e mostre só os próximos dias com horário livre, já com os horários à vista.",
+      "files": [
+        "examples/booking/before/src/pages/Booking.jsx"
+      ],
+      "effort": "M"
+    },
+    {
+      "id": "UX-04",
+      "title": "Pagamento, cupom e política obrigatórios num agendamento que não cobra nada",
+      "dimension": "flow",
+      "severity": "major",
+      "tells": [
+        "F02"
+      ],
+      "evidence": [
+        {
+          "screen": "S3",
+          "screenshot": "screens/desktop-agendar-etapa-5.png",
+          "observation": "A etapa 5 exige forma de pagamento e o aceite da política de cancelamento. A política não tem link, e o site não cobra nada."
+        }
+      ],
+      "why": "O cliente precisa aceitar uma regra que não consegue ler. O campo de cupom vazio faz ele sair para procurar desconto, e a forma de pagamento não muda nada, porque o pagamento é feito na barbearia.",
+      "principle": "Pergunte só o que a tarefa usa",
+      "fix": "Tire pagamento, cupom e política do agendamento. Se existir uma regra de cancelamento, escreva em uma linha perto do botão de confirmar.",
+      "files": [
+        "examples/booking/before/src/pages/Booking.jsx"
+      ],
+      "effort": "S"
+    },
+    {
+      "id": "UX-05",
+      "title": "Botões apagados que não dizem o que falta",
+      "dimension": "actions",
+      "severity": "major",
+      "tells": [
+        "A07"
+      ],
+      "evidence": [
+        {
+          "screen": "S2",
+          "screenshot": "screens/desktop-cadastro-incompleto.png",
+          "observation": "Com nome e telefone preenchidos, Cadastrar continua apagado e nenhuma mensagem aponta o campo que falta."
+        },
+        {
+          "screen": "S2",
+          "observation": "A senha precisa de 8 caracteres e o CPF de 11 dígitos, regras que só existem no código."
+        },
+        {
+          "screen": "S3",
+          "observation": "Próximo fica apagado em todas as etapas até a escolha ser feita, sem dizer isso."
+        }
+      ],
+      "why": "O cliente não sabe se o problema é o CPF, a senha curta ou o e-mail diferente do primeiro. Sem pista, ele tenta de novo, desiste ou chama no WhatsApp.",
+      "principle": "Ajude a pessoa a sair do erro",
+      "fix": "Deixe o botão sempre ativo. Ao clicar, mostre ao lado de cada campo o que falta, em uma frase, e leve a tela até o primeiro problema.",
+      "files": [
+        "examples/booking/before/src/pages/Signup.jsx",
+        "examples/booking/before/src/pages/Booking.jsx"
+      ],
+      "effort": "S"
+    },
+    {
+      "id": "UX-06",
+      "title": "Remarcar e Cancelar não funcionam",
+      "dimension": "actions",
+      "severity": "major",
+      "tells": [
+        "F01",
+        "P05",
+        "F04"
+      ],
+      "evidence": [
+        {
+          "screen": "S4",
+          "screenshot": "screens/desktop-minha-conta.png",
+          "observation": "Remarcar não faz nada. Cancelar abre um alerta do navegador com Em breve!."
+        },
+        {
+          "screen": "S1",
+          "observation": "O site não mostra telefone nem WhatsApp, e o link Contato do menu não leva a lugar nenhum."
+        }
+      ],
+      "why": "Remarcar e cancelar é o que o cliente mais faz depois de marcar. Sem esses botões e sem um contato, o horário fica preso, e a barbearia perde a cadeira quando ele não aparece.",
+      "principle": "Não mostre o que não funciona",
+      "fix": "Faça Remarcar abrir o agendamento com o mesmo serviço e os dados já preenchidos. Enquanto cancelar pelo site não existir, troque o botão por Falar com a barbearia, com link para o WhatsApp.",
+      "files": [
+        "examples/booking/before/src/pages/Account.jsx",
+        "examples/booking/before/src/pages/Landing.jsx"
+      ],
+      "effort": "S"
+    },
+    {
+      "id": "UX-07",
+      "title": "Texto cinza apagado em quase todas as telas",
+      "dimension": "look",
+      "severity": "major",
+      "tells": [
+        "L12"
+      ],
+      "evidence": [
+        {
+          "screen": "S1",
+          "probe": "probe/desktop-home.json",
+          "observation": "9 dos 25 textos medidos ficam abaixo de 4,5:1. O cinza zinc-500 dá 4,12:1 no fundo da página e 3,76:1 dentro dos cards."
+        },
+        {
+          "screen": "S3",
+          "probe": "probe/desktop-agendar.json",
+          "observation": "O endereço da unidade, Rua das Flores, 120, fica em 3,31:1."
+        }
+      ],
+      "why": "O cliente usa o celular na rua, muitas vezes com o brilho baixo. O que fica cinza é justamente o endereço, a duração e a descrição dos serviços.",
+      "principle": "Contraste mínimo de 4,5:1 (WCAG 1.4.3)",
+      "fix": "Troque zinc-500 por zinc-400 nos textos de apoio. A paleta e o fundo continuam os mesmos.",
+      "files": [
+        "examples/booking/before/src/pages/Landing.jsx",
+        "examples/booking/before/src/pages/Signup.jsx",
+        "examples/booking/before/src/pages/Booking.jsx",
+        "examples/booking/before/src/pages/Account.jsx"
+      ],
+      "effort": "S"
+    },
+    {
+      "id": "UX-08",
+      "title": "O título não diz onde fica nem o que dá para fazer",
+      "dimension": "purpose",
+      "severity": "minor",
+      "tells": [
+        "C01",
+        "C02",
+        "C03"
+      ],
+      "evidence": [
+        {
+          "screen": "S1",
+          "screenshot": "screens/desktop-home.png",
+          "observation": "O título é Transforme seu visual com a melhor experiência premium da cidade. A nota 4.9/5 e os 5.000 clientes não têm fonte, e Saiba mais não abre nada."
+        }
+      ],
+      "why": "O cliente quer saber se a barbearia fica perto, quanto custa e se tem horário. Frases que serviriam para qualquer barbearia não respondem nada, e números sem fonte soam inventados.",
+      "principle": "Diga o que é, para quem e o que fazer",
+      "fix": "Diga no título o que é e onde fica, por exemplo Corte e barba no Centro, com horário marcado. Troque a nota pelo endereço e pelo horário de funcionamento, ou mostre a nota real com link para o Google.",
+      "files": [
+        "examples/booking/before/src/pages/Landing.jsx"
+      ],
+      "effort": "S"
+    },
+    {
+      "id": "UX-09",
+      "title": "Links do menu que não levam a lugar nenhum",
+      "dimension": "actions",
+      "severity": "minor",
+      "tells": [
+        "F01",
+        "A08"
+      ],
+      "evidence": [
+        {
+          "screen": "S1",
+          "probe": "probe/desktop-home.json",
+          "observation": "Seis links apontam para #: Serviços, Sobre, Contato, Saiba mais, Política de privacidade e Termos de uso."
+        },
+        {
+          "screen": "S1",
+          "probe": "probe/mobile-home.json",
+          "observation": "No celular, os links do menu têm 20 px de altura, abaixo dos 24 px mínimos para tocar."
+        }
+      ],
+      "why": "Um link que não abre nada ensina o cliente a desconfiar do resto da página.",
+      "principle": "Não mostre o que não funciona",
+      "fix": "Ligue Serviços à lista de serviços e troque Contato por um link de WhatsApp. Tire Sobre e Saiba mais enquanto não houver conteúdo, e dê altura de toque aos links que ficarem.",
+      "files": [
+        "examples/booking/before/src/pages/Landing.jsx"
+      ],
+      "effort": "S"
+    },
+    {
+      "id": "UX-10",
+      "title": "Campos sem rótulo ligado e sem foco visível",
+      "dimension": "actions",
+      "severity": "minor",
+      "tells": [
+        "S06"
+      ],
+      "evidence": [
+        {
+          "screen": "S2",
+          "probe": "probe/desktop-cadastro.json",
+          "observation": "10 dos 12 campos não têm rótulo ligado. Tocar no texto do rótulo não coloca o cursor no campo."
+        },
+        {
+          "screen": "S3",
+          "observation": "Os campos usam outline-none sem outro sinal de foco, então quem navega pelo teclado não vê onde está."
+        }
+      ],
+      "why": "Leitores de tela anunciam só campo de texto, sem dizer qual. No celular, o rótulo não ajuda a acertar o campo.",
+      "principle": "Rótulos e foco visíveis (WCAG 1.3.1 e 2.4.7)",
+      "fix": "Ligue cada label ao campo com htmlFor e id. Troque outline-none por um anel de foco âmbar, que já é a cor da marca.",
+      "files": [
+        "examples/booking/before/src/pages/Signup.jsx",
+        "examples/booking/before/src/pages/Booking.jsx"
+      ],
+      "effort": "S"
+    },
+    {
+      "id": "UX-11",
+      "title": "Uma pergunta Tem certeza? para confirmar um agendamento",
+      "dimension": "flow",
+      "severity": "polish",
+      "tells": [
+        "F06"
+      ],
+      "evidence": [
+        {
+          "screen": "S3",
+          "observation": "Depois de clicar em Confirmar agendamento, o navegador pergunta Tem certeza que deseja confirmar o agendamento?."
+        }
+      ],
+      "why": "O botão já diz Confirmar agendamento. A pergunta repete a decisão e, no celular, abre uma caixa do sistema que parece erro.",
+      "principle": "Confirme só o que não tem volta",
+      "fix": "Tire a pergunta. Se o cliente errar, Remarcar resolve.",
+      "files": [
+        "examples/booking/before/src/pages/Booking.jsx"
+      ],
+      "effort": "S"
+    }
+  ],
+  "topThree": [
+    "UX-01",
+    "UX-02",
+    "UX-03"
+  ],
+  "quickWins": [
+    "UX-04",
+    "UX-05",
+    "UX-06",
+    "UX-07",
+    "UX-08"
+  ],
+  "evidence": {
+    "scan": "scan.json",
+    "capture": "capture.json"
+  },
+  "summary": {
+    "aiTellIndex": 50,
+    "staticIndex": 54,
+    "styleIndex": 66,
+    "findings": {
+      "total": 11,
+      "blocker": 2,
+      "major": 5,
+      "minor": 3,
+      "polish": 1,
+      "fixed": 0
+    },
+    "tells": {
+      "present": 25,
+      "absent": 17,
+      "unverified": 1
+    },
+    "styleTells": {
+      "present": 9,
+      "absent": 1,
+      "unverified": 0
+    },
+    "inputs": {
+      "asked": 20,
+      "needed": 4
+    }
+  }
+}

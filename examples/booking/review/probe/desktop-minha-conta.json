@@ -1,0 +1,124 @@
+{
+  "probe": "0.1.0",
+  "url": "http://localhost:5175/minha-conta",
+  "title": "Navalha Barbearia | Agendamento Online",
+  "lang": "pt-BR",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "page": {
+    "height": 900,
+    "horizontalOverflow": false
+  },
+  "firstView": {
+    "text": "Bem-vindo de volta, João ! 👋 | Aqui está o que está acontecendo com seus agendamentos. | Agendamentos | 12 | +20% vs mês anterior | Pontos de fidelidade | 340 | +45 este mês | Economia | R$ 120 | +R$ 30 este mês | Próximo agendamento | Corte + Barba · 15/10 às 10:00 com Bruno | Remarcar | Cancelar",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Bem-vindo de volta, João! 👋",
+        "inFirstView": true
+      },
+      {
+        "level": 2,
+        "text": "Próximo agendamento",
+        "inFirstView": true
+      }
+    ]
+  },
+  "actions": {
+    "total": 2,
+    "primaryInFirstView": 1,
+    "iconOnlyUnnamed": 0,
+    "smallTargets": 0,
+    "deadLinks": 0,
+    "hiddenUntilHover": 0,
+    "items": [
+      {
+        "tag": "button",
+        "text": "Remarcar",
+        "primary": true,
+        "inFirstView": true,
+        "box": {
+          "x": 241,
+          "y": 527,
+          "w": 119,
+          "h": 50
+        }
+      },
+      {
+        "tag": "button",
+        "text": "Cancelar",
+        "inFirstView": true,
+        "box": {
+          "x": 372,
+          "y": 527,
+          "w": 112,
+          "h": 50
+        }
+      }
+    ]
+  },
+  "contrast": {
+    "checked": 15,
+    "failures": 4,
+    "skipped": 0,
+    "samples": [
+      {
+        "text": "Aqui está o que está acontecendo com seus agendamentos.",
+        "ratio": 4.12,
+        "required": 4.5,
+        "color": "#71717b",
+        "background": "#09090b",
+        "fontSize": 16
+      },
+      {
+        "text": "Agendamentos",
+        "ratio": 3.76,
+        "required": 4.5,
+        "color": "#71717b",
+        "background": "#161617",
+        "fontSize": 14
+      },
+      {
+        "text": "Pontos de fidelidade",
+        "ratio": 3.76,
+        "required": 4.5,
+        "color": "#71717b",
+        "background": "#161617",
+        "fontSize": 14
+      },
+      {
+        "text": "Economia",
+        "ratio": 3.76,
+        "required": 4.5,
+        "color": "#71717b",
+        "background": "#161617",
+        "fontSize": 14
+      }
+    ]
+  },
+  "forms": [],
+  "looseFields": 0,
+  "decor": {
+    "gradients": 1,
+    "gradientText": 0,
+    "blur": 4,
+    "roundedShadow": 0,
+    "emoji": 1
+  },
+  "typography": {
+    "families": [
+      "Inter"
+    ],
+    "sizes": [
+      30,
+      20,
+      16,
+      14,
+      12
+    ]
+  },
+  "dialogsOpen": 0,
+  "errors": []
+}

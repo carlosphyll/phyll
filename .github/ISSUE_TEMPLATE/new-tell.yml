@@ -1,0 +1,58 @@
+name: New tell
+description: Suggest a pattern that generated apps keep getting wrong
+labels: ["tell"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A tell is a default choice that makes a product harder to understand or use, and that generated apps make often. Looking generated is not enough on its own: say how it hurts the person using the product.
+  - type: input
+    id: name
+    attributes:
+      label: Name
+      description: A few words, like the entries in the catalog.
+      placeholder: Tooltips on everything
+    validations:
+      required: true
+  - type: dropdown
+    id: dimension
+    attributes:
+      label: Dimension
+      options:
+        - purpose
+        - flow
+        - actions
+        - look
+        - copy
+        - states
+    validations:
+      required: true
+  - type: textarea
+    id: watch
+    attributes:
+      label: What to watch for
+      description: What it looks like on screen or in the code.
+    validations:
+      required: true
+  - type: textarea
+    id: harm
+    attributes:
+      label: Why it hurts the end user
+    validations:
+      required: true
+  - type: textarea
+    id: fix
+    attributes:
+      label: How to fix it
+  - type: textarea
+    id: hit
+    attributes:
+      label: Code that shows the tell
+      description: A short snippet a detector should match.
+      render: jsx
+  - type: textarea
+    id: miss
+    attributes:
+      label: Similar code that is fine
+      description: A snippet a detector should not match.
+      render: jsx

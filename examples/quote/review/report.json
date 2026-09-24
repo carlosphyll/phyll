@@ -1,0 +1,975 @@
+{
+  "schemaVersion": "1.0",
+  "tool": {
+    "name": "phyll",
+    "version": "0.2.0"
+  },
+  "createdAt": "2026-09-23T23:00:00Z",
+  "language": "pt-BR",
+  "mode": "full",
+  "target": {
+    "name": "Orça Já (antes)",
+    "url": "http://localhost:5177",
+    "sourceDir": "examples/quote/before",
+    "framework": "react-router"
+  },
+  "context": {
+    "endUser": "Um prestador de serviço ou pequeno comerciante, como pintor, eletricista ou dono de loja, que recebe pedidos de preço pelo WhatsApp e responde pelo celular.",
+    "product": "Monta orçamentos com itens e total para enviar ao cliente.",
+    "coreJobs": [
+      {
+        "id": "J1",
+        "name": "Fazer um orçamento e mandar para o cliente",
+        "momentOfValue": "O cliente recebe o orçamento com itens, total e validade, pelo WhatsApp ou em PDF"
+      },
+      {
+        "id": "J2",
+        "name": "Saber quais orçamentos o cliente aprovou",
+        "momentOfValue": "Uma lista com a situação de cada orçamento e o total aprovado"
+      }
+    ],
+    "assumptions": [
+      "O app roda sem servidor. O login aceita qualquer coisa, e os orçamentos ficam só na memória da página.",
+      "O público responde pedidos de preço pelo WhatsApp, pela forma como o produto se apresenta e pelo tipo de cliente.",
+      "Orçamento não é nota fiscal, então dados fiscais do cliente não são obrigatórios."
+    ]
+  },
+  "fiveSecondTest": {
+    "screen": "S1",
+    "whatIsThis": "Alguma ferramenta de orçamento com inteligência artificial. O título fala em revolucionar, não no que ela faz.",
+    "whoIsItFor": "Empresas, pelos 10.000 clientes citados.",
+    "whatToDo": "Comece grátis, que leva a um login. Ver demonstração não abre nada.",
+    "passed": false,
+    "note": "Nada na primeira tela diz como o orçamento chega ao cliente nem quanto tempo leva."
+  },
+  "screens": [
+    {
+      "id": "S1",
+      "route": "/",
+      "title": "Página inicial",
+      "screenshots": {
+        "desktop": "screens/desktop-home.png",
+        "mobile": "screens/mobile-home.png"
+      },
+      "probe": {
+        "desktop": "probe/desktop-home.json",
+        "mobile": "probe/mobile-home.json"
+      }
+    },
+    {
+      "id": "S2",
+      "route": "/entrar",
+      "title": "Login",
+      "screenshots": {
+        "desktop": "screens/desktop-entrar.png",
+        "mobile": "screens/mobile-entrar.png"
+      },
+      "probe": {
+        "desktop": "probe/desktop-entrar.json",
+        "mobile": "probe/mobile-entrar.json"
+      }
+    },
+    {
+      "id": "S3",
+      "route": "/app",
+      "title": "Painel",
+      "screenshots": {
+        "desktop": "screens/desktop-app.png",
+        "mobile": "screens/mobile-app.png"
+      },
+      "probe": {
+        "desktop": "probe/desktop-app.json",
+        "mobile": "probe/mobile-app.json"
+      }
+    },
+    {
+      "id": "S4",
+      "route": "/app/orcamentos/novo",
+      "title": "Novo orçamento em seis etapas",
+      "screenshots": {
+        "desktop": "screens/desktop-app-orcamentos-novo.png",
+        "mobile": "screens/mobile-app-orcamentos-novo.png"
+      },
+      "probe": {
+        "desktop": "probe/desktop-app-orcamentos-novo.json",
+        "mobile": "probe/mobile-app-orcamentos-novo.json"
+      }
+    },
+    {
+      "id": "S5",
+      "route": "/app/orcamentos",
+      "title": "Lista de orçamentos",
+      "screenshots": {
+        "desktop": "screens/desktop-app-orcamentos.png",
+        "mobile": "screens/mobile-app-orcamentos.png"
+      },
+      "probe": {
+        "desktop": "probe/desktop-app-orcamentos.json",
+        "mobile": "probe/mobile-app-orcamentos.json"
+      }
+    },
+    {
+      "id": "S6",
+      "route": "/app/integracoes",
+      "title": "Em breve",
+      "screenshots": {
+        "desktop": "screens/desktop-app-integracoes.png",
+        "mobile": "screens/mobile-app-integracoes.png"
+      },
+      "probe": {
+        "desktop": "probe/desktop-app-integracoes.json",
+        "mobile": "probe/mobile-app-integracoes.json"
+      }
+    }
+  ],
+  "journeys": [
+    {
+      "job": "J1",
+      "steps": [
+        {
+          "screen": "S1",
+          "action": "Cliquei em Comece grátis",
+          "observation": "Abriu um login. Criar conta e Esqueceu a senha? não levam a lugar nenhum.",
+          "problem": true
+        },
+        {
+          "screen": "S2",
+          "action": "Cliquei em Entrar com os campos vazios",
+          "observation": "Entrou assim mesmo, num painel com 128 orçamentos enviados e R$ 48.290 de receita prevista.",
+          "problem": true
+        },
+        {
+          "screen": "S4",
+          "action": "Cliquei em Novo orçamento",
+          "observation": "Abriu um assistente de seis etapas. A primeira pede razão social, CNPJ, inscrição estadual, endereço completo, telefone, e-mail e logo da minha empresa.",
+          "problem": true
+        },
+        {
+          "screen": "S4",
+          "action": "Na etapa 2, preenchi o cliente",
+          "observation": "CPF e e-mail do cliente são obrigatórios, além de tipo de pessoa e endereço completo.",
+          "problem": true
+        },
+        {
+          "screen": "S4",
+          "action": "Na etapa 3, escrevi os itens",
+          "observation": "Cada item pede código, unidade e desconto além de descrição, quantidade e valor. A lista de unidade corta o texto, e o total não aparece enquanto escrevo.",
+          "problem": true
+        },
+        {
+          "screen": "S4",
+          "action": "Nas etapas 4 e 5, condições e documento",
+          "observation": "Validade e forma de pagamento são obrigatórias. Depois vêm quatro campos sem nome, Moderno, uma faixa de cor, BRL e pt-BR, sem mostrar como o documento vai ficar.",
+          "problem": true
+        },
+        {
+          "screen": "S4",
+          "action": "Na revisão, cliquei em Gerar orçamento",
+          "observation": "Um aviso com confete disse que o orçamento foi gerado, e a lista abriu com ele marcado como DRAFT."
+        },
+        {
+          "screen": "S5",
+          "action": "Procurei como mandar o orçamento para o cliente",
+          "observation": "Não há botão de enviar, baixar ou copiar. Os ícones da linha só aparecem com o mouse em cima, ver e editar não fazem nada, e Exportar diz Em breve!.",
+          "problem": true
+        }
+      ],
+      "clicks": 10,
+      "neededClicks": 2,
+      "screens": 5,
+      "deadEnds": 1,
+      "reachedValue": false,
+      "inputs": {
+        "asked": 41,
+        "needed": 4,
+        "cuts": [
+          {
+            "input": "E-mail e senha do login",
+            "action": "remove",
+            "note": "O primeiro orçamento não precisa de conta. Os orçamentos ficam salvos no aparelho, e a conta vem para quem quiser usar em outro lugar."
+          },
+          {
+            "input": "Razão social, nome fantasia, CNPJ e inscrição estadual",
+            "action": "merge",
+            "note": "Viram um campo só, Seu nome ou empresa, que fica salvo para os próximos orçamentos."
+          },
+          {
+            "input": "Endereço, cidade, estado, CEP, telefone, e-mail e logo da empresa",
+            "action": "defer",
+            "note": "Entram depois, para quem quiser um cabeçalho completo. Pelo WhatsApp, o orçamento já sai do número da pessoa."
+          },
+          {
+            "input": "Tipo de pessoa e CPF ou CNPJ do cliente",
+            "action": "remove",
+            "note": "Orçamento não é nota fiscal."
+          },
+          {
+            "input": "E-mail, telefone, CEP, endereço, cidade e estado do cliente",
+            "action": "remove",
+            "note": "O envio é pelo WhatsApp, e o cliente é escolhido nos contatos."
+          },
+          {
+            "input": "Código, unidade e desconto de cada item",
+            "action": "remove",
+            "note": "Descrição, quantidade e valor bastam para o cliente entender o preço."
+          },
+          {
+            "input": "Quantidade",
+            "action": "default",
+            "note": "Começa em 1."
+          },
+          {
+            "input": "Validade da proposta",
+            "action": "default",
+            "note": "Começa em 7 dias e muda num bloco que abre quando precisa."
+          },
+          {
+            "input": "Prazo de entrega, forma e condição de pagamento e observações",
+            "action": "defer",
+            "note": "Ficam no mesmo bloco opcional, num campo de pagamento e outro de observações."
+          },
+          {
+            "input": "Desconto geral e frete",
+            "action": "remove",
+            "note": "Quando existirem, entram como itens."
+          },
+          {
+            "input": "Modelo, cor, moeda, idioma, impostos e numeração",
+            "action": "default",
+            "note": "Um modelo só, em reais e em português, com numeração automática."
+          },
+          {
+            "input": "Nome do cliente e descrição e valor de cada item",
+            "action": "keep",
+            "note": "É o que o cliente precisa ler."
+          }
+        ]
+      },
+      "note": "O orçamento fica pronto, mas não sai do app. A pessoa copia os números à mão para o WhatsApp."
+    },
+    {
+      "job": "J2",
+      "steps": [
+        {
+          "screen": "S5",
+          "action": "Abri Orçamentos",
+          "observation": "A lista traz três orçamentos que não fiz, de João da Silva, Maria Oliveira e Empresa XYZ Ltda.",
+          "problem": true
+        },
+        {
+          "screen": "S5",
+          "action": "Procurei quais foram aprovados",
+          "observation": "A situação aparece como PENDING, APPROVED e DRAFT, e nada permite marcar que o cliente aprovou.",
+          "problem": true
+        },
+        {
+          "screen": "S3",
+          "action": "Voltei ao painel",
+          "observation": "A conversão de 34% e a receita de R$ 48.290 não batem com a lista.",
+          "problem": true
+        }
+      ],
+      "clicks": 2,
+      "neededClicks": 1,
+      "screens": 2,
+      "deadEnds": 1,
+      "reachedValue": false,
+      "note": "A lista existe, mas mistura exemplos com orçamentos reais e não deixa registrar a resposta do cliente."
+    }
+  ],
+  "tells": [
+    {
+      "id": "P01",
+      "status": "present",
+      "evidence": [
+        "S1"
+      ],
+      "note": "O teste de cinco segundos falhou.",
+      "source": "review"
+    },
+    {
+      "id": "P02",
+      "status": "present",
+      "evidence": [
+        "S1",
+        "S2"
+      ],
+      "note": "Quem volta para trabalhar passa pela página de vendas e pelo login antes de ver os orçamentos.",
+      "source": "review"
+    },
+    {
+      "id": "P03",
+      "status": "present",
+      "evidence": [
+        "S3"
+      ],
+      "note": "128 orçamentos, 34% de conversão e R$ 48.290 numa conta nova.",
+      "source": "review"
+    },
+    {
+      "id": "P04",
+      "status": "present",
+      "evidence": [
+        "S3"
+      ],
+      "note": "O menu lista Clientes, Produtos, Relatórios e Integrações, as tabelas do sistema, e não as tarefas.",
+      "source": "review"
+    },
+    {
+      "id": "P05",
+      "status": "present",
+      "hits": 2,
+      "source": "static"
+    },
+    {
+      "id": "P06",
+      "status": "present",
+      "evidence": [
+        "S3",
+        "S6"
+      ],
+      "note": "Sete áreas no menu, cinco delas vazias, para um produto que faz uma coisa.",
+      "source": "review"
+    },
+    {
+      "id": "F01",
+      "status": "present",
+      "hits": 7,
+      "source": "static"
+    },
+    {
+      "id": "F02",
+      "status": "present",
+      "hits": 1,
+      "source": "static"
+    },
+    {
+      "id": "F03",
+      "status": "absent",
+      "hits": 0,
+      "source": "static"
+    },
+    {
+      "id": "F04",
+      "status": "present",
+      "evidence": [
+        "S5"
+      ],
+      "note": "Depois de gerar, não há como enviar o orçamento.",
+      "source": "review"
+    },
+    {
+      "id": "F05",
+      "status": "present",
+      "hits": 1,
+      "source": "static"
+    },
+    {
+      "id": "F06",
+      "status": "present",
+      "hits": 2,
+      "source": "static"
+    },
+    {
+      "id": "F07",
+      "status": "present",
+      "hits": 1,
+      "source": "static"
+    },
+    {
+      "id": "F08",
+      "status": "present",
+      "evidence": [
+        "S4"
+      ],
+      "note": "Recarregar a página no meio do assistente perde tudo, porque nada é salvo.",
+      "source": "review"
+    },
+    {
+      "id": "F09",
+      "status": "present",
+      "evidence": [
+        "S4"
+      ],
+      "note": "Moeda, idioma e numeração têm uma resposta óbvia para quem usa em reais e em português.",
+      "source": "review"
+    },
+    {
+      "id": "F10",
+      "status": "absent",
+      "source": "review"
+    },
+    {
+      "id": "F11",
+      "status": "present",
+      "hits": 2,
+      "source": "static"
+    },
+    {
+      "id": "F12",
+      "status": "absent",
+      "hits": 0,
+      "source": "static"
+    },
+    {
+      "id": "A01",
+      "status": "present",
+      "evidence": [
+        "S5"
+      ],
+      "note": "As ações do orçamento ficam no fim da linha e só aparecem com o mouse em cima.",
+      "source": "review"
+    },
+    {
+      "id": "A02",
+      "status": "absent",
+      "source": "review"
+    },
+    {
+      "id": "A03",
+      "status": "present",
+      "hits": 4,
+      "source": "static"
+    },
+    {
+      "id": "A04",
+      "status": "present",
+      "evidence": [
+        "S5"
+      ],
+      "note": "O ícone de excluir tem a mesma cor e o mesmo tamanho de ver e editar.",
+      "source": "review"
+    },
+    {
+      "id": "A05",
+      "status": "present",
+      "hits": 1,
+      "source": "static"
+    },
+    {
+      "id": "A06",
+      "status": "absent",
+      "source": "review"
+    },
+    {
+      "id": "A07",
+      "status": "present",
+      "hits": 1,
+      "source": "static"
+    },
+    {
+      "id": "A08",
+      "status": "present",
+      "evidence": [
+        "S1"
+      ],
+      "note": "Os links do menu da página inicial têm menos de 24 px de altura.",
+      "source": "review"
+    },
+    {
+      "id": "A09",
+      "status": "present",
+      "hits": 23,
+      "source": "static"
+    },
+    {
+      "id": "L01",
+      "status": "present",
+      "hits": 15,
+      "source": "static"
+    },
+    {
+      "id": "L02",
+      "status": "present",
+      "hits": 4,
+      "source": "static"
+    },
+    {
+      "id": "L03",
+      "status": "present",
+      "hits": 15,
+      "source": "static"
+    },
+    {
+      "id": "L04",
+      "status": "present",
+      "hits": 15,
+      "source": "static"
+    },
+    {
+      "id": "L05",
+      "status": "present",
+      "hits": 2,
+      "source": "static"
+    },
+    {
+      "id": "L06",
+      "status": "present",
+      "hits": 6,
+      "source": "static"
+    },
+    {
+      "id": "L07",
+      "status": "present",
+      "hits": 4,
+      "source": "static"
+    },
+    {
+      "id": "L08",
+      "status": "present",
+      "hits": 14,
+      "source": "static"
+    },
+    {
+      "id": "L09",
+      "status": "present",
+      "hits": 4,
+      "source": "static"
+    },
+    {
+      "id": "L10",
+      "status": "present",
+      "hits": 9,
+      "source": "static"
+    },
+    {
+      "id": "L11",
+      "status": "present",
+      "hits": 10,
+      "source": "static"
+    },
+    {
+      "id": "L12",
+      "status": "present",
+      "hits": 25,
+      "source": "static"
+    },
+    {
+      "id": "C01",
+      "status": "present",
+      "hits": 2,
+      "source": "static"
+    },
+    {
+      "id": "C02",
+      "status": "absent",
+      "hits": 0,
+      "source": "static"
+    },
+    {
+      "id": "C03",
+      "status": "present",
+      "hits": 3,
+      "source": "static"
+    },
+    {
+      "id": "C04",
+      "status": "present",
+      "hits": 4,
+      "source": "static"
+    },
+    {
+      "id": "C05",
+      "status": "absent",
+      "hits": 0,
+      "source": "static"
+    },
+    {
+      "id": "C06",
+      "status": "present",
+      "hits": 3,
+      "source": "static"
+    },
+    {
+      "id": "C07",
+      "status": "absent",
+      "hits": 0,
+      "source": "static"
+    },
+    {
+      "id": "C08",
+      "status": "present",
+      "evidence": [
+        "S5"
+      ],
+      "note": "Status em inglês, PENDING, APPROVED e DRAFT, numa interface em português.",
+      "source": "review"
+    },
+    {
+      "id": "S01",
+      "status": "present",
+      "hits": 1,
+      "source": "static"
+    },
+    {
+      "id": "S02",
+      "status": "unverified",
+      "note": "Não há servidor, então não há espera para medir.",
+      "source": "review"
+    },
+    {
+      "id": "S03",
+      "status": "absent",
+      "hits": 0,
+      "source": "static"
+    },
+    {
+      "id": "S04",
+      "status": "present",
+      "hits": 1,
+      "source": "static"
+    },
+    {
+      "id": "S05",
+      "status": "present",
+      "hits": 3,
+      "source": "static"
+    },
+    {
+      "id": "S06",
+      "status": "present",
+      "hits": 3,
+      "source": "static"
+    }
+  ],
+  "findings": [
+    {
+      "id": "UX-01",
+      "title": "O orçamento fica pronto, mas não dá para enviar",
+      "dimension": "flow",
+      "severity": "blocker",
+      "tells": [
+        "F04",
+        "F01",
+        "P05",
+        "A05"
+      ],
+      "evidence": [
+        {
+          "screen": "S5",
+          "screenshot": "screens/desktop-orcamento-gerado.png",
+          "observation": "Depois de Gerar orçamento, a lista mostra o orçamento como DRAFT. Não há botão de enviar, baixar ou copiar."
+        },
+        {
+          "screen": "S5",
+          "probe": "probe/desktop-app-orcamentos.json",
+          "observation": "Os ícones de ver, editar e excluir só aparecem com o mouse sobre a linha, e ver e editar não fazem nada. Exportar abre um alerta Em breve!."
+        }
+      ],
+      "why": "Mandar o orçamento para o cliente é o motivo de usar o produto. Depois de seis etapas, a pessoa ainda precisa copiar os números à mão para o WhatsApp.",
+      "principle": "Termine a tarefa, não o formulário",
+      "fix": "Ponha Enviar pelo WhatsApp e Baixar PDF na mesma tela em que o orçamento é feito. Depois de enviar, mostre o orçamento com a situação e o próximo passo.",
+      "files": [
+        "examples/quote/before/src/pages/Quotes.jsx",
+        "examples/quote/before/src/pages/NewQuote.jsx"
+      ],
+      "effort": "M"
+    },
+    {
+      "id": "UX-02",
+      "title": "Seis etapas e 39 campos para um orçamento de dois itens",
+      "dimension": "flow",
+      "severity": "blocker",
+      "tells": [
+        "F02",
+        "F07",
+        "F09",
+        "F11"
+      ],
+      "evidence": [
+        {
+          "screen": "S4",
+          "screenshot": "screens/desktop-app-orcamentos-novo.png",
+          "observation": "A etapa 1 de 6 pede razão social, nome fantasia, CNPJ, inscrição estadual, endereço completo, telefone, e-mail e logo da própria empresa, em todo orçamento."
+        },
+        {
+          "screen": "S4",
+          "screenshot": "screens/desktop-novo-etapa-itens.png",
+          "observation": "Cada item pede código, unidade e desconto além de descrição, quantidade e valor. O total não aparece em nenhuma etapa antes da revisão."
+        },
+        {
+          "screen": "S4",
+          "screenshot": "screens/desktop-novo-etapa-documento.png",
+          "observation": "A etapa 5 pede modelo, cor, moeda, idioma, impostos e numeração, sem mostrar o documento."
+        }
+      ],
+      "why": "Quem faz orçamento quer responder rápido, muitas vezes com o cliente esperando no WhatsApp. Os dados da própria empresa, repetidos a cada orçamento, e os dados fiscais do cliente não mudam o preço.",
+      "principle": "Pergunte só o que a tarefa usa",
+      "fix": "Uma página com seu nome ou empresa, que fica salvo, o cliente e os itens com descrição, quantidade e valor. Mostre o documento se montando ao lado. Validade, pagamento e observações ficam num bloco que abre quando precisa, com 7 dias de validade já preenchidos.",
+      "files": [
+        "examples/quote/before/src/pages/NewQuote.jsx"
+      ],
+      "effort": "M"
+    },
+    {
+      "id": "UX-03",
+      "title": "Um login antes de experimentar, que aceita campos vazios",
+      "dimension": "flow",
+      "severity": "major",
+      "tells": [
+        "F05",
+        "P02"
+      ],
+      "evidence": [
+        {
+          "screen": "S2",
+          "screenshot": "screens/desktop-entrar.png",
+          "observation": "Comece grátis leva a um login. Criar conta e Esqueceu a senha? apontam para #."
+        },
+        {
+          "screen": "S2",
+          "observation": "Clicar em Entrar com os campos vazios abre o painel."
+        }
+      ],
+      "why": "Quem chega pela primeira vez não tem conta e não consegue criar uma. A tela de login só atrasa, porque não confere nada.",
+      "principle": "Valor antes do cadastro",
+      "fix": "Leve Comece grátis direto ao novo orçamento. Salve os orçamentos no aparelho e ofereça conta só para quem quiser usar em outro lugar.",
+      "files": [
+        "examples/quote/before/src/pages/Landing.jsx",
+        "examples/quote/before/src/pages/Login.jsx"
+      ],
+      "effort": "S"
+    },
+    {
+      "id": "UX-04",
+      "title": "Painel e lista com números e clientes inventados",
+      "dimension": "states",
+      "severity": "major",
+      "tells": [
+        "P03",
+        "L07",
+        "C04"
+      ],
+      "evidence": [
+        {
+          "screen": "S3",
+          "screenshot": "screens/desktop-app.png",
+          "observation": "Uma conta nova mostra 128 orçamentos enviados, 34% de conversão, R$ 48.290 de receita prevista e 56 clientes, todos com tendência de alta."
+        },
+        {
+          "screen": "S5",
+          "screenshot": "screens/desktop-app-orcamentos.png",
+          "observation": "A lista começa com orçamentos de João da Silva, Maria Oliveira e Empresa XYZ Ltda."
+        }
+      ],
+      "why": "A pessoa não sabe o que é dela e o que é exemplo. Um número inventado no painel também faz desconfiar dos números reais.",
+      "principle": "Mostre os dados da pessoa, ou nada",
+      "fix": "Comece com a lista vazia e um botão para o primeiro orçamento. Mostre os totais só quando houver orçamentos, calculados a partir deles.",
+      "files": [
+        "examples/quote/before/src/pages/Dashboard.jsx",
+        "examples/quote/before/src/App.jsx"
+      ],
+      "effort": "S"
+    },
+    {
+      "id": "UX-05",
+      "title": "O assistente não cabe no celular",
+      "dimension": "look",
+      "severity": "major",
+      "tells": [
+        "S05"
+      ],
+      "evidence": [
+        {
+          "screen": "S4",
+          "screenshot": "screens/mobile-app-orcamentos-novo.png",
+          "probe": "probe/mobile-app-orcamentos-novo.json",
+          "observation": "No celular, o menu lateral ocupa metade da tela e os campos ficam com poucos pixels de largura. A página rola para os lados."
+        }
+      ],
+      "why": "Orçamento se faz na obra, na loja ou no carro, pelo celular. Nessa largura não dá para digitar.",
+      "principle": "Funcione na tela que a pessoa usa",
+      "fix": "Esconda o menu lateral no celular e troque por uma barra no topo. Deixe cada item em duas linhas: descrição em cima, quantidade e valor embaixo.",
+      "files": [
+        "examples/quote/before/src/App.jsx",
+        "examples/quote/before/src/pages/NewQuote.jsx"
+      ],
+      "effort": "M"
+    },
+    {
+      "id": "UX-06",
+      "title": "Situação em código e sem jeito de marcar a aprovação",
+      "dimension": "copy",
+      "severity": "major",
+      "tells": [
+        "C05",
+        "C08"
+      ],
+      "evidence": [
+        {
+          "screen": "S5",
+          "screenshot": "screens/desktop-app-orcamentos.png",
+          "observation": "A coluna Status mostra PENDING, APPROVED e DRAFT, e as datas aparecem como 2026-09-20."
+        }
+      ],
+      "why": "O cliente responde pelo WhatsApp, e a pessoa precisa registrar que ele aprovou. Palavras em inglês e em maiúsculas não dizem em que pé está cada orçamento.",
+      "principle": "Fale a língua de quem usa",
+      "fix": "Troque por Enviado, Aprovado e PDF baixado, com datas como 20/09/2026. Ponha um botão O cliente aprovou no orçamento aberto.",
+      "files": [
+        "examples/quote/before/src/pages/Quotes.jsx"
+      ],
+      "effort": "S"
+    },
+    {
+      "id": "UX-07",
+      "title": "Texto cinza claro demais em todas as telas",
+      "dimension": "look",
+      "severity": "major",
+      "tells": [
+        "L12"
+      ],
+      "evidence": [
+        {
+          "screen": "S1",
+          "probe": "probe/desktop-home.json",
+          "observation": "O cinza slate-400 no branco dá 2,63:1, bem abaixo do mínimo de 4,5:1. É a cor do texto de apoio e dos itens do menu lateral."
+        },
+        {
+          "screen": "S3",
+          "probe": "probe/desktop-app.json",
+          "observation": "15 dos 31 textos medidos no painel ficam abaixo do mínimo."
+        }
+      ],
+      "why": "Os itens do menu, as legendas e as descrições somem com o celular no sol.",
+      "principle": "Contraste mínimo de 4,5:1 (WCAG 1.4.3)",
+      "fix": "Troque slate-400 por slate-600 no texto e no menu. As cores da marca continuam as mesmas.",
+      "files": [
+        "examples/quote/before/src/App.jsx",
+        "examples/quote/before/src/pages/Landing.jsx",
+        "examples/quote/before/src/pages/Dashboard.jsx"
+      ],
+      "effort": "S"
+    },
+    {
+      "id": "UX-08",
+      "title": "A página inicial não diz o que o produto faz",
+      "dimension": "purpose",
+      "severity": "minor",
+      "tells": [
+        "C01",
+        "C03",
+        "P01"
+      ],
+      "evidence": [
+        {
+          "screen": "S1",
+          "screenshot": "screens/desktop-home.png",
+          "observation": "O título é Revolucione a forma como você cria orçamentos. O selo promete inteligência artificial, que não aparece em nenhuma tela, e os 10.000 clientes não têm fonte."
+        }
+      ],
+      "why": "Quem chega quer saber se dá para fazer um orçamento agora e como ele chega ao cliente. Promessas genéricas não respondem isso, e a promessa de uma IA que não existe tira a confiança no resto.",
+      "principle": "Diga o que é, para quem e o que fazer",
+      "fix": "Diga o resultado no título, por exemplo Faça o orçamento e mande pelo WhatsApp em um minuto. Troque o texto do selo por algo verdadeiro, como Grátis e sem cadastro, e mostre em três passos como funciona.",
+      "files": [
+        "examples/quote/before/src/pages/Landing.jsx"
+      ],
+      "effort": "S"
+    },
+    {
+      "id": "UX-09",
+      "title": "Cinco áreas do menu que não existem",
+      "dimension": "purpose",
+      "severity": "minor",
+      "tells": [
+        "P05",
+        "P06",
+        "P04"
+      ],
+      "evidence": [
+        {
+          "screen": "S6",
+          "screenshot": "screens/desktop-app-integracoes.png",
+          "observation": "Clientes, Produtos, Relatórios, Integrações e Configurações abrem a mesma tela Em breve!."
+        }
+      ],
+      "why": "Cada item vazio é um clique perdido e passa a ideia de produto inacabado. O que funciona fica escondido entre o que não funciona.",
+      "principle": "Não mostre o que não funciona",
+      "fix": "Deixe no menu só Novo orçamento e Orçamentos. Acrescente cada área quando ela existir.",
+      "files": [
+        "examples/quote/before/src/App.jsx",
+        "examples/quote/before/src/pages/ComingSoon.jsx"
+      ],
+      "effort": "S"
+    },
+    {
+      "id": "UX-10",
+      "title": "Campos só com placeholder e botões sem nome",
+      "dimension": "actions",
+      "severity": "minor",
+      "tells": [
+        "A09",
+        "A03",
+        "A07",
+        "S06"
+      ],
+      "evidence": [
+        {
+          "screen": "S2",
+          "probe": "probe/desktop-entrar.json",
+          "observation": "Os campos do login e das etapas 1, 2 e 4 só têm placeholder, que some quando a pessoa começa a digitar. Na etapa 5, quatro campos não têm nome nenhum."
+        },
+        {
+          "screen": "S5",
+          "observation": "O sino do topo e os ícones das linhas não têm nome para leitor de tela."
+        },
+        {
+          "screen": "S4",
+          "observation": "Continuar fica apagado sem dizer qual campo obrigatório falta."
+        }
+      ],
+      "why": "Com o nome sumindo, a pessoa esquece o que o campo pedia no meio da digitação. O botão apagado sem motivo faz ela procurar o erro campo por campo.",
+      "principle": "Rótulos visíveis e erros claros",
+      "fix": "Ponha um rótulo acima de cada campo e aria-label nos botões de ícone. Deixe o botão ativo e mostre ao lado do campo o que falta.",
+      "files": [
+        "examples/quote/before/src/pages/Login.jsx",
+        "examples/quote/before/src/pages/NewQuote.jsx",
+        "examples/quote/before/src/App.jsx",
+        "examples/quote/before/src/pages/Quotes.jsx"
+      ],
+      "effort": "S"
+    }
+  ],
+  "topThree": [
+    "UX-01",
+    "UX-02",
+    "UX-03"
+  ],
+  "quickWins": [
+    "UX-04",
+    "UX-06",
+    "UX-07",
+    "UX-08",
+    "UX-09"
+  ],
+  "evidence": {
+    "scan": "scan.json",
+    "capture": "capture.json"
+  },
+  "summary": {
+    "aiTellIndex": 73,
+    "staticIndex": 66,
+    "styleIndex": 99,
+    "findings": {
+      "total": 10,
+      "blocker": 2,
+      "major": 5,
+      "minor": 3,
+      "polish": 0,
+      "fixed": 0
+    },
+    "tells": {
+      "present": 33,
+      "absent": 9,
+      "unverified": 1
+    },
+    "styleTells": {
+      "present": 10,
+      "absent": 0,
+      "unverified": 0
+    },
+    "inputs": {
+      "asked": 41,
+      "needed": 4
+    }
+  }
+}

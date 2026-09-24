@@ -1,0 +1,68 @@
+{
+  "tool": {
+    "name": "phyll",
+    "version": "0.2.0"
+  },
+  "createdAt": "2026-09-23T23:07:39.852Z",
+  "baseUrl": "http://localhost:5179",
+  "viewports": [
+    "desktop",
+    "mobile"
+  ],
+  "pages": [
+    {
+      "route": "/",
+      "viewport": "desktop",
+      "url": "http://localhost:5179/",
+      "status": 200,
+      "screenshot": "screens/desktop-home.png",
+      "probe": "probe/desktop-home.json",
+      "consoleErrors": []
+    },
+    {
+      "route": "/entrar",
+      "viewport": "desktop",
+      "url": "http://localhost:5179/entrar",
+      "status": 200,
+      "screenshot": "screens/desktop-entrar.png",
+      "probe": "probe/desktop-entrar.json",
+      "consoleErrors": []
+    },
+    {
+      "route": "/checkout",
+      "viewport": "desktop",
+      "url": "http://localhost:5179/checkout",
+      "status": 200,
+      "screenshot": "screens/desktop-checkout.png",
+      "probe": "probe/desktop-checkout.json",
+      "consoleErrors": []
+    },
+    {
+      "route": "/",
+      "viewport": "mobile",
+      "url": "http://localhost:5179/",
+      "status": 200,
+      "screenshot": "screens/mobile-home.png",
+      "probe": "probe/mobile-home.json",
+      "consoleErrors": []
+    },
+    {
+      "route": "/entrar",
+      "viewport": "mobile",
+      "url": "http://localhost:5179/entrar",
+      "status": 200,
+      "screenshot": "screens/mobile-entrar.png",
+      "probe": "probe/mobile-entrar.json",
+      "consoleErrors": []
+    },
+    {
+      "route": "/checkout",
+      "viewport": "mobile",
+      "url": "http://localhost:5179/checkout",
+      "status": 200,
+      "screenshot": "screens/mobile-checkout.png",
+      "probe": "probe/mobile-checkout.json",
+      "consoleErrors": []
+    }
+  ]
+}

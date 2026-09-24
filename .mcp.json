@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "phyll": {
+      "command": "npx",
+      "args": ["-y", "phyll@latest", "mcp"]
+    }
+  }
+}

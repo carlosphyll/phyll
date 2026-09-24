@@ -1,0 +1,214 @@
+{
+  "probe": "0.1.0",
+  "url": "http://localhost:5177/",
+  "title": "Orça Já | Orçamentos inteligentes com IA",
+  "lang": "pt-BR",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "page": {
+    "height": 2346,
+    "horizontalOverflow": false
+  },
+  "firstView": {
+    "text": "Orça Já | Recursos | Preços | Blog | Comece grátis | ✨ Orçamentos com Inteligência Artificial | Revolucione a forma como você cria orçamentos | A plataforma completa e intuitiva que potencializa o seu negócio com o poder da IA. Simples, rápido e eficiente. | Comece grátis | Ver demonstração",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Revolucione a forma como você cria orçamentos",
+        "inFirstView": true
+      },
+      {
+        "level": 2,
+        "text": "Tudo o que você precisa em um só lugar",
+        "inFirstView": false
+      },
+      {
+        "level": 3,
+        "text": "Rápido e fácil",
+        "inFirstView": false
+      },
+      {
+        "level": 3,
+        "text": "Inteligência Artificial",
+        "inFirstView": false
+      },
+      {
+        "level": 3,
+        "text": "Seguro e confiável",
+        "inFirstView": false
+      }
+    ]
+  },
+  "actions": {
+    "total": 6,
+    "primaryInFirstView": 1,
+    "iconOnlyUnnamed": 0,
+    "smallTargets": 3,
+    "deadLinks": 4,
+    "hiddenUntilHover": 0,
+    "items": [
+      {
+        "tag": "a",
+        "text": "Recursos",
+        "deadLink": true,
+        "small": true,
+        "inFirstView": true,
+        "box": {
+          "x": 69,
+          "y": 48,
+          "w": 55,
+          "h": 20
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Preços",
+        "deadLink": true,
+        "small": true,
+        "inFirstView": true,
+        "box": {
+          "x": 156,
+          "y": 48,
+          "w": 41,
+          "h": 20
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Blog",
+        "deadLink": true,
+        "small": true,
+        "inFirstView": true,
+        "box": {
+          "x": 228,
+          "y": 48,
+          "w": 28,
+          "h": 20
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Comece grátis",
+        "inFirstView": true,
+        "box": {
+          "x": 288,
+          "y": 30,
+          "w": 92,
+          "h": 56
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Comece grátis",
+        "primary": true,
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 812,
+          "w": 152,
+          "h": 82
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Ver demonstração",
+        "deadLink": true,
+        "inFirstView": true,
+        "box": {
+          "x": 192,
+          "y": 812,
+          "w": 174,
+          "h": 82
+        }
+      }
+    ]
+  },
+  "contrast": {
+    "checked": 20,
+    "failures": 7,
+    "skipped": 0,
+    "samples": [
+      {
+        "text": "A plataforma completa e intuitiva que potencializa o seu neg",
+        "ratio": 2.63,
+        "required": 4.5,
+        "color": "#90a1b9",
+        "background": "#ffffff",
+        "fontSize": 20
+      },
+      {
+        "text": "⭐⭐⭐⭐⭐ Mais de 10.000 empresas confiam no Orça Já",
+        "ratio": 2.63,
+        "required": 4.5,
+        "color": "#90a1b9",
+        "background": "#ffffff",
+        "fontSize": 14
+      },
+      {
+        "text": "Ferramentas poderosas para levar o seu negócio ao próximo ní",
+        "ratio": 2.51,
+        "required": 4.5,
+        "color": "#90a1b9",
+        "background": "#f8fafc",
+        "fontSize": 16
+      },
+      {
+        "text": "Crie orçamentos profissionais em poucos cliques, de forma si",
+        "ratio": 2.63,
+        "required": 4.5,
+        "color": "#90a1b9",
+        "background": "#ffffff",
+        "fontSize": 16
+      },
+      {
+        "text": "Nossa IA potencializa seus resultados e otimiza cada etapa d",
+        "ratio": 2.63,
+        "required": 4.5,
+        "color": "#90a1b9",
+        "background": "#ffffff",
+        "fontSize": 16
+      },
+      {
+        "text": "Seus dados protegidos com tecnologia de ponta e total segura",
+        "ratio": 2.63,
+        "required": 4.5,
+        "color": "#90a1b9",
+        "background": "#ffffff",
+        "fontSize": 16
+      },
+      {
+        "text": "© 2026 Orça Já. Todos os direitos reservados.",
+        "ratio": 2.63,
+        "required": 4.5,
+        "color": "#90a1b9",
+        "background": "#ffffff",
+        "fontSize": 14
+      }
+    ]
+  },
+  "forms": [],
+  "looseFields": 0,
+  "decor": {
+    "gradients": 4,
+    "gradientText": 2,
+    "blur": 0,
+    "roundedShadow": 4,
+    "emoji": 7
+  },
+  "typography": {
+    "families": [
+      "Inter"
+    ],
+    "sizes": [
+      60,
+      36,
+      20,
+      16,
+      14
+    ]
+  },
+  "dialogsOpen": 0,
+  "errors": []
+}

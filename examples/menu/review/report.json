@@ -1,0 +1,875 @@
+{
+  "schemaVersion": "1.0",
+  "tool": {
+    "name": "phyll",
+    "version": "0.2.0"
+  },
+  "createdAt": "2026-09-23T23:15:00Z",
+  "language": "pt-BR",
+  "mode": "full",
+  "target": {
+    "name": "Brasa Burger (antes)",
+    "url": "http://localhost:5179",
+    "sourceDir": "examples/menu/before",
+    "framework": "react-router"
+  },
+  "context": {
+    "endUser": "Uma pessoa com fome, no celular, que abriu o link do Instagram ou do Google para pedir um hambúrguer para entrega ou retirada.",
+    "product": "Site da Brasa Burger para pedir hambúrguer para entrega ou retirada.",
+    "coreJobs": [
+      {
+        "id": "J1",
+        "name": "Pedir um hambúrguer para entrega",
+        "momentOfValue": "O pedido chega à loja, e a pessoa vê o número, o total e quando ele chega"
+      },
+      {
+        "id": "J2",
+        "name": "Saber quando o pedido chega",
+        "momentOfValue": "A pessoa sabe a previsão de entrega e como falar com a loja"
+      }
+    ],
+    "assumptions": [
+      "O app roda sem servidor. O login aceita qualquer coisa, e o pedido não é enviado a lugar nenhum.",
+      "O site não processa pagamento, embora peça os dados do cartão. Por isso a revisão trata o pagamento como feito na entrega.",
+      "O público pede pelo celular, a partir de links do Instagram."
+    ]
+  },
+  "fiveSecondTest": {
+    "screen": "S1",
+    "whatIsThis": "Uma hamburgueria, pelo nome e pelo emoji. O título fala em sabor que conquista, não em pedir pelo site.",
+    "whoIsItFor": "Quem gosta de hambúrguer artesanal.",
+    "whatToDo": "Peça agora, que leva a um login. Saiba mais e os links do menu não levam a lugar nenhum.",
+    "passed": true,
+    "note": "Por pouco. Dá para entender que é uma hamburgueria e que dá para pedir, mas não onde ela entrega, quanto tempo leva nem quanto custa a entrega."
+  },
+  "screens": [
+    {
+      "id": "S1",
+      "route": "/",
+      "title": "Página inicial",
+      "screenshots": {
+        "desktop": "screens/desktop-home.png",
+        "mobile": "screens/mobile-home.png"
+      },
+      "probe": {
+        "desktop": "probe/desktop-home.json",
+        "mobile": "probe/mobile-home.json"
+      }
+    },
+    {
+      "id": "S2",
+      "route": "/entrar",
+      "title": "Login e cadastro",
+      "screenshots": {
+        "desktop": "screens/desktop-entrar.png",
+        "mobile": "screens/mobile-entrar.png"
+      },
+      "probe": {
+        "desktop": "probe/desktop-entrar.json",
+        "mobile": "probe/mobile-entrar.json"
+      }
+    },
+    {
+      "id": "S3",
+      "route": "/cardapio",
+      "title": "Cardápio com o modal de opções",
+      "screenshots": {
+        "desktop": "screens/desktop-adicionar-burger.png",
+        "mobile": "screens/mobile-cardapio.png"
+      }
+    },
+    {
+      "id": "S4",
+      "route": "/checkout",
+      "title": "Finalizar pedido",
+      "screenshots": {
+        "desktop": "screens/desktop-checkout.png",
+        "mobile": "screens/mobile-checkout.png"
+      },
+      "probe": {
+        "desktop": "probe/desktop-checkout.json",
+        "mobile": "probe/mobile-checkout.json"
+      }
+    }
+  ],
+  "journeys": [
+    {
+      "job": "J1",
+      "steps": [
+        {
+          "screen": "S1",
+          "action": "Cliquei em Peça agora",
+          "observation": "Abriu um login com o título Entre para fazer seu pedido. O cardápio não abre sem entrar.",
+          "problem": true
+        },
+        {
+          "screen": "S2",
+          "action": "Cliquei em Cadastre-se",
+          "observation": "O cadastro pede nome completo, telefone, CPF, data de nascimento, e-mail, senha e a senha de novo. O campo de data aparece só como dd/mm/aaaa, sem dizer que é a de nascimento.",
+          "problem": true
+        },
+        {
+          "screen": "S3",
+          "action": "No cardápio, cliquei em Adicionar no Brasa Clássico",
+          "observation": "Abriu um modal que exige ponto da carne e tipo de pão, sem nenhum já escolhido. Adicionar ao carrinho fica apagado até escolher.",
+          "problem": true
+        },
+        {
+          "screen": "S3",
+          "action": "Tentei adicionar um refrigerante",
+          "observation": "O mesmo modal pede ponto da carne e tipo de pão para uma lata de refrigerante.",
+          "problem": true
+        },
+        {
+          "screen": "S3",
+          "action": "Abri o carrinho pelo botão redondo do topo",
+          "observation": "O botão só tem o ícone de sacola. No carrinho, o lanche aparece como Ponto: AO_PONTO.",
+          "problem": true
+        },
+        {
+          "screen": "S4",
+          "action": "Em Finalizar pedido, preenchi o que era obrigatório",
+          "observation": "São 20 campos: nome e telefone de novo, endereço em sete campos, dados do cartão com CVV, CPF, cupom, observações e aceite de termos. O endereço é obrigatório mesmo com Retirada marcada.",
+          "problem": true
+        },
+        {
+          "screen": "S1",
+          "action": "Cliquei em Finalizar pedido e respondi sim a Deseja realmente finalizar o pedido?",
+          "observation": "O site voltou para a página inicial com um aviso de sucesso. Não aparece número do pedido, total nem previsão de entrega.",
+          "problem": true
+        }
+      ],
+      "clicks": 15,
+      "neededClicks": 5,
+      "screens": 4,
+      "deadEnds": 1,
+      "reachedValue": false,
+      "inputs": {
+        "asked": 33,
+        "needed": 4,
+        "cuts": [
+          {
+            "input": "Cadastro inteiro: nome completo, telefone, CPF, data de nascimento, e-mail, senha e confirmação",
+            "action": "remove",
+            "note": "Pedir comida não precisa de conta. Nome e WhatsApp vão no próprio pedido e ficam salvos no aparelho."
+          },
+          {
+            "input": "Ponto da carne e tipo de pão",
+            "action": "default",
+            "note": "O lanche já vem ao ponto, no brioche. Bebidas, acompanhamentos e sobremesas não têm opção nenhuma."
+          },
+          {
+            "input": "Adicionais, ingredientes para tirar e observação do lanche",
+            "action": "defer",
+            "note": "Ficam em Personalizar, que só abre quando a pessoa quer."
+          },
+          {
+            "input": "Quantidade no modal",
+            "action": "merge",
+            "note": "Vira os botões de mais e menos na sacola."
+          },
+          {
+            "input": "Entrega ou retirada",
+            "action": "default",
+            "note": "Começa em Entrega, com a taxa ao lado. Retirada fica a um toque."
+          },
+          {
+            "input": "CEP, rua, número, bairro, cidade e estado",
+            "action": "merge",
+            "note": "Viram um campo de endereço: rua, número e bairro. Cidade e estado são sempre os mesmos numa entrega local."
+          },
+          {
+            "input": "Complemento e ponto de referência",
+            "action": "merge",
+            "note": "Viram um campo opcional."
+          },
+          {
+            "input": "Número, nome, validade e CVV do cartão",
+            "action": "remove",
+            "note": "O pagamento é na entrega. Um site que não processa cartão não deve pedir esses dados."
+          },
+          {
+            "input": "CPF na nota e observações do pedido",
+            "action": "defer",
+            "note": "Ficam num bloco opcional, fechado."
+          },
+          {
+            "input": "Cupom de desconto",
+            "action": "remove",
+            "note": "Não existe cupom ativo."
+          },
+          {
+            "input": "Aceite dos termos de uso",
+            "action": "remove",
+            "note": "Sem conta, não há termo para aceitar."
+          },
+          {
+            "input": "Nome e telefone",
+            "action": "keep",
+            "note": "O telefone vira o WhatsApp, por onde a loja avisa quando o pedido sai."
+          },
+          {
+            "input": "Forma de pagamento",
+            "action": "keep",
+            "note": "Vira três botões, Pix, cartão ou dinheiro, com troco opcional no dinheiro."
+          }
+        ]
+      },
+      "note": "O pedido parece enviado, mas nenhuma tela confirma o que foi pedido nem quando chega."
+    },
+    {
+      "job": "J2",
+      "steps": [
+        {
+          "screen": "S1",
+          "action": "Depois de finalizar, procurei o pedido",
+          "observation": "A página inicial não mostra pedido, número nem previsão, e o carrinho foi esvaziado.",
+          "problem": true
+        },
+        {
+          "screen": "S1",
+          "action": "Procurei um telefone ou WhatsApp da loja",
+          "observation": "Contato aponta para #, e o rodapé só tem o copyright.",
+          "problem": true
+        }
+      ],
+      "clicks": 1,
+      "neededClicks": 0,
+      "screens": 1,
+      "deadEnds": 1,
+      "reachedValue": false,
+      "note": "A pessoa não tem como saber se o pedido chegou à loja nem como falar com ela."
+    }
+  ],
+  "tells": [
+    {
+      "id": "P01",
+      "status": "absent",
+      "evidence": [
+        "S1"
+      ],
+      "note": "O teste de cinco segundos passou por pouco.",
+      "source": "review"
+    },
+    {
+      "id": "P02",
+      "status": "absent",
+      "evidence": [
+        "S1"
+      ],
+      "note": "É o site do restaurante, e uma página inicial é esperada. O problema é o login que vem depois do botão.",
+      "source": "review"
+    },
+    {
+      "id": "P03",
+      "status": "absent",
+      "source": "review"
+    },
+    {
+      "id": "P04",
+      "status": "absent",
+      "source": "review"
+    },
+    {
+      "id": "P05",
+      "status": "absent",
+      "hits": 0,
+      "source": "static"
+    },
+    {
+      "id": "P06",
+      "status": "absent",
+      "source": "review"
+    },
+    {
+      "id": "F01",
+      "status": "present",
+      "hits": 4,
+      "source": "static"
+    },
+    {
+      "id": "F02",
+      "status": "present",
+      "hits": 2,
+      "source": "static"
+    },
+    {
+      "id": "F03",
+      "status": "present",
+      "hits": 2,
+      "source": "static"
+    },
+    {
+      "id": "F04",
+      "status": "present",
+      "evidence": [
+        "S1"
+      ],
+      "note": "Depois de finalizar, a página inicial não mostra o pedido nem o que fazer.",
+      "source": "review"
+    },
+    {
+      "id": "F05",
+      "status": "present",
+      "hits": 1,
+      "source": "static"
+    },
+    {
+      "id": "F06",
+      "status": "present",
+      "hits": 1,
+      "source": "static"
+    },
+    {
+      "id": "F07",
+      "status": "absent",
+      "hits": 0,
+      "source": "static"
+    },
+    {
+      "id": "F08",
+      "status": "present",
+      "evidence": [
+        "S3"
+      ],
+      "note": "Recarregar o cardápio volta para o login com o carrinho vazio.",
+      "source": "review"
+    },
+    {
+      "id": "F09",
+      "status": "present",
+      "evidence": [
+        "S3"
+      ],
+      "note": "Ponto e pão sem padrão, pedidos até para bebida.",
+      "source": "review"
+    },
+    {
+      "id": "F10",
+      "status": "absent",
+      "source": "review"
+    },
+    {
+      "id": "F11",
+      "status": "present",
+      "hits": 3,
+      "source": "static"
+    },
+    {
+      "id": "F12",
+      "status": "present",
+      "hits": 1,
+      "source": "static"
+    },
+    {
+      "id": "A01",
+      "status": "absent",
+      "source": "review"
+    },
+    {
+      "id": "A02",
+      "status": "absent",
+      "source": "review"
+    },
+    {
+      "id": "A03",
+      "status": "present",
+      "hits": 2,
+      "source": "static"
+    },
+    {
+      "id": "A04",
+      "status": "absent",
+      "source": "review"
+    },
+    {
+      "id": "A05",
+      "status": "absent",
+      "hits": 0,
+      "source": "static"
+    },
+    {
+      "id": "A06",
+      "status": "absent",
+      "source": "review"
+    },
+    {
+      "id": "A07",
+      "status": "present",
+      "hits": 3,
+      "source": "static"
+    },
+    {
+      "id": "A08",
+      "status": "present",
+      "evidence": [
+        "S1",
+        "S2"
+      ],
+      "note": "Os links do menu e o Cadastre-se têm menos de 24 px de altura.",
+      "source": "review"
+    },
+    {
+      "id": "A09",
+      "status": "present",
+      "hits": 24,
+      "source": "static"
+    },
+    {
+      "id": "L01",
+      "status": "absent",
+      "hits": 0,
+      "source": "static"
+    },
+    {
+      "id": "L02",
+      "status": "present",
+      "hits": 3,
+      "source": "static"
+    },
+    {
+      "id": "L03",
+      "status": "present",
+      "hits": 8,
+      "source": "static"
+    },
+    {
+      "id": "L04",
+      "status": "present",
+      "hits": 15,
+      "source": "static"
+    },
+    {
+      "id": "L05",
+      "status": "present",
+      "hits": 4,
+      "source": "static"
+    },
+    {
+      "id": "L06",
+      "status": "present",
+      "hits": 4,
+      "source": "static"
+    },
+    {
+      "id": "L07",
+      "status": "absent",
+      "hits": 0,
+      "source": "static"
+    },
+    {
+      "id": "L08",
+      "status": "present",
+      "hits": 19,
+      "source": "static"
+    },
+    {
+      "id": "L09",
+      "status": "absent",
+      "hits": 0,
+      "source": "static"
+    },
+    {
+      "id": "L10",
+      "status": "present",
+      "hits": 9,
+      "source": "static"
+    },
+    {
+      "id": "L11",
+      "status": "present",
+      "hits": 11,
+      "source": "static"
+    },
+    {
+      "id": "L12",
+      "status": "present",
+      "hits": 27,
+      "source": "static"
+    },
+    {
+      "id": "C01",
+      "status": "present",
+      "hits": 1,
+      "source": "static"
+    },
+    {
+      "id": "C02",
+      "status": "present",
+      "hits": 1,
+      "source": "static"
+    },
+    {
+      "id": "C03",
+      "status": "present",
+      "hits": 2,
+      "source": "static"
+    },
+    {
+      "id": "C04",
+      "status": "absent",
+      "hits": 0,
+      "source": "static"
+    },
+    {
+      "id": "C05",
+      "status": "present",
+      "evidence": [
+        "S3"
+      ],
+      "note": "O carrinho mostra Ponto: AO_PONTO.",
+      "source": "review"
+    },
+    {
+      "id": "C06",
+      "status": "present",
+      "hits": 1,
+      "source": "static"
+    },
+    {
+      "id": "C07",
+      "status": "absent",
+      "hits": 0,
+      "source": "static"
+    },
+    {
+      "id": "C08",
+      "status": "absent",
+      "source": "review"
+    },
+    {
+      "id": "S01",
+      "status": "absent",
+      "hits": 0,
+      "source": "static"
+    },
+    {
+      "id": "S02",
+      "status": "unverified",
+      "note": "Não há servidor, então não há espera para medir.",
+      "source": "review"
+    },
+    {
+      "id": "S03",
+      "status": "absent",
+      "hits": 0,
+      "source": "static"
+    },
+    {
+      "id": "S04",
+      "status": "present",
+      "hits": 1,
+      "source": "static"
+    },
+    {
+      "id": "S05",
+      "status": "present",
+      "hits": 1,
+      "source": "static"
+    },
+    {
+      "id": "S06",
+      "status": "present",
+      "hits": 5,
+      "source": "static"
+    }
+  ],
+  "findings": [
+    {
+      "id": "UX-01",
+      "title": "Login e cadastro antes de ver o cardápio",
+      "dimension": "flow",
+      "severity": "blocker",
+      "tells": [
+        "F05",
+        "F11",
+        "F12",
+        "A09"
+      ],
+      "evidence": [
+        {
+          "screen": "S2",
+          "screenshot": "screens/desktop-entrar.png",
+          "probe": "probe/desktop-entrar.json",
+          "observation": "Peça agora leva a Entre para fazer seu pedido. O cardápio só abre depois de entrar."
+        },
+        {
+          "screen": "S2",
+          "observation": "O cadastro pede CPF, data de nascimento e a senha duas vezes. A data aparece só como dd/mm/aaaa, porque um campo de data não mostra o placeholder."
+        }
+      ],
+      "why": "Quem chega com fome pelo Instagram quer ver o cardápio e os preços antes de qualquer coisa. Um cadastro com CPF para pedir um lanche faz a pessoa voltar ao aplicativo de entrega que já usa.",
+      "principle": "Valor antes do cadastro",
+      "fix": "Abra o cardápio direto. Peça nome e WhatsApp só no fim, no próprio pedido, e guarde esses dados no aparelho para a próxima vez.",
+      "files": [
+        "examples/menu/before/src/pages/Login.jsx",
+        "examples/menu/before/src/pages/Landing.jsx",
+        "examples/menu/before/src/pages/Menu.jsx"
+      ],
+      "effort": "M"
+    },
+    {
+      "id": "UX-02",
+      "title": "O checkout pede o cartão e mais 16 campos",
+      "dimension": "flow",
+      "severity": "blocker",
+      "tells": [
+        "F02",
+        "F11",
+        "F12"
+      ],
+      "evidence": [
+        {
+          "screen": "S4",
+          "screenshot": "screens/desktop-checkout.png",
+          "probe": "probe/desktop-checkout.json",
+          "observation": "A página tem 17 campos soltos e mais 4 de cartão, com número, nome, validade e CVV, sem nenhum processamento de pagamento."
+        },
+        {
+          "screen": "S4",
+          "observation": "O endereço em sete campos é obrigatório mesmo com Retirada marcada. Nome e telefone são pedidos de novo depois do cadastro."
+        }
+      ],
+      "why": "Pedir número do cartão e CVV num formulário que não processa pagamento é arriscado e tira a confiança no resto do site. Para entregar um lanche, a loja precisa do endereço, de um nome, de um telefone e de saber como a pessoa vai pagar.",
+      "principle": "Pergunte só o que a tarefa usa",
+      "fix": "Pagamento na entrega com três botões, Pix, cartão ou dinheiro, e troco opcional. Endereço num campo só, complemento opcional, nome e WhatsApp. CPF na nota e observação ficam num bloco que abre quando precisa. Tire cupom e aceite de termos.",
+      "files": [
+        "examples/menu/before/src/pages/Checkout.jsx"
+      ],
+      "effort": "M"
+    },
+    {
+      "id": "UX-03",
+      "title": "Depois de pedir, nada confirma o pedido",
+      "dimension": "states",
+      "severity": "blocker",
+      "tells": [
+        "F04",
+        "S04",
+        "F06"
+      ],
+      "evidence": [
+        {
+          "screen": "S1",
+          "screenshot": "screens/desktop-pedido-feito.png",
+          "observation": "Depois de Finalizar pedido e da pergunta Deseja realmente finalizar o pedido?, o site volta para a página inicial com o aviso Pedido realizado com sucesso!. Não há número, total nem previsão."
+        }
+      ],
+      "why": "Sem número e sem previsão, a pessoa não sabe se o pedido chegou à loja. Ela liga, espera sem saber ou pede de novo em outro lugar.",
+      "principle": "Visibilidade do estado do sistema",
+      "fix": "Troque a pergunta e o aviso por uma tela de pedido recebido, com número, itens, total, previsão de entrega e forma de pagamento. Ponha nela Falar com a loja no WhatsApp e Pedir de novo.",
+      "files": [
+        "examples/menu/before/src/pages/Checkout.jsx"
+      ],
+      "effort": "S"
+    },
+    {
+      "id": "UX-04",
+      "title": "O mesmo modal de opções para tudo, até para refrigerante",
+      "dimension": "flow",
+      "severity": "major",
+      "tells": [
+        "F03",
+        "F09",
+        "A07"
+      ],
+      "evidence": [
+        {
+          "screen": "S3",
+          "screenshot": "screens/desktop-adicionar-bebida.png",
+          "observation": "Adicionar uma lata de refrigerante abre o modal com ponto da carne e tipo de pão, os dois obrigatórios."
+        },
+        {
+          "screen": "S3",
+          "screenshot": "screens/desktop-adicionar-burger.png",
+          "observation": "No lanche, nenhum ponto nem pão vem escolhido, e Adicionar ao carrinho fica apagado sem dizer por quê."
+        }
+      ],
+      "why": "Cada item vira um formulário. A maioria das pessoas quer o lanche como está no cardápio, e uma bebida não tem opção nenhuma.",
+      "principle": "Padrões que já funcionam",
+      "fix": "Adicionar põe o item na sacola na hora, com o lanche ao ponto e no brioche. Deixe Personalizar como um link embaixo do lanche, com essas opções já marcadas. Bebidas, acompanhamentos e sobremesas não abrem nada.",
+      "files": [
+        "examples/menu/before/src/pages/Menu.jsx"
+      ],
+      "effort": "S"
+    },
+    {
+      "id": "UX-05",
+      "title": "Pelo teclado, não dá para escolher o ponto da carne",
+      "dimension": "actions",
+      "severity": "major",
+      "tells": [
+        "S06"
+      ],
+      "evidence": [
+        {
+          "screen": "S3",
+          "observation": "Os botões de ponto são rádios escondidos com display none. Com Tab, o foco pula do fundo da página para o pão e nunca chega ao ponto. Sem ponto, o lanche não entra no carrinho."
+        },
+        {
+          "screen": "S3",
+          "observation": "Ao abrir o modal, o foco continua nos botões Adicionar atrás dele."
+        }
+      ],
+      "why": "Quem usa teclado ou leitor de tela não consegue pedir nenhum lanche.",
+      "principle": "Tudo que se faz com o mouse se faz com o teclado (WCAG 2.1.1)",
+      "fix": "Esconda o rádio só visualmente, com sr-only, e mostre o foco no próprio botão. Leve o foco para dentro do modal ao abrir. Com o padrão já marcado, ninguém fica preso.",
+      "files": [
+        "examples/menu/before/src/pages/Menu.jsx"
+      ],
+      "effort": "S"
+    },
+    {
+      "id": "UX-06",
+      "title": "O cardápio não cabe no celular",
+      "dimension": "look",
+      "severity": "major",
+      "tells": [
+        "S05"
+      ],
+      "evidence": [
+        {
+          "screen": "S3",
+          "screenshot": "screens/mobile-cardapio.png",
+          "observation": "No celular, os cards ficam em três colunas estreitas. As descrições quebram uma palavra por linha e os preços saem do card."
+        }
+      ],
+      "why": "Quase todo pedido de comida acontece no celular. Nessa largura não dá para ler o cardápio.",
+      "principle": "Funcione na tela que a pessoa usa",
+      "fix": "Uma coluna no celular, duas no tablet e três no computador. Mostre a sacola como uma barra fixa embaixo, com o total e Fazer pedido.",
+      "files": [
+        "examples/menu/before/src/pages/Menu.jsx"
+      ],
+      "effort": "S"
+    },
+    {
+      "id": "UX-07",
+      "title": "Botões brancos em laranja claro e texto cinza apagado",
+      "dimension": "look",
+      "severity": "major",
+      "tells": [
+        "L12"
+      ],
+      "evidence": [
+        {
+          "screen": "S1",
+          "probe": "probe/desktop-home.json",
+          "observation": "O texto branco dos botões em orange-500 dá 2,89:1, abaixo de 4,5:1. 11 dos 18 textos medidos na página inicial ficam abaixo do mínimo."
+        },
+        {
+          "screen": "S4",
+          "probe": "probe/desktop-checkout.json",
+          "observation": "A taxa de entrega e o valor dela, em gray-400, ficam em 2,6:1."
+        }
+      ],
+      "why": "O botão mais importante do site é o mais difícil de ler, ainda mais com o celular no sol.",
+      "principle": "Contraste mínimo de 4,5:1 (WCAG 1.4.3)",
+      "fix": "Comece o degradê dos botões em orange-700, que dá 5,2:1 com branco, e troque gray-400 por gray-600. O laranja da marca continua.",
+      "files": [
+        "examples/menu/before/src/pages/Landing.jsx",
+        "examples/menu/before/src/pages/Menu.jsx",
+        "examples/menu/before/src/pages/Checkout.jsx",
+        "examples/menu/before/src/App.jsx"
+      ],
+      "effort": "S"
+    },
+    {
+      "id": "UX-08",
+      "title": "O carrinho mostra códigos, e o botão dele não tem nome",
+      "dimension": "copy",
+      "severity": "minor",
+      "tells": [
+        "C05",
+        "A03"
+      ],
+      "evidence": [
+        {
+          "screen": "S3",
+          "observation": "No carrinho, o lanche aparece como Ponto: AO_PONTO · Pão: Brioche."
+        },
+        {
+          "screen": "S3",
+          "observation": "O botão do carrinho no topo só tem o ícone de sacola, sem nome para leitor de tela e sem o total."
+        }
+      ],
+      "why": "Ninguém escreve AO_PONTO. E um ícone sem total obriga a abrir o carrinho para saber quanto já deu.",
+      "principle": "Fale a língua de quem usa",
+      "fix": "Escreva Ao ponto, no brioche. Troque o ícone por um botão com nome, número de itens e total, ou deixe a sacola sempre à vista ao lado do cardápio.",
+      "files": [
+        "examples/menu/before/src/App.jsx",
+        "examples/menu/before/src/pages/Menu.jsx"
+      ],
+      "effort": "S"
+    },
+    {
+      "id": "UX-09",
+      "title": "A página inicial não diz como pedir nem quanto tempo leva",
+      "dimension": "purpose",
+      "severity": "minor",
+      "tells": [
+        "C01",
+        "C02",
+        "C03",
+        "F01"
+      ],
+      "evidence": [
+        {
+          "screen": "S1",
+          "screenshot": "screens/desktop-home.png",
+          "probe": "probe/desktop-home.json",
+          "observation": "O título é Sabor que conquista, experiência que encanta. A nota 4.9 e os 50 mil pedidos não têm fonte, e Saiba mais, Cardápio, Sobre e Contato apontam para #."
+        }
+      ],
+      "why": "Quem chega quer saber se a loja entrega onde está, quanto tempo leva e quanto custa a entrega.",
+      "principle": "Diga o que é, para quem e o que fazer",
+      "fix": "Diga o tempo de entrega no título e ponha endereço, horário e área de entrega logo abaixo. Faça o botão principal abrir o cardápio e o rodapé mostrar o WhatsApp da loja.",
+      "files": [
+        "examples/menu/before/src/pages/Landing.jsx"
+      ],
+      "effort": "S"
+    }
+  ],
+  "topThree": [
+    "UX-01",
+    "UX-02",
+    "UX-03"
+  ],
+  "quickWins": [
+    "UX-04",
+    "UX-05",
+    "UX-06",
+    "UX-07",
+    "UX-08"
+  ],
+  "evidence": {
+    "scan": "scan.json",
+    "capture": "capture.json"
+  },
+  "summary": {
+    "aiTellIndex": 43,
+    "staticIndex": 53,
+    "styleIndex": 74,
+    "findings": {
+      "total": 9,
+      "blocker": 3,
+      "major": 4,
+      "minor": 2,
+      "polish": 0,
+      "fixed": 0
+    },
+    "tells": {
+      "present": 23,
+      "absent": 19,
+      "unverified": 1
+    },
+    "styleTells": {
+      "present": 8,
+      "absent": 2,
+      "unverified": 0
+    },
+    "inputs": {
+      "asked": 33,
+      "needed": 4
+    }
+  }
+}

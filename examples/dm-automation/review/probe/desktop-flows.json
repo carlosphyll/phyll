@@ -1,0 +1,271 @@
+{
+  "probe": "0.1.0",
+  "url": "http://localhost:5173/flows",
+  "title": "Replyloop AI | Instagram Automation Platform",
+  "lang": "en",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "page": {
+    "height": 900,
+    "horizontalOverflow": false
+  },
+  "firstView": {
+    "text": "Replyloop AI | Dashboard | Flows | Triggers | Coming soon | Contacts | Broadcasts | Coming soon | Templates | Coming soon | Analytics | Coming soon | Integrations | Coming soon | Settings | Upgrade to Pro ✨ | Unlock the power of unlimited AI-powered flows | Learn More | Flows | Manage your automation flows | Create Flow | Name | Trigger | Status | Messages | Created | No data",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Flows",
+        "inFirstView": true
+      }
+    ]
+  },
+  "actions": {
+    "total": 12,
+    "primaryInFirstView": 1,
+    "iconOnlyUnnamed": 1,
+    "smallTargets": 0,
+    "deadLinks": 1,
+    "hiddenUntilHover": 0,
+    "items": [
+      {
+        "tag": "a",
+        "text": "Dashboard",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 100,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Flows",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 144,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Triggers Coming soon",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 188,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Contacts",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 232,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Broadcasts Coming soon",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 276,
+          "w": 207,
+          "h": 56
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Templates Coming soon",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 336,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Analytics Coming soon",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 380,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Integrations Coming soon",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 424,
+          "w": 207,
+          "h": 56
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Settings",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 484,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Learn More",
+        "deadLink": true,
+        "inFirstView": true,
+        "box": {
+          "x": 44,
+          "y": 824,
+          "w": 167,
+          "h": 32
+        }
+      },
+      {
+        "tag": "button",
+        "text": "",
+        "iconOnly": true,
+        "inFirstView": true,
+        "box": {
+          "x": 1384,
+          "y": 32,
+          "w": 24,
+          "h": 24
+        }
+      },
+      {
+        "tag": "button",
+        "text": "Create Flow",
+        "primary": true,
+        "inFirstView": true,
+        "box": {
+          "x": 1257,
+          "y": 80,
+          "w": 151,
+          "h": 44
+        }
+      }
+    ]
+  },
+  "contrast": {
+    "checked": 27,
+    "failures": 9,
+    "skipped": 0,
+    "samples": [
+      {
+        "text": "Unlock the power of unlimited AI-powered flows",
+        "ratio": 3.26,
+        "required": 4.5,
+        "color": "#e0b7fd",
+        "background": "#9810fa",
+        "fontSize": 12
+      },
+      {
+        "text": "Learn More",
+        "ratio": 3.74,
+        "required": 4.5,
+        "color": "#ffffff",
+        "background": "#447dfd",
+        "fontSize": 12
+      },
+      {
+        "text": "Manage your automation flows",
+        "ratio": 2.49,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#f9fafb",
+        "fontSize": 16
+      },
+      {
+        "text": "Name",
+        "ratio": 2.6,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#ffffff",
+        "fontSize": 12
+      },
+      {
+        "text": "Trigger",
+        "ratio": 2.6,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#ffffff",
+        "fontSize": 12
+      },
+      {
+        "text": "Status",
+        "ratio": 2.6,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#ffffff",
+        "fontSize": 12
+      },
+      {
+        "text": "Messages",
+        "ratio": 2.6,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#ffffff",
+        "fontSize": 12
+      },
+      {
+        "text": "Created",
+        "ratio": 2.6,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#ffffff",
+        "fontSize": 12
+      },
+      {
+        "text": "No data",
+        "ratio": 2.6,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#ffffff",
+        "fontSize": 14
+      }
+    ]
+  },
+  "forms": [],
+  "looseFields": 1,
+  "decor": {
+    "gradients": 5,
+    "gradientText": 1,
+    "blur": 1,
+    "roundedShadow": 4,
+    "emoji": 1
+  },
+  "typography": {
+    "families": [
+      "Inter"
+    ],
+    "sizes": [
+      30,
+      20,
+      16,
+      14,
+      12
+    ]
+  },
+  "dialogsOpen": 0,
+  "errors": []
+}

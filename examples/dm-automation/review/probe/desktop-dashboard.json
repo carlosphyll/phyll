@@ -1,0 +1,399 @@
+{
+  "probe": "0.1.0",
+  "url": "http://localhost:5173/dashboard",
+  "title": "Replyloop AI | Instagram Automation Platform",
+  "lang": "en",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "page": {
+    "height": 908,
+    "horizontalOverflow": false
+  },
+  "firstView": {
+    "text": "Replyloop AI | Dashboard | Flows | Triggers | Coming soon | Contacts | Broadcasts | Coming soon | Templates | Coming soon | Analytics | Coming soon | Integrations | Coming soon | Settings | Upgrade to Pro ✨ | Unlock the power of unlimited AI-powered flows | Learn More | Welcome back, John! 👋 | Here's what's happening with your account today. | +12.5% | Total Contacts | 12,345 | from last month | +8.2% | Messages Sent | 48,392 | from last month | +2.1% | Open Rate | 68.4% | from last month | +4 | Active Flows | 24 | from last month | Messages over time | Recent Activity | John Doe | triggered flow Welcome Series | 2 min ago | Jane Smith | replied to your story | 15 min ago | Mike Johnson | c",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Welcome back, John! 👋",
+        "inFirstView": true
+      },
+      {
+        "level": 2,
+        "text": "Messages over time",
+        "inFirstView": true
+      },
+      {
+        "level": 2,
+        "text": "Recent Activity",
+        "inFirstView": true
+      },
+      {
+        "level": 2,
+        "text": "Quick Actions ⚡",
+        "inFirstView": true
+      }
+    ]
+  },
+  "actions": {
+    "total": 14,
+    "primaryInFirstView": 3,
+    "iconOnlyUnnamed": 1,
+    "smallTargets": 0,
+    "deadLinks": 1,
+    "hiddenUntilHover": 0,
+    "items": [
+      {
+        "tag": "a",
+        "text": "Dashboard",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 100,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Flows",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 144,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Triggers Coming soon",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 188,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Contacts",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 232,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Broadcasts Coming soon",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 276,
+          "w": 207,
+          "h": 56
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Templates Coming soon",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 336,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Analytics Coming soon",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 380,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Integrations Coming soon",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 424,
+          "w": 207,
+          "h": 56
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Settings",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 484,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Learn More",
+        "deadLink": true,
+        "inFirstView": true,
+        "box": {
+          "x": 44,
+          "y": 824,
+          "w": 167,
+          "h": 32
+        }
+      },
+      {
+        "tag": "button",
+        "text": "",
+        "iconOnly": true,
+        "inFirstView": true,
+        "box": {
+          "x": 1384,
+          "y": 32,
+          "w": 24,
+          "h": 24
+        }
+      },
+      {
+        "tag": "button",
+        "text": "Create Flow",
+        "primary": true,
+        "inFirstView": true,
+        "box": {
+          "x": 312,
+          "y": 804,
+          "w": 151,
+          "h": 48
+        }
+      },
+      {
+        "tag": "button",
+        "text": "Send Broadcast",
+        "primary": true,
+        "inFirstView": true,
+        "box": {
+          "x": 479,
+          "y": 804,
+          "w": 178,
+          "h": 48
+        }
+      },
+      {
+        "tag": "button",
+        "text": "View Analytics",
+        "primary": true,
+        "inFirstView": true,
+        "box": {
+          "x": 673,
+          "y": 804,
+          "w": 171,
+          "h": 48
+        }
+      }
+    ]
+  },
+  "contrast": {
+    "checked": 54,
+    "failures": 21,
+    "skipped": 0,
+    "samples": [
+      {
+        "text": "Unlock the power of unlimited AI-powered flows",
+        "ratio": 3.26,
+        "required": 4.5,
+        "color": "#e0b7fd",
+        "background": "#9810fa",
+        "fontSize": 12
+      },
+      {
+        "text": "Learn More",
+        "ratio": 3.74,
+        "required": 4.5,
+        "color": "#ffffff",
+        "background": "#447dfd",
+        "fontSize": 12
+      },
+      {
+        "text": "Here's what's happening with your account today.",
+        "ratio": 2.49,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#f9fafb",
+        "fontSize": 16
+      },
+      {
+        "text": "+12.5%",
+        "ratio": 2.93,
+        "required": 4.5,
+        "color": "#00a63e",
+        "background": "#dbfce7",
+        "fontSize": 12
+      },
+      {
+        "text": "Total Contacts",
+        "ratio": 2.6,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#ffffff",
+        "fontSize": 14
+      },
+      {
+        "text": "from last month",
+        "ratio": 2.6,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#ffffff",
+        "fontSize": 12
+      },
+      {
+        "text": "+8.2%",
+        "ratio": 2.93,
+        "required": 4.5,
+        "color": "#00a63e",
+        "background": "#dbfce7",
+        "fontSize": 12
+      },
+      {
+        "text": "Messages Sent",
+        "ratio": 2.6,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#ffffff",
+        "fontSize": 14
+      },
+      {
+        "text": "from last month",
+        "ratio": 2.6,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#ffffff",
+        "fontSize": 12
+      },
+      {
+        "text": "+2.1%",
+        "ratio": 2.93,
+        "required": 4.5,
+        "color": "#00a63e",
+        "background": "#dbfce7",
+        "fontSize": 12
+      },
+      {
+        "text": "Open Rate",
+        "ratio": 2.6,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#ffffff",
+        "fontSize": 14
+      },
+      {
+        "text": "from last month",
+        "ratio": 2.6,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#ffffff",
+        "fontSize": 12
+      },
+      {
+        "text": "+4",
+        "ratio": 2.93,
+        "required": 4.5,
+        "color": "#00a63e",
+        "background": "#dbfce7",
+        "fontSize": 12
+      },
+      {
+        "text": "Active Flows",
+        "ratio": 2.6,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#ffffff",
+        "fontSize": 14
+      },
+      {
+        "text": "from last month",
+        "ratio": 2.6,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#ffffff",
+        "fontSize": 12
+      },
+      {
+        "text": "2 min ago",
+        "ratio": 2.6,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#ffffff",
+        "fontSize": 12
+      },
+      {
+        "text": "15 min ago",
+        "ratio": 2.6,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#ffffff",
+        "fontSize": 12
+      },
+      {
+        "text": "1 hour ago",
+        "ratio": 2.6,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#ffffff",
+        "fontSize": 12
+      },
+      {
+        "text": "3 hours ago",
+        "ratio": 2.6,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#ffffff",
+        "fontSize": 12
+      },
+      {
+        "text": "Send Broadcast",
+        "ratio": 2.38,
+        "required": 4.5,
+        "color": "#ffffff",
+        "background": "#ff8904",
+        "fontSize": 16
+      }
+    ]
+  },
+  "forms": [],
+  "looseFields": 0,
+  "decor": {
+    "gradients": 19,
+    "gradientText": 1,
+    "blur": 1,
+    "roundedShadow": 12,
+    "emoji": 3
+  },
+  "typography": {
+    "families": [
+      "Inter"
+    ],
+    "sizes": [
+      30,
+      20,
+      18,
+      16,
+      14,
+      12
+    ]
+  },
+  "dialogsOpen": 0,
+  "errors": []
+}

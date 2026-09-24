@@ -1,0 +1,241 @@
+{
+  "probe": "0.1.0",
+  "url": "http://localhost:5179/",
+  "title": "Brasa Burger | Peça online",
+  "lang": "pt-BR",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "page": {
+    "height": 1179,
+    "horizontalOverflow": false
+  },
+  "firstView": {
+    "text": "Brasa Burger 🔥 | Cardápio | Sobre | Contato | Peça agora | 🔥 O melhor burger da cidade | Sabor que conquista, experiência que encanta | Hambúrgueres artesanais preparados com paixão para transformar o seu dia. Uma explosão de sabor em cada mordida. | Peça agora | Saiba mais | ⭐ 4.9 · Mais de 50 mil pedidos entregues | Feito na brasa | Entrega rápida | Feito com amor",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Sabor que conquista, experiência que encanta",
+        "inFirstView": true
+      },
+      {
+        "level": 3,
+        "text": "Feito na brasa",
+        "inFirstView": true
+      },
+      {
+        "level": 3,
+        "text": "Entrega rápida",
+        "inFirstView": true
+      },
+      {
+        "level": 3,
+        "text": "Feito com amor",
+        "inFirstView": true
+      }
+    ]
+  },
+  "actions": {
+    "total": 6,
+    "primaryInFirstView": 1,
+    "iconOnlyUnnamed": 0,
+    "smallTargets": 3,
+    "deadLinks": 4,
+    "hiddenUntilHover": 0,
+    "items": [
+      {
+        "tag": "a",
+        "text": "Cardápio",
+        "deadLink": true,
+        "small": true,
+        "inFirstView": true,
+        "box": {
+          "x": 923,
+          "y": 24,
+          "w": 56,
+          "h": 20
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Sobre",
+        "deadLink": true,
+        "small": true,
+        "inFirstView": true,
+        "box": {
+          "x": 1011,
+          "y": 24,
+          "w": 36,
+          "h": 20
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Contato",
+        "deadLink": true,
+        "small": true,
+        "inFirstView": true,
+        "box": {
+          "x": 1079,
+          "y": 24,
+          "w": 50,
+          "h": 20
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Peça agora",
+        "inFirstView": true,
+        "box": {
+          "x": 1160,
+          "y": 16,
+          "w": 112,
+          "h": 36
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Peça agora",
+        "primary": true,
+        "inFirstView": true,
+        "box": {
+          "x": 568,
+          "y": 483,
+          "w": 146,
+          "h": 56
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Saiba mais",
+        "deadLink": true,
+        "inFirstView": true,
+        "box": {
+          "x": 730,
+          "y": 483,
+          "w": 141,
+          "h": 56
+        }
+      }
+    ]
+  },
+  "contrast": {
+    "checked": 18,
+    "failures": 11,
+    "skipped": 0,
+    "samples": [
+      {
+        "text": "Brasa Burger 🔥",
+        "ratio": 2.84,
+        "required": 3,
+        "color": "#ff6900",
+        "background": "#fffdfa",
+        "fontSize": 24
+      },
+      {
+        "text": "Peça agora",
+        "ratio": 2.89,
+        "required": 4.5,
+        "color": "#ffffff",
+        "background": "#ff6900",
+        "fontSize": 14
+      },
+      {
+        "text": "🔥 O melhor burger da cidade",
+        "ratio": 3.52,
+        "required": 4.5,
+        "color": "#f54a00",
+        "background": "#fffdfa",
+        "fontSize": 14
+      },
+      {
+        "text": "Sabor que conquista, experiência que encanta",
+        "ratio": 2.72,
+        "required": 3,
+        "color": "#ff6900",
+        "background": "#fff7ed",
+        "fontSize": 60
+      },
+      {
+        "text": "Hambúrgueres artesanais preparados com paixão para transform",
+        "ratio": 2.45,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#fff7ed",
+        "fontSize": 20
+      },
+      {
+        "text": "Peça agora",
+        "ratio": 2.89,
+        "required": 4.5,
+        "color": "#ffffff",
+        "background": "#ff6900",
+        "fontSize": 16
+      },
+      {
+        "text": "⭐ 4.9 · Mais de 50 mil pedidos entregues",
+        "ratio": 2.45,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#fff7ed",
+        "fontSize": 14
+      },
+      {
+        "text": "Sabor inigualável que conquista a todos em cada mordida.",
+        "ratio": 2.6,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#ffffff",
+        "fontSize": 16
+      },
+      {
+        "text": "Seu pedido chega quentinho e no tempo certo, sempre.",
+        "ratio": 2.6,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#ffffff",
+        "fontSize": 16
+      },
+      {
+        "text": "Ingredientes selecionados para uma experiência única.",
+        "ratio": 2.6,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#ffffff",
+        "fontSize": 16
+      },
+      {
+        "text": "© 2026 Brasa Burger. Todos os direitos reservados.",
+        "ratio": 2.45,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#fff7ed",
+        "fontSize": 14
+      }
+    ]
+  },
+  "forms": [],
+  "looseFields": 0,
+  "decor": {
+    "gradients": 4,
+    "gradientText": 2,
+    "blur": 4,
+    "roundedShadow": 5,
+    "emoji": 4
+  },
+  "typography": {
+    "families": [
+      "Inter"
+    ],
+    "sizes": [
+      60,
+      24,
+      20,
+      16,
+      14
+    ]
+  },
+  "dialogsOpen": 0,
+  "errors": []
+}

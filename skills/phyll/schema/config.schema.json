@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/carlosphyll/phyll/blob/main/skills/phyll/schema/config.schema.json",
+  "title": "Phyll project configuration",
+  "description": "Optional settings in .phyll/config.json at the root of the reviewed project. Every field is optional.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "language": {
+      "description": "Language for the report. Defaults to the language of the product's interface.",
+      "type": "string"
+    },
+    "entryUrl": {
+      "description": "Where the running app can be opened, such as http://localhost:3000.",
+      "type": "string"
+    },
+    "startCommand": {
+      "description": "Command that starts the app, such as npm run dev.",
+      "type": "string"
+    },
+    "endUser": {
+      "description": "Who uses the product, in one sentence.",
+      "type": "string"
+    },
+    "coreJobs": {
+      "description": "The two or three things the end user comes to do.",
+      "type": "array",
+      "items": { "type": "string" },
+      "maxItems": 5
+    },
+    "ignore": {
+      "description": "Globs, relative to the project root, that the static scan skips.",
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "telemetry": {
+      "description": "Opt in to sending anonymous numbers (tool version, mode, index, counts) to cloud.apiUrl. Off by default, and nothing is sent without a URL.",
+      "type": "boolean"
+    },
+    "cloud": {
+      "description": "Phyll Cloud settings. The service does not exist yet; with both fields empty nothing leaves the machine. PHYLL_API_URL and PHYLL_API_KEY override these values.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "apiUrl": { "type": "string" },
+        "apiKey": { "type": "string" }
+      }
+    }
+  }
+}

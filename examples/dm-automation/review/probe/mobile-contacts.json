@@ -1,0 +1,297 @@
+{
+  "probe": "0.1.0",
+  "url": "http://localhost:5173/contacts",
+  "title": "Replyloop AI | Instagram Automation Platform",
+  "lang": "en",
+  "viewport": {
+    "width": 1156,
+    "height": 2502
+  },
+  "page": {
+    "height": 2502,
+    "horizontalOverflow": true
+  },
+  "firstView": {
+    "text": "Replyloop AI | Dashboard | Flows | Triggers | Coming soon | Contacts | Broadcasts | Coming soon | Templates | Coming soon | Analytics | Coming soon | Integrations | Coming soon | Settings | Upgrade to Pro ✨ | Unlock the power of unlimited AI-powered flows | Learn More | Contacts | All your subscribers in one place | Import | Export | John Doe | @johndoe | SUBSCRIBED | Jane Smith | @janesmith | SUBSCRIBED | Mike Johnson | @mikej | UNSUBSCRIBED",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Contacts",
+        "inFirstView": true
+      }
+    ]
+  },
+  "actions": {
+    "total": 16,
+    "primaryInFirstView": 1,
+    "iconOnlyUnnamed": 4,
+    "smallTargets": 3,
+    "deadLinks": 1,
+    "hiddenUntilHover": 0,
+    "items": [
+      {
+        "tag": "a",
+        "text": "Dashboard",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 100,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Flows",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 144,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Triggers Coming soon",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 188,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Contacts",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 232,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Broadcasts Coming soon",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 276,
+          "w": 207,
+          "h": 56
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Templates Coming soon",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 336,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Analytics Coming soon",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 380,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Integrations Coming soon",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 424,
+          "w": 207,
+          "h": 56
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Settings",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 484,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Learn More",
+        "deadLink": true,
+        "inFirstView": true,
+        "box": {
+          "x": 44,
+          "y": 2426,
+          "w": 167,
+          "h": 32
+        }
+      },
+      {
+        "tag": "button",
+        "text": "",
+        "iconOnly": true,
+        "inFirstView": true,
+        "box": {
+          "x": 1100,
+          "y": 32,
+          "w": 24,
+          "h": 24
+        }
+      },
+      {
+        "tag": "button",
+        "text": "Import",
+        "inFirstView": true,
+        "box": {
+          "x": 912,
+          "y": 80,
+          "w": 102,
+          "h": 42
+        }
+      },
+      {
+        "tag": "button",
+        "text": "Export",
+        "primary": true,
+        "inFirstView": true,
+        "box": {
+          "x": 1026,
+          "y": 80,
+          "w": 98,
+          "h": 42
+        }
+      },
+      {
+        "tag": "button",
+        "text": "",
+        "iconOnly": true,
+        "small": true,
+        "inFirstView": true,
+        "box": {
+          "x": 373,
+          "y": 376,
+          "w": 22,
+          "h": 22
+        }
+      },
+      {
+        "tag": "button",
+        "text": "",
+        "iconOnly": true,
+        "small": true,
+        "inFirstView": true,
+        "box": {
+          "x": 588,
+          "y": 376,
+          "w": 22,
+          "h": 22
+        }
+      },
+      {
+        "tag": "button",
+        "text": "",
+        "iconOnly": true,
+        "small": true,
+        "inFirstView": true,
+        "box": {
+          "x": 803,
+          "y": 376,
+          "w": 22,
+          "h": 22
+        }
+      }
+    ]
+  },
+  "contrast": {
+    "checked": 31,
+    "failures": 6,
+    "skipped": 0,
+    "samples": [
+      {
+        "text": "Unlock the power of unlimited AI-powered flows",
+        "ratio": 3.26,
+        "required": 4.5,
+        "color": "#e0b7fd",
+        "background": "#9810fa",
+        "fontSize": 12
+      },
+      {
+        "text": "Learn More",
+        "ratio": 3.74,
+        "required": 4.5,
+        "color": "#ffffff",
+        "background": "#447dfd",
+        "fontSize": 12
+      },
+      {
+        "text": "All your subscribers in one place",
+        "ratio": 2.49,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#f9fafb",
+        "fontSize": 16
+      },
+      {
+        "text": "@johndoe",
+        "ratio": 2.6,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#ffffff",
+        "fontSize": 14
+      },
+      {
+        "text": "@janesmith",
+        "ratio": 2.6,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#ffffff",
+        "fontSize": 14
+      },
+      {
+        "text": "@mikej",
+        "ratio": 2.6,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#ffffff",
+        "fontSize": 14
+      }
+    ]
+  },
+  "forms": [],
+  "looseFields": 0,
+  "decor": {
+    "gradients": 5,
+    "gradientText": 1,
+    "blur": 1,
+    "roundedShadow": 6,
+    "emoji": 1
+  },
+  "typography": {
+    "families": [
+      "Inter"
+    ],
+    "sizes": [
+      30,
+      20,
+      16,
+      14,
+      12
+    ]
+  },
+  "dialogsOpen": 0,
+  "errors": []
+}

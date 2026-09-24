@@ -1,0 +1,281 @@
+{
+  "probe": "0.1.0",
+  "url": "http://localhost:5177/app/orcamentos/novo",
+  "title": "Orça Já | Orçamentos inteligentes com IA",
+  "lang": "pt-BR",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "page": {
+    "height": 900,
+    "horizontalOverflow": false
+  },
+  "firstView": {
+    "text": "Orça Já | Dashboard | Orçamentos | Clientes | Produtos | Relatórios | Integrações | Configurações | Upgrade para o Pro 🚀 | Desbloqueie todo o poder da IA. | Fazer upgrade | Novo Orçamento | Sua empresa | Cliente | Itens | Condições | Documento | Revisão | Arraste sua logo aqui ou | procure | Continuar",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Novo Orçamento",
+        "inFirstView": true
+      }
+    ]
+  },
+  "actions": {
+    "total": 10,
+    "primaryInFirstView": 0,
+    "iconOnlyUnnamed": 1,
+    "smallTargets": 0,
+    "deadLinks": 0,
+    "hiddenUntilHover": 0,
+    "items": [
+      {
+        "tag": "a",
+        "text": "Dashboard",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 92,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Orçamentos",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 136,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Clientes",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 180,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Produtos",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 224,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Relatórios",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 268,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Integrações",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 312,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "a",
+        "text": "Configurações",
+        "inFirstView": true,
+        "box": {
+          "x": 24,
+          "y": 356,
+          "w": 207,
+          "h": 40
+        }
+      },
+      {
+        "tag": "button",
+        "text": "Fazer upgrade",
+        "inFirstView": true,
+        "box": {
+          "x": 44,
+          "y": 564,
+          "w": 167,
+          "h": 36
+        }
+      },
+      {
+        "tag": "button",
+        "text": "",
+        "iconOnly": true,
+        "inFirstView": true,
+        "box": {
+          "x": 1320,
+          "y": 16,
+          "w": 36,
+          "h": 36
+        }
+      },
+      {
+        "tag": "button",
+        "text": "Continuar",
+        "primary": true,
+        "disabled": true,
+        "inFirstView": true,
+        "box": {
+          "x": 1125,
+          "y": 750,
+          "w": 139,
+          "h": 48
+        }
+      }
+    ]
+  },
+  "contrast": {
+    "checked": 20,
+    "failures": 13,
+    "skipped": 0,
+    "samples": [
+      {
+        "text": "Dashboard",
+        "ratio": 2.63,
+        "required": 4.5,
+        "color": "#90a1b9",
+        "background": "#ffffff",
+        "fontSize": 14
+      },
+      {
+        "text": "Orçamentos",
+        "ratio": 2.63,
+        "required": 4.5,
+        "color": "#90a1b9",
+        "background": "#ffffff",
+        "fontSize": 14
+      },
+      {
+        "text": "Clientes",
+        "ratio": 2.63,
+        "required": 4.5,
+        "color": "#90a1b9",
+        "background": "#ffffff",
+        "fontSize": 14
+      },
+      {
+        "text": "Produtos",
+        "ratio": 2.63,
+        "required": 4.5,
+        "color": "#90a1b9",
+        "background": "#ffffff",
+        "fontSize": 14
+      },
+      {
+        "text": "Relatórios",
+        "ratio": 2.63,
+        "required": 4.5,
+        "color": "#90a1b9",
+        "background": "#ffffff",
+        "fontSize": 14
+      },
+      {
+        "text": "Integrações",
+        "ratio": 2.63,
+        "required": 4.5,
+        "color": "#90a1b9",
+        "background": "#ffffff",
+        "fontSize": 14
+      },
+      {
+        "text": "Configurações",
+        "ratio": 2.63,
+        "required": 4.5,
+        "color": "#90a1b9",
+        "background": "#ffffff",
+        "fontSize": 14
+      },
+      {
+        "text": "Cliente",
+        "ratio": 2.51,
+        "required": 4.5,
+        "color": "#90a1b9",
+        "background": "#f8fafc",
+        "fontSize": 12
+      },
+      {
+        "text": "Itens",
+        "ratio": 2.51,
+        "required": 4.5,
+        "color": "#90a1b9",
+        "background": "#f8fafc",
+        "fontSize": 12
+      },
+      {
+        "text": "Condições",
+        "ratio": 2.51,
+        "required": 4.5,
+        "color": "#90a1b9",
+        "background": "#f8fafc",
+        "fontSize": 12
+      },
+      {
+        "text": "Documento",
+        "ratio": 2.51,
+        "required": 4.5,
+        "color": "#90a1b9",
+        "background": "#f8fafc",
+        "fontSize": 12
+      },
+      {
+        "text": "Revisão",
+        "ratio": 2.51,
+        "required": 4.5,
+        "color": "#90a1b9",
+        "background": "#f8fafc",
+        "fontSize": 12
+      },
+      {
+        "text": "Arraste sua logo aqui ou",
+        "ratio": 2.63,
+        "required": 4.5,
+        "color": "#90a1b9",
+        "background": "#ffffff",
+        "fontSize": 14
+      }
+    ]
+  },
+  "forms": [],
+  "looseFields": 10,
+  "decor": {
+    "gradients": 4,
+    "gradientText": 1,
+    "blur": 0,
+    "roundedShadow": 3,
+    "emoji": 1
+  },
+  "typography": {
+    "families": [
+      "Inter"
+    ],
+    "sizes": [
+      30,
+      20,
+      16,
+      14,
+      12
+    ]
+  },
+  "dialogsOpen": 0,
+  "errors": []
+}

@@ -1,0 +1,29 @@
+{
+  "name": "phyll-examples",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Example apps for Phyll: each one before and after a review, in the same design.",
+  "type": "module",
+  "scripts": {
+    "dev:dm-before": "vite dm-automation/before --port 5173 --strictPort",
+    "dev:dm-after": "vite dm-automation/after --port 5174 --strictPort",
+    "dev:booking-before": "vite booking/before --port 5175 --strictPort",
+    "dev:booking-after": "vite booking/after --port 5176 --strictPort",
+    "dev:quote-before": "vite quote/before --port 5177 --strictPort",
+    "dev:quote-after": "vite quote/after --port 5178 --strictPort",
+    "dev:menu-before": "vite menu/before --port 5179 --strictPort",
+    "dev:menu-after": "vite menu/after --port 5180 --strictPort"
+  },
+  "dependencies": {
+    "lucide-react": "^1.47.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-router-dom": "^7.18.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@vitejs/plugin-react": "^6.1.1",
+    "tailwindcss": "^4.3.3",
+    "vite": "^8.3.0"
+  }
+}

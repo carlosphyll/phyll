@@ -1,0 +1,111 @@
+{
+  "probe": "0.1.0",
+  "url": "http://localhost:5179/checkout",
+  "title": "Brasa Burger | Peça online",
+  "lang": "pt-BR",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "page": {
+    "height": 1537,
+    "horizontalOverflow": false
+  },
+  "firstView": {
+    "text": "Finalizar pedido | Seus dados | Entrega | Entrega | Retirada | Pagamento",
+    "headings": [
+      {
+        "level": 1,
+        "text": "Finalizar pedido",
+        "inFirstView": true
+      },
+      {
+        "level": 2,
+        "text": "Seus dados",
+        "inFirstView": true
+      },
+      {
+        "level": 2,
+        "text": "Entrega",
+        "inFirstView": true
+      },
+      {
+        "level": 2,
+        "text": "Pagamento",
+        "inFirstView": true
+      },
+      {
+        "level": 2,
+        "text": "Resumo",
+        "inFirstView": false
+      }
+    ]
+  },
+  "actions": {
+    "total": 1,
+    "primaryInFirstView": 0,
+    "iconOnlyUnnamed": 0,
+    "smallTargets": 0,
+    "deadLinks": 0,
+    "hiddenUntilHover": 0,
+    "items": [
+      {
+        "tag": "button",
+        "text": "Finalizar pedido",
+        "disabled": true,
+        "inFirstView": false,
+        "box": {
+          "x": 56,
+          "y": 1401,
+          "w": 278,
+          "h": 56
+        }
+      }
+    ]
+  },
+  "contrast": {
+    "checked": 13,
+    "failures": 2,
+    "skipped": 0,
+    "samples": [
+      {
+        "text": "Taxa de entrega",
+        "ratio": 2.6,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#ffffff",
+        "fontSize": 14
+      },
+      {
+        "text": "R$ 8,00",
+        "ratio": 2.6,
+        "required": 4.5,
+        "color": "#99a1af",
+        "background": "#ffffff",
+        "fontSize": 14
+      }
+    ]
+  },
+  "forms": [],
+  "looseFields": 17,
+  "decor": {
+    "gradients": 1,
+    "gradientText": 0,
+    "blur": 0,
+    "roundedShadow": 5,
+    "emoji": 0
+  },
+  "typography": {
+    "families": [
+      "Inter"
+    ],
+    "sizes": [
+      36,
+      20,
+      16,
+      14
+    ]
+  },
+  "dialogsOpen": 0,
+  "errors": []
+}
