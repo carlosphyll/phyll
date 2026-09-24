@@ -25,6 +25,8 @@ npx phyll setup codex        # ou: npx phyll setup claude
 
 Depois peça ao agente: "revise meu app em http://localhost:3000". Ele abre o app, percorre as tarefas principais, escreve o relatório em `.phyll/reports/<hora>/` e devolve um link para ele.
 
+Todos os relatórios, as suas chaves e o seu plano também ficam em [agentphyll.com/account](https://agentphyll.com/account), e o `npx phyll account` abre essa página já com a sua conta conectada. Se perder a chave, entre lá com o seu e-mail e crie uma nova.
+
 No Claude Code você também pode instalar o plugin, que acrescenta `/phyll:review`, `/phyll:fix` e `/phyll:scan`:
 
 ```
@@ -97,7 +99,7 @@ O repositório também é uma GitHub Action, que varre cada pull request e mostr
 
 ```yaml
 - uses: actions/checkout@v4
-- uses: carlosphyll/phyll@v0.4.1
+- uses: carlosphyll/phyll@v0.4.2
   with:
     path: .
     fail-above: 40

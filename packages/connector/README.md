@@ -17,6 +17,8 @@ Then ask your agent: "review my app at http://localhost:3000".
 
 `setup` registers the connector in Codex's `config.toml` or with `claude mcp add`, and installs the Chromium build it uses. You need Node 20 or newer.
 
+Your reports, keys and plan are also on the site: `npx phyll account` opens your account there, already signed in. If you lose the key, sign in at [agentphyll.com/login](https://agentphyll.com/login) with your email and create a new one.
+
 ## Commands
 
 | Command | What it does |
@@ -25,6 +27,7 @@ Then ask your agent: "review my app at http://localhost:3000".
 | `login <key>` | Use an account you already have on this computer |
 | `setup codex` or `setup claude` | Connect Phyll to your agent and install the browser |
 | `status` | Your plan and the reviews left |
+| `account` | Open your account on agentphyll.com, already signed in: reports, usage, keys and plan |
 | `pro` | Subscribe to Phyll Pro, R$ 9 a month, with unlimited reviews |
 | `billing` | Change the card or cancel Phyll Pro |
 | `scan [folder]` | Scan the source for AI tells, with no account and no AI |

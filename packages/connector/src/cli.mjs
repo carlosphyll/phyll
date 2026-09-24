@@ -18,6 +18,7 @@ Commands:
   login <key>        Use an account you already have on this computer
   setup <agent>      Connect Phyll to codex or claude, and install the browser it uses
   status             Your plan and the reviews left
+  account            Open your account on the site, signed in: reports, keys and plan
   pro                Subscribe to Phyll Pro
   billing            Change the card or cancel Phyll Pro
   scan [folder]      Scan the source for AI tells. Free, with no account
@@ -103,7 +104,16 @@ export async function main(argv, io = {}) {
           me.plan === "pro"
             ? `Phyll Pro. Reviews this month: ${sessions.used ?? 0}.`
             : `Free. ${Math.max(0, (sessions.limit ?? 0) - (sessions.used ?? 0))} of ${sessions.limit} free reviews left.`;
-        write(`${me.email} on ${server}\n${plan}\n`);
+        write(`${me.email} on ${server}\n${plan}\nYour reports, keys and plan: npx phyll account\n`);
+        return 0;
+      }
+
+      case "account": {
+        const { server, key } = loadCredentials(env);
+        if (!key) return fail(`no account on this computer yet. Run npx phyll signup you@example.com, or sign in at ${server}/login`);
+        const answer = await client(server, key).loginLink();
+        if (!answer.ok) return fail(answer.json.message ?? `Phyll answered ${answer.status}.`);
+        write(`Open your account, already signed in. The link works once, for 15 minutes:\n${answer.json.url}\n`);
         return 0;
       }
 

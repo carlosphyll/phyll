@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4.2 (2026-09-24)
+
+- `npx phyll account` opens your account on agentphyll.com, already signed in, with your reports, keys and plan. `npx phyll status` points to it.
+- The README says what to do after losing a key: sign in on the site with your email and create a new one.
+
 ## 0.4.1 (2026-09-24)
 
 - The connector's MCP server ends cleanly when your agent closes it. On Windows it used to stop with a libuv assertion.

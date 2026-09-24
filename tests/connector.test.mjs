@@ -86,6 +86,10 @@ test("signup, status, login and logout from the terminal", engineSkip, async () 
     const key = signup.out.match(/phyll_[A-Za-z0-9]{32}/)[0];
     assert.deepEqual(loadCredentials(env), { server: engine.url, key });
     assert.match((await run(["status"], env)).out, /Free\. 5 of 5 free reviews left\./);
+    const account = await run(["account"], env);
+    assert.equal(account.code, 0, account.err);
+    assert.match(account.out, /\/login\/[A-Za-z0-9]{40}\n$/);
+    assert.match((await run(["account"], { PHYLL_HOME: makeTree({}) })).err, /no account on this computer yet/);
     const pro = await run(["pro"], env);
     assert.equal(pro.code, 1);
     assert.match(pro.err, /Phyll Pro is not open on this server yet/);

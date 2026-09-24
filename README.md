@@ -25,6 +25,8 @@ npx phyll setup codex        # or: npx phyll setup claude
 
 Then ask your agent: "review my app at http://localhost:3000". It opens the app, walks the core jobs, writes the report in `.phyll/reports/<time>/` and gives you a link to it.
 
+Every report, your keys and your plan are also at [agentphyll.com/account](https://agentphyll.com/account), and `npx phyll account` opens it already signed in. If you lose the key, sign in there with your email and create a new one.
+
 In Claude Code you can also install the plugin, which adds `/phyll:review`, `/phyll:fix` and `/phyll:scan`:
 
 ```
@@ -97,7 +99,7 @@ The repository is also a GitHub Action that scans every pull request and puts th
 
 ```yaml
 - uses: actions/checkout@v4
-- uses: carlosphyll/phyll@v0.4.1
+- uses: carlosphyll/phyll@v0.4.2
   with:
     path: .
     fail-above: 40

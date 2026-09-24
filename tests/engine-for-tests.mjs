@@ -39,6 +39,9 @@ export async function startEngine({ freeSessions = 5 } = {}) {
     if (req.method === "GET" && url.pathname === "/v1/me") {
       return reply(200, { email: account.email, plan: "free", sessions: { used: account.used, limit: freeSessions, period: "total" } });
     }
+    if (req.method === "POST" && url.pathname === "/v1/login-link") {
+      return reply(201, { url: `http://${req.headers.host}/login/${"a".repeat(40)}` });
+    }
     if (req.method === "POST" && url.pathname === "/v1/sessions") {
       if (account.used >= freeSessions) {
         const message = pt(body.language)

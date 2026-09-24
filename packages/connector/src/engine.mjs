@@ -36,5 +36,6 @@ export function engineClient({ server, key = null, version = "0", fetchImpl = gl
     submitReport: (id, report) => call("POST", `/v1/sessions/${encodeURIComponent(id)}/report`, { report }),
     checkout: () => call("POST", "/v1/billing/checkout"),
     portal: () => call("POST", "/v1/billing/portal"),
+    loginLink: () => call("POST", "/v1/login-link"),
   };
 }
