@@ -1,0 +1,9 @@
+{
+  "$schema": "https://glama.ai/mcp/schemas/server.json",
+  "maintainers": ["carlosphyll"],
+  "baseImage": "debian:trixie-slim",
+  "nodeVersion": "24",
+  "buildSteps": ["npm install --prefix packages/connector --omit=dev --no-audit --no-fund"],
+  "cmdArguments": ["mcp-proxy", "--", "node", "packages/connector/bin/phyll.mjs", "mcp"],
+  "placeholderArguments": {}
+}
