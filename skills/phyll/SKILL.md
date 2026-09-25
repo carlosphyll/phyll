@@ -3,7 +3,7 @@ name: phyll
 description: Reviews and improves the UX of apps built with AI coding tools while keeping their visual design. Walks the app the way a first-time user would, with screenshots, page measurements and click paths as evidence, finds overcoding (functions that ask for more fields, steps and screens than their goal needs) and the code-shaped flows generated apps share, and applies the fixes when asked. Use when someone asks to review, audit, critique or improve the UX, usability, onboarding or flows of an app, especially one built with Claude Code, Codex, Cursor, Lovable, v0 or Bolt, or says it looks like AI, feels overbuilt or is confusing. Works through the Phyll connector, an MCP server with a browser and the review engine.
 license: MIT
 metadata:
-  version: "0.4.5"
+  version: "0.4.6"
   homepage: https://github.com/carlosphyll/phyll
 ---
 

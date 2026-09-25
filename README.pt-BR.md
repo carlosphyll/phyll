@@ -115,7 +115,7 @@ O repositório também é uma GitHub Action, que varre cada pull request e mostr
 
 ```yaml
 - uses: actions/checkout@v4
-- uses: carlosphyll/phyll@v0.4.5
+- uses: carlosphyll/phyll@v0.4.6
   with:
     path: .
     fail-above: 40

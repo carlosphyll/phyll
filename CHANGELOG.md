@@ -1,7 +1,8 @@
 # Changelog
 
-## Unreleased
+## 0.4.6 (2026-09-25)
 
+- The connector's 18 tools describe what they do, when to use them and what they return, and every field says what it takes and what it defaults to, so agents pick and fill them without guessing. Directories that grade MCP servers read the same text. A test keeps every tool and field described.
 - The catalog has 57 tells. Three new ones show up on the second day of use: S08, Work that disappears on reload; S09, Inner pages that break when opened by their address; S10, Layouts that break with a long name.
 
 ## 0.4.5 (2026-09-25)

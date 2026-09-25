@@ -271,9 +271,16 @@ test("an agent reviews an app through the connector: method, capture, browser, g
     return { ...result, text: result.content.filter((c) => c.type === "text").map((c) => c.text).join("\n") };
   };
   try {
-    const names = (await client.listTools()).tools.map((tool) => tool.name);
+    const tools = (await client.listTools()).tools;
+    const names = tools.map((tool) => tool.name);
     for (const name of ["start_review", "capture", "open", "snapshot", "click", "screenshot", "probe", "guide", "finish_review", "scan", "account", "upgrade"]) {
       assert.ok(names.includes(name), name);
+    }
+    // Agents, and directories that grade servers, read each tool by its description: every tool
+    // says what it does and returns, and every field says what it takes.
+    for (const tool of tools) {
+      assert.ok(tool.description.length >= 80, `${tool.name} has a full description`);
+      for (const [field, schema] of Object.entries(tool.inputSchema.properties ?? {})) assert.ok(schema.description?.length >= 20, `${tool.name}.${field} is described`);
     }
 
     const started = await call("start_review", { url: appUrl, language: "en", jobs: ["Create a flow"] });
