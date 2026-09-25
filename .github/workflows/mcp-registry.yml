@@ -1,0 +1,29 @@
+# Lists the phyll package in the official MCP registry as io.github.carlosphyll/phyll, from server.json.
+# Run it by hand once a version is live on npm: the registry checks that the npm package exists and
+# names this server in its mcpName. GitHub proves who is publishing, so there is no token to keep.
+name: MCP registry
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: server.json names the package version, and that version is on npm
+        run: |
+          version=$(node -p "require('./packages/connector/package.json').version")
+          node -e "const s = require('./server.json'); if (s.version !== '$version' || s.packages[0].version !== '$version') { console.error('server.json does not say $version'); process.exit(1) }"
+          npm view "phyll@$version" version
+      - name: Install mcp-publisher 1.8.1
+        run: |
+          curl -fsSL -o mcp-publisher.tar.gz https://github.com/modelcontextprotocol/registry/releases/download/v1.8.1/mcp-publisher_linux_amd64.tar.gz
+          echo "a06c9096dcb9727c13555b6be26c7effa707b01f06a4c561ba7a3635443cf2cc  mcp-publisher.tar.gz" | sha256sum --check
+          tar xzf mcp-publisher.tar.gz mcp-publisher
+      - run: ./mcp-publisher login github-oidc
+      - run: ./mcp-publisher publish
