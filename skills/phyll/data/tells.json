@@ -1636,6 +1636,17 @@
           "<input className=\"focus:outline-none focus:ring-2\" />"
         ]
       }
+    },
+    {
+      "id": "S07",
+      "name": "No results that look like an empty list",
+      "dimension": "states",
+      "kind": "function",
+      "severity": "major",
+      "weight": 2,
+      "cap": 1,
+      "detection": "dynamic",
+      "summary": "A search or filter that matches nothing shows the same screen as a list with nothing in it, or gives no way to clear it, so people think their data is gone or get stuck."
     }
   ]
 }

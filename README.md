@@ -85,7 +85,7 @@ Every example folder has its review in `review/report.md` and more comparisons i
 - **Copy.** "Supercharge your workflow", "Get Started", "Trusted by 10,000+", John Doe or João da Silva, `COMMENT_KEYWORD` on screen, "Something went wrong".
 - **States.** Empty states that only say "No data", errors that only reach the console, a confirmation that shows someone else's appointment, invisible keyboard focus.
 
-Each of these is one of 53 tells in Phyll's catalog. The catalog as data, with the detectors that find tells in source code, is in [skills/phyll/data/tells.json](skills/phyll/data/tells.json), and the test suite checks every detector against real code and the four example apps.
+Each of these is one of 54 tells in Phyll's catalog. The catalog as data, with the detectors that find tells in source code, is in [skills/phyll/data/tells.json](skills/phyll/data/tells.json), and the test suite checks every detector against real code and the four example apps.
 
 ## How a review works
 

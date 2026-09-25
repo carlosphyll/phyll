@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- The catalog has 54 tells. The new one, S07, No results that look like an empty list, shows up while using the app: a search or filter that matches nothing looks like an empty list, or there is no way to clear it.
+
 ## 0.4.4 (2026-09-24)
 
 - `npx phyll setup` installs Chromium on a new computer again. Playwright 1.63 stopped exporting `playwright/cli`, so setup finds Playwright's command line through its package.json.
