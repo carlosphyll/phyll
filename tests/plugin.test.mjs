@@ -35,6 +35,15 @@ test("every version in the repository matches", () => {
   for (const file of ["package.json", "packages/cli/package.json", "packages/connector/package.json", "cloud/package.json"]) {
     if (existsSync(join(ROOT, ...file.split("/")))) versions[file] = readJson(file).version;
   }
+  // The MCP registry entry: at the root of the public repository, in public/ here.
+  for (const file of ["server.json", "public/server.json"]) {
+    if (!existsSync(join(ROOT, ...file.split("/")))) continue;
+    const server = readJson(file);
+    versions[file] = server.version;
+    versions[`${file} package`] = server.packages[0].version;
+    assert.equal(server.name, readJson("packages/connector/package.json").mcpName, "the registry name matches the npm package's mcpName");
+    assert.ok(server.description.length <= 100, "the registry takes at most 100 characters");
+  }
   for (const [where, version] of Object.entries(versions)) assert.equal(version, VERSION, `${where} has ${version}`);
 });
 

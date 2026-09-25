@@ -1647,6 +1647,39 @@
       "cap": 1,
       "detection": "dynamic",
       "summary": "A search or filter that matches nothing shows the same screen as a list with nothing in it, or gives no way to clear it, so people think their data is gone or get stuck."
+    },
+    {
+      "id": "S08",
+      "name": "Work that disappears on reload",
+      "dimension": "states",
+      "kind": "function",
+      "severity": "major",
+      "weight": 3,
+      "cap": 1,
+      "detection": "dynamic",
+      "summary": "What the person created or filled in lives only in the page's memory, so a reload or a new visit loses it and nothing said so."
+    },
+    {
+      "id": "S09",
+      "name": "Inner pages that break when opened by their address",
+      "dimension": "states",
+      "kind": "function",
+      "severity": "major",
+      "weight": 2,
+      "cap": 1,
+      "detection": "dynamic",
+      "summary": "Clicking through from the home page works, but opening or reloading an inner page by its address gives a 404, a blank screen or the home page."
+    },
+    {
+      "id": "S10",
+      "name": "Layouts that break with a long name",
+      "dimension": "states",
+      "kind": "function",
+      "severity": "minor",
+      "weight": 1,
+      "cap": 1,
+      "detection": "dynamic",
+      "summary": "The screens were only tried with short sample text, so a long name or title overflows its card, covers other text or pushes the buttons away."
     }
   ]
 }

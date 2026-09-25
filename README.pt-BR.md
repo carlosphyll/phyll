@@ -85,7 +85,7 @@ Cada pasta de exemplo tem a revisão em `review/report.md` e mais comparações 
 - **Texto.** "Turbine seu fluxo de trabalho", "Comece agora", "Mais de 10 mil clientes", João da Silva, `COMMENT_KEYWORD` na tela, "Algo deu errado".
 - **Estados.** Estados vazios que só dizem "Sem dados", erros que só chegam ao console, uma confirmação que mostra o horário de outra pessoa, foco do teclado invisível.
 
-Cada um deles é um dos 54 sinais do catálogo do Phyll. O catálogo em forma de dados, com os detectores que acham sinais no código, está em [skills/phyll/data/tells.json](skills/phyll/data/tells.json), e os testes conferem cada detector contra código de verdade e contra os quatro apps de exemplo.
+Cada um deles é um dos 57 sinais do catálogo do Phyll. O catálogo em forma de dados, com os detectores que acham sinais no código, está em [skills/phyll/data/tells.json](skills/phyll/data/tells.json), e os testes conferem cada detector contra código de verdade e contra os quatro apps de exemplo.
 
 ## Como uma revisão funciona
 

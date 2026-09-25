@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- The catalog has 57 tells. Three new ones show up on the second day of use: S08, Work that disappears on reload; S09, Inner pages that break when opened by their address; S10, Layouts that break with a long name.
+
 ## 0.4.5 (2026-09-25)
 
 - `npx phyll setup` also connects Cursor, Windsurf and Gemini CLI: it writes Phyll into the `mcpServers` of their JSON settings and keeps everything else in the file. A file with comments is left alone, and setup shows the entry to paste. `npx phyll setup other` prints that entry for any other agent with MCP.
