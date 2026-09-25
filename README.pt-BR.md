@@ -31,6 +31,8 @@ npx phyll setup codex        # ou claude, cursor, windsurf, gemini
 
 Depois peça ao agente: "revise meu app em http://localhost:3000". Ele abre o app, percorre as tarefas principais, escreve o relatório em `.phyll/reports/<hora>/` e devolve um link para ele.
 
+Fez o app no Lovable, Bolt ou v0 e não tem agente no computador? O [agentphyll.com/check](https://agentphyll.com/check) checa uma página pública de graça e sem conta: uma carga da página no tamanho de notebook e de celular, o índice e o que ele achou, em meio minuto.
+
 Todos os relatórios, as suas chaves e o seu plano também ficam em [agentphyll.com/account](https://agentphyll.com/account), e o `npx phyll account` abre essa página já com a sua conta conectada. Se perder a chave, entre lá com o seu e-mail e crie uma nova.
 
 Já tem conta? O `npx phyll login` conecta este computador: você permite no navegador, e o terminal ganha uma chave própria. Todos os comandos, com exemplos, estão em [agentphyll.com/commands](https://agentphyll.com/commands).

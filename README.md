@@ -31,6 +31,8 @@ npx phyll setup codex        # or claude, cursor, windsurf, gemini
 
 Then ask your agent: "review my app at http://localhost:3000". It opens the app, walks the core jobs, writes the report in `.phyll/reports/<time>/` and gives you a link to it.
 
+Built in Lovable, Bolt or v0, with no agent on your computer? [agentphyll.com/check](https://agentphyll.com/check) checks a public page for free, with no account: one page load at laptop and phone size, the index and what it found, in half a minute.
+
 Every report, your keys and your plan are also at [agentphyll.com/account](https://agentphyll.com/account), and `npx phyll account` opens it already signed in. If you lose the key, sign in there with your email and create a new one.
 
 Already have an account? `npx phyll login` connects this computer: you allow it in the browser, and the terminal gets a key of its own. Every command, with examples, is at [agentphyll.com/commands](https://agentphyll.com/commands).
