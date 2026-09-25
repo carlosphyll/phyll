@@ -97,6 +97,10 @@ Cada um deles é um dos 57 sinais do catálogo do Phyll. O catálogo em forma de
 4. **Relatório.** O motor do Phyll confere o relatório, dá a nota e guarda tudo com um link. Você recebe o `report.md`, que abre com os três achados que mais travam as pessoas e uma tabela do que dá para cortar. O relatório também traz um índice de cara de IA de 0 a 100, que você vê cair.
 5. **Corrigir, quando você pedir.** O seu agente aplica as correções um achado por vez, com um commit e uma captura de antes e depois para cada um. Botões e mensagens novos usam as classes do próprio produto, e o design fica.
 
+### Quanto custa uma revisão
+
+A revisão roda no seu agente, na sua assinatura. Medimos em 25/09/2026, com o Claude Code e o Opus, em dois dos apps de exemplo: 11 e 16 minutos, 81 e 103 passos do agente, 49 mil e 59 mil tokens de saída, e 6,8 e 9,8 milhões de tokens de entrada, quase todos lidos do cache. No preço da API do Claude, isso dá US$ 6,27 e US$ 7,84 por revisão; numa assinatura do Claude ou do ChatGPT, entra no uso do plano como qualquer tarefa longa. O Codex ainda não foi medido. O scanner não usa IA nem tokens.
+
 ## O scanner, grátis e sozinho
 
 O scanner procura sinais de IA no código, sem conta e sem IA:

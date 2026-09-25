@@ -97,6 +97,10 @@ Each of these is one of 57 tells in Phyll's catalog. The catalog as data, with t
 4. **Report.** Phyll's engine checks the report, scores it and keeps it with a link. You get `report.md`, which opens with the three findings that block people most and a table of what can be cut. The report also gives an AI tell index from 0 to 100, which you can watch go down.
 5. **Fix, when you ask.** Your agent applies the fixes one finding at a time, with a commit and a before and after screenshot for each. New buttons and messages reuse the product's own classes, so the design stays.
 
+### What a review costs
+
+The review runs in your agent, on your plan. Measured on 2026-09-25 with Claude Code and Opus on two of the example apps: 11 and 16 minutes, 81 and 103 agent steps, 49,000 and 59,000 output tokens, and 6.8 and 9.8 million input tokens, almost all of them read from the prompt cache. At Claude API prices that is US$ 6.27 and US$ 7.84 a review; on a Claude or ChatGPT subscription it counts against the plan's usage like any long task. Codex has not been measured yet. The scanner uses no AI and no tokens.
+
 ## The scanner, free and on its own
 
 The scanner reads the source for AI tells, with no account and no AI:
