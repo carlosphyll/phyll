@@ -26,7 +26,7 @@ Create a free account at [agentphyll.com](https://agentphyll.com), or from the t
 
 ```bash
 npx phyll signup you@example.com
-npx phyll setup codex        # or: npx phyll setup claude
+npx phyll setup codex        # or claude, cursor, windsurf, gemini
 ```
 
 Then ask your agent: "review my app at http://localhost:3000". It opens the app, walks the core jobs, writes the report in `.phyll/reports/<time>/` and gives you a link to it.
@@ -42,7 +42,7 @@ In Claude Code you can also install the plugin, which adds `/phyll:review`, `/ph
 /plugin install phyll@carlosphyll
 ```
 
-The plugin starts the connector by itself, so with it you skip `npx phyll setup claude`. You need Node 20 or newer. `setup` installs the Chromium build that Phyll's browser uses.
+The plugin starts the connector by itself, so with it you skip `npx phyll setup claude`. You need Node 20 or newer. `setup` installs the Chromium build that Phyll's browser uses. For an agent not on the list, `npx phyll setup other` prints the MCP entry to paste into its settings.
 
 ## Free and Phyll Pro
 
@@ -103,11 +103,13 @@ The scanner reads the source for AI tells, with no account and no AI:
 npx phyll scan .
 ```
 
+Once the index is low, `npx phyll scan . --format badge` prints a badge with it for your README.
+
 The repository is also a GitHub Action that scans every pull request and puts the AI tell index in the job summary:
 
 ```yaml
 - uses: actions/checkout@v4
-- uses: carlosphyll/phyll@v0.4.4
+- uses: carlosphyll/phyll@v0.4.5
   with:
     path: .
     fail-above: 40

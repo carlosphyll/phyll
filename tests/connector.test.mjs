@@ -10,12 +10,23 @@ import { pathToFileURL } from "node:url";
 import { makeTree, ROOT } from "./helpers.mjs";
 import { sampleReport } from "./samples.mjs";
 import { engineSkip, startEngine } from "./engine-for-tests.mjs";
-import { main } from "../packages/connector/src/cli.mjs";
+import { badgeMarkdown, main, scanNext } from "../packages/connector/src/cli.mjs";
 import { loadCredentials, saveCredentials } from "../packages/connector/src/credentials.mjs";
 import { engineClient } from "../packages/connector/src/engine.mjs";
 import { BIN } from "../packages/connector/src/paths.mjs";
 import { normalizeUrl } from "../packages/connector/src/review.mjs";
-import { codexBlock, ensureBrowser, mcpCommand, playwrightCli, registerClaude, withoutTable, writeCodexConfig } from "../packages/connector/src/setup.mjs";
+import {
+  codexBlock,
+  ensureBrowser,
+  JSON_AGENTS,
+  mcpCommand,
+  mcpJson,
+  playwrightCli,
+  registerClaude,
+  withoutTable,
+  writeCodexConfig,
+  writeJsonConfig,
+} from "../packages/connector/src/setup.mjs";
 
 const CONNECTOR = join(ROOT, "packages", "connector");
 const hasDeps = existsSync(join(CONNECTOR, "node_modules", "@modelcontextprotocol", "sdk"));
@@ -144,7 +155,59 @@ test("setup writes the agent's config and checks the browser", async () => {
   assert.match(result.out, /Phyll is connected to Codex in .*config\.toml/);
   assert.match(result.out, /Next, create your account: npx phyll signup you@example\.com/);
   assert.match(readFileSync(join(env.CODEX_HOME, "config.toml"), "utf8"), /\[mcp_servers\.phyll\]\ncommand = "node"\nargs = \["phyll\.mjs", "mcp"\]/);
-  assert.equal((await run(["setup", "cursor"], env)).code, 2);
+  assert.equal((await run(["setup", "notepad"], env)).code, 2);
+});
+
+test("setup connects Cursor, Windsurf and Gemini CLI in their JSON files and keeps the rest", async () => {
+  const home = makeTree({
+    ".cursor/mcp.json": JSON.stringify({ mcpServers: { other: { command: "other-mcp" } } }),
+    ".gemini/settings.json": JSON.stringify({ theme: "Dracula", mcpServers: { phyll: { command: "old" } } }),
+  });
+  const env = { PHYLL_HOME: makeTree({}) };
+  const io = { home, mcpCommand: ["node", "phyll.mjs", "mcp"], ensureBrowser: async () => true };
+  for (const [agent, { name }] of Object.entries(JSON_AGENTS)) {
+    const result = await run(["setup", agent], env, io);
+    assert.equal(result.code, 0, result.err);
+    assert.match(result.out, new RegExp(`Phyll is connected to ${name} in `));
+  }
+  const read = (...path) => JSON.parse(readFileSync(join(home, ...path), "utf8"));
+  const entry = { command: "node", args: ["phyll.mjs", "mcp"] };
+  assert.deepEqual(read(".cursor", "mcp.json").mcpServers, { other: { command: "other-mcp" }, phyll: entry });
+  assert.deepEqual(read(".codeium", "windsurf", "mcp_config.json"), { mcpServers: { phyll: entry } });
+  assert.deepEqual(read(".gemini", "settings.json"), { theme: "Dracula", mcpServers: { phyll: entry } });
+
+  // A file with comments is not plain JSON: it stays as it was, and setup shows what to paste.
+  const commented = '{\n  // my servers\n  "mcpServers": {}\n}\n';
+  writeFileSync(join(home, ".cursor", "mcp.json"), commented);
+  const kept = await run(["setup", "cursor"], env, io);
+  assert.equal(kept.code, 0, kept.err);
+  assert.match(kept.out, /is not plain JSON, so Phyll left it as it was/);
+  assert.ok(kept.out.includes(mcpJson(io.mcpCommand)));
+  assert.equal(readFileSync(join(home, ".cursor", "mcp.json"), "utf8"), commented);
+  writeFileSync(join(home, "array.json"), "[]");
+  assert.equal(writeJsonConfig(join(home, "array.json"), io.mcpCommand), false);
+
+  // Any other agent with MCP gets the entry to paste.
+  const other = await run(["setup", "other"], env, io);
+  assert.equal(other.code, 0, other.err);
+  assert.deepEqual(JSON.parse(other.out.slice(other.out.indexOf("{"), other.out.lastIndexOf("}") + 1)), { mcpServers: { phyll: entry } });
+});
+
+test("scan ends with the next step, and prints a README badge once the index is low", async () => {
+  const env = { PHYLL_HOME: makeTree({}) };
+  const after = join(ROOT, "examples", "dm-automation", "after");
+  const text = await run(["scan", after], env);
+  assert.equal(text.code, 0, text.err);
+  assert.match(text.out, /Next: a full review opens the app as a first-time user/);
+  assert.match(text.out, /npx phyll setup codex {6}\(or claude, cursor, windsurf, gemini\)/);
+  assert.match(text.out, /Show the index in your README: npx phyll scan --format badge/);
+  assert.doesNotMatch(text.out, / 1 hits /);
+  const badge = await run(["scan", after, "--format", "badge"], env);
+  assert.equal(badge.code, 0, badge.err);
+  assert.match(badge.out, /^\[!\[Phyll AI tell index: \d+\/100\]\(https:\/\/agentphyll\.com\/badge\/index\/\d+\.svg\)\]\(https:\/\/agentphyll\.com\)\n$/);
+  assert.equal((await run(["scan", after, "--format", "xml"], env)).code, 2);
+  assert.doesNotMatch(scanNext(60), /README/);
+  assert.equal(badgeMarkdown(7, "https://example.test"), "[![Phyll AI tell index: 7/100](https://example.test/badge/index/7.svg)](https://example.test)");
 });
 
 // On a new computer Chromium is missing, and setup installs it with Playwright's own command

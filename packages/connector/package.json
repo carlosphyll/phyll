@@ -1,7 +1,8 @@
 {
   "name": "phyll",
-  "version": "0.4.4",
-  "description": "UX review for apps built with AI, inside the agent you already use. Connects Codex or Claude Code to the Phyll engine; the AI work stays on your own plan.",
+  "version": "0.4.5",
+  "description": "UX review for apps built with AI, inside the agent you already use. Connects Codex, Claude Code, Cursor, Windsurf or Gemini CLI to the Phyll engine; the AI work stays on your own plan.",
+  "mcpName": "io.github.carlosphyll/phyll",
   "license": "MIT",
   "type": "module",
   "homepage": "https://github.com/carlosphyll/phyll",
@@ -14,8 +15,12 @@
     "ux",
     "ux-review",
     "mcp",
+    "mcp-server",
     "codex",
     "claude-code",
+    "cursor",
+    "windsurf",
+    "gemini-cli",
     "ai",
     "vibe-coding"
   ],

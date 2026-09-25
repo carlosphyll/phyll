@@ -90,7 +90,7 @@ export function formatText(result) {
   const row = (t) => {
     const where = t.locations[0] ? `${t.locations[0].file}:${t.locations[0].line}` : "";
     const name = t.name.length > width ? t.name.slice(0, width - 1) + "." : t.name.padEnd(width);
-    return `  ${t.id}  ${name}  ${String(t.hits).padStart(3)} hits  ${where}`;
+    return `  ${t.id}  ${name}  ${String(t.hits).padStart(3)} ${t.hits === 1 ? "hit " : "hits"}  ${where}`;
   };
 
   if (functionTells.length === 0) lines.push("No tells that get in the way of use were found in the source.");

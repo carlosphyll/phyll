@@ -100,7 +100,7 @@ export class Connector {
         await session.start();
       } catch (error) {
         const missing = /Executable doesn't exist|playwright install/i.test(error?.message ?? "");
-        throw new Error(missing ? "the browser is not installed. Ask the person to run npx phyll setup codex (or claude) once." : `the browser did not start: ${error.message}`);
+        throw new Error(missing ? "the browser is not installed. Ask the person to run npx phyll setup once, with the name of their agent, such as npx phyll setup codex." : `the browser did not start: ${error.message}`);
       }
       review.browser = session;
     }

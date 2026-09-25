@@ -10,12 +10,12 @@ The AI work runs in your agent, on your own plan. This package adds the browser,
 
 ```bash
 npx phyll signup you@example.com
-npx phyll setup codex        # or: npx phyll setup claude
+npx phyll setup codex        # or claude, cursor, windsurf, gemini
 ```
 
 Then ask your agent: "review my app at http://localhost:3000".
 
-`setup` registers the connector in Codex's `config.toml` or with `claude mcp add`, and installs the Chromium build it uses. You need Node 20 or newer.
+`setup` registers the connector in Codex's `config.toml`, with `claude mcp add`, or in the `mcpServers` of Cursor's `~/.cursor/mcp.json`, Windsurf's `~/.codeium/windsurf/mcp_config.json` or Gemini CLI's `~/.gemini/settings.json`, keeping everything else in the file. It also installs the Chromium build the connector uses. For any other agent that takes MCP servers, `npx phyll setup other` prints the entry to paste. You need Node 20 or newer.
 
 Your reports, keys and plan are also on the site: `npx phyll account` opens your account there, already signed in. If you lose the key, sign in at [agentphyll.com/login](https://agentphyll.com/login) with your email and create a new one.
 
@@ -25,12 +25,12 @@ Your reports, keys and plan are also on the site: `npx phyll account` opens your
 | --- | --- |
 | `signup <email>` | Create a free account, with 5 full reviews. The key is saved in `~/.phyll` |
 | `login <key>` | Use an account you already have on this computer |
-| `setup codex` or `setup claude` | Connect Phyll to your agent and install the browser |
+| `setup <agent>` | Connect Phyll to `codex`, `claude`, `cursor`, `windsurf` or `gemini` and install the browser; `setup other` prints the settings for any other agent |
 | `status` | Your plan and the reviews left |
 | `account` | Open your account on agentphyll.com, already signed in: reports, usage, keys and plan |
 | `pro` | Subscribe to Phyll Pro, R$ 9 a month, with unlimited reviews |
 | `billing` | Change the card or cancel Phyll Pro |
-| `scan [folder]` | Scan the source for AI tells, with no account and no AI |
+| `scan [folder]` | Scan the source for AI tells, with no account and no AI. `--format json` for scripts, `--format badge` for a README badge |
 | `mcp` | Run the connector for your agent; `setup` registers it for you |
 | `logout` | Forget the key on this computer |
 

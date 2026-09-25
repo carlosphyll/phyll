@@ -1,5 +1,6 @@
-// Connects Phyll to the person's agent: an MCP server entry in Codex's config.toml, or a
-// `claude mcp add` for Claude Code, and the Chromium build Playwright needs.
+// Connects Phyll to the person's agent: an MCP server entry in Codex's config.toml, a
+// `claude mcp add` for Claude Code, or an entry in the JSON file Cursor, Windsurf or Gemini CLI
+// read, and the Chromium build Playwright needs.
 import { spawnSync } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { createRequire } from "node:module";
@@ -41,6 +42,38 @@ export function writeCodexConfig(command, env = process.env) {
   mkdirSync(dir, { recursive: true });
   writeFileSync(file, `${rest ? `${rest}\n\n` : ""}${codexBlock(command)}`);
   return file;
+}
+
+// Agents that keep their MCP servers under "mcpServers" in a JSON file in the home folder.
+export const JSON_AGENTS = {
+  cursor: { name: "Cursor", path: [".cursor", "mcp.json"] },
+  windsurf: { name: "Windsurf", path: [".codeium", "windsurf", "mcp_config.json"] },
+  gemini: { name: "Gemini CLI", path: [".gemini", "settings.json"] },
+};
+
+const serverEntry = (command) => ({ command: command[0], args: command.slice(1) });
+
+// The entry to paste into the MCP settings of any other agent.
+export const mcpJson = (command) => JSON.stringify({ mcpServers: { phyll: serverEntry(command) } }, null, 2);
+
+// Adds phyll to mcpServers and keeps the rest of the file as it was. A file that is not plain
+// JSON, such as one with comments, is left alone and the caller shows the entry to paste.
+export function writeJsonConfig(file, command) {
+  let config = {};
+  if (existsSync(file)) {
+    const text = readFileSync(file, "utf8").replace(String.fromCharCode(0xfeff), "").trim();
+    try {
+      config = text ? JSON.parse(text) : {};
+    } catch {
+      return false;
+    }
+    if (!config || typeof config !== "object" || Array.isArray(config)) return false;
+  }
+  const servers = config.mcpServers && typeof config.mcpServers === "object" && !Array.isArray(config.mcpServers) ? config.mcpServers : {};
+  config.mcpServers = { ...servers, phyll: serverEntry(command) };
+  mkdirSync(dirname(file), { recursive: true });
+  writeFileSync(file, `${JSON.stringify(config, null, 2)}\n`);
+  return true;
 }
 
 const quote = (arg) => (/[\s"]/.test(arg) ? `"${arg.replaceAll('"', '\\"')}"` : arg);

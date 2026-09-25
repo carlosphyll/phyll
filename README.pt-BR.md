@@ -26,7 +26,7 @@ Crie uma conta grátis em [agentphyll.com](https://agentphyll.com), ou pelo term
 
 ```bash
 npx phyll signup voce@exemplo.com
-npx phyll setup codex        # ou: npx phyll setup claude
+npx phyll setup codex        # ou claude, cursor, windsurf, gemini
 ```
 
 Depois peça ao agente: "revise meu app em http://localhost:3000". Ele abre o app, percorre as tarefas principais, escreve o relatório em `.phyll/reports/<hora>/` e devolve um link para ele.
@@ -42,7 +42,7 @@ No Claude Code você também pode instalar o plugin, que acrescenta `/phyll:revi
 /plugin install phyll@carlosphyll
 ```
 
-O plugin inicia o conector sozinho, então com ele você pula o `npx phyll setup claude`. Você precisa do Node 20 ou mais novo. O `setup` instala o Chromium que o navegador do Phyll usa.
+O plugin inicia o conector sozinho, então com ele você pula o `npx phyll setup claude`. Você precisa do Node 20 ou mais novo. O `setup` instala o Chromium que o navegador do Phyll usa. Para um agente fora da lista, o `npx phyll setup other` mostra a entrada MCP para colar nas configurações dele.
 
 ## Grátis e Phyll Pro
 
@@ -103,11 +103,13 @@ O scanner procura sinais de IA no código, sem conta e sem IA:
 npx phyll scan .
 ```
 
+Quando o índice estiver baixo, o `npx phyll scan . --format badge` gera um selo com ele para o seu README.
+
 O repositório também é uma GitHub Action, que varre cada pull request e mostra o índice de cara de IA no resumo do job:
 
 ```yaml
 - uses: actions/checkout@v4
-- uses: carlosphyll/phyll@v0.4.4
+- uses: carlosphyll/phyll@v0.4.5
   with:
     path: .
     fail-above: 40

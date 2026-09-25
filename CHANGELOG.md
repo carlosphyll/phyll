@@ -1,8 +1,12 @@
 # Changelog
 
-## Unreleased
+## 0.4.5 (2026-09-25)
 
+- `npx phyll setup` also connects Cursor, Windsurf and Gemini CLI: it writes Phyll into the `mcpServers` of their JSON settings and keeps everything else in the file. A file with comments is left alone, and setup shows the entry to paste. `npx phyll setup other` prints that entry for any other agent with MCP.
+- `npx phyll scan` ends with the next step, a full review in your agent. When the static index is 25 or lower, it points to `npx phyll scan --format badge`, which prints a README badge for your index.
+- The scan says "1 hit" instead of "1 hits".
 - The catalog has 54 tells. The new one, S07, No results that look like an empty list, shows up while using the app: a search or filter that matches nothing looks like an empty list, or there is no way to clear it.
+- The npm package names its MCP server, `io.github.carlosphyll/phyll`, for the official MCP registry.
 
 ## 0.4.4 (2026-09-24)
 

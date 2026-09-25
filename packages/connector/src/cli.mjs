@@ -1,25 +1,29 @@
 // phyll: the commands a person types. The review itself happens inside their agent, through
 // the MCP server that `phyll mcp` runs and `phyll setup` registers.
 import { spawn } from "node:child_process";
-import { hostname } from "node:os";
+import { homedir, hostname } from "node:os";
+import { join } from "node:path";
 import { parseArgs } from "node:util";
 import { clearCredentials, credentialsPath, loadCredentials, saveCredentials } from "./credentials.mjs";
 import { engineClient } from "./engine.mjs";
 import { importSkill, VERSION } from "./paths.mjs";
-import { ensureBrowser, mcpCommand, registerClaude, writeCodexConfig } from "./setup.mjs";
+import { ensureBrowser, JSON_AGENTS, mcpCommand, mcpJson, registerClaude, writeCodexConfig, writeJsonConfig } from "./setup.mjs";
+
+const AGENTS = ["codex", "claude", ...Object.keys(JSON_AGENTS)];
 
 export const HELP = `Phyll ${VERSION}: UX review for apps built with AI, inside the agent you already use.
 
 Get started:
   npx phyll signup you@example.com     Create a free account; the key is saved on this computer
-  npx phyll setup codex                Connect Phyll to Codex (or: npx phyll setup claude)
+  npx phyll setup codex                Connect Phyll to Codex (or claude, cursor, windsurf, gemini)
   Then ask your agent: review my app at http://localhost:3000
 
 Commands:
   signup <email>     Create a free account, with free full reviews
   login              Use your account on this computer: allow it in the browser
   login <key>        Or use it with a key
-  setup <agent>      Connect Phyll to codex or claude, and install the browser it uses
+  setup <agent>      Connect Phyll to codex, claude, cursor, windsurf or gemini, and install the
+                     browser it uses. setup other prints the settings for any agent with MCP
   status             Your plan and the reviews left
   account            Open your account on the site, signed in: reports, keys and plan
   pro                Subscribe to Phyll Pro
@@ -28,7 +32,7 @@ Commands:
   mcp                Run the connector for your agent (setup registers it for you)
   logout             Forget the key on this computer
 
-Options: --server <address> for signup and login, --lang <code> for signup, --format json for scan.
+Options: --server <address> for signup and login, --lang <code> for signup, --format json or badge for scan.
 
 The AI work runs in your agent, on your own plan. Phyll's engine sends the method and keeps the reports.
 Every command, with examples: https://agentphyll.com/commands
@@ -52,6 +56,23 @@ const guessLanguage = () => ((Intl.DateTimeFormat().resolvedOptions().locale ?? 
 function options(args, spec) {
   return parseArgs({ args, allowPositionals: true, strict: true, options: spec });
 }
+
+// After a scan: the full review, which sees what the source cannot show, and the badge once the
+// index is low enough to show off.
+export function scanNext(index) {
+  const lines = [
+    "",
+    "Next: a full review opens the app as a first-time user, checks these hints along with what",
+    "only the running app shows, and can fix what it finds without changing your design.",
+    "  npx phyll setup codex      (or claude, cursor, windsurf, gemini)",
+    "  then ask your agent: review my app at http://localhost:3000",
+  ];
+  if (index !== null && index !== undefined && index <= 25) lines.push("Show the index in your README: npx phyll scan --format badge");
+  return `${lines.join("\n")}\n`;
+}
+
+// A README badge with the static index. The engine draws it, and it links to Phyll.
+export const badgeMarkdown = (index, server) => `[![Phyll AI tell index: ${index}/100](${server}/badge/index/${index}.svg)](${server})`;
 
 export async function main(argv, io = {}) {
   const out = io.stdout ?? process.stdout;
@@ -111,7 +132,7 @@ export async function main(argv, io = {}) {
         const answer = await client(server, null).signup(positionals[0], values.lang ?? guessLanguage());
         if (!answer.ok) return fail(answer.json.message ?? `Phyll answered ${answer.status}.`);
         const path = saveCredentials({ server, key: answer.json.key }, env);
-        write(`${answer.json.message}\nYour key, shown only now: ${answer.json.key}\nIt is saved in ${path}.\n\nNext, connect Phyll to your agent:\n  npx phyll setup codex\n  npx phyll setup claude\n`);
+        write(`${answer.json.message}\nYour key, shown only now: ${answer.json.key}\nIt is saved in ${path}.\n\nNext, connect Phyll to your agent:\n  npx phyll setup codex      (or claude, cursor, windsurf, gemini)\n`);
         return 0;
       }
 
@@ -169,17 +190,29 @@ export async function main(argv, io = {}) {
 
       case "setup": {
         const agent = rest[0];
-        if (!["codex", "claude"].includes(agent)) return fail("say which agent to connect: npx phyll setup codex, or npx phyll setup claude", 2);
+        if (![...AGENTS, "other"].includes(agent)) {
+          return fail("say which agent to connect: npx phyll setup codex, claude, cursor, windsurf or gemini. For any other agent with MCP: npx phyll setup other", 2);
+        }
         const command = io.mcpCommand ?? mcpCommand();
         if (agent === "codex") {
           const file = writeCodexConfig(command, env);
           write(`Phyll is connected to Codex in ${file}. Restart Codex so it loads the connector.\n`);
-        } else {
+        } else if (agent === "claude") {
           const result = registerClaude(command, io.run);
           write(
             result.ok
               ? "Phyll is connected to Claude Code. Start a new session so it loads the connector.\n"
               : `Claude Code was not found on this computer. Run this where it is installed:\n  ${result.manual}\n`,
+          );
+        } else if (agent === "other") {
+          write(`Add Phyll to your agent's MCP servers, then restart the agent:\n${mcpJson(command)}\n`);
+        } else {
+          const { name, path } = JSON_AGENTS[agent];
+          const file = join(io.home ?? homedir(), ...path);
+          write(
+            writeJsonConfig(file, command)
+              ? `Phyll is connected to ${name} in ${file}. Restart ${name} so it loads the connector.\n`
+              : `${file} is not plain JSON, so Phyll left it as it was. Add this to its mcpServers, then restart ${name}:\n${mcpJson(command)}\n`,
           );
         }
         if (!(await (io.ensureBrowser ?? ensureBrowser)({ write }))) return fail("the browser could not be installed. Run: npx playwright install chromium");
@@ -193,9 +226,14 @@ export async function main(argv, io = {}) {
 
       case "scan": {
         const { values, positionals } = options(rest, { format: { type: "string" } });
+        const format = values.format ?? "text";
+        if (!["text", "json", "badge"].includes(format)) return fail("the format is text, json or badge", 2);
         const { scan, formatText } = await importSkill("scripts/scan.mjs");
         const result = scan(positionals[0] ?? cwd);
-        write(values.format === "json" ? `${JSON.stringify(result, null, 2)}\n` : formatText(result));
+        if (format === "json") write(`${JSON.stringify(result, null, 2)}\n`);
+        else if (format === "text") write(`${formatText(result)}${scanNext(result.staticIndex)}`);
+        else if (result.staticIndex === null) return fail("there is no index to show: the scan found no files it reads");
+        else write(`${badgeMarkdown(result.staticIndex, loadCredentials(env).server)}\n`);
         return 0;
       }
 
